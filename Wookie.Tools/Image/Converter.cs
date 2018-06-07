@@ -3,11 +3,11 @@ using System.Drawing;
 using System.IO;
 
 
-namespace Wookie.Tools
+namespace Wookie.Tools.Image
 {
-    public static class ImageHelper
+    public static class Converter
     {
-        public static System.Data.Linq.Binary GetBinaryFromImage(Image image)
+        public static System.Data.Linq.Binary GetBinaryFromImage(System.Drawing.Image image)
         {
             if (image == null) return null;
             System.Data.Linq.Binary binary;
@@ -21,14 +21,14 @@ namespace Wookie.Tools
             return binary;
         }
 
-        public static Image GetImageFromBinary(System.Data.Linq.Binary binary)
+        public static System.Drawing.Image GetImageFromBinary(System.Data.Linq.Binary binary)
         {
             if (binary == null) return null;
-            Image returnImage = null;
+            System.Drawing.Image returnImage = null;
 
             using (MemoryStream ms = new MemoryStream(binary.ToArray()))
             {
-                returnImage = Image.FromStream(ms);
+                returnImage = System.Drawing.Image.FromStream(ms);
 
             }
 

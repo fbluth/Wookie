@@ -1,11 +1,10 @@
-﻿using DevExpress.Utils.Svg;
-using DevExpress.XtraBars;
+﻿using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using System.Collections.Generic;
 using System.Linq;
-using Wookie.Tools;
+using Wookie.Tools.Image;
 
-namespace Wookie.RM.Menu
+namespace Wookie.Menu.Ribbon
 {
     public class RibbonController
     {
@@ -40,7 +39,7 @@ namespace Wookie.RM.Menu
 
             BarSubItem bsiClient = new BarSubItem();
             bsiClient.Caption = clientQuery.First().Name;
-            bsiClient.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(clientQuery.First().SvgImage);
+            bsiClient.ImageOptions.SvgImage = Converter.GetSvgImageFromBinary(clientQuery.First().SvgImage);
             bsiClient.Id = ribbonControl.Manager.GetNewItemId();
 
             ribbonControl.Items.Add(bsiClient);
@@ -50,7 +49,7 @@ namespace Wookie.RM.Menu
             {
                 BarButtonItem item = new BarButtonItem();
                 item.Caption = client.Name;
-                item.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(client.SvgImage);
+                item.ImageOptions.SvgImage = Converter.GetSvgImageFromBinary(client.SvgImage);
                 item.ItemClick += new ItemClickEventHandler(this.bsiClientClick);
                 item.Id = ribbonControl.Manager.GetNewItemId();
 
@@ -95,7 +94,7 @@ namespace Wookie.RM.Menu
 
             foreach (Database.v_Wookie_Menu_0000 row in query)
             {
-                Menu.Client client = null;
+                Client client = null;
                 RibbonPage ribbonPage = null;
                 RibbonPageGroup ribbonPageGroup = null;
                 BarButtonItem item = null;
@@ -113,7 +112,7 @@ namespace Wookie.RM.Menu
                 if (!pageDictionary.ContainsKey(row.PKPage))
                 {
                     ribbonPage = new RibbonPage(row.PageName);
-                    ribbonPage.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(row.PageSvgImage);
+                    ribbonPage.ImageOptions.SvgImage = Converter.GetSvgImageFromBinary(row.PageSvgImage);
 
                     ribbonControl.Pages.Add(ribbonPage);
                     pageDictionary.Add(row.PKPage, ribbonPage);
@@ -125,7 +124,7 @@ namespace Wookie.RM.Menu
                 if (!pageGroupDictionary.ContainsKey(row.PKPageGroup))
                 {
                     ribbonPageGroup = new RibbonPageGroup(row.PageGroupName);
-                    ribbonPageGroup.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(row.PageGroupSvgImage);
+                    ribbonPageGroup.ImageOptions.SvgImage = Converter.GetSvgImageFromBinary(row.PageGroupSvgImage);
                     ribbonPageGroup.AllowTextClipping = false;
 
                     ribbonPage.Groups.Add(ribbonPageGroup);
@@ -139,7 +138,7 @@ namespace Wookie.RM.Menu
                 {
                     subitem = new BarSubItem();
                     subitem.Caption = row.PageGroupItemCollectionName;
-                    subitem.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(row.PageGroupItemCollectionSvgImage);
+                    subitem.ImageOptions.SvgImage = Converter.GetSvgImageFromBinary(row.PageGroupItemCollectionSvgImage);
 
                     if (row.PageGroupItemCollectionShowInMenu.Value)
                         ribbonPageGroup.ItemLinks.Add(subitem);
@@ -153,7 +152,7 @@ namespace Wookie.RM.Menu
                 if (!pageGroupItemDictionary.ContainsKey(row.PKPageGroupItem))
                 {
                     item = ribbonControl.Items.CreateButton(row.PageGroupItemName);
-                    item.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(row.PageGroupItemSvgImage);
+                    item.ImageOptions.SvgImage = Converter.GetSvgImageFromBinary(row.PageGroupItemSvgImage);
                     item.Id = ribbonControl.Manager.GetNewItemId();
                     item.ItemClick += new ItemClickEventHandler(this.biClick);
 

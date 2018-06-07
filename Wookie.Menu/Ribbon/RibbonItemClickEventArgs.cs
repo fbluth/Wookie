@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wookie.RM.Menu
+namespace Wookie.Menu.Ribbon
 {
     public delegate void RibbonItemClickEventHandler(object sender, RibbonItemClickEventArgs e);
 

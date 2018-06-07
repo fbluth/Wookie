@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wookie.Tools
+namespace Wookie.Tools.Database
 {
-    public static class DatabaseHelper
+    public static class MasterDatabase
     {
         private static System.Data.SqlClient.SqlConnection sqlConnectionMasterDB;
 

@@ -4,7 +4,7 @@ using System;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Wookie.Menu
+namespace Wookie.Menu.Ribbon
 {
     public class RibbonItem
     {
@@ -57,13 +57,11 @@ namespace Wookie.Menu
                     {
                         var assembly = Assembly.LoadFile(path);
                         dynamic c = Activator.CreateInstance(assembly.GetType(assemblyFileWithoutDll + ".Startup"));
-                        this.userControl = c.Create(Tools.DatabaseHelper.SqlConnectionMasterDB, client.SqlConnection, fkExternal);
+                        this.userControl = c.Create(Tools.Database.MasterDatabase.SqlConnectionMasterDB, client.SqlConnection, fkExternal);
                         this.userControl.Dock = DockStyle.Fill;
                     }
                 }
-
                 return this.userControl;
-
             }
         }
 

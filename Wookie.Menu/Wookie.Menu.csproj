@@ -48,17 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Database\Menu.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Menu.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Menu\Client.cs" />
-    <Compile Include="Menu\ClientChangeEventArgs.cs" />
-    <Compile Include="Menu\RibbonController.cs" />
-    <Compile Include="Menu\RibbonItem.cs" />
-    <Compile Include="Menu\RibbonItemClickEventArgs.cs" />
+    <Compile Include="Ribbon\Client.cs" />
+    <Compile Include="Ribbon\ClientChangeEventArgs.cs" />
+    <Compile Include="Ribbon\RibbonController.cs" />
+    <Compile Include="Ribbon\RibbonItem.cs" />
+    <Compile Include="Ribbon\RibbonItemClickEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -87,7 +86,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Navigation\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wookie.Tools\Wookie.Tools.csproj">
       <Project>{9158c093-ae52-47a9-8da9-50af12669c40}</Project>

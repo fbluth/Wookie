@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using DevExpress.XtraBars;
 using Wookie.Menu;
+using Wookie.Menu.Ribbon;
 using DevExpress.XtraBars.Navigation;
 
 namespace Wookie.Controls
@@ -8,7 +9,7 @@ namespace Wookie.Controls
     public partial class frmWookieApp : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         #region Variables
-        private Wookie.Menu.RibbonController ribbonController;
+        private RibbonController ribbonController;
         private NavigationPage navLogin;
         #endregion
 
@@ -37,9 +38,9 @@ namespace Wookie.Controls
 
         private void CreateRibbon()
         {
-            ribbonController = new Wookie.Menu.RibbonController(Tools.DatabaseHelper.SqlConnectionMasterDB);
-            ribbonController.RibbonItemClick += new Menu.RibbonItemClickEventHandler(this.RibbonItemClick);
-            ribbonController.ClientChanged += new Menu.ClientChangeEventHandler(this.ClientChange);
+            ribbonController = new RibbonController(Tools.Database.MasterDatabase.SqlConnectionMasterDB);
+            ribbonController.RibbonItemClick += new RibbonItemClickEventHandler(this.RibbonItemClick);
+            ribbonController.ClientChanged += new ClientChangeEventHandler(this.ClientChange);
             ribbonController.AddClientsToRibbon(this.ribbonControl1);
         }
         #endregion

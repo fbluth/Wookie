@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wookie.Menu
+namespace Wookie.Menu.Ribbon
 {
     public class Client
     {
