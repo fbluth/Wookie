@@ -59,11 +59,11 @@
     <Compile Include="Controls\frmWookieApp.Designer.cs">
       <DependentUpon>frmWookieApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SplashScreen1.cs">
+    <Compile Include="Controls\SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\SplashScreen1.Designer.cs">
-      <DependentUpon>SplashScreen1.cs</DependentUpon>
+    <Compile Include="Controls\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ucLogin.cs">
       <SubType>UserControl</SubType>
@@ -88,8 +88,8 @@
     <EmbeddedResource Include="Controls\frmWookieApp.resx">
       <DependentUpon>frmWookieApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SplashScreen1.resx">
-      <DependentUpon>SplashScreen1.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucLogin.resx">
       <DependentUpon>ucLogin.cs</DependentUpon>
