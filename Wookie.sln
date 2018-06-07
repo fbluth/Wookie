@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie", "Wookie\Wookie.csproj", "{5D92A564-FE3D-49BE-A96C-42A19D7F1C74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.RM.Employee", "..\Wookie.RM.Employee\Wookie.RM.Employee\Wookie.RM.Employee.csproj", "{C670714D-F58E-4AAB-A433-3892E058111B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5D92A564-FE3D-49BE-A96C-42A19D7F1C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D92A564-FE3D-49BE-A96C-42A19D7F1C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D92A564-FE3D-49BE-A96C-42A19D7F1C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C670714D-F58E-4AAB-A433-3892E058111B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C670714D-F58E-4AAB-A433-3892E058111B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C670714D-F58E-4AAB-A433-3892E058111B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C670714D-F58E-4AAB-A433-3892E058111B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
