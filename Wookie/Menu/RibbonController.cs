@@ -61,7 +61,7 @@ namespace Wookie.Menu
         }
         
         /// <summary>
-        /// Erstellt ein RibbonForm anhand der Datenbankeinträge zum zugehöigen PKClient
+        /// Erstellt ein RibbonForm anhand der Datenbankeinträge zum zugehöigen Mandant.
         /// </summary>
         /// <param name="pkClient"></param>
         /// <returns></returns>

@@ -15,9 +15,7 @@ namespace Wookie.Menu
         private NavigationPage navigationPage = null;
 
         public RibbonItem()
-        {
-            string m = null;
-            m = "";
+        {            
         }
 
         public RibbonItem(long? fkExternal, string assemblyFilename, Client client)
