@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.75, 8.5" name="Menu">
+  <DataContextMoniker Name="/MenuDataContext" />
+  <nestedChildShapes>
+    <classShape Id="1b9b327a-ae52-4fca-8e5e-e7c457b8c76c" absoluteBounds="0.75, 1.125, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/MenuDataContext/tsysClient" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5bc0d708-0449-41c2-a5a2-fad4a170c2d3" absoluteBounds="0.765, 1.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f747f217-112f-4e8e-9306-42469290edb6" absoluteBounds="0.75, 4.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/MenuDataContext/tsysUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="de0cf788-bebe-4e59-8b66-0aec67fde872" absoluteBounds="0.765, 5.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4412053a-3782-4bc0-9a94-004ea4ff9dc7" absoluteBounds="14.5, 1.125, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/MenuDataContext/tsysMenuItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="290f487e-96b0-44de-a365-370f9330a7ff" absoluteBounds="14.515, 1.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a5663eba-2abc-4052-8e74-4b4a66b79b20" absoluteBounds="3.5, 1.125, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/MenuDataContext/tsysPage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7c6ac114-87c3-4672-bdf9-a246bb83bef9" absoluteBounds="3.515, 1.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="95c932a4-12bf-4200-8f36-db7ab0e02b14" absoluteBounds="6.25, 1.125, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/MenuDataContext/tsysPageGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="259817a2-bb03-4072-996a-227a8c2ad8b9" absoluteBounds="6.265, 1.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7df5f10d-3967-49c7-9e33-06a99e7ad17d" absoluteBounds="11.75, 1, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/MenuDataContext/tsysPageGroupItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="81f9247d-ab44-4b94-9283-183070459a2d" absoluteBounds="11.765, 1.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="222e0ef3-9eae-4c29-ab1c-71db9d89f12b" absoluteBounds="9, 1.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/MenuDataContext/tsysPageGroupItemCollection" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ec97faaa-474b-49de-a5d9-31e33cdbf3ac" absoluteBounds="9.015, 1.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.39505126953125); (3.5 : 2.39505126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MenuDataContext/tsysClient/tsysClient_tsysPage" />
+      <nodes>
+        <classShapeMoniker Id="1b9b327a-ae52-4fca-8e5e-e7c457b8c76c" />
+        <classShapeMoniker Id="a5663eba-2abc-4052-8e74-4b4a66b79b20" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.39505126953125); (6.25 : 2.39505126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MenuDataContext/tsysPage/tsysPage_tsysPageGroup" />
+      <nodes>
+        <classShapeMoniker Id="a5663eba-2abc-4052-8e74-4b4a66b79b20" />
+        <classShapeMoniker Id="95c932a4-12bf-4200-8f36-db7ab0e02b14" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.75 : 2.49120198567708); (14.5 : 2.49120198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MenuDataContext/tsysPageGroupItem/tsysPageGroupItem_tsysMenuItem" />
+      <nodes>
+        <classShapeMoniker Id="7df5f10d-3967-49c7-9e33-06a99e7ad17d" />
+        <classShapeMoniker Id="4412053a-3782-4bc0-9a94-004ea4ff9dc7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 2.45274983723958); (11.75 : 2.45274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MenuDataContext/tsysPageGroupItemCollection/tsysPageGroupItemCollection_tsysPageGroupItem" />
+      <nodes>
+        <classShapeMoniker Id="222e0ef3-9eae-4c29-ab1c-71db9d89f12b" />
+        <classShapeMoniker Id="7df5f10d-3967-49c7-9e33-06a99e7ad17d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 2.45274983723958); (9 : 2.45274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MenuDataContext/tsysPageGroup/tsysPageGroup_tsysPageGroupItemCollection" />
+      <nodes>
+        <classShapeMoniker Id="95c932a4-12bf-4200-8f36-db7ab0e02b14" />
+        <classShapeMoniker Id="222e0ef3-9eae-4c29-ab1c-71db9d89f12b" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

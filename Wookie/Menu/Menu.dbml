@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BS_PM_Master" Class="MenuDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BS_PM_Master;Integrated Security=True" SettingsObjectName="Wookie.Properties.Settings" SettingsPropertyName="BS_PM_MasterConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tsysClient" Member="tsysClient">
+    <Type Name="tsysClient">
+      <Column Name="PKClient" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConnectionString" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="tsysClient_tsysPage" Member="tsysPage" ThisKey="PKClient" OtherKey="FKClient" Type="tsysPage" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tsysUser" Member="tsysUser">
+    <Type Name="tsysUser">
+      <Column Name="PKUser" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContact" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tsysMenuItem" Member="tsysMenuItem">
+    <Type Name="tsysMenuItem">
+      <Column Name="PKMenuItem" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKPageGroupItem" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Assemblyname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="tsysPageGroupItem_tsysMenuItem" Member="tsysPageGroupItem" ThisKey="FKPageGroupItem" OtherKey="PKPageGroupItem" Type="tsysPageGroupItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tsysPage" Member="tsysPage">
+    <Type Name="tsysPage">
+      <Column Name="PKPage" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKClient" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="tsysPage_tsysPageGroup" Member="tsysPageGroup" ThisKey="PKPage" OtherKey="FKPage" Type="tsysPageGroup" />
+      <Association Name="tsysClient_tsysPage" Member="tsysClient" ThisKey="FKClient" OtherKey="PKClient" Type="tsysClient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tsysPageGroup" Member="tsysPageGroup">
+    <Type Name="tsysPageGroup">
+      <Column Name="PKPageGroup" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKPage" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="tsysPageGroup_tsysPageGroupItemCollection" Member="tsysPageGroupItemCollection" ThisKey="PKPageGroup" OtherKey="FKPageGroup" Type="tsysPageGroupItemCollection" />
+      <Association Name="tsysPage_tsysPageGroup" Member="tsysPage" ThisKey="FKPage" OtherKey="PKPage" Type="tsysPage" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tsysPageGroupItem" Member="tsysPageGroupItem">
+    <Type Name="tsysPageGroupItem">
+      <Column Name="PKPageGroupItem" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKPageGroupItemCollection" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKExternal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Assemblyname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="tsysPageGroupItem_tsysMenuItem" Member="tsysMenuItem" ThisKey="PKPageGroupItem" OtherKey="FKPageGroupItem" Type="tsysMenuItem" />
+      <Association Name="tsysPageGroupItemCollection_tsysPageGroupItem" Member="tsysPageGroupItemCollection" ThisKey="FKPageGroupItemCollection" OtherKey="PKPageGroupItemCollection" Type="tsysPageGroupItemCollection" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tsysPageGroupItemCollection" Member="tsysPageGroupItemCollection">
+    <Type Name="tsysPageGroupItemCollection">
+      <Column Name="PKPageGroupItemCollection" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKPageGroup" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="tsysPageGroupItemCollection_tsysPageGroupItem" Member="tsysPageGroupItem" ThisKey="PKPageGroupItemCollection" OtherKey="FKPageGroupItemCollection" Type="tsysPageGroupItem" />
+      <Association Name="tsysPageGroup_tsysPageGroupItemCollection" Member="tsysPageGroup" ThisKey="FKPageGroup" OtherKey="PKPageGroup" Type="tsysPageGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
