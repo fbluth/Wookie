@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BS_PM_Master" Class="MenuDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BS_PM_Master;Integrated Security=True" SettingsObjectName="Wookie.Properties.Settings" SettingsPropertyName="BS_PM_MasterConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BS_PM_Master;Integrated Security=True" SettingsObjectName="Wookie.RM.Properties.Settings" SettingsPropertyName="BS_PM_MasterConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tsysClient" Member="tsysClient">
     <Type Name="tsysClient">
       <Column Name="PKClient" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

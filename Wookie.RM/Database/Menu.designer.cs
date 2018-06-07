@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Wookie.Menu
+namespace Wookie.RM.Database
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -54,7 +54,7 @@ namespace Wookie.Menu
     #endregion
 		
 		public MenuDataContext() : 
-				base(global::Wookie.Properties.Settings.Default.BS_PM_MasterConnectionString, mappingSource)
+				base(global::Wookie.RM.Properties.Settings.Default.BS_PM_MasterConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

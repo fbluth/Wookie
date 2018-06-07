@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5D92A564-FE3D-49BE-A96C-42A19D7F1C74}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{E25011F0-7D0D-4E7A-8A11-B1A50492884A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wookie</RootNamespace>
-    <AssemblyName>Wookie</AssemblyName>
+    <RootNamespace>Wookie.RM</RootNamespace>
+    <AssemblyName>Wookie.RM</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Wookie\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v18.1" />
@@ -53,35 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\frmWookieApp.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Database\Menu.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\frmWookieApp.Designer.cs">
-      <DependentUpon>frmWookieApp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SplashScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\SplashScreen.Designer.cs">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucLogin.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucLogin.Designer.cs">
-      <DependentUpon>ucLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Menu\Client.cs" />
+    <Compile Include="Menu\ClientChangeEventArgs.cs" />
+    <Compile Include="Menu\RibbonController.cs" />
+    <Compile Include="Menu\RibbonItem.cs" />
+    <Compile Include="Menu\RibbonItemClickEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\frmWookieApp.resx">
-      <DependentUpon>frmWookieApp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SplashScreen.resx">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucLogin.resx">
-      <DependentUpon>ucLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -92,7 +77,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="App.config" />
+    <None Include="app.config" />
+    <None Include="Database\Menu.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Menu.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database\Menu.dbml.layout">
+      <DependentUpon>Menu.dbml</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,13 +97,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Menu\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wookie.Menu\Wookie.Menu.csproj">
-      <Project>{16cebd6f-e3c4-4a7f-8388-95f1f853b23f}</Project>
-      <Name>Wookie.Menu</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Wookie.Tools\Wookie.Tools.csproj">
       <Project>{9158c093-ae52-47a9-8da9-50af12669c40}</Project>
       <Name>Wookie.Tools</Name>

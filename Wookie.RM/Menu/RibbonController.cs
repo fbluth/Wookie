@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Wookie.Tools;
 
-namespace Wookie.Menu
+namespace Wookie.RM.Menu
 {
     public class RibbonController
     {
         #region Variables
-        private MenuDataContext context = null;
+        private Database.MenuDataContext context = null;
         private Dictionary<BarItem, RibbonItem> RibbonItemDictionary = new Dictionary<BarItem, RibbonItem>();
         
         public event RibbonItemClickEventHandler RibbonItemClick;
@@ -20,7 +20,7 @@ namespace Wookie.Menu
         #region Constructor
         public RibbonController(System.Data.SqlClient.SqlConnection sqlConnection)
         {
-            context = new MenuDataContext(sqlConnection);
+            context = new Database.MenuDataContext(sqlConnection);
         }
         #endregion
 
@@ -46,7 +46,7 @@ namespace Wookie.Menu
             ribbonControl.Items.Add(bsiClient);
             ribbonControl.PageHeaderItemLinks.Add(bsiClient);
 
-            foreach (Menu.tsysClient client in clientQuery)
+            foreach (Database.tsysClient client in clientQuery)
             {
                 BarButtonItem item = new BarButtonItem();
                 item.Caption = client.Name;
@@ -93,7 +93,7 @@ namespace Wookie.Menu
 
             ((System.ComponentModel.ISupportInitialize)(ribbonControl)).BeginInit();
 
-            foreach (Menu.v_Wookie_Menu_0000 row in query)
+            foreach (Database.v_Wookie_Menu_0000 row in query)
             {
                 Menu.Client client = null;
                 RibbonPage ribbonPage = null;
@@ -125,7 +125,7 @@ namespace Wookie.Menu
                 if (!pageGroupDictionary.ContainsKey(row.PKPageGroup))
                 {
                     ribbonPageGroup = new RibbonPageGroup(row.PageGroupName);
-                    ribbonPageGroup.ImageOptions.SvgImage = Tools.ImageHelper.GetSvgImageFromBinary(row.PageGroupSvgImage);
+                    ribbonPageGroup.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(row.PageGroupSvgImage);
                     ribbonPageGroup.AllowTextClipping = false;
 
                     ribbonPage.Groups.Add(ribbonPageGroup);
@@ -153,7 +153,7 @@ namespace Wookie.Menu
                 if (!pageGroupItemDictionary.ContainsKey(row.PKPageGroupItem))
                 {
                     item = ribbonControl.Items.CreateButton(row.PageGroupItemName);
-                    item.ImageOptions.SvgImage = Tools.ImageHelper.GetSvgImageFromBinary(row.PageGroupItemSvgImage);
+                    item.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(row.PageGroupItemSvgImage);
                     item.Id = ribbonControl.Manager.GetNewItemId();
                     item.ItemClick += new ItemClickEventHandler(this.biClick);
 

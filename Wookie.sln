@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie", "Wookie\Wookie.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.RM.Employee", "Wookie.RM.Employee\Wookie.RM.Employee\Wookie.RM.Employee.csproj", "{C670714D-F58E-4AAB-A433-3892E058111B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Tools", "Wookie.Tools\Wookie.Tools.csproj", "{9158C093-AE52-47A9-8DA9-50AF12669C40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Menu", "Wookie.Menu\Wookie.Menu.csproj", "{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C670714D-F58E-4AAB-A433-3892E058111B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C670714D-F58E-4AAB-A433-3892E058111B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C670714D-F58E-4AAB-A433-3892E058111B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9158C093-AE52-47A9-8DA9-50AF12669C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9158C093-AE52-47A9-8DA9-50AF12669C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9158C093-AE52-47A9-8DA9-50AF12669C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9158C093-AE52-47A9-8DA9-50AF12669C40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

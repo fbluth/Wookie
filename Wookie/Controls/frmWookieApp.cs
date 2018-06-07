@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using DevExpress.XtraBars;
 using Wookie.Menu;
 using DevExpress.XtraBars.Navigation;
-using DevExpress.XtraBars.Ribbon;
 
 namespace Wookie.Controls
 {
     public partial class frmWookieApp : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        #region Variables
         private Wookie.Menu.RibbonController ribbonController;
         private NavigationPage navLogin;
-       
+        #endregion
 
+        #region Constructor
         public frmWookieApp()
         {
             InitializeComponent();
@@ -29,14 +22,16 @@ namespace Wookie.Controls
             loginControl.Login += new Wookie.Controls.LoginEventHandler(this.loginControl_Login);
             this.navLogin = new NavigationPage();
             this.navLogin.Controls.Add(loginControl);
-            
 
-            Login();
+            this.Login();
         }
+        #endregion
 
+        #region Private methods
         private void Login()
         {
-            this.navigationFrame1.Pages.Add(navLogin);
+            if (!this.navigationFrame1.Pages.Contains(navLogin))
+                this.navigationFrame1.Pages.Add(navLogin);
             this.navigationFrame1.SelectedPage = navLogin;
         }
 
@@ -47,7 +42,9 @@ namespace Wookie.Controls
             ribbonController.ClientChanged += new Menu.ClientChangeEventHandler(this.ClientChange);
             ribbonController.AddClientsToRibbon(this.ribbonControl1);
         }
+        #endregion
 
+        #region Events
         private void RibbonItemClick(object sender, RibbonItemClickEventArgs e)
         {
             if (navigationFrame1.Pages.Contains(e.RibbonItem.NavigationPage))
@@ -79,5 +76,6 @@ namespace Wookie.Controls
                 this.CreateRibbon();                
             }
         }
+        #endregion
     }
 }
