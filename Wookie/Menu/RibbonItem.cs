@@ -65,7 +65,6 @@ namespace Wookie.Menu
                 return this.userControl;
 
             }
-            set { this.userControl = value; }
         }
 
         public NavigationPage NavigationPage
@@ -79,7 +78,6 @@ namespace Wookie.Menu
                 }
                 return this.navigationPage;
             }
-            set { this.navigationPage = value; }
         }
     }
 }

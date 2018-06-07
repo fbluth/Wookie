@@ -11,7 +11,7 @@ namespace Wookie.Menu
     {
         #region Variables
         private MenuDataContext context = null;
-        private Dictionary<BarItem, RibbonItem> RibbonItemList = new Dictionary<BarItem, RibbonItem>();
+        private Dictionary<BarItem, RibbonItem> RibbonItemDictionary = new Dictionary<BarItem, RibbonItem>();
         
         public event RibbonItemClickEventHandler RibbonItemClick;
         public event ClientChangeEventHandler ClientChanged;
@@ -38,28 +38,34 @@ namespace Wookie.Menu
 
             ((System.ComponentModel.ISupportInitialize)(ribbonControl)).BeginInit();
 
-            BarSubItem bsiClient = CreateBarSubItem(clientQuery.First().Name, ImageHelper.GetSvgImageFromBinary(clientQuery.First().SvgImage));
+            BarSubItem bsiClient = new BarSubItem();
+            bsiClient.Caption = clientQuery.First().Name;
+            bsiClient.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(clientQuery.First().SvgImage);
             bsiClient.Id = ribbonControl.Manager.GetNewItemId();
+
             ribbonControl.Items.Add(bsiClient);
             ribbonControl.PageHeaderItemLinks.Add(bsiClient);
 
             foreach (Menu.tsysClient client in clientQuery)
             {
-                BarButtonItem item = CreateBarButtonItem(client.Name, ImageHelper.GetSvgImageFromBinary(client.SvgImage));
+                BarButtonItem item = new BarButtonItem();
+                item.Caption = client.Name;
+                item.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(client.SvgImage);
                 item.ItemClick += new ItemClickEventHandler(this.bsiClientClick);
                 item.Id = ribbonControl.Manager.GetNewItemId();
+
                 bsiClient.LinksPersistInfo.Add(new LinkPersistInfo(item));
                 ribbonControl.Items.Add(item);
 
-                RibbonItemList.Add(item, new RibbonItem(null,null, new Client(client.PKClient, new System.Data.SqlClient.SqlConnection(client.ConnectionString))));
+                RibbonItemDictionary.Add(item, new RibbonItem(null,null, new Client(client.PKClient, new System.Data.SqlClient.SqlConnection(client.ConnectionString))));
             }
 
             ((System.ComponentModel.ISupportInitialize)(ribbonControl)).EndInit();
 
-            ClientChangeEventArgs eventArgs = new ClientChangeEventArgs(RibbonItemList.ToArray()[0].Value.Client, RibbonItemList.ToArray()[0].Key);
+            ClientChangeEventArgs eventArgs = new ClientChangeEventArgs(RibbonItemDictionary.ToArray()[0].Value.Client, RibbonItemDictionary.ToArray()[0].Key);
             ClientChanged?.Invoke(this, eventArgs);
         }
-        
+
         /// <summary>
         /// Erstellt ein RibbonForm anhand der Datenbankeinträge zum zugehöigen Mandant.
         /// </summary>
@@ -67,128 +73,121 @@ namespace Wookie.Menu
         /// <returns></returns>
         public RibbonControl CreateRibbon(long pkClient)
         {
-            RibbonControl ribbonControl = new RibbonControl();
+            var query = from row in context.v_Wookie_Menu_0000
+                        where row.PKClient == pkClient
+                        orderby row.PageSortOrder, 
+                                row.PageGroupSortOrder, 
+                                row.PageGroupItemCollectionSortOrder,
+                                row.PageGroupItemSortOrder,
+                                row.MenuItemSortOrder
+                        select row;
 
-            var clientQuery = from client in context.tsysClient where client.PKClient == pkClient orderby client.SortOrder select client;
-            if (clientQuery.Count() == 0) return null;
+            if (query.Count() == 0) return null;
+
+            Dictionary<long, Client> clientDictionary = new Dictionary<long, Client>();
+            Dictionary<long?, RibbonPage> pageDictionary = new Dictionary<long?, RibbonPage>();
+            Dictionary<long?, RibbonPageGroup> pageGroupDictionary = new Dictionary<long?, RibbonPageGroup>();
+            Dictionary<long?, BarSubItem> pageGroupItemCollectionDictionary = new Dictionary<long?, BarSubItem>();
+            Dictionary<long?, BarButtonItem> pageGroupItemDictionary = new Dictionary<long?, BarButtonItem>();
+            RibbonControl ribbonControl = new RibbonControl();
 
             ((System.ComponentModel.ISupportInitialize)(ribbonControl)).BeginInit();
 
-            var pageQuery = from page in context.tsysPage where page.FKClient == pkClient orderby page.SortOrder select page;
-
-            foreach (Menu.tsysPage page in pageQuery)
+            foreach (Menu.v_Wookie_Menu_0000 row in query)
             {
-                RibbonPage ribbonPage = new RibbonPage(page.Name);
-                ribbonPage.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(page.SvgImage);
+                Menu.Client client = null;
+                RibbonPage ribbonPage = null;
+                RibbonPageGroup ribbonPageGroup = null;
+                BarButtonItem item = null;
+                BarSubItem subitem = null;
 
-                var pageGroupQuery = from pageGroup in context.tsysPageGroup where pageGroup.FKPage == page.PKPage orderby pageGroup.SortOrder select pageGroup;
-
-                foreach (Menu.tsysPageGroup pageGroup in pageGroupQuery)
+                if (!clientDictionary.ContainsKey(row.PKClient))
                 {
-                    RibbonPageGroup ribbonPageGroup = new RibbonPageGroup(pageGroup.Name);
-                    ribbonPageGroup.ImageOptions.SvgImage = Tools.ImageHelper.GetSvgImageFromBinary(pageGroup.SvgImage);
+                    client = new Client(row.PKClient, new System.Data.SqlClient.SqlConnection(row.ClientConnectionString));
+                    clientDictionary.Add(row.PKClient, client);
+                }
+
+                client = clientDictionary[row.PKClient];
+
+                if (!row.PKPage.HasValue) continue;
+                if (!pageDictionary.ContainsKey(row.PKPage))
+                {
+                    ribbonPage = new RibbonPage(row.PageName);
+                    ribbonPage.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(row.PageSvgImage);
+
+                    ribbonControl.Pages.Add(ribbonPage);
+                    pageDictionary.Add(row.PKPage, ribbonPage);
+                }
+
+                ribbonPage = pageDictionary[row.PKPage];
+
+                if (!row.PKPageGroup.HasValue) continue;
+                if (!pageGroupDictionary.ContainsKey(row.PKPageGroup))
+                {
+                    ribbonPageGroup = new RibbonPageGroup(row.PageGroupName);
+                    ribbonPageGroup.ImageOptions.SvgImage = Tools.ImageHelper.GetSvgImageFromBinary(row.PageGroupSvgImage);
                     ribbonPageGroup.AllowTextClipping = false;
 
-                    var pageGroupItemCollectionQuery = from pageGroupItemCollection in context.tsysPageGroupItemCollection where pageGroupItemCollection.FKPageGroup == pageGroup.PKPageGroup orderby pageGroupItemCollection.SortOrder select pageGroupItemCollection;
-
-                    foreach (Menu.tsysPageGroupItemCollection pageGroupItemCollection in pageGroupItemCollectionQuery)
-                    {
-                        var pageGroupItemQuery = from pageGroupItem in context.tsysPageGroupItem where pageGroupItem.FKPageGroupItemCollection == pageGroupItemCollection.PKPageGroupItemCollection orderby pageGroupItem.SortOrder select pageGroupItem;
-
-                        if (pageGroupItemQuery.Count() == 1)
-                        {
-                            Menu.tsysPageGroupItem pageGroupItem = pageGroupItemQuery.Single();
-
-                            BarButtonItem item = CreateBarButtonItem(pageGroupItem.Name, ImageHelper.GetSvgImageFromBinary(pageGroupItem.SvgImage));
-                            item.ItemClick += new ItemClickEventHandler(this.biClick);
-                            item.Id = ribbonControl.Manager.GetNewItemId();
-                            RibbonItemList.Add(item, new RibbonItem(
-                                    pageGroupItem.FKExternal, 
-                                    pageGroupItem.Assemblyname, 
-                                    new Client(pkClient, new System.Data.SqlClient.SqlConnection(clientQuery.Single().ConnectionString))));
-
-                            ribbonPageGroup.ItemLinks.Add(item);
-                        }
-                        else if (pageGroupItemQuery.Count() > 1)
-                        {
-                            BarSubItem barSubItem = CreateBarSubItem(pageGroupItemQuery.First().Name, ImageHelper.GetSvgImageFromBinary(pageGroupItemQuery.First().SvgImage));
-
-                            ribbonControl.Items.Add(barSubItem);
-
-                            foreach (Menu.tsysPageGroupItem pageGroupItem in pageGroupItemQuery)
-                            {
-
-                                BarButtonItem item = CreateBarButtonItem(pageGroupItem.Name, ImageHelper.GetSvgImageFromBinary(pageGroupItem.SvgImage));
-                                item.ItemClick += new ItemClickEventHandler(this.bsiClick);
-                                item.Id = ribbonControl.Manager.GetNewItemId();
-                                RibbonItemList.Add(item, new RibbonItem(
-                                   pageGroupItem.FKExternal,
-                                   pageGroupItem.Assemblyname,
-                                   new Client(pkClient, new System.Data.SqlClient.SqlConnection(clientQuery.Single().ConnectionString))));
-
-                                barSubItem.LinksPersistInfo.Add(new LinkPersistInfo(item));
-                                ribbonControl.Items.Add(item);
-                            }
-                            ribbonPageGroup.ItemLinks.Add(barSubItem);
-                        }
-                    }
                     ribbonPage.Groups.Add(ribbonPageGroup);
+                    pageGroupDictionary.Add(row.PKPageGroup, ribbonPageGroup);
                 }
-                ribbonControl.Pages.Add(ribbonPage);
+
+                ribbonPageGroup = pageGroupDictionary[row.PKPageGroup];
+
+                if (!row.PKPageGroupItemCollection.HasValue) continue;
+                if (!pageGroupItemCollectionDictionary.ContainsKey(row.PKPageGroupItemCollection))
+                {
+                    subitem = new BarSubItem();
+                    subitem.Caption = row.PageGroupItemCollectionName;
+                    subitem.ImageOptions.SvgImage = ImageHelper.GetSvgImageFromBinary(row.PageGroupItemCollectionSvgImage);
+
+                    if (row.PageGroupItemCollectionShowInMenu.Value)
+                        ribbonPageGroup.ItemLinks.Add(subitem);
+                    
+                    pageGroupItemCollectionDictionary.Add(row.PKPageGroupItemCollection, subitem);
+                }                
+
+                subitem = pageGroupItemCollectionDictionary[row.PKPageGroupItemCollection];
+
+                if (!row.PKPageGroupItem.HasValue) continue;
+                if (!pageGroupItemDictionary.ContainsKey(row.PKPageGroupItem))
+                {
+                    item = ribbonControl.Items.CreateButton(row.PageGroupItemName);
+                    item.ImageOptions.SvgImage = Tools.ImageHelper.GetSvgImageFromBinary(row.PageGroupItemSvgImage);
+                    item.Id = ribbonControl.Manager.GetNewItemId();
+                    item.ItemClick += new ItemClickEventHandler(this.biClick);
+
+                    if (row.PageGroupItemCollectionShowInMenu.Value)
+                    {
+                        subitem.LinksPersistInfo.Add(new LinkPersistInfo(item));
+                    }
+                    else
+                    {
+                        ribbonPageGroup.ItemLinks.Add(item);
+                    }
+                    RibbonItemDictionary.Add(item, new RibbonItem(row.FKExternal, row.Assemblyname, client));
+                    pageGroupItemDictionary.Add(row.PKPageGroupItem, item);
+                }
             }
 
             ((System.ComponentModel.ISupportInitialize)(ribbonControl)).EndInit();
 
             return ribbonControl;
         }
-
-        private BarButtonItem CreateBarButtonItem(string caption, SvgImage svgImage)
-        {
-            BarButtonItem item = new BarButtonItem();
-            item.Caption = caption;
-            item.ImageOptions.SvgImage = svgImage;
-            return item;
-        }
-
-        private BarSubItem CreateBarSubItem(string caption, SvgImage svgImage)
-        {
-            BarSubItem item = new BarSubItem();
-            item.Caption = caption;
-            item.ImageOptions.SvgImage = svgImage;
-            return item;
-        }
-
+        
         private void biClick(object sender, ItemClickEventArgs e)
         {
-            if (RibbonItemList[e.Item] == null) return;
+            if (RibbonItemDictionary[e.Item] == null) return;
 
-            RibbonItemClickEventArgs eventArgs = new RibbonItemClickEventArgs(RibbonItemList[e.Item]);
-            RibbonItemClick?.Invoke(this, eventArgs);
-        }
-
-        private void bsiClick(object sender, ItemClickEventArgs e)
-        {
-            if (RibbonItemList[e.Item] == null) return;
-
-            if (e.Link.OwnerItem != null)
-            {
-                e.Link.OwnerItem.Caption = e.Item.Caption;
-                e.Link.OwnerItem.ImageOptions.SvgImage = e.Item.ImageOptions.SvgImage;
-            }
-            RibbonItemClickEventArgs eventArgs = new RibbonItemClickEventArgs(RibbonItemList[e.Item]);
+            RibbonItemClickEventArgs eventArgs = new RibbonItemClickEventArgs(RibbonItemDictionary[e.Item]);
             RibbonItemClick?.Invoke(this, eventArgs);
         }
 
         private void bsiClientClick(object sender, ItemClickEventArgs e)
         {
-            if (RibbonItemList[e.Item] == null) return;
+            if (RibbonItemDictionary[e.Item] == null) return;
 
-            if (e.Link.OwnerItem != null)
-            {
-                e.Link.OwnerItem.Caption = e.Item.Caption;
-                e.Link.OwnerItem.ImageOptions.SvgImage = e.Item.ImageOptions.SvgImage;
-            }
-            ClientChangeEventArgs eventArgs = new ClientChangeEventArgs(RibbonItemList[e.Item].Client, (BarItem)e.Item);
+            ClientChangeEventArgs eventArgs = new ClientChangeEventArgs(RibbonItemDictionary[e.Item].Client, (BarItem)e.Item);
             ClientChanged?.Invoke(this, eventArgs);
         }
     }
