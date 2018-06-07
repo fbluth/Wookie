@@ -9,9 +9,9 @@ using DevExpress.XtraSplashScreen;
 
 namespace Wookie.Controls
 {
-    public partial class SplashScreen1 : SplashScreen
+    public partial class MainSplashScreen : SplashScreen
     {
-        public SplashScreen1()
+        public MainSplashScreen()
         {
             InitializeComponent();
         }
