@@ -1,36 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BS_PM_Master" Class="MenuDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BS_PM_Master;Integrated Security=True" SettingsObjectName="Wookie.Menu.Properties.Settings" SettingsPropertyName="BS_PM_MasterConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.v_Wookie_Menu_0000" Member="v_Wookie_Menu_0000">
-    <Type Name="v_Wookie_Menu_0000">
-      <Column Name="PKClient" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="ClientName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="ClientConnectionString" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="ClientSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="PageName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PageSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="PageGroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PageGroupSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="PKPageGroupItemCollection" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="FKExternal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="PageGroupItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PageGroupItemSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Assemblyname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="PKPage" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="PKPageGroup" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="PKPageGroupItem" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="PageGroupItemCollectionShowInMenu" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="PageGroupItemCollectionName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PageGroupItemCollectionSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="MenuItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MenuItemSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="MenuItemAssemblyname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="PageSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PageGroupSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PageGroupItemCollectionSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PageGroupItemSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MenuItemSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tsysClient" Member="tsysClient">
     <Type Name="tsysClient">
       <Column Name="PKClient" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -133,6 +102,38 @@
       <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Association Name="tsysPageGroupItemCollection_tsysPageGroupItem" Member="tsysPageGroupItem" ThisKey="PKPageGroupItemCollection" OtherKey="FKPageGroupItemCollection" Type="tsysPageGroupItem" />
       <Association Name="tsysPageGroup_tsysPageGroupItemCollection" Member="tsysPageGroup" ThisKey="FKPageGroup" OtherKey="PKPageGroup" Type="tsysPageGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_Wookie_Menu_0000" Member="v_Wookie_Menu_0000">
+    <Type Name="v_Wookie_Menu_0000">
+      <Column Name="PKClient" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ClientConnectionString" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ClientSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PageName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PageSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PageGroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PageGroupSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PKPageGroupItemCollection" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKExternal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PageGroupItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PageGroupItemSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Assemblyname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PKPage" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PKPageGroup" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PKPageGroupItem" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PageGroupItemCollectionShowInMenu" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PageGroupItemCollectionName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PageGroupItemCollectionSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MenuItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MenuItemSvgImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MenuItemAssemblyname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PageSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PageGroupSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PageGroupItemCollectionSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PageGroupItemSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MenuItemSortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PKMenuItem" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

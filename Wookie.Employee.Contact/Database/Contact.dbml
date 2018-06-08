@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BS_PM_Mandant1" Class="ContactDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BS_PM_Mandant1;Persist Security Info=True;User ID=sa" SettingsObjectName="Wookie.Employee.Contact.Properties.Settings" SettingsPropertyName="BS_PM_Mandant1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblContact" Member="tblContact">
+    <Type Name="tblContact">
+      <Column Name="PKContact" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContactData" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKDepartment" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKCity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactPrefix" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Middlename" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Birthdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HomePhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MobilePhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Skype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EMail" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tlkpCity_tblContact" Member="tlkpCity" ThisKey="FKCity" OtherKey="PKCity" Type="tlkpCity" IsForeignKey="true" />
+      <Association Name="tlkpContactPrefix_tblContact" Member="tlkpContactPrefix" ThisKey="FKContactPrefix" OtherKey="PKContactPrefix" Type="tlkpContactPrefix" IsForeignKey="true" />
+      <Association Name="tblDepartment_tblContact" Member="tblDepartment" ThisKey="FKDepartment" OtherKey="PKDepartment" Type="tblDepartment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpCity" Member="tlkpCity">
+    <Type Name="tlkpCity">
+      <Column Name="PKCity" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKFederalState" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Zipcode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tlkpCity_tblContact" Member="tblContact" ThisKey="PKCity" OtherKey="FKCity" Type="tblContact" />
+      <Association Name="tlkpFederalState_tlkpCity" Member="tlkpFederalState" ThisKey="FKFederalState" OtherKey="PKFederalState" Type="tlkpFederalState" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactPrefix" Member="tlkpContactPrefix">
+    <Type Name="tlkpContactPrefix">
+      <Column Name="PKContactPrefix" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tlkpContactPrefix_tblContact" Member="tblContact" ThisKey="PKContactPrefix" OtherKey="FKContactPrefix" Type="tblContact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpCountry" Member="tlkpCountry">
+    <Type Name="tlkpCountry">
+      <Column Name="PKCountry" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Shortname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tlkpCountry_tlkpFederalState" Member="tlkpFederalState" ThisKey="PKCountry" OtherKey="FKCountry" Type="tlkpFederalState" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpFederalState" Member="tlkpFederalState">
+    <Type Name="tlkpFederalState">
+      <Column Name="PKFederalState" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKCountry" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Shortname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tlkpFederalState_tlkpCity" Member="tlkpCity" ThisKey="PKFederalState" OtherKey="FKFederalState" Type="tlkpCity" />
+      <Association Name="tlkpCountry_tlkpFederalState" Member="tlkpCountry" ThisKey="FKCountry" OtherKey="PKCountry" Type="tlkpCountry" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDepartment" Member="tblDepartment">
+    <Type Name="tblDepartment">
+      <Column Name="PKDepartment" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKDepartment" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactHeadOf" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKCompany" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblDepartment_tblContact" Member="tblContact" ThisKey="PKDepartment" OtherKey="FKDepartment" Type="tblContact" />
+      <Association Name="tblDepartment_tblDepartment" Member="tblDepartment2" ThisKey="PKDepartment" OtherKey="FKDepartment" Type="tblDepartment" />
+      <Association Name="tblDepartment_tblDepartment" Member="tblDepartment1" ThisKey="FKDepartment" OtherKey="PKDepartment" Type="tblDepartment" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

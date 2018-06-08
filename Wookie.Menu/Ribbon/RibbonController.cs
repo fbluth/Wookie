@@ -87,7 +87,9 @@ namespace Wookie.Menu.Ribbon
             Dictionary<long?, RibbonPage> pageDictionary = new Dictionary<long?, RibbonPage>();
             Dictionary<long?, RibbonPageGroup> pageGroupDictionary = new Dictionary<long?, RibbonPageGroup>();
             Dictionary<long?, BarSubItem> pageGroupItemCollectionDictionary = new Dictionary<long?, BarSubItem>();
-            Dictionary<long?, BarButtonItem> pageGroupItemDictionary = new Dictionary<long?, BarButtonItem>();
+            Dictionary<long?, RibbonItem> pageGroupItemDictionary = new Dictionary<long?, RibbonItem>();
+            Dictionary<long?, RibbonItem> menuItemDictionary = new Dictionary<long?, RibbonItem>();
+
             RibbonControl ribbonControl = new RibbonControl();
 
             ((System.ComponentModel.ISupportInitialize)(ribbonControl)).BeginInit();
@@ -99,6 +101,7 @@ namespace Wookie.Menu.Ribbon
                 RibbonPageGroup ribbonPageGroup = null;
                 BarButtonItem item = null;
                 BarSubItem subitem = null;
+                RibbonItem ribbonItem = null;
 
                 if (!clientDictionary.ContainsKey(row.PKClient))
                 {
@@ -164,9 +167,16 @@ namespace Wookie.Menu.Ribbon
                     {
                         ribbonPageGroup.ItemLinks.Add(item);
                     }
-                    RibbonItemDictionary.Add(item, new RibbonItem(row.FKExternal, row.Assemblyname, client));
-                    pageGroupItemDictionary.Add(row.PKPageGroupItem, item);
+
+                    ribbonItem = new RibbonItem(row.FKExternal, row.Assemblyname, client);
+                    RibbonItemDictionary.Add(item, ribbonItem);
+                    pageGroupItemDictionary.Add(row.PKPageGroupItem, ribbonItem);
                 }
+
+                ribbonItem = pageGroupItemDictionary[row.PKPageGroupItem];
+
+                if (!row.PKMenuItem.HasValue) continue;
+                ribbonItem.RegisterMenuItem(row.MenuItemName, row.MenuItemAssemblyname, Converter.GetSvgImageFromBinary(row.MenuItemSvgImage));                
             }
 
             ((System.ComponentModel.ISupportInitialize)(ribbonControl)).EndInit();

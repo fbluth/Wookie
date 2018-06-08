@@ -83,14 +83,6 @@ namespace Wookie.Menu.Database
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<v_Wookie_Menu_0000> v_Wookie_Menu_0000
-		{
-			get
-			{
-				return this.GetTable<v_Wookie_Menu_0000>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tsysClient> tsysClient
 		{
 			get
@@ -146,499 +138,12 @@ namespace Wookie.Menu.Database
 				return this.GetTable<tsysPageGroupItemCollection>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_Wookie_Menu_0000")]
-	public partial class v_Wookie_Menu_0000
-	{
 		
-		private long _PKClient;
-		
-		private string _ClientName;
-		
-		private string _ClientConnectionString;
-		
-		private System.Data.Linq.Binary _ClientSvgImage;
-		
-		private string _PageName;
-		
-		private System.Data.Linq.Binary _PageSvgImage;
-		
-		private string _PageGroupName;
-		
-		private System.Data.Linq.Binary _PageGroupSvgImage;
-		
-		private System.Nullable<long> _PKPageGroupItemCollection;
-		
-		private System.Nullable<long> _FKExternal;
-		
-		private string _PageGroupItemName;
-		
-		private System.Data.Linq.Binary _PageGroupItemSvgImage;
-		
-		private string _Assemblyname;
-		
-		private System.Nullable<long> _PKPage;
-		
-		private System.Nullable<long> _PKPageGroup;
-		
-		private System.Nullable<long> _PKPageGroupItem;
-		
-		private System.Nullable<bool> _PageGroupItemCollectionShowInMenu;
-		
-		private string _PageGroupItemCollectionName;
-		
-		private System.Data.Linq.Binary _PageGroupItemCollectionSvgImage;
-		
-		private string _MenuItemName;
-		
-		private System.Data.Linq.Binary _MenuItemSvgImage;
-		
-		private string _MenuItemAssemblyname;
-		
-		private System.Nullable<int> _PageSortOrder;
-		
-		private System.Nullable<int> _PageGroupSortOrder;
-		
-		private System.Nullable<int> _PageGroupItemCollectionSortOrder;
-		
-		private System.Nullable<int> _PageGroupItemSortOrder;
-		
-		private System.Nullable<int> _MenuItemSortOrder;
-		
-		public v_Wookie_Menu_0000()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKClient", DbType="BigInt NOT NULL")]
-		public long PKClient
+		public System.Data.Linq.Table<v_Wookie_Menu_0000> v_Wookie_Menu_0000
 		{
 			get
 			{
-				return this._PKClient;
-			}
-			set
-			{
-				if ((this._PKClient != value))
-				{
-					this._PKClient = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientName", DbType="NVarChar(255)")]
-		public string ClientName
-		{
-			get
-			{
-				return this._ClientName;
-			}
-			set
-			{
-				if ((this._ClientName != value))
-				{
-					this._ClientName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientConnectionString", DbType="NVarChar(255)")]
-		public string ClientConnectionString
-		{
-			get
-			{
-				return this._ClientConnectionString;
-			}
-			set
-			{
-				if ((this._ClientConnectionString != value))
-				{
-					this._ClientConnectionString = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary ClientSvgImage
-		{
-			get
-			{
-				return this._ClientSvgImage;
-			}
-			set
-			{
-				if ((this._ClientSvgImage != value))
-				{
-					this._ClientSvgImage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageName", DbType="NVarChar(50)")]
-		public string PageName
-		{
-			get
-			{
-				return this._PageName;
-			}
-			set
-			{
-				if ((this._PageName != value))
-				{
-					this._PageName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary PageSvgImage
-		{
-			get
-			{
-				return this._PageSvgImage;
-			}
-			set
-			{
-				if ((this._PageSvgImage != value))
-				{
-					this._PageSvgImage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupName", DbType="NVarChar(50)")]
-		public string PageGroupName
-		{
-			get
-			{
-				return this._PageGroupName;
-			}
-			set
-			{
-				if ((this._PageGroupName != value))
-				{
-					this._PageGroupName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary PageGroupSvgImage
-		{
-			get
-			{
-				return this._PageGroupSvgImage;
-			}
-			set
-			{
-				if ((this._PageGroupSvgImage != value))
-				{
-					this._PageGroupSvgImage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKPageGroupItemCollection", DbType="BigInt")]
-		public System.Nullable<long> PKPageGroupItemCollection
-		{
-			get
-			{
-				return this._PKPageGroupItemCollection;
-			}
-			set
-			{
-				if ((this._PKPageGroupItemCollection != value))
-				{
-					this._PKPageGroupItemCollection = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKExternal", DbType="BigInt")]
-		public System.Nullable<long> FKExternal
-		{
-			get
-			{
-				return this._FKExternal;
-			}
-			set
-			{
-				if ((this._FKExternal != value))
-				{
-					this._FKExternal = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemName", DbType="NVarChar(50)")]
-		public string PageGroupItemName
-		{
-			get
-			{
-				return this._PageGroupItemName;
-			}
-			set
-			{
-				if ((this._PageGroupItemName != value))
-				{
-					this._PageGroupItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary PageGroupItemSvgImage
-		{
-			get
-			{
-				return this._PageGroupItemSvgImage;
-			}
-			set
-			{
-				if ((this._PageGroupItemSvgImage != value))
-				{
-					this._PageGroupItemSvgImage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assemblyname", DbType="NVarChar(255)")]
-		public string Assemblyname
-		{
-			get
-			{
-				return this._Assemblyname;
-			}
-			set
-			{
-				if ((this._Assemblyname != value))
-				{
-					this._Assemblyname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKPage", DbType="BigInt")]
-		public System.Nullable<long> PKPage
-		{
-			get
-			{
-				return this._PKPage;
-			}
-			set
-			{
-				if ((this._PKPage != value))
-				{
-					this._PKPage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKPageGroup", DbType="BigInt")]
-		public System.Nullable<long> PKPageGroup
-		{
-			get
-			{
-				return this._PKPageGroup;
-			}
-			set
-			{
-				if ((this._PKPageGroup != value))
-				{
-					this._PKPageGroup = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKPageGroupItem", DbType="BigInt")]
-		public System.Nullable<long> PKPageGroupItem
-		{
-			get
-			{
-				return this._PKPageGroupItem;
-			}
-			set
-			{
-				if ((this._PKPageGroupItem != value))
-				{
-					this._PKPageGroupItem = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemCollectionShowInMenu", DbType="Bit")]
-		public System.Nullable<bool> PageGroupItemCollectionShowInMenu
-		{
-			get
-			{
-				return this._PageGroupItemCollectionShowInMenu;
-			}
-			set
-			{
-				if ((this._PageGroupItemCollectionShowInMenu != value))
-				{
-					this._PageGroupItemCollectionShowInMenu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemCollectionName", DbType="NVarChar(50)")]
-		public string PageGroupItemCollectionName
-		{
-			get
-			{
-				return this._PageGroupItemCollectionName;
-			}
-			set
-			{
-				if ((this._PageGroupItemCollectionName != value))
-				{
-					this._PageGroupItemCollectionName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemCollectionSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary PageGroupItemCollectionSvgImage
-		{
-			get
-			{
-				return this._PageGroupItemCollectionSvgImage;
-			}
-			set
-			{
-				if ((this._PageGroupItemCollectionSvgImage != value))
-				{
-					this._PageGroupItemCollectionSvgImage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuItemName", DbType="NVarChar(50)")]
-		public string MenuItemName
-		{
-			get
-			{
-				return this._MenuItemName;
-			}
-			set
-			{
-				if ((this._MenuItemName != value))
-				{
-					this._MenuItemName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuItemSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary MenuItemSvgImage
-		{
-			get
-			{
-				return this._MenuItemSvgImage;
-			}
-			set
-			{
-				if ((this._MenuItemSvgImage != value))
-				{
-					this._MenuItemSvgImage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuItemAssemblyname", DbType="NVarChar(255)")]
-		public string MenuItemAssemblyname
-		{
-			get
-			{
-				return this._MenuItemAssemblyname;
-			}
-			set
-			{
-				if ((this._MenuItemAssemblyname != value))
-				{
-					this._MenuItemAssemblyname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageSortOrder", DbType="Int")]
-		public System.Nullable<int> PageSortOrder
-		{
-			get
-			{
-				return this._PageSortOrder;
-			}
-			set
-			{
-				if ((this._PageSortOrder != value))
-				{
-					this._PageSortOrder = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupSortOrder", DbType="Int")]
-		public System.Nullable<int> PageGroupSortOrder
-		{
-			get
-			{
-				return this._PageGroupSortOrder;
-			}
-			set
-			{
-				if ((this._PageGroupSortOrder != value))
-				{
-					this._PageGroupSortOrder = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemCollectionSortOrder", DbType="Int")]
-		public System.Nullable<int> PageGroupItemCollectionSortOrder
-		{
-			get
-			{
-				return this._PageGroupItemCollectionSortOrder;
-			}
-			set
-			{
-				if ((this._PageGroupItemCollectionSortOrder != value))
-				{
-					this._PageGroupItemCollectionSortOrder = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemSortOrder", DbType="Int")]
-		public System.Nullable<int> PageGroupItemSortOrder
-		{
-			get
-			{
-				return this._PageGroupItemSortOrder;
-			}
-			set
-			{
-				if ((this._PageGroupItemSortOrder != value))
-				{
-					this._PageGroupItemSortOrder = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuItemSortOrder", DbType="Int")]
-		public System.Nullable<int> MenuItemSortOrder
-		{
-			get
-			{
-				return this._MenuItemSortOrder;
-			}
-			set
-			{
-				if ((this._MenuItemSortOrder != value))
-				{
-					this._MenuItemSortOrder = value;
-				}
+				return this.GetTable<v_Wookie_Menu_0000>();
 			}
 		}
 	}
@@ -2835,6 +2340,519 @@ namespace Wookie.Menu.Database
 		{
 			this.SendPropertyChanging();
 			entity.tsysPageGroupItemCollection = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_Wookie_Menu_0000")]
+	public partial class v_Wookie_Menu_0000
+	{
+		
+		private long _PKClient;
+		
+		private string _ClientName;
+		
+		private string _ClientConnectionString;
+		
+		private System.Data.Linq.Binary _ClientSvgImage;
+		
+		private string _PageName;
+		
+		private System.Data.Linq.Binary _PageSvgImage;
+		
+		private string _PageGroupName;
+		
+		private System.Data.Linq.Binary _PageGroupSvgImage;
+		
+		private System.Nullable<long> _PKPageGroupItemCollection;
+		
+		private System.Nullable<long> _FKExternal;
+		
+		private string _PageGroupItemName;
+		
+		private System.Data.Linq.Binary _PageGroupItemSvgImage;
+		
+		private string _Assemblyname;
+		
+		private System.Nullable<long> _PKPage;
+		
+		private System.Nullable<long> _PKPageGroup;
+		
+		private System.Nullable<long> _PKPageGroupItem;
+		
+		private System.Nullable<bool> _PageGroupItemCollectionShowInMenu;
+		
+		private string _PageGroupItemCollectionName;
+		
+		private System.Data.Linq.Binary _PageGroupItemCollectionSvgImage;
+		
+		private string _MenuItemName;
+		
+		private System.Data.Linq.Binary _MenuItemSvgImage;
+		
+		private string _MenuItemAssemblyname;
+		
+		private System.Nullable<int> _PageSortOrder;
+		
+		private System.Nullable<int> _PageGroupSortOrder;
+		
+		private System.Nullable<int> _PageGroupItemCollectionSortOrder;
+		
+		private System.Nullable<int> _PageGroupItemSortOrder;
+		
+		private System.Nullable<int> _MenuItemSortOrder;
+		
+		private System.Nullable<long> _PKMenuItem;
+		
+		public v_Wookie_Menu_0000()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKClient", DbType="BigInt NOT NULL")]
+		public long PKClient
+		{
+			get
+			{
+				return this._PKClient;
+			}
+			set
+			{
+				if ((this._PKClient != value))
+				{
+					this._PKClient = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientName", DbType="NVarChar(255)")]
+		public string ClientName
+		{
+			get
+			{
+				return this._ClientName;
+			}
+			set
+			{
+				if ((this._ClientName != value))
+				{
+					this._ClientName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientConnectionString", DbType="NVarChar(255)")]
+		public string ClientConnectionString
+		{
+			get
+			{
+				return this._ClientConnectionString;
+			}
+			set
+			{
+				if ((this._ClientConnectionString != value))
+				{
+					this._ClientConnectionString = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary ClientSvgImage
+		{
+			get
+			{
+				return this._ClientSvgImage;
+			}
+			set
+			{
+				if ((this._ClientSvgImage != value))
+				{
+					this._ClientSvgImage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageName", DbType="NVarChar(50)")]
+		public string PageName
+		{
+			get
+			{
+				return this._PageName;
+			}
+			set
+			{
+				if ((this._PageName != value))
+				{
+					this._PageName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary PageSvgImage
+		{
+			get
+			{
+				return this._PageSvgImage;
+			}
+			set
+			{
+				if ((this._PageSvgImage != value))
+				{
+					this._PageSvgImage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupName", DbType="NVarChar(50)")]
+		public string PageGroupName
+		{
+			get
+			{
+				return this._PageGroupName;
+			}
+			set
+			{
+				if ((this._PageGroupName != value))
+				{
+					this._PageGroupName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary PageGroupSvgImage
+		{
+			get
+			{
+				return this._PageGroupSvgImage;
+			}
+			set
+			{
+				if ((this._PageGroupSvgImage != value))
+				{
+					this._PageGroupSvgImage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKPageGroupItemCollection", DbType="BigInt")]
+		public System.Nullable<long> PKPageGroupItemCollection
+		{
+			get
+			{
+				return this._PKPageGroupItemCollection;
+			}
+			set
+			{
+				if ((this._PKPageGroupItemCollection != value))
+				{
+					this._PKPageGroupItemCollection = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKExternal", DbType="BigInt")]
+		public System.Nullable<long> FKExternal
+		{
+			get
+			{
+				return this._FKExternal;
+			}
+			set
+			{
+				if ((this._FKExternal != value))
+				{
+					this._FKExternal = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemName", DbType="NVarChar(50)")]
+		public string PageGroupItemName
+		{
+			get
+			{
+				return this._PageGroupItemName;
+			}
+			set
+			{
+				if ((this._PageGroupItemName != value))
+				{
+					this._PageGroupItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary PageGroupItemSvgImage
+		{
+			get
+			{
+				return this._PageGroupItemSvgImage;
+			}
+			set
+			{
+				if ((this._PageGroupItemSvgImage != value))
+				{
+					this._PageGroupItemSvgImage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assemblyname", DbType="NVarChar(255)")]
+		public string Assemblyname
+		{
+			get
+			{
+				return this._Assemblyname;
+			}
+			set
+			{
+				if ((this._Assemblyname != value))
+				{
+					this._Assemblyname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKPage", DbType="BigInt")]
+		public System.Nullable<long> PKPage
+		{
+			get
+			{
+				return this._PKPage;
+			}
+			set
+			{
+				if ((this._PKPage != value))
+				{
+					this._PKPage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKPageGroup", DbType="BigInt")]
+		public System.Nullable<long> PKPageGroup
+		{
+			get
+			{
+				return this._PKPageGroup;
+			}
+			set
+			{
+				if ((this._PKPageGroup != value))
+				{
+					this._PKPageGroup = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKPageGroupItem", DbType="BigInt")]
+		public System.Nullable<long> PKPageGroupItem
+		{
+			get
+			{
+				return this._PKPageGroupItem;
+			}
+			set
+			{
+				if ((this._PKPageGroupItem != value))
+				{
+					this._PKPageGroupItem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemCollectionShowInMenu", DbType="Bit")]
+		public System.Nullable<bool> PageGroupItemCollectionShowInMenu
+		{
+			get
+			{
+				return this._PageGroupItemCollectionShowInMenu;
+			}
+			set
+			{
+				if ((this._PageGroupItemCollectionShowInMenu != value))
+				{
+					this._PageGroupItemCollectionShowInMenu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemCollectionName", DbType="NVarChar(50)")]
+		public string PageGroupItemCollectionName
+		{
+			get
+			{
+				return this._PageGroupItemCollectionName;
+			}
+			set
+			{
+				if ((this._PageGroupItemCollectionName != value))
+				{
+					this._PageGroupItemCollectionName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemCollectionSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary PageGroupItemCollectionSvgImage
+		{
+			get
+			{
+				return this._PageGroupItemCollectionSvgImage;
+			}
+			set
+			{
+				if ((this._PageGroupItemCollectionSvgImage != value))
+				{
+					this._PageGroupItemCollectionSvgImage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuItemName", DbType="NVarChar(50)")]
+		public string MenuItemName
+		{
+			get
+			{
+				return this._MenuItemName;
+			}
+			set
+			{
+				if ((this._MenuItemName != value))
+				{
+					this._MenuItemName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuItemSvgImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary MenuItemSvgImage
+		{
+			get
+			{
+				return this._MenuItemSvgImage;
+			}
+			set
+			{
+				if ((this._MenuItemSvgImage != value))
+				{
+					this._MenuItemSvgImage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuItemAssemblyname", DbType="NVarChar(255)")]
+		public string MenuItemAssemblyname
+		{
+			get
+			{
+				return this._MenuItemAssemblyname;
+			}
+			set
+			{
+				if ((this._MenuItemAssemblyname != value))
+				{
+					this._MenuItemAssemblyname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageSortOrder", DbType="Int")]
+		public System.Nullable<int> PageSortOrder
+		{
+			get
+			{
+				return this._PageSortOrder;
+			}
+			set
+			{
+				if ((this._PageSortOrder != value))
+				{
+					this._PageSortOrder = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupSortOrder", DbType="Int")]
+		public System.Nullable<int> PageGroupSortOrder
+		{
+			get
+			{
+				return this._PageGroupSortOrder;
+			}
+			set
+			{
+				if ((this._PageGroupSortOrder != value))
+				{
+					this._PageGroupSortOrder = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemCollectionSortOrder", DbType="Int")]
+		public System.Nullable<int> PageGroupItemCollectionSortOrder
+		{
+			get
+			{
+				return this._PageGroupItemCollectionSortOrder;
+			}
+			set
+			{
+				if ((this._PageGroupItemCollectionSortOrder != value))
+				{
+					this._PageGroupItemCollectionSortOrder = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PageGroupItemSortOrder", DbType="Int")]
+		public System.Nullable<int> PageGroupItemSortOrder
+		{
+			get
+			{
+				return this._PageGroupItemSortOrder;
+			}
+			set
+			{
+				if ((this._PageGroupItemSortOrder != value))
+				{
+					this._PageGroupItemSortOrder = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuItemSortOrder", DbType="Int")]
+		public System.Nullable<int> MenuItemSortOrder
+		{
+			get
+			{
+				return this._MenuItemSortOrder;
+			}
+			set
+			{
+				if ((this._MenuItemSortOrder != value))
+				{
+					this._MenuItemSortOrder = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKMenuItem", DbType="BigInt")]
+		public System.Nullable<long> PKMenuItem
+		{
+			get
+			{
+				return this._PKMenuItem;
+			}
+			set
+			{
+				if ((this._PKMenuItem != value))
+				{
+					this._PKMenuItem = value;
+				}
+			}
 		}
 	}
 }

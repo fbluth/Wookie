@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}</ProjectGuid>
+    <ProjectGuid>{4825A582-C9A6-4CB6-ADFB-6B675B7676EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wookie.Menu</RootNamespace>
-    <AssemblyName>Wookie.Menu</AssemblyName>
+    <RootNamespace>Wookie.RM</RootNamespace>
+    <AssemblyName>Wookie.RM</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Wookie\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -37,7 +37,6 @@
     <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -48,50 +47,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\Menu.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Menu.dbml</DependentUpon>
+    <Compile Include="Control\ucNavigation.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Ribbon\Client.cs" />
-    <Compile Include="Ribbon\ClientChangeEventArgs.cs" />
-    <Compile Include="Ribbon\RibbonController.cs" />
-    <Compile Include="Ribbon\RibbonItem.cs" />
-    <Compile Include="Ribbon\RibbonItemClickEventArgs.cs" />
+    <Compile Include="Control\ucNavigation.Designer.cs">
+      <DependentUpon>ucNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\NavigationController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Database\Menu.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Menu.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Database\Menu.dbml.layout">
-      <DependentUpon>Menu.dbml</DependentUpon>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="Control\ucNavigation.resx">
+      <DependentUpon>ucNavigation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\Wookie.Tools\Wookie.Tools.csproj">
-      <Project>{9158c093-ae52-47a9-8da9-50af12669c40}</Project>
-      <Name>Wookie.Tools</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
