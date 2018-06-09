@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Wookie.Menu.Ribbon.RibbonController">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQBCAAAAAAAAAAQAAAAAAAAAIIAAAAEAAAAAAgAAAAA=</HashCode>
+      <FileName>Ribbon\RibbonController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wookie.Menu.Ribbon.RibbonItem">
+    <Position X="4" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEACAAAAAAAAAAAAAAAAIAAQAgAEEAAABAIAAAQ=</HashCode>
+      <FileName>Ribbon\RibbonItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wookie.Menu.Ribbon.RibbonItemClickEventArgs">
+    <Position X="0.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ribbon\RibbonItemClickEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wookie.Menu.Ribbon.ClientChangeEventArgs" Collapsed="true">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAABAAAAAQ=</HashCode>
+      <FileName>Ribbon\ClientChangeEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wookie.Menu.Ribbon.Client">
+    <Position X="11.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAEEAAABAAAAAAAAA=</HashCode>
+      <FileName>Ribbon\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Delegate Name="Wookie.Menu.Ribbon.RibbonItemClickEventHandler">
+    <Position X="3.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ribbon\RibbonItemClickEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Wookie.Menu.Ribbon.ClientChangeEventHandler" Collapsed="true">
+    <Position X="8.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ribbon\ClientChangeEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

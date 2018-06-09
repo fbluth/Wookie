@@ -36,10 +36,8 @@ namespace Wookie.RM.Navigation
             accordionControlElement.Text = caption;
             accordionControlElement.ImageOptions.SvgImage = svgImage;
             accordionControlElement.Click += new System.EventHandler(this.accordionControlElement_Click);
-            //((System.ComponentModel.ISupportInitialize)(ucNavigation.AccordionControl)).BeginInit();
             ucNavigation.AccordionControl.Elements.Add(accordionControlElement);
-            //((System.ComponentModel.ISupportInitialize)(ucNavigation.AccordionControl)).EndInit();
-
+            
             NavigationPage navigationPage = new NavigationPage();
 
             if (assemblyFilename != null)

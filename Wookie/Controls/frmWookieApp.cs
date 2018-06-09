@@ -10,7 +10,7 @@ namespace Wookie.Controls
     {
         #region Variables
         private RibbonController ribbonController;
-        private NavigationPage navLogin;
+        private NavigationPage navigationPageLogin;
         #endregion
 
         #region Constructor
@@ -21,8 +21,8 @@ namespace Wookie.Controls
             ucLogin loginControl = new ucLogin();
             loginControl.Dock = DockStyle.Fill;
             loginControl.Login += new Wookie.Controls.LoginEventHandler(this.loginControl_Login);
-            this.navLogin = new NavigationPage();
-            this.navLogin.Controls.Add(loginControl);
+            this.navigationPageLogin = new NavigationPage();
+            this.navigationPageLogin.Controls.Add(loginControl);
 
             this.Login();
         }
@@ -31,9 +31,9 @@ namespace Wookie.Controls
         #region Private methods
         private void Login()
         {
-            if (!this.navigationFrame1.Pages.Contains(navLogin))
-                this.navigationFrame1.Pages.Add(navLogin);
-            this.navigationFrame1.SelectedPage = navLogin;
+            if (!this.navigationFrame1.Pages.Contains(navigationPageLogin))
+                this.navigationFrame1.Pages.Add(navigationPageLogin);
+            this.navigationFrame1.SelectedPage = navigationPageLogin;
         }
 
         private void CreateRibbon()
@@ -64,7 +64,7 @@ namespace Wookie.Controls
             this.Text = "Wookie - " + e.BarItem.Caption;
         }
 
-        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        private void biLogin_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Login();
         }
@@ -73,10 +73,12 @@ namespace Wookie.Controls
         {
             if (e.LoginSuccessful)
             {
-                this.navigationFrame1.Pages.Remove(navLogin);
+                this.navigationFrame1.Pages.Remove(navigationPageLogin);
                 this.CreateRibbon();                
             }
         }
         #endregion
+
+        
     }
 }
