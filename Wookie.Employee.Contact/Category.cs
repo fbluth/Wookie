@@ -8,13 +8,23 @@ using System.Threading.Tasks;
 
 namespace Wookie.Employee.Contact
 {
-    public class ModulController
+    public class Category : Wookie.Menu.MenuManager.ICategory
     {
-        public XtraUserControl Load(SqlConnection sqlConnectionClientDB, long? fkExternal)
+       
+
+        public Category()
+        {   
+        }
+
+        public void SetConnection(SqlConnection sqlconnection, long? fkExternal)
         {
-            ModulData.SqlConnectionClientDB = sqlConnectionClientDB;
+            ModulData.SqlConnectionClientDB = sqlconnection;
             ModulData.FKContactData = fkExternal;
-            return new Control.ucContact();
+        }
+
+        public XtraUserControl Control
+        {
+            get { return new Control.ucContact(); }
         }
     }
 

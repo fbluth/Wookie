@@ -53,11 +53,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Menu.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Ribbon\Client.cs" />
-    <Compile Include="Ribbon\ClientChangeEventArgs.cs" />
-    <Compile Include="Ribbon\RibbonController.cs" />
-    <Compile Include="Ribbon\RibbonItem.cs" />
-    <Compile Include="Ribbon\RibbonItemClickEventArgs.cs" />
+    <Compile Include="MenuManager\Items\Client.cs" />
+    <Compile Include="MenuManager\Events\ClientChangeEventArgs.cs" />
+    <Compile Include="MenuManager\Items\ModulItem.cs" />
+    <Compile Include="MenuManager\Items\Group.cs" />
+    <Compile Include="MenuManager\Collections\GroupCollection.cs" />
+    <Compile Include="MenuManager\Interfaces\ICategory.cs" />
+    <Compile Include="MenuManager\Interfaces\IModul.cs" />
+    <Compile Include="MenuManager\Items\Item.cs" />
+    <Compile Include="MenuManager\Collections\ItemCollection.cs" />
+    <Compile Include="MenuManager\MenuManager.cs" />
+    <Compile Include="MenuManager\Collections\ModulItemCollection.cs" />
+    <Compile Include="MenuManager\Items\Page.cs" />
+    <Compile Include="MenuManager\Collections\PageCollection.cs" />
+    <Compile Include="MenuManager\Items\SubItem.cs" />
+    <Compile Include="MenuManager\Collections\SubItemCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

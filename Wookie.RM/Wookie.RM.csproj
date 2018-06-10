@@ -53,7 +53,7 @@
     <Compile Include="Control\ucNavigation.Designer.cs">
       <DependentUpon>ucNavigation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Navigation\NavigationController.cs" />
+    <Compile Include="Modul.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +61,12 @@
       <DependentUpon>ucNavigation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wookie.Menu\Wookie.Menu.csproj">
+      <Project>{16cebd6f-e3c4-4a7f-8388-95f1f853b23f}</Project>
+      <Name>Wookie.Menu</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

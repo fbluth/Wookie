@@ -4,21 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wookie.Menu.MenuManager;
 
-namespace Wookie.Menu.Ribbon
+namespace Wookie.Menu.MenuManager
 {
     public delegate void ClientChangeEventHandler(object sender, ClientChangeEventArgs e);
 
 
     public class ClientChangeEventArgs : EventArgs
     {
-        private BarItem barItem = null;
         private Client client = null;
 
-        public ClientChangeEventArgs(Client client, BarItem barButtonItem)
+        public ClientChangeEventArgs(Client client)
         {
-            this.client = client;
-            this.barItem = barButtonItem;
+            this.client = client;            
         }
 
         public ClientChangeEventArgs()
@@ -29,12 +28,6 @@ namespace Wookie.Menu.Ribbon
         {
             get { return this.client; }
             set { this.client = value; }
-        }
-
-        public BarItem BarItem
-        {
-            get { return this.barItem; }
-            set { this.barItem = value; }
-        }
+        }        
     }
 }

@@ -21,7 +21,7 @@ namespace Wookie.Employee.Contact.Control
             InitializeComponent();
             dataContext = new Database.ContactDataContext(ModulData.SqlConnectionClientDB);
             tblContactBindingSource.DataSource = from row in dataContext.tblContact
-                                                 where row.FKContactData == ModulData.FKContactData                                                 
+                                                 where row.FKContactData == ModulData.FKContactData
                                                  select row;
             gridView1.BestFitColumns(true);
             string a = Wookie.Tools.Database.MasterDatabase.SqlConnectionMasterDB.ConnectionString;
