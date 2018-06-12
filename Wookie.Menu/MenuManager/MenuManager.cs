@@ -16,17 +16,19 @@ namespace Wookie.Menu.MenuManager
         private Database.MenuDataContext context = null;
         private NavigationFrame navigationFrame = null;
         private Dictionary<BarItem, Client> clientDictionary = new Dictionary<BarItem, Client>();
+        private RibbonControl ribbonControl = null;
 
         public event ClientChangeEventHandler ClientChanged;
 
-        public MenuManager(System.Data.SqlClient.SqlConnection sqlConnection, NavigationFrame navigationFrame)
+        public MenuManager(System.Data.SqlClient.SqlConnection sqlConnection, NavigationFrame navigationFrame, RibbonControl ribbonControl)
         {
             this.pageCollection = new PageCollection(this);
             this.navigationFrame = navigationFrame;
+            this.ribbonControl = ribbonControl;
             context = new Database.MenuDataContext(sqlConnection);
         }
 
-        public void AddClientsToRibbon(RibbonControl ribbonControl)
+        public void AddClientsToRibbon()
         {
             // Lese aus der Datenbank alle Mandanten aus
             var clientQuery = from client in context.tsysClient orderby client.SortOrder select client;
@@ -158,7 +160,7 @@ namespace Wookie.Menu.MenuManager
             }
         }
 
-        public void Remove(RibbonControl ribbonControl, PageCollection pageCollection)
+        public void Remove(PageCollection pageCollection)
         {
             foreach (Page page in pageCollection.Values)
             {
@@ -168,16 +170,20 @@ namespace Wookie.Menu.MenuManager
                     {
                         foreach (Item item in subItem.Items.Values)
                         {
-                            ribbonControl.Items.Remove(item.BarButtonItem);
+                            if (ribbonControl.Items.Contains(item.BarButtonItem))
+                                ribbonControl.Items.Remove(item.BarButtonItem);
                         }
-                        ribbonControl.Items.Remove(subItem.BarSubItem);
+                        if (ribbonControl.Items.Contains(subItem.BarSubItem))
+                            ribbonControl.Items.Remove(subItem.BarSubItem);
                     }
                     foreach (Item item in group.Items.Values)
                     {
-                        ribbonControl.Items.Remove(item.BarButtonItem);
+                        if (ribbonControl.Items.Contains(item.BarButtonItem))
+                            ribbonControl.Items.Remove(item.BarButtonItem);
                     }
                 }
-                ribbonControl.Pages.Remove(page.RibbonPage);                               
+                if (ribbonControl.Pages.Contains(page.RibbonPage))
+                    ribbonControl.Pages.Remove(page.RibbonPage);                               
             }
 
             
@@ -185,14 +191,12 @@ namespace Wookie.Menu.MenuManager
             {
                 pageCollection.Remove(page.Key);                  
             }
-
-            RibbonBarItems m = ribbonControl.Items;
         }
         
-        public void Add(RibbonControl ribbonControl, long pkClient)
+        public void MergeMenu(long pkClient)
         {
             this.LoadData(pkClient);
-            RibbonBarItems m = ribbonControl.Items;
+
             ((System.ComponentModel.ISupportInitialize)(ribbonControl)).BeginInit();
             foreach (Page page in this.pageCollection.Values)
             {
@@ -236,20 +240,42 @@ namespace Wookie.Menu.MenuManager
 
         private void menuItem_Click(Item sender)
         {
-            if (sender.NavigationPage == null) return;
-
-            if (!this.navigationFrame.Pages.Contains(sender.NavigationPage))
-                this.navigationFrame.Pages.Add(sender.NavigationPage);
-            this.navigationFrame.SelectedPage = sender.NavigationPage;
+            if (sender.NavigationPage != null)
+            {
+                if (!this.navigationFrame.Pages.Contains(sender.NavigationPage))
+                    this.navigationFrame.Pages.Add(sender.NavigationPage);
+                this.navigationFrame.SelectedPage = sender.NavigationPage;
+            }
+            else
+            {
+                this.navigationFrame.SelectedPage = sender.NavigationPage;
+            }
+            this.ribbonControl.UnMergeRibbon();            
         }
 
         private void modulItem_Click(ModulItem sender)
         {
-            if (sender.NavigationPage == null) return;
+            if (sender.NavigationPage != null)
+            {
+                if (!sender.Item.Modul.NavigationFrame.Pages.Contains(sender.NavigationPage))
+                    sender.Item.Modul.NavigationFrame.Pages.Add(sender.NavigationPage);
 
-            if (!sender.Item.Modul.NavigationFrame.Pages.Contains(sender.NavigationPage))
-                sender.Item.Modul.NavigationFrame.Pages.Add(sender.NavigationPage);
-            sender.Item.Modul.NavigationFrame.SelectedPage = sender.NavigationPage;
+                sender.Item.Modul.NavigationFrame.SelectedPage = sender.NavigationPage;
+            }
+            else
+            {
+                sender.Item.Modul.NavigationFrame.SelectedPage = null;
+            }
+
+            if (sender.Category != null)
+            {
+                this.ribbonControl.UnMergeRibbon();
+                this.ribbonControl.MergeRibbon(sender.Category.RibbonControl);
+            }
+            else
+            {
+                this.ribbonControl.UnMergeRibbon();
+            }
         }
 
         public PageCollection Pages

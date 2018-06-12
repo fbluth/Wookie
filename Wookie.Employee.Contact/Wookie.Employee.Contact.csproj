@@ -33,6 +33,7 @@
     <Reference Include="DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -57,12 +58,6 @@
     <Compile Include="Control\ucContact.Designer.cs">
       <DependentUpon>ucContact.cs</DependentUpon>
     </Compile>
-    <Compile Include="Control\XtraUserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Control\XtraUserControl1.Designer.cs">
-      <DependentUpon>XtraUserControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Database\Contact.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,9 +74,6 @@
     <EmbeddedResource Include="Control\ucContact.resx">
       <DependentUpon>ucContact.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Control\XtraUserControl1.resx">
-      <DependentUpon>XtraUserControl1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +87,11 @@
       <DependentUpon>Contact.dbml</DependentUpon>
     </None>
     <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tblContact.datasource" />
+    <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tblDepartment.datasource" />
+    <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tlkpCity.datasource" />
+    <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tlkpContactPrefix.datasource" />
+    <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tlkpCountry.datasource" />
+    <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tlkpFederalState.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

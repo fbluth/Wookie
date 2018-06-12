@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,7 +11,8 @@ namespace Wookie.Employee.Contact
 {
     public class Category : Wookie.Menu.MenuManager.ICategory
     {
-       
+
+        private XtraUserControl control = null;
 
         public Category()
         {   
@@ -20,11 +22,22 @@ namespace Wookie.Employee.Contact
         {
             ModulData.SqlConnectionClientDB = sqlconnection;
             ModulData.FKContactData = fkExternal;
+            
         }
 
         public XtraUserControl Control
         {
-            get { return new Control.ucContact(); }
+            get
+            {
+                if (this.control == null)
+                    control = new Control.ucContact();
+                return control;
+            }
+        }
+
+        public RibbonControl RibbonControl
+        {
+            get { return ((Control.ucContact)Control).RibbonControl; }
         }
     }
 

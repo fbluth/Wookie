@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,5 +13,6 @@ namespace Wookie.Menu.MenuManager
     {
         void SetConnection(SqlConnection sqlconnection, long? fkExternal);
         XtraUserControl Control { get; }
+        RibbonControl RibbonControl { get; }
     }
 }
