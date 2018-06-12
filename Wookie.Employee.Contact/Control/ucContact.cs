@@ -29,16 +29,39 @@ namespace Wookie.Employee.Contact.Control
             dataContext = new Database.ContactDataContext(ModulData.SqlConnectionClientDB);
 
             tlkpCityBindingSource.DataSource = dataContext.tlkpCity;
+            tlkpCityBindingSource1.DataSource = dataContext.tlkpCity;
             tlkpContactPrefixBindingSource.DataSource = dataContext.tlkpContactPrefix;
             tlkpFederalStateBindingSource.DataSource = dataContext.tlkpFederalState;
             tlkpCountryBindingSource.DataSource = dataContext.tlkpCountry;
-            tblDepartmentBindingSource.DataSource = dataContext.tblDepartment;
+
+            LoadImageComboBoxItems();
 
             tblContactBindingSource.DataSource = from row in dataContext.tblContact
                                                  where row.FKContactData == ModulData.FKContactData
                                                  select row;
             gridView1.BestFitColumns(true);
             tblContactBindingSource.MoveFirst();
+        }
+
+        private void LoadImageComboBoxItems()
+        {
+            // Prefix
+            this.imgCollectionPrefix.Images.Clear();
+            this.riLookupPrefix.Items.Clear();
+            foreach (Database.tlkpContactPrefix prefix in tlkpContactPrefixBindingSource)
+            {
+                int index = this.imgCollectionPrefix.Images.Add(Wookie.Tools.Image.Converter.GetImageFromBinary(prefix.Picture));
+                this.riLookupPrefix.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(prefix.Name, ((long)prefix.PKContactPrefix), index));
+            }
+
+            // Country
+            this.imgCollectionCountry.Images.Clear();
+            this.riLookupCountry2.Items.Clear();
+            foreach (Database.tlkpCountry country in tlkpCountryBindingSource)
+            {
+                int index = this.imgCollectionCountry.Images.Add(Wookie.Tools.Image.Converter.GetImageFromBinary(country.Picture));
+                this.riLookupCountry2.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(country.Name, ((long)country.PKCountry), index));
+            }
         }
 
         public RibbonControl RibbonControl
@@ -73,7 +96,8 @@ namespace Wookie.Employee.Contact.Control
         {
             Database.tblContact c = (Database.tblContact)tblContactBindingSource.Current;
 
-            this.labelControl1.Text = ((string)(c.Surname + " " + c.Middlename)).Trim() + " " + c.Name;
+            this.lblName.Text = ((string)(c.Surname + " " + c.Middlename)).Trim() + " " + c.Name;
+            this.lblTitel.Text = ((string)(c.Title));
         }
     }
 }

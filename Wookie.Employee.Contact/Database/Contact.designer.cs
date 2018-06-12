@@ -33,9 +33,39 @@ namespace Wookie.Employee.Contact.Database
     partial void InserttblContact(tblContact instance);
     partial void UpdatetblContact(tblContact instance);
     partial void DeletetblContact(tblContact instance);
+    partial void InserttblContactAppointment(tblContactAppointment instance);
+    partial void UpdatetblContactAppointment(tblContactAppointment instance);
+    partial void DeletetblContactAppointment(tblContactAppointment instance);
+    partial void InserttblContactAppointmentAttachement(tblContactAppointmentAttachement instance);
+    partial void UpdatetblContactAppointmentAttachement(tblContactAppointmentAttachement instance);
+    partial void DeletetblContactAppointmentAttachement(tblContactAppointmentAttachement instance);
+    partial void InserttblContactAppointmentParticipant(tblContactAppointmentParticipant instance);
+    partial void UpdatetblContactAppointmentParticipant(tblContactAppointmentParticipant instance);
+    partial void DeletetblContactAppointmentParticipant(tblContactAppointmentParticipant instance);
+    partial void InserttblContactCommunication(tblContactCommunication instance);
+    partial void UpdatetblContactCommunication(tblContactCommunication instance);
+    partial void DeletetblContactCommunication(tblContactCommunication instance);
+    partial void InserttblContactCorrespondence(tblContactCorrespondence instance);
+    partial void UpdatetblContactCorrespondence(tblContactCorrespondence instance);
+    partial void DeletetblContactCorrespondence(tblContactCorrespondence instance);
     partial void InserttlkpCity(tlkpCity instance);
     partial void UpdatetlkpCity(tlkpCity instance);
     partial void DeletetlkpCity(tlkpCity instance);
+    partial void InserttlkpContactAppointmentImportance(tlkpContactAppointmentImportance instance);
+    partial void UpdatetlkpContactAppointmentImportance(tlkpContactAppointmentImportance instance);
+    partial void DeletetlkpContactAppointmentImportance(tlkpContactAppointmentImportance instance);
+    partial void InserttlkpContactAppointmentParticipantStatus(tlkpContactAppointmentParticipantStatus instance);
+    partial void UpdatetlkpContactAppointmentParticipantStatus(tlkpContactAppointmentParticipantStatus instance);
+    partial void DeletetlkpContactAppointmentParticipantStatus(tlkpContactAppointmentParticipantStatus instance);
+    partial void InserttlkpContactAppointmentType(tlkpContactAppointmentType instance);
+    partial void UpdatetlkpContactAppointmentType(tlkpContactAppointmentType instance);
+    partial void DeletetlkpContactAppointmentType(tlkpContactAppointmentType instance);
+    partial void InserttlkpContactCommunicationType(tlkpContactCommunicationType instance);
+    partial void UpdatetlkpContactCommunicationType(tlkpContactCommunicationType instance);
+    partial void DeletetlkpContactCommunicationType(tlkpContactCommunicationType instance);
+    partial void InserttlkpContactCorrespondenceType(tlkpContactCorrespondenceType instance);
+    partial void UpdatetlkpContactCorrespondenceType(tlkpContactCorrespondenceType instance);
+    partial void DeletetlkpContactCorrespondenceType(tlkpContactCorrespondenceType instance);
     partial void InserttlkpContactPrefix(tlkpContactPrefix instance);
     partial void UpdatetlkpContactPrefix(tlkpContactPrefix instance);
     partial void DeletetlkpContactPrefix(tlkpContactPrefix instance);
@@ -45,9 +75,6 @@ namespace Wookie.Employee.Contact.Database
     partial void InserttlkpFederalState(tlkpFederalState instance);
     partial void UpdatetlkpFederalState(tlkpFederalState instance);
     partial void DeletetlkpFederalState(tlkpFederalState instance);
-    partial void InserttblDepartment(tblDepartment instance);
-    partial void UpdatetblDepartment(tblDepartment instance);
-    partial void DeletetblDepartment(tblDepartment instance);
     #endregion
 		
 		public ContactDataContext() : 
@@ -88,11 +115,91 @@ namespace Wookie.Employee.Contact.Database
 			}
 		}
 		
+		public System.Data.Linq.Table<tblContactAppointment> tblContactAppointment
+		{
+			get
+			{
+				return this.GetTable<tblContactAppointment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblContactAppointmentAttachement> tblContactAppointmentAttachement
+		{
+			get
+			{
+				return this.GetTable<tblContactAppointmentAttachement>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblContactAppointmentParticipant> tblContactAppointmentParticipant
+		{
+			get
+			{
+				return this.GetTable<tblContactAppointmentParticipant>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblContactCommunication> tblContactCommunication
+		{
+			get
+			{
+				return this.GetTable<tblContactCommunication>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblContactCorrespondence> tblContactCorrespondence
+		{
+			get
+			{
+				return this.GetTable<tblContactCorrespondence>();
+			}
+		}
+		
 		public System.Data.Linq.Table<tlkpCity> tlkpCity
 		{
 			get
 			{
 				return this.GetTable<tlkpCity>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tlkpContactAppointmentImportance> tlkpContactAppointmentImportance
+		{
+			get
+			{
+				return this.GetTable<tlkpContactAppointmentImportance>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tlkpContactAppointmentParticipantStatus> tlkpContactAppointmentParticipantStatus
+		{
+			get
+			{
+				return this.GetTable<tlkpContactAppointmentParticipantStatus>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tlkpContactAppointmentType> tlkpContactAppointmentType
+		{
+			get
+			{
+				return this.GetTable<tlkpContactAppointmentType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tlkpContactCommunicationType> tlkpContactCommunicationType
+		{
+			get
+			{
+				return this.GetTable<tlkpContactCommunicationType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tlkpContactCorrespondenceType> tlkpContactCorrespondenceType
+		{
+			get
+			{
+				return this.GetTable<tlkpContactCorrespondenceType>();
 			}
 		}
 		
@@ -119,14 +226,6 @@ namespace Wookie.Employee.Contact.Database
 				return this.GetTable<tlkpFederalState>();
 			}
 		}
-		
-		public System.Data.Linq.Table<tblDepartment> tblDepartment
-		{
-			get
-			{
-				return this.GetTable<tblDepartment>();
-			}
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblContact")]
@@ -139,11 +238,9 @@ namespace Wookie.Employee.Contact.Database
 		
 		private System.Nullable<long> _FKContactData;
 		
-		private System.Nullable<long> _FKDepartment;
-		
 		private System.Nullable<long> _FKCity;
 		
-		private System.Nullable<long> _FKContactPrefix;
+		private long _FKContactPrefix;
 		
 		private string _Title;
 		
@@ -159,16 +256,6 @@ namespace Wookie.Employee.Contact.Database
 		
 		private string _Street;
 		
-		private string _Login;
-		
-		private string _HomePhone;
-		
-		private string _MobilePhone;
-		
-		private string _Skype;
-		
-		private string _EMail;
-		
 		private System.Nullable<long> _FKUserCreated;
 		
 		private System.Nullable<System.DateTime> _CreatedOn;
@@ -177,11 +264,17 @@ namespace Wookie.Employee.Contact.Database
 		
 		private System.Nullable<System.DateTime> _ChangedOn;
 		
+		private EntitySet<tblContactAppointment> _tblContactAppointment;
+		
+		private EntitySet<tblContactAppointmentParticipant> _tblContactAppointmentParticipant;
+		
+		private EntitySet<tblContactCommunication> _tblContactCommunication;
+		
+		private EntitySet<tblContactCorrespondence> _tblContactCorrespondence;
+		
 		private EntityRef<tlkpCity> _tlkpCity;
 		
 		private EntityRef<tlkpContactPrefix> _tlkpContactPrefix;
-		
-		private EntityRef<tblDepartment> _tblDepartment;
 		
     #region Definitionen der Erweiterungsmethoden
     partial void OnLoaded();
@@ -191,11 +284,9 @@ namespace Wookie.Employee.Contact.Database
     partial void OnPKContactChanged();
     partial void OnFKContactDataChanging(System.Nullable<long> value);
     partial void OnFKContactDataChanged();
-    partial void OnFKDepartmentChanging(System.Nullable<long> value);
-    partial void OnFKDepartmentChanged();
     partial void OnFKCityChanging(System.Nullable<long> value);
     partial void OnFKCityChanged();
-    partial void OnFKContactPrefixChanging(System.Nullable<long> value);
+    partial void OnFKContactPrefixChanging(long value);
     partial void OnFKContactPrefixChanged();
     partial void OnTitleChanging(string value);
     partial void OnTitleChanged();
@@ -211,16 +302,6 @@ namespace Wookie.Employee.Contact.Database
     partial void OnBirthdateChanged();
     partial void OnStreetChanging(string value);
     partial void OnStreetChanged();
-    partial void OnLoginChanging(string value);
-    partial void OnLoginChanged();
-    partial void OnHomePhoneChanging(string value);
-    partial void OnHomePhoneChanged();
-    partial void OnMobilePhoneChanging(string value);
-    partial void OnMobilePhoneChanged();
-    partial void OnSkypeChanging(string value);
-    partial void OnSkypeChanged();
-    partial void OnEMailChanging(string value);
-    partial void OnEMailChanged();
     partial void OnFKUserCreatedChanging(System.Nullable<long> value);
     partial void OnFKUserCreatedChanged();
     partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
@@ -233,9 +314,12 @@ namespace Wookie.Employee.Contact.Database
 		
 		public tblContact()
 		{
+			this._tblContactAppointment = new EntitySet<tblContactAppointment>(new Action<tblContactAppointment>(this.attach_tblContactAppointment), new Action<tblContactAppointment>(this.detach_tblContactAppointment));
+			this._tblContactAppointmentParticipant = new EntitySet<tblContactAppointmentParticipant>(new Action<tblContactAppointmentParticipant>(this.attach_tblContactAppointmentParticipant), new Action<tblContactAppointmentParticipant>(this.detach_tblContactAppointmentParticipant));
+			this._tblContactCommunication = new EntitySet<tblContactCommunication>(new Action<tblContactCommunication>(this.attach_tblContactCommunication), new Action<tblContactCommunication>(this.detach_tblContactCommunication));
+			this._tblContactCorrespondence = new EntitySet<tblContactCorrespondence>(new Action<tblContactCorrespondence>(this.attach_tblContactCorrespondence), new Action<tblContactCorrespondence>(this.detach_tblContactCorrespondence));
 			this._tlkpCity = default(EntityRef<tlkpCity>);
 			this._tlkpContactPrefix = default(EntityRef<tlkpContactPrefix>);
-			this._tblDepartment = default(EntityRef<tblDepartment>);
 			OnCreated();
 		}
 		
@@ -279,30 +363,6 @@ namespace Wookie.Employee.Contact.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKDepartment", DbType="BigInt")]
-		public System.Nullable<long> FKDepartment
-		{
-			get
-			{
-				return this._FKDepartment;
-			}
-			set
-			{
-				if ((this._FKDepartment != value))
-				{
-					if (this._tblDepartment.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnFKDepartmentChanging(value);
-					this.SendPropertyChanging();
-					this._FKDepartment = value;
-					this.SendPropertyChanged("FKDepartment");
-					this.OnFKDepartmentChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKCity", DbType="BigInt")]
 		public System.Nullable<long> FKCity
 		{
@@ -327,8 +387,8 @@ namespace Wookie.Employee.Contact.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactPrefix", DbType="BigInt")]
-		public System.Nullable<long> FKContactPrefix
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactPrefix", DbType="BigInt NOT NULL")]
+		public long FKContactPrefix
 		{
 			get
 			{
@@ -491,102 +551,571 @@ namespace Wookie.Employee.Contact.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="NVarChar(50)")]
-		public string Login
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
 		{
 			get
 			{
-				return this._Login;
+				return this._FKUserCreated;
 			}
 			set
 			{
-				if ((this._Login != value))
+				if ((this._FKUserCreated != value))
 				{
-					this.OnLoginChanging(value);
+					this.OnFKUserCreatedChanging(value);
 					this.SendPropertyChanging();
-					this._Login = value;
-					this.SendPropertyChanged("Login");
-					this.OnLoginChanged();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomePhone", DbType="NVarChar(50)")]
-		public string HomePhone
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
 		{
 			get
 			{
-				return this._HomePhone;
+				return this._CreatedOn;
 			}
 			set
 			{
-				if ((this._HomePhone != value))
+				if ((this._CreatedOn != value))
 				{
-					this.OnHomePhoneChanging(value);
+					this.OnCreatedOnChanging(value);
 					this.SendPropertyChanging();
-					this._HomePhone = value;
-					this.SendPropertyChanged("HomePhone");
-					this.OnHomePhoneChanged();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhone", DbType="NVarChar(50)")]
-		public string MobilePhone
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
 		{
 			get
 			{
-				return this._MobilePhone;
+				return this._FKUserChanged;
 			}
 			set
 			{
-				if ((this._MobilePhone != value))
+				if ((this._FKUserChanged != value))
 				{
-					this.OnMobilePhoneChanging(value);
+					this.OnFKUserChangedChanging(value);
 					this.SendPropertyChanging();
-					this._MobilePhone = value;
-					this.SendPropertyChanged("MobilePhone");
-					this.OnMobilePhoneChanged();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skype", DbType="NVarChar(50)")]
-		public string Skype
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
 		{
 			get
 			{
-				return this._Skype;
+				return this._ChangedOn;
 			}
 			set
 			{
-				if ((this._Skype != value))
+				if ((this._ChangedOn != value))
 				{
-					this.OnSkypeChanging(value);
+					this.OnChangedOnChanging(value);
 					this.SendPropertyChanging();
-					this._Skype = value;
-					this.SendPropertyChanged("Skype");
-					this.OnSkypeChanged();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMail", DbType="NVarChar(255)")]
-		public string EMail
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContact_tblContactAppointment", Storage="_tblContactAppointment", ThisKey="PKContact", OtherKey="FKContact")]
+		public EntitySet<tblContactAppointment> tblContactAppointment
 		{
 			get
 			{
-				return this._EMail;
+				return this._tblContactAppointment;
 			}
 			set
 			{
-				if ((this._EMail != value))
+				this._tblContactAppointment.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContact_tblContactAppointmentParticipant", Storage="_tblContactAppointmentParticipant", ThisKey="PKContact", OtherKey="FKContact")]
+		public EntitySet<tblContactAppointmentParticipant> tblContactAppointmentParticipant
+		{
+			get
+			{
+				return this._tblContactAppointmentParticipant;
+			}
+			set
+			{
+				this._tblContactAppointmentParticipant.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContact_tblContactCommunication", Storage="_tblContactCommunication", ThisKey="PKContact", OtherKey="FKContact")]
+		public EntitySet<tblContactCommunication> tblContactCommunication
+		{
+			get
+			{
+				return this._tblContactCommunication;
+			}
+			set
+			{
+				this._tblContactCommunication.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContact_tblContactCorrespondence", Storage="_tblContactCorrespondence", ThisKey="PKContact", OtherKey="FKContact")]
+		public EntitySet<tblContactCorrespondence> tblContactCorrespondence
+		{
+			get
+			{
+				return this._tblContactCorrespondence;
+			}
+			set
+			{
+				this._tblContactCorrespondence.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpCity_tblContact", Storage="_tlkpCity", ThisKey="FKCity", OtherKey="PKCity", IsForeignKey=true)]
+		public tlkpCity tlkpCity
+		{
+			get
+			{
+				return this._tlkpCity.Entity;
+			}
+			set
+			{
+				tlkpCity previousValue = this._tlkpCity.Entity;
+				if (((previousValue != value) 
+							|| (this._tlkpCity.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnEMailChanging(value);
 					this.SendPropertyChanging();
-					this._EMail = value;
-					this.SendPropertyChanged("EMail");
-					this.OnEMailChanged();
+					if ((previousValue != null))
+					{
+						this._tlkpCity.Entity = null;
+						previousValue.tblContact.Remove(this);
+					}
+					this._tlkpCity.Entity = value;
+					if ((value != null))
+					{
+						value.tblContact.Add(this);
+						this._FKCity = value.PKCity;
+					}
+					else
+					{
+						this._FKCity = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tlkpCity");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactPrefix_tblContact", Storage="_tlkpContactPrefix", ThisKey="FKContactPrefix", OtherKey="PKContactPrefix", IsForeignKey=true)]
+		public tlkpContactPrefix tlkpContactPrefix
+		{
+			get
+			{
+				return this._tlkpContactPrefix.Entity;
+			}
+			set
+			{
+				tlkpContactPrefix previousValue = this._tlkpContactPrefix.Entity;
+				if (((previousValue != value) 
+							|| (this._tlkpContactPrefix.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tlkpContactPrefix.Entity = null;
+						previousValue.tblContact.Remove(this);
+					}
+					this._tlkpContactPrefix.Entity = value;
+					if ((value != null))
+					{
+						value.tblContact.Add(this);
+						this._FKContactPrefix = value.PKContactPrefix;
+					}
+					else
+					{
+						this._FKContactPrefix = default(long);
+					}
+					this.SendPropertyChanged("tlkpContactPrefix");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblContactAppointment(tblContactAppointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContact = this;
+		}
+		
+		private void detach_tblContactAppointment(tblContactAppointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContact = null;
+		}
+		
+		private void attach_tblContactAppointmentParticipant(tblContactAppointmentParticipant entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContact = this;
+		}
+		
+		private void detach_tblContactAppointmentParticipant(tblContactAppointmentParticipant entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContact = null;
+		}
+		
+		private void attach_tblContactCommunication(tblContactCommunication entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContact = this;
+		}
+		
+		private void detach_tblContactCommunication(tblContactCommunication entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContact = null;
+		}
+		
+		private void attach_tblContactCorrespondence(tblContactCorrespondence entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContact = this;
+		}
+		
+		private void detach_tblContactCorrespondence(tblContactCorrespondence entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContact = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblContactAppointment")]
+	public partial class tblContactAppointment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactAppointment;
+		
+		private System.Nullable<long> _FKContact;
+		
+		private System.Nullable<long> _FKContactAppointmentType;
+		
+		private System.Nullable<long> _FKContactAppointmentImportance;
+		
+		private System.Nullable<System.DateTime> _StartDateTime;
+		
+		private System.Nullable<System.DateTime> _EndDateTime;
+		
+		private string _Subject;
+		
+		private System.Nullable<bool> _Private;
+		
+		private string _Location;
+		
+		private string _Description;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntitySet<tblContactAppointmentAttachement> _tblContactAppointmentAttachement;
+		
+		private EntitySet<tblContactAppointmentParticipant> _tblContactAppointmentParticipant;
+		
+		private EntityRef<tblContact> _tblContact;
+		
+		private EntityRef<tlkpContactAppointmentImportance> _tlkpContactAppointmentImportance;
+		
+		private EntityRef<tlkpContactAppointmentType> _tlkpContactAppointmentType;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactAppointmentChanging(long value);
+    partial void OnPKContactAppointmentChanged();
+    partial void OnFKContactChanging(System.Nullable<long> value);
+    partial void OnFKContactChanged();
+    partial void OnFKContactAppointmentTypeChanging(System.Nullable<long> value);
+    partial void OnFKContactAppointmentTypeChanged();
+    partial void OnFKContactAppointmentImportanceChanging(System.Nullable<long> value);
+    partial void OnFKContactAppointmentImportanceChanged();
+    partial void OnStartDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartDateTimeChanged();
+    partial void OnEndDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnEndDateTimeChanged();
+    partial void OnSubjectChanging(string value);
+    partial void OnSubjectChanged();
+    partial void OnPrivateChanging(System.Nullable<bool> value);
+    partial void OnPrivateChanged();
+    partial void OnLocationChanging(string value);
+    partial void OnLocationChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tblContactAppointment()
+		{
+			this._tblContactAppointmentAttachement = new EntitySet<tblContactAppointmentAttachement>(new Action<tblContactAppointmentAttachement>(this.attach_tblContactAppointmentAttachement), new Action<tblContactAppointmentAttachement>(this.detach_tblContactAppointmentAttachement));
+			this._tblContactAppointmentParticipant = new EntitySet<tblContactAppointmentParticipant>(new Action<tblContactAppointmentParticipant>(this.attach_tblContactAppointmentParticipant), new Action<tblContactAppointmentParticipant>(this.detach_tblContactAppointmentParticipant));
+			this._tblContact = default(EntityRef<tblContact>);
+			this._tlkpContactAppointmentImportance = default(EntityRef<tlkpContactAppointmentImportance>);
+			this._tlkpContactAppointmentType = default(EntityRef<tlkpContactAppointmentType>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactAppointment", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactAppointment
+		{
+			get
+			{
+				return this._PKContactAppointment;
+			}
+			set
+			{
+				if ((this._PKContactAppointment != value))
+				{
+					this.OnPKContactAppointmentChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactAppointment = value;
+					this.SendPropertyChanged("PKContactAppointment");
+					this.OnPKContactAppointmentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContact", DbType="BigInt")]
+		public System.Nullable<long> FKContact
+		{
+			get
+			{
+				return this._FKContact;
+			}
+			set
+			{
+				if ((this._FKContact != value))
+				{
+					if (this._tblContact.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactChanging(value);
+					this.SendPropertyChanging();
+					this._FKContact = value;
+					this.SendPropertyChanged("FKContact");
+					this.OnFKContactChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactAppointmentType", DbType="BigInt")]
+		public System.Nullable<long> FKContactAppointmentType
+		{
+			get
+			{
+				return this._FKContactAppointmentType;
+			}
+			set
+			{
+				if ((this._FKContactAppointmentType != value))
+				{
+					if (this._tlkpContactAppointmentType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactAppointmentTypeChanging(value);
+					this.SendPropertyChanging();
+					this._FKContactAppointmentType = value;
+					this.SendPropertyChanged("FKContactAppointmentType");
+					this.OnFKContactAppointmentTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactAppointmentImportance", DbType="BigInt")]
+		public System.Nullable<long> FKContactAppointmentImportance
+		{
+			get
+			{
+				return this._FKContactAppointmentImportance;
+			}
+			set
+			{
+				if ((this._FKContactAppointmentImportance != value))
+				{
+					if (this._tlkpContactAppointmentImportance.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactAppointmentImportanceChanging(value);
+					this.SendPropertyChanging();
+					this._FKContactAppointmentImportance = value;
+					this.SendPropertyChanged("FKContactAppointmentImportance");
+					this.OnFKContactAppointmentImportanceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> StartDateTime
+		{
+			get
+			{
+				return this._StartDateTime;
+			}
+			set
+			{
+				if ((this._StartDateTime != value))
+				{
+					this.OnStartDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._StartDateTime = value;
+					this.SendPropertyChanged("StartDateTime");
+					this.OnStartDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDateTime
+		{
+			get
+			{
+				return this._EndDateTime;
+			}
+			set
+			{
+				if ((this._EndDateTime != value))
+				{
+					this.OnEndDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._EndDateTime = value;
+					this.SendPropertyChanged("EndDateTime");
+					this.OnEndDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject", DbType="NVarChar(512)")]
+		public string Subject
+		{
+			get
+			{
+				return this._Subject;
+			}
+			set
+			{
+				if ((this._Subject != value))
+				{
+					this.OnSubjectChanging(value);
+					this.SendPropertyChanging();
+					this._Subject = value;
+					this.SendPropertyChanged("Subject");
+					this.OnSubjectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Private", DbType="Bit")]
+		public System.Nullable<bool> Private
+		{
+			get
+			{
+				return this._Private;
+			}
+			set
+			{
+				if ((this._Private != value))
+				{
+					this.OnPrivateChanging(value);
+					this.SendPropertyChanging();
+					this._Private = value;
+					this.SendPropertyChanged("Private");
+					this.OnPrivateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="NVarChar(512)")]
+		public string Location
+		{
+			get
+			{
+				return this._Location;
+			}
+			set
+			{
+				if ((this._Location != value))
+				{
+					this.OnLocationChanging(value);
+					this.SendPropertyChanging();
+					this._Location = value;
+					this.SendPropertyChanged("Location");
+					this.OnLocationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
 				}
 			}
 		}
@@ -671,104 +1200,1498 @@ namespace Wookie.Employee.Contact.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpCity_tblContact", Storage="_tlkpCity", ThisKey="FKCity", OtherKey="PKCity", IsForeignKey=true)]
-		public tlkpCity tlkpCity
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContactAppointment_tblContactAppointmentAttachement", Storage="_tblContactAppointmentAttachement", ThisKey="PKContactAppointment", OtherKey="FKContactAppointment")]
+		public EntitySet<tblContactAppointmentAttachement> tblContactAppointmentAttachement
 		{
 			get
 			{
-				return this._tlkpCity.Entity;
+				return this._tblContactAppointmentAttachement;
 			}
 			set
 			{
-				tlkpCity previousValue = this._tlkpCity.Entity;
+				this._tblContactAppointmentAttachement.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContactAppointment_tblContactAppointmentParticipant", Storage="_tblContactAppointmentParticipant", ThisKey="PKContactAppointment", OtherKey="FKContactAppointment")]
+		public EntitySet<tblContactAppointmentParticipant> tblContactAppointmentParticipant
+		{
+			get
+			{
+				return this._tblContactAppointmentParticipant;
+			}
+			set
+			{
+				this._tblContactAppointmentParticipant.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContact_tblContactAppointment", Storage="_tblContact", ThisKey="FKContact", OtherKey="PKContact", IsForeignKey=true)]
+		public tblContact tblContact
+		{
+			get
+			{
+				return this._tblContact.Entity;
+			}
+			set
+			{
+				tblContact previousValue = this._tblContact.Entity;
 				if (((previousValue != value) 
-							|| (this._tlkpCity.HasLoadedOrAssignedValue == false)))
+							|| (this._tblContact.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._tlkpCity.Entity = null;
-						previousValue.tblContact.Remove(this);
+						this._tblContact.Entity = null;
+						previousValue.tblContactAppointment.Remove(this);
 					}
-					this._tlkpCity.Entity = value;
+					this._tblContact.Entity = value;
 					if ((value != null))
 					{
-						value.tblContact.Add(this);
-						this._FKCity = value.PKCity;
+						value.tblContactAppointment.Add(this);
+						this._FKContact = value.PKContact;
 					}
 					else
 					{
-						this._FKCity = default(Nullable<long>);
+						this._FKContact = default(Nullable<long>);
 					}
-					this.SendPropertyChanged("tlkpCity");
+					this.SendPropertyChanged("tblContact");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactPrefix_tblContact", Storage="_tlkpContactPrefix", ThisKey="FKContactPrefix", OtherKey="PKContactPrefix", IsForeignKey=true)]
-		public tlkpContactPrefix tlkpContactPrefix
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactAppointmentImportance_tblContactAppointment", Storage="_tlkpContactAppointmentImportance", ThisKey="FKContactAppointmentImportance", OtherKey="PKContactAppointmentImportance", IsForeignKey=true)]
+		public tlkpContactAppointmentImportance tlkpContactAppointmentImportance
 		{
 			get
 			{
-				return this._tlkpContactPrefix.Entity;
+				return this._tlkpContactAppointmentImportance.Entity;
 			}
 			set
 			{
-				tlkpContactPrefix previousValue = this._tlkpContactPrefix.Entity;
+				tlkpContactAppointmentImportance previousValue = this._tlkpContactAppointmentImportance.Entity;
 				if (((previousValue != value) 
-							|| (this._tlkpContactPrefix.HasLoadedOrAssignedValue == false)))
+							|| (this._tlkpContactAppointmentImportance.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._tlkpContactPrefix.Entity = null;
-						previousValue.tblContact.Remove(this);
+						this._tlkpContactAppointmentImportance.Entity = null;
+						previousValue.tblContactAppointment.Remove(this);
 					}
-					this._tlkpContactPrefix.Entity = value;
+					this._tlkpContactAppointmentImportance.Entity = value;
 					if ((value != null))
 					{
-						value.tblContact.Add(this);
-						this._FKContactPrefix = value.PKContactPrefix;
+						value.tblContactAppointment.Add(this);
+						this._FKContactAppointmentImportance = value.PKContactAppointmentImportance;
 					}
 					else
 					{
-						this._FKContactPrefix = default(Nullable<long>);
+						this._FKContactAppointmentImportance = default(Nullable<long>);
 					}
-					this.SendPropertyChanged("tlkpContactPrefix");
+					this.SendPropertyChanged("tlkpContactAppointmentImportance");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblDepartment_tblContact", Storage="_tblDepartment", ThisKey="FKDepartment", OtherKey="PKDepartment", IsForeignKey=true)]
-		public tblDepartment tblDepartment
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactAppointmentType_tblContactAppointment", Storage="_tlkpContactAppointmentType", ThisKey="FKContactAppointmentType", OtherKey="PKContactAppointmentType", IsForeignKey=true)]
+		public tlkpContactAppointmentType tlkpContactAppointmentType
 		{
 			get
 			{
-				return this._tblDepartment.Entity;
+				return this._tlkpContactAppointmentType.Entity;
 			}
 			set
 			{
-				tblDepartment previousValue = this._tblDepartment.Entity;
+				tlkpContactAppointmentType previousValue = this._tlkpContactAppointmentType.Entity;
 				if (((previousValue != value) 
-							|| (this._tblDepartment.HasLoadedOrAssignedValue == false)))
+							|| (this._tlkpContactAppointmentType.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._tblDepartment.Entity = null;
-						previousValue.tblContact.Remove(this);
+						this._tlkpContactAppointmentType.Entity = null;
+						previousValue.tblContactAppointment.Remove(this);
 					}
-					this._tblDepartment.Entity = value;
+					this._tlkpContactAppointmentType.Entity = value;
 					if ((value != null))
 					{
-						value.tblContact.Add(this);
-						this._FKDepartment = value.PKDepartment;
+						value.tblContactAppointment.Add(this);
+						this._FKContactAppointmentType = value.PKContactAppointmentType;
 					}
 					else
 					{
-						this._FKDepartment = default(Nullable<long>);
+						this._FKContactAppointmentType = default(Nullable<long>);
 					}
-					this.SendPropertyChanged("tblDepartment");
+					this.SendPropertyChanged("tlkpContactAppointmentType");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblContactAppointmentAttachement(tblContactAppointmentAttachement entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContactAppointment = this;
+		}
+		
+		private void detach_tblContactAppointmentAttachement(tblContactAppointmentAttachement entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContactAppointment = null;
+		}
+		
+		private void attach_tblContactAppointmentParticipant(tblContactAppointmentParticipant entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContactAppointment = this;
+		}
+		
+		private void detach_tblContactAppointmentParticipant(tblContactAppointmentParticipant entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblContactAppointment = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblContactAppointmentAttachement")]
+	public partial class tblContactAppointmentAttachement : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactAppointmentAttachement;
+		
+		private System.Nullable<long> _FKContactAppointment;
+		
+		private string _Description;
+		
+		private System.Data.Linq.Binary _Attachement;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntityRef<tblContactAppointment> _tblContactAppointment;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactAppointmentAttachementChanging(long value);
+    partial void OnPKContactAppointmentAttachementChanged();
+    partial void OnFKContactAppointmentChanging(System.Nullable<long> value);
+    partial void OnFKContactAppointmentChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnAttachementChanging(System.Data.Linq.Binary value);
+    partial void OnAttachementChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tblContactAppointmentAttachement()
+		{
+			this._tblContactAppointment = default(EntityRef<tblContactAppointment>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactAppointmentAttachement", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactAppointmentAttachement
+		{
+			get
+			{
+				return this._PKContactAppointmentAttachement;
+			}
+			set
+			{
+				if ((this._PKContactAppointmentAttachement != value))
+				{
+					this.OnPKContactAppointmentAttachementChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactAppointmentAttachement = value;
+					this.SendPropertyChanged("PKContactAppointmentAttachement");
+					this.OnPKContactAppointmentAttachementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactAppointment", DbType="BigInt")]
+		public System.Nullable<long> FKContactAppointment
+		{
+			get
+			{
+				return this._FKContactAppointment;
+			}
+			set
+			{
+				if ((this._FKContactAppointment != value))
+				{
+					if (this._tblContactAppointment.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactAppointmentChanging(value);
+					this.SendPropertyChanging();
+					this._FKContactAppointment = value;
+					this.SendPropertyChanged("FKContactAppointment");
+					this.OnFKContactAppointmentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(255)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Attachement", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Attachement
+		{
+			get
+			{
+				return this._Attachement;
+			}
+			set
+			{
+				if ((this._Attachement != value))
+				{
+					this.OnAttachementChanging(value);
+					this.SendPropertyChanging();
+					this._Attachement = value;
+					this.SendPropertyChanged("Attachement");
+					this.OnAttachementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
+		{
+			get
+			{
+				return this._FKUserChanged;
+			}
+			set
+			{
+				if ((this._FKUserChanged != value))
+				{
+					this.OnFKUserChangedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContactAppointment_tblContactAppointmentAttachement", Storage="_tblContactAppointment", ThisKey="FKContactAppointment", OtherKey="PKContactAppointment", IsForeignKey=true)]
+		public tblContactAppointment tblContactAppointment
+		{
+			get
+			{
+				return this._tblContactAppointment.Entity;
+			}
+			set
+			{
+				tblContactAppointment previousValue = this._tblContactAppointment.Entity;
+				if (((previousValue != value) 
+							|| (this._tblContactAppointment.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblContactAppointment.Entity = null;
+						previousValue.tblContactAppointmentAttachement.Remove(this);
+					}
+					this._tblContactAppointment.Entity = value;
+					if ((value != null))
+					{
+						value.tblContactAppointmentAttachement.Add(this);
+						this._FKContactAppointment = value.PKContactAppointment;
+					}
+					else
+					{
+						this._FKContactAppointment = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tblContactAppointment");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblContactAppointmentParticipant")]
+	public partial class tblContactAppointmentParticipant : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactAppointmentParticipant;
+		
+		private System.Nullable<long> _FKContact;
+		
+		private System.Nullable<long> _FKContactAppointment;
+		
+		private System.Nullable<long> _FKContactAppointmentParticipantStatus;
+		
+		private string _Description;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntityRef<tblContact> _tblContact;
+		
+		private EntityRef<tblContactAppointment> _tblContactAppointment;
+		
+		private EntityRef<tlkpContactAppointmentParticipantStatus> _tlkpContactAppointmentParticipantStatus;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactAppointmentParticipantChanging(long value);
+    partial void OnPKContactAppointmentParticipantChanged();
+    partial void OnFKContactChanging(System.Nullable<long> value);
+    partial void OnFKContactChanged();
+    partial void OnFKContactAppointmentChanging(System.Nullable<long> value);
+    partial void OnFKContactAppointmentChanged();
+    partial void OnFKContactAppointmentParticipantStatusChanging(System.Nullable<long> value);
+    partial void OnFKContactAppointmentParticipantStatusChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tblContactAppointmentParticipant()
+		{
+			this._tblContact = default(EntityRef<tblContact>);
+			this._tblContactAppointment = default(EntityRef<tblContactAppointment>);
+			this._tlkpContactAppointmentParticipantStatus = default(EntityRef<tlkpContactAppointmentParticipantStatus>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactAppointmentParticipant", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactAppointmentParticipant
+		{
+			get
+			{
+				return this._PKContactAppointmentParticipant;
+			}
+			set
+			{
+				if ((this._PKContactAppointmentParticipant != value))
+				{
+					this.OnPKContactAppointmentParticipantChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactAppointmentParticipant = value;
+					this.SendPropertyChanged("PKContactAppointmentParticipant");
+					this.OnPKContactAppointmentParticipantChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContact", DbType="BigInt")]
+		public System.Nullable<long> FKContact
+		{
+			get
+			{
+				return this._FKContact;
+			}
+			set
+			{
+				if ((this._FKContact != value))
+				{
+					if (this._tblContact.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactChanging(value);
+					this.SendPropertyChanging();
+					this._FKContact = value;
+					this.SendPropertyChanged("FKContact");
+					this.OnFKContactChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactAppointment", DbType="BigInt")]
+		public System.Nullable<long> FKContactAppointment
+		{
+			get
+			{
+				return this._FKContactAppointment;
+			}
+			set
+			{
+				if ((this._FKContactAppointment != value))
+				{
+					if (this._tblContactAppointment.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactAppointmentChanging(value);
+					this.SendPropertyChanging();
+					this._FKContactAppointment = value;
+					this.SendPropertyChanged("FKContactAppointment");
+					this.OnFKContactAppointmentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactAppointmentParticipantStatus", DbType="BigInt")]
+		public System.Nullable<long> FKContactAppointmentParticipantStatus
+		{
+			get
+			{
+				return this._FKContactAppointmentParticipantStatus;
+			}
+			set
+			{
+				if ((this._FKContactAppointmentParticipantStatus != value))
+				{
+					if (this._tlkpContactAppointmentParticipantStatus.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactAppointmentParticipantStatusChanging(value);
+					this.SendPropertyChanging();
+					this._FKContactAppointmentParticipantStatus = value;
+					this.SendPropertyChanged("FKContactAppointmentParticipantStatus");
+					this.OnFKContactAppointmentParticipantStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
+		{
+			get
+			{
+				return this._FKUserChanged;
+			}
+			set
+			{
+				if ((this._FKUserChanged != value))
+				{
+					this.OnFKUserChangedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContact_tblContactAppointmentParticipant", Storage="_tblContact", ThisKey="FKContact", OtherKey="PKContact", IsForeignKey=true)]
+		public tblContact tblContact
+		{
+			get
+			{
+				return this._tblContact.Entity;
+			}
+			set
+			{
+				tblContact previousValue = this._tblContact.Entity;
+				if (((previousValue != value) 
+							|| (this._tblContact.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblContact.Entity = null;
+						previousValue.tblContactAppointmentParticipant.Remove(this);
+					}
+					this._tblContact.Entity = value;
+					if ((value != null))
+					{
+						value.tblContactAppointmentParticipant.Add(this);
+						this._FKContact = value.PKContact;
+					}
+					else
+					{
+						this._FKContact = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tblContact");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContactAppointment_tblContactAppointmentParticipant", Storage="_tblContactAppointment", ThisKey="FKContactAppointment", OtherKey="PKContactAppointment", IsForeignKey=true)]
+		public tblContactAppointment tblContactAppointment
+		{
+			get
+			{
+				return this._tblContactAppointment.Entity;
+			}
+			set
+			{
+				tblContactAppointment previousValue = this._tblContactAppointment.Entity;
+				if (((previousValue != value) 
+							|| (this._tblContactAppointment.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblContactAppointment.Entity = null;
+						previousValue.tblContactAppointmentParticipant.Remove(this);
+					}
+					this._tblContactAppointment.Entity = value;
+					if ((value != null))
+					{
+						value.tblContactAppointmentParticipant.Add(this);
+						this._FKContactAppointment = value.PKContactAppointment;
+					}
+					else
+					{
+						this._FKContactAppointment = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tblContactAppointment");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactAppointmentParticipantStatus_tblContactAppointmentParticipant", Storage="_tlkpContactAppointmentParticipantStatus", ThisKey="FKContactAppointmentParticipantStatus", OtherKey="PKContactAppointmentParticipantStatus", IsForeignKey=true)]
+		public tlkpContactAppointmentParticipantStatus tlkpContactAppointmentParticipantStatus
+		{
+			get
+			{
+				return this._tlkpContactAppointmentParticipantStatus.Entity;
+			}
+			set
+			{
+				tlkpContactAppointmentParticipantStatus previousValue = this._tlkpContactAppointmentParticipantStatus.Entity;
+				if (((previousValue != value) 
+							|| (this._tlkpContactAppointmentParticipantStatus.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tlkpContactAppointmentParticipantStatus.Entity = null;
+						previousValue.tblContactAppointmentParticipant.Remove(this);
+					}
+					this._tlkpContactAppointmentParticipantStatus.Entity = value;
+					if ((value != null))
+					{
+						value.tblContactAppointmentParticipant.Add(this);
+						this._FKContactAppointmentParticipantStatus = value.PKContactAppointmentParticipantStatus;
+					}
+					else
+					{
+						this._FKContactAppointmentParticipantStatus = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tlkpContactAppointmentParticipantStatus");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblContactCommunication")]
+	public partial class tblContactCommunication : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactCommunication;
+		
+		private System.Nullable<long> _FKContact;
+		
+		private System.Nullable<long> _FKContactCommunicationType;
+		
+		private string _Communication;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntityRef<tblContact> _tblContact;
+		
+		private EntityRef<tlkpContactCommunicationType> _tlkpContactCommunicationType;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactCommunicationChanging(long value);
+    partial void OnPKContactCommunicationChanged();
+    partial void OnFKContactChanging(System.Nullable<long> value);
+    partial void OnFKContactChanged();
+    partial void OnFKContactCommunicationTypeChanging(System.Nullable<long> value);
+    partial void OnFKContactCommunicationTypeChanged();
+    partial void OnCommunicationChanging(string value);
+    partial void OnCommunicationChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tblContactCommunication()
+		{
+			this._tblContact = default(EntityRef<tblContact>);
+			this._tlkpContactCommunicationType = default(EntityRef<tlkpContactCommunicationType>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactCommunication", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactCommunication
+		{
+			get
+			{
+				return this._PKContactCommunication;
+			}
+			set
+			{
+				if ((this._PKContactCommunication != value))
+				{
+					this.OnPKContactCommunicationChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactCommunication = value;
+					this.SendPropertyChanged("PKContactCommunication");
+					this.OnPKContactCommunicationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContact", DbType="BigInt")]
+		public System.Nullable<long> FKContact
+		{
+			get
+			{
+				return this._FKContact;
+			}
+			set
+			{
+				if ((this._FKContact != value))
+				{
+					if (this._tblContact.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactChanging(value);
+					this.SendPropertyChanging();
+					this._FKContact = value;
+					this.SendPropertyChanged("FKContact");
+					this.OnFKContactChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactCommunicationType", DbType="BigInt")]
+		public System.Nullable<long> FKContactCommunicationType
+		{
+			get
+			{
+				return this._FKContactCommunicationType;
+			}
+			set
+			{
+				if ((this._FKContactCommunicationType != value))
+				{
+					if (this._tlkpContactCommunicationType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactCommunicationTypeChanging(value);
+					this.SendPropertyChanging();
+					this._FKContactCommunicationType = value;
+					this.SendPropertyChanged("FKContactCommunicationType");
+					this.OnFKContactCommunicationTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Communication", DbType="NVarChar(255)")]
+		public string Communication
+		{
+			get
+			{
+				return this._Communication;
+			}
+			set
+			{
+				if ((this._Communication != value))
+				{
+					this.OnCommunicationChanging(value);
+					this.SendPropertyChanging();
+					this._Communication = value;
+					this.SendPropertyChanged("Communication");
+					this.OnCommunicationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
+		{
+			get
+			{
+				return this._FKUserChanged;
+			}
+			set
+			{
+				if ((this._FKUserChanged != value))
+				{
+					this.OnFKUserChangedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContact_tblContactCommunication", Storage="_tblContact", ThisKey="FKContact", OtherKey="PKContact", IsForeignKey=true)]
+		public tblContact tblContact
+		{
+			get
+			{
+				return this._tblContact.Entity;
+			}
+			set
+			{
+				tblContact previousValue = this._tblContact.Entity;
+				if (((previousValue != value) 
+							|| (this._tblContact.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblContact.Entity = null;
+						previousValue.tblContactCommunication.Remove(this);
+					}
+					this._tblContact.Entity = value;
+					if ((value != null))
+					{
+						value.tblContactCommunication.Add(this);
+						this._FKContact = value.PKContact;
+					}
+					else
+					{
+						this._FKContact = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tblContact");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactCommunicationType_tblContactCommunication", Storage="_tlkpContactCommunicationType", ThisKey="FKContactCommunicationType", OtherKey="PKContactCommunicationType", IsForeignKey=true)]
+		public tlkpContactCommunicationType tlkpContactCommunicationType
+		{
+			get
+			{
+				return this._tlkpContactCommunicationType.Entity;
+			}
+			set
+			{
+				tlkpContactCommunicationType previousValue = this._tlkpContactCommunicationType.Entity;
+				if (((previousValue != value) 
+							|| (this._tlkpContactCommunicationType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tlkpContactCommunicationType.Entity = null;
+						previousValue.tblContactCommunication.Remove(this);
+					}
+					this._tlkpContactCommunicationType.Entity = value;
+					if ((value != null))
+					{
+						value.tblContactCommunication.Add(this);
+						this._FKContactCommunicationType = value.PKContactCommunicationType;
+					}
+					else
+					{
+						this._FKContactCommunicationType = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tlkpContactCommunicationType");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblContactCorrespondence")]
+	public partial class tblContactCorrespondence : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactCorrespondence;
+		
+		private System.Nullable<long> _FKContactCorrespondenceType;
+		
+		private System.Nullable<long> _FKContact;
+		
+		private string _Name;
+		
+		private string _Description;
+		
+		private System.Data.Linq.Binary _Correspondence;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntityRef<tblContact> _tblContact;
+		
+		private EntityRef<tlkpContactCorrespondenceType> _tlkpContactCorrespondenceType;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactCorrespondenceChanging(long value);
+    partial void OnPKContactCorrespondenceChanged();
+    partial void OnFKContactCorrespondenceTypeChanging(System.Nullable<long> value);
+    partial void OnFKContactCorrespondenceTypeChanged();
+    partial void OnFKContactChanging(System.Nullable<long> value);
+    partial void OnFKContactChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnCorrespondenceChanging(System.Data.Linq.Binary value);
+    partial void OnCorrespondenceChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tblContactCorrespondence()
+		{
+			this._tblContact = default(EntityRef<tblContact>);
+			this._tlkpContactCorrespondenceType = default(EntityRef<tlkpContactCorrespondenceType>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactCorrespondence", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactCorrespondence
+		{
+			get
+			{
+				return this._PKContactCorrespondence;
+			}
+			set
+			{
+				if ((this._PKContactCorrespondence != value))
+				{
+					this.OnPKContactCorrespondenceChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactCorrespondence = value;
+					this.SendPropertyChanged("PKContactCorrespondence");
+					this.OnPKContactCorrespondenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactCorrespondenceType", DbType="BigInt")]
+		public System.Nullable<long> FKContactCorrespondenceType
+		{
+			get
+			{
+				return this._FKContactCorrespondenceType;
+			}
+			set
+			{
+				if ((this._FKContactCorrespondenceType != value))
+				{
+					if (this._tlkpContactCorrespondenceType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactCorrespondenceTypeChanging(value);
+					this.SendPropertyChanging();
+					this._FKContactCorrespondenceType = value;
+					this.SendPropertyChanged("FKContactCorrespondenceType");
+					this.OnFKContactCorrespondenceTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContact", DbType="BigInt")]
+		public System.Nullable<long> FKContact
+		{
+			get
+			{
+				return this._FKContact;
+			}
+			set
+			{
+				if ((this._FKContact != value))
+				{
+					if (this._tblContact.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKContactChanging(value);
+					this.SendPropertyChanging();
+					this._FKContact = value;
+					this.SendPropertyChanged("FKContact");
+					this.OnFKContactChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Correspondence", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Correspondence
+		{
+			get
+			{
+				return this._Correspondence;
+			}
+			set
+			{
+				if ((this._Correspondence != value))
+				{
+					this.OnCorrespondenceChanging(value);
+					this.SendPropertyChanging();
+					this._Correspondence = value;
+					this.SendPropertyChanged("Correspondence");
+					this.OnCorrespondenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
+		{
+			get
+			{
+				return this._FKUserChanged;
+			}
+			set
+			{
+				if ((this._FKUserChanged != value))
+				{
+					this.OnFKUserChangedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblContact_tblContactCorrespondence", Storage="_tblContact", ThisKey="FKContact", OtherKey="PKContact", IsForeignKey=true)]
+		public tblContact tblContact
+		{
+			get
+			{
+				return this._tblContact.Entity;
+			}
+			set
+			{
+				tblContact previousValue = this._tblContact.Entity;
+				if (((previousValue != value) 
+							|| (this._tblContact.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblContact.Entity = null;
+						previousValue.tblContactCorrespondence.Remove(this);
+					}
+					this._tblContact.Entity = value;
+					if ((value != null))
+					{
+						value.tblContactCorrespondence.Add(this);
+						this._FKContact = value.PKContact;
+					}
+					else
+					{
+						this._FKContact = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tblContact");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactCorrespondenceType_tblContactCorrespondence", Storage="_tlkpContactCorrespondenceType", ThisKey="FKContactCorrespondenceType", OtherKey="PKContactCorrespondenceType", IsForeignKey=true)]
+		public tlkpContactCorrespondenceType tlkpContactCorrespondenceType
+		{
+			get
+			{
+				return this._tlkpContactCorrespondenceType.Entity;
+			}
+			set
+			{
+				tlkpContactCorrespondenceType previousValue = this._tlkpContactCorrespondenceType.Entity;
+				if (((previousValue != value) 
+							|| (this._tlkpContactCorrespondenceType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tlkpContactCorrespondenceType.Entity = null;
+						previousValue.tblContactCorrespondence.Remove(this);
+					}
+					this._tlkpContactCorrespondenceType.Entity = value;
+					if ((value != null))
+					{
+						value.tblContactCorrespondence.Add(this);
+						this._FKContactCorrespondenceType = value.PKContactCorrespondenceType;
+					}
+					else
+					{
+						this._FKContactCorrespondenceType = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tlkpContactCorrespondenceType");
 				}
 			}
 		}
@@ -1090,6 +3013,1200 @@ namespace Wookie.Employee.Contact.Database
 		{
 			this.SendPropertyChanging();
 			entity.tlkpCity = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tlkpContactAppointmentImportance")]
+	public partial class tlkpContactAppointmentImportance : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactAppointmentImportance;
+		
+		private string _Description;
+		
+		private System.Data.Linq.Binary _Picture;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntitySet<tblContactAppointment> _tblContactAppointment;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactAppointmentImportanceChanging(long value);
+    partial void OnPKContactAppointmentImportanceChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnPictureChanging(System.Data.Linq.Binary value);
+    partial void OnPictureChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tlkpContactAppointmentImportance()
+		{
+			this._tblContactAppointment = new EntitySet<tblContactAppointment>(new Action<tblContactAppointment>(this.attach_tblContactAppointment), new Action<tblContactAppointment>(this.detach_tblContactAppointment));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactAppointmentImportance", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactAppointmentImportance
+		{
+			get
+			{
+				return this._PKContactAppointmentImportance;
+			}
+			set
+			{
+				if ((this._PKContactAppointmentImportance != value))
+				{
+					this.OnPKContactAppointmentImportanceChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactAppointmentImportance = value;
+					this.SendPropertyChanged("PKContactAppointmentImportance");
+					this.OnPKContactAppointmentImportanceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(255)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Picture
+		{
+			get
+			{
+				return this._Picture;
+			}
+			set
+			{
+				if ((this._Picture != value))
+				{
+					this.OnPictureChanging(value);
+					this.SendPropertyChanging();
+					this._Picture = value;
+					this.SendPropertyChanged("Picture");
+					this.OnPictureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
+		{
+			get
+			{
+				return this._FKUserChanged;
+			}
+			set
+			{
+				if ((this._FKUserChanged != value))
+				{
+					this.OnFKUserChangedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactAppointmentImportance_tblContactAppointment", Storage="_tblContactAppointment", ThisKey="PKContactAppointmentImportance", OtherKey="FKContactAppointmentImportance")]
+		public EntitySet<tblContactAppointment> tblContactAppointment
+		{
+			get
+			{
+				return this._tblContactAppointment;
+			}
+			set
+			{
+				this._tblContactAppointment.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblContactAppointment(tblContactAppointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactAppointmentImportance = this;
+		}
+		
+		private void detach_tblContactAppointment(tblContactAppointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactAppointmentImportance = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tlkpContactAppointmentParticipantStatus")]
+	public partial class tlkpContactAppointmentParticipantStatus : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactAppointmentParticipantStatus;
+		
+		private string _Description;
+		
+		private System.Data.Linq.Binary _Picture;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntitySet<tblContactAppointmentParticipant> _tblContactAppointmentParticipant;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactAppointmentParticipantStatusChanging(long value);
+    partial void OnPKContactAppointmentParticipantStatusChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnPictureChanging(System.Data.Linq.Binary value);
+    partial void OnPictureChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tlkpContactAppointmentParticipantStatus()
+		{
+			this._tblContactAppointmentParticipant = new EntitySet<tblContactAppointmentParticipant>(new Action<tblContactAppointmentParticipant>(this.attach_tblContactAppointmentParticipant), new Action<tblContactAppointmentParticipant>(this.detach_tblContactAppointmentParticipant));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactAppointmentParticipantStatus", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactAppointmentParticipantStatus
+		{
+			get
+			{
+				return this._PKContactAppointmentParticipantStatus;
+			}
+			set
+			{
+				if ((this._PKContactAppointmentParticipantStatus != value))
+				{
+					this.OnPKContactAppointmentParticipantStatusChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactAppointmentParticipantStatus = value;
+					this.SendPropertyChanged("PKContactAppointmentParticipantStatus");
+					this.OnPKContactAppointmentParticipantStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Picture
+		{
+			get
+			{
+				return this._Picture;
+			}
+			set
+			{
+				if ((this._Picture != value))
+				{
+					this.OnPictureChanging(value);
+					this.SendPropertyChanging();
+					this._Picture = value;
+					this.SendPropertyChanged("Picture");
+					this.OnPictureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
+		{
+			get
+			{
+				return this._FKUserChanged;
+			}
+			set
+			{
+				if ((this._FKUserChanged != value))
+				{
+					this.OnFKUserChangedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactAppointmentParticipantStatus_tblContactAppointmentParticipant", Storage="_tblContactAppointmentParticipant", ThisKey="PKContactAppointmentParticipantStatus", OtherKey="FKContactAppointmentParticipantStatus")]
+		public EntitySet<tblContactAppointmentParticipant> tblContactAppointmentParticipant
+		{
+			get
+			{
+				return this._tblContactAppointmentParticipant;
+			}
+			set
+			{
+				this._tblContactAppointmentParticipant.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblContactAppointmentParticipant(tblContactAppointmentParticipant entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactAppointmentParticipantStatus = this;
+		}
+		
+		private void detach_tblContactAppointmentParticipant(tblContactAppointmentParticipant entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactAppointmentParticipantStatus = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tlkpContactAppointmentType")]
+	public partial class tlkpContactAppointmentType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactAppointmentType;
+		
+		private string _Description;
+		
+		private System.Data.Linq.Binary _Picture;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntitySet<tblContactAppointment> _tblContactAppointment;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactAppointmentTypeChanging(long value);
+    partial void OnPKContactAppointmentTypeChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnPictureChanging(System.Data.Linq.Binary value);
+    partial void OnPictureChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tlkpContactAppointmentType()
+		{
+			this._tblContactAppointment = new EntitySet<tblContactAppointment>(new Action<tblContactAppointment>(this.attach_tblContactAppointment), new Action<tblContactAppointment>(this.detach_tblContactAppointment));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactAppointmentType", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactAppointmentType
+		{
+			get
+			{
+				return this._PKContactAppointmentType;
+			}
+			set
+			{
+				if ((this._PKContactAppointmentType != value))
+				{
+					this.OnPKContactAppointmentTypeChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactAppointmentType = value;
+					this.SendPropertyChanged("PKContactAppointmentType");
+					this.OnPKContactAppointmentTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(255)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Picture
+		{
+			get
+			{
+				return this._Picture;
+			}
+			set
+			{
+				if ((this._Picture != value))
+				{
+					this.OnPictureChanging(value);
+					this.SendPropertyChanging();
+					this._Picture = value;
+					this.SendPropertyChanged("Picture");
+					this.OnPictureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
+		{
+			get
+			{
+				return this._FKUserChanged;
+			}
+			set
+			{
+				if ((this._FKUserChanged != value))
+				{
+					this.OnFKUserChangedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactAppointmentType_tblContactAppointment", Storage="_tblContactAppointment", ThisKey="PKContactAppointmentType", OtherKey="FKContactAppointmentType")]
+		public EntitySet<tblContactAppointment> tblContactAppointment
+		{
+			get
+			{
+				return this._tblContactAppointment;
+			}
+			set
+			{
+				this._tblContactAppointment.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblContactAppointment(tblContactAppointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactAppointmentType = this;
+		}
+		
+		private void detach_tblContactAppointment(tblContactAppointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactAppointmentType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tlkpContactCommunicationType")]
+	public partial class tlkpContactCommunicationType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactCommunicationType;
+		
+		private string _Description;
+		
+		private System.Data.Linq.Binary _Picture;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntitySet<tblContactCommunication> _tblContactCommunication;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactCommunicationTypeChanging(long value);
+    partial void OnPKContactCommunicationTypeChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnPictureChanging(System.Data.Linq.Binary value);
+    partial void OnPictureChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tlkpContactCommunicationType()
+		{
+			this._tblContactCommunication = new EntitySet<tblContactCommunication>(new Action<tblContactCommunication>(this.attach_tblContactCommunication), new Action<tblContactCommunication>(this.detach_tblContactCommunication));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactCommunicationType", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactCommunicationType
+		{
+			get
+			{
+				return this._PKContactCommunicationType;
+			}
+			set
+			{
+				if ((this._PKContactCommunicationType != value))
+				{
+					this.OnPKContactCommunicationTypeChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactCommunicationType = value;
+					this.SendPropertyChanged("PKContactCommunicationType");
+					this.OnPKContactCommunicationTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Picture
+		{
+			get
+			{
+				return this._Picture;
+			}
+			set
+			{
+				if ((this._Picture != value))
+				{
+					this.OnPictureChanging(value);
+					this.SendPropertyChanging();
+					this._Picture = value;
+					this.SendPropertyChanged("Picture");
+					this.OnPictureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
+		{
+			get
+			{
+				return this._FKUserChanged;
+			}
+			set
+			{
+				if ((this._FKUserChanged != value))
+				{
+					this.OnFKUserChangedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactCommunicationType_tblContactCommunication", Storage="_tblContactCommunication", ThisKey="PKContactCommunicationType", OtherKey="FKContactCommunicationType")]
+		public EntitySet<tblContactCommunication> tblContactCommunication
+		{
+			get
+			{
+				return this._tblContactCommunication;
+			}
+			set
+			{
+				this._tblContactCommunication.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblContactCommunication(tblContactCommunication entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactCommunicationType = this;
+		}
+		
+		private void detach_tblContactCommunication(tblContactCommunication entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactCommunicationType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tlkpContactCorrespondenceType")]
+	public partial class tlkpContactCorrespondenceType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKContactCorrespondenceType;
+		
+		private string _Name;
+		
+		private string _Description;
+		
+		private System.Data.Linq.Binary _Picture;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserChanged;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private EntitySet<tblContactCorrespondence> _tblContactCorrespondence;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKContactCorrespondenceTypeChanging(long value);
+    partial void OnPKContactCorrespondenceTypeChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnPictureChanging(System.Data.Linq.Binary value);
+    partial void OnPictureChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserChangedChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    #endregion
+		
+		public tlkpContactCorrespondenceType()
+		{
+			this._tblContactCorrespondence = new EntitySet<tblContactCorrespondence>(new Action<tblContactCorrespondence>(this.attach_tblContactCorrespondence), new Action<tblContactCorrespondence>(this.detach_tblContactCorrespondence));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKContactCorrespondenceType", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKContactCorrespondenceType
+		{
+			get
+			{
+				return this._PKContactCorrespondenceType;
+			}
+			set
+			{
+				if ((this._PKContactCorrespondenceType != value))
+				{
+					this.OnPKContactCorrespondenceTypeChanging(value);
+					this.SendPropertyChanging();
+					this._PKContactCorrespondenceType = value;
+					this.SendPropertyChanged("PKContactCorrespondenceType");
+					this.OnPKContactCorrespondenceTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Picture
+		{
+			get
+			{
+				return this._Picture;
+			}
+			set
+			{
+				if ((this._Picture != value))
+				{
+					this.OnPictureChanging(value);
+					this.SendPropertyChanging();
+					this._Picture = value;
+					this.SendPropertyChanged("Picture");
+					this.OnPictureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
+		public System.Nullable<long> FKUserChanged
+		{
+			get
+			{
+				return this._FKUserChanged;
+			}
+			set
+			{
+				if ((this._FKUserChanged != value))
+				{
+					this.OnFKUserChangedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChanged = value;
+					this.SendPropertyChanged("FKUserChanged");
+					this.OnFKUserChangedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tlkpContactCorrespondenceType_tblContactCorrespondence", Storage="_tblContactCorrespondence", ThisKey="PKContactCorrespondenceType", OtherKey="FKContactCorrespondenceType")]
+		public EntitySet<tblContactCorrespondence> tblContactCorrespondence
+		{
+			get
+			{
+				return this._tblContactCorrespondence;
+			}
+			set
+			{
+				this._tblContactCorrespondence.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblContactCorrespondence(tblContactCorrespondence entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactCorrespondenceType = this;
+		}
+		
+		private void detach_tblContactCorrespondence(tblContactCorrespondence entity)
+		{
+			this.SendPropertyChanging();
+			entity.tlkpContactCorrespondenceType = null;
 		}
 	}
 	
@@ -1881,405 +4998,6 @@ namespace Wookie.Employee.Contact.Database
 		{
 			this.SendPropertyChanging();
 			entity.tlkpFederalState = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblDepartment")]
-	public partial class tblDepartment : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _PKDepartment;
-		
-		private System.Nullable<long> _FKDepartment;
-		
-		private System.Nullable<long> _FKContactHeadOf;
-		
-		private System.Nullable<long> _FKCompany;
-		
-		private string _Name;
-		
-		private string _Description;
-		
-		private System.Data.Linq.Binary _Picture;
-		
-		private System.Nullable<long> _FKUserCreated;
-		
-		private System.Nullable<System.DateTime> _CreatedOn;
-		
-		private System.Nullable<long> _FKUserChanged;
-		
-		private System.Nullable<System.DateTime> _ChangedOn;
-		
-		private EntitySet<tblContact> _tblContact;
-		
-		private EntitySet<tblDepartment> _tblDepartment2;
-		
-		private EntityRef<tblDepartment> _tblDepartment1;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPKDepartmentChanging(long value);
-    partial void OnPKDepartmentChanged();
-    partial void OnFKDepartmentChanging(System.Nullable<long> value);
-    partial void OnFKDepartmentChanged();
-    partial void OnFKContactHeadOfChanging(System.Nullable<long> value);
-    partial void OnFKContactHeadOfChanged();
-    partial void OnFKCompanyChanging(System.Nullable<long> value);
-    partial void OnFKCompanyChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnPictureChanging(System.Data.Linq.Binary value);
-    partial void OnPictureChanged();
-    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
-    partial void OnFKUserCreatedChanged();
-    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedOnChanged();
-    partial void OnFKUserChangedChanging(System.Nullable<long> value);
-    partial void OnFKUserChangedChanged();
-    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnChangedOnChanged();
-    #endregion
-		
-		public tblDepartment()
-		{
-			this._tblContact = new EntitySet<tblContact>(new Action<tblContact>(this.attach_tblContact), new Action<tblContact>(this.detach_tblContact));
-			this._tblDepartment2 = new EntitySet<tblDepartment>(new Action<tblDepartment>(this.attach_tblDepartment2), new Action<tblDepartment>(this.detach_tblDepartment2));
-			this._tblDepartment1 = default(EntityRef<tblDepartment>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKDepartment", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long PKDepartment
-		{
-			get
-			{
-				return this._PKDepartment;
-			}
-			set
-			{
-				if ((this._PKDepartment != value))
-				{
-					this.OnPKDepartmentChanging(value);
-					this.SendPropertyChanging();
-					this._PKDepartment = value;
-					this.SendPropertyChanged("PKDepartment");
-					this.OnPKDepartmentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKDepartment", DbType="BigInt")]
-		public System.Nullable<long> FKDepartment
-		{
-			get
-			{
-				return this._FKDepartment;
-			}
-			set
-			{
-				if ((this._FKDepartment != value))
-				{
-					if (this._tblDepartment1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnFKDepartmentChanging(value);
-					this.SendPropertyChanging();
-					this._FKDepartment = value;
-					this.SendPropertyChanged("FKDepartment");
-					this.OnFKDepartmentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactHeadOf", DbType="BigInt")]
-		public System.Nullable<long> FKContactHeadOf
-		{
-			get
-			{
-				return this._FKContactHeadOf;
-			}
-			set
-			{
-				if ((this._FKContactHeadOf != value))
-				{
-					this.OnFKContactHeadOfChanging(value);
-					this.SendPropertyChanging();
-					this._FKContactHeadOf = value;
-					this.SendPropertyChanged("FKContactHeadOf");
-					this.OnFKContactHeadOfChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKCompany", DbType="BigInt")]
-		public System.Nullable<long> FKCompany
-		{
-			get
-			{
-				return this._FKCompany;
-			}
-			set
-			{
-				if ((this._FKCompany != value))
-				{
-					this.OnFKCompanyChanging(value);
-					this.SendPropertyChanging();
-					this._FKCompany = value;
-					this.SendPropertyChanged("FKCompany");
-					this.OnFKCompanyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Picture
-		{
-			get
-			{
-				return this._Picture;
-			}
-			set
-			{
-				if ((this._Picture != value))
-				{
-					this.OnPictureChanging(value);
-					this.SendPropertyChanging();
-					this._Picture = value;
-					this.SendPropertyChanged("Picture");
-					this.OnPictureChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
-		public System.Nullable<long> FKUserCreated
-		{
-			get
-			{
-				return this._FKUserCreated;
-			}
-			set
-			{
-				if ((this._FKUserCreated != value))
-				{
-					this.OnFKUserCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._FKUserCreated = value;
-					this.SendPropertyChanged("FKUserCreated");
-					this.OnFKUserCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedOn
-		{
-			get
-			{
-				return this._CreatedOn;
-			}
-			set
-			{
-				if ((this._CreatedOn != value))
-				{
-					this.OnCreatedOnChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedOn = value;
-					this.SendPropertyChanged("CreatedOn");
-					this.OnCreatedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChanged", DbType="BigInt")]
-		public System.Nullable<long> FKUserChanged
-		{
-			get
-			{
-				return this._FKUserChanged;
-			}
-			set
-			{
-				if ((this._FKUserChanged != value))
-				{
-					this.OnFKUserChangedChanging(value);
-					this.SendPropertyChanging();
-					this._FKUserChanged = value;
-					this.SendPropertyChanged("FKUserChanged");
-					this.OnFKUserChangedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ChangedOn
-		{
-			get
-			{
-				return this._ChangedOn;
-			}
-			set
-			{
-				if ((this._ChangedOn != value))
-				{
-					this.OnChangedOnChanging(value);
-					this.SendPropertyChanging();
-					this._ChangedOn = value;
-					this.SendPropertyChanged("ChangedOn");
-					this.OnChangedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblDepartment_tblContact", Storage="_tblContact", ThisKey="PKDepartment", OtherKey="FKDepartment")]
-		public EntitySet<tblContact> tblContact
-		{
-			get
-			{
-				return this._tblContact;
-			}
-			set
-			{
-				this._tblContact.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblDepartment_tblDepartment", Storage="_tblDepartment2", ThisKey="PKDepartment", OtherKey="FKDepartment")]
-		public EntitySet<tblDepartment> tblDepartment2
-		{
-			get
-			{
-				return this._tblDepartment2;
-			}
-			set
-			{
-				this._tblDepartment2.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblDepartment_tblDepartment", Storage="_tblDepartment1", ThisKey="FKDepartment", OtherKey="PKDepartment", IsForeignKey=true)]
-		public tblDepartment tblDepartment1
-		{
-			get
-			{
-				return this._tblDepartment1.Entity;
-			}
-			set
-			{
-				tblDepartment previousValue = this._tblDepartment1.Entity;
-				if (((previousValue != value) 
-							|| (this._tblDepartment1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblDepartment1.Entity = null;
-						previousValue.tblDepartment2.Remove(this);
-					}
-					this._tblDepartment1.Entity = value;
-					if ((value != null))
-					{
-						value.tblDepartment2.Add(this);
-						this._FKDepartment = value.PKDepartment;
-					}
-					else
-					{
-						this._FKDepartment = default(Nullable<long>);
-					}
-					this.SendPropertyChanged("tblDepartment1");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tblContact(tblContact entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblDepartment = this;
-		}
-		
-		private void detach_tblContact(tblContact entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblDepartment = null;
-		}
-		
-		private void attach_tblDepartment2(tblDepartment entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblDepartment1 = this;
-		}
-		
-		private void detach_tblDepartment2(tblDepartment entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblDepartment1 = null;
 		}
 	}
 }
