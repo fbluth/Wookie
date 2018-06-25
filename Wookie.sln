@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Tools", "Wookie.Tool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Menu", "Wookie.Menu\Wookie.Menu.csproj", "{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.RM", "Wookie.RM\Wookie.RM.csproj", "{4825A582-C9A6-4CB6-ADFB-6B675B7676EB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Employee.Contact", "Wookie.Employee.Contact\Wookie.Employee.Contact.csproj", "{3C223FBB-E59F-4258-9062-A7B12F06A08F}"
 EndProject
 Global
@@ -31,10 +29,6 @@ Global
 		{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16CEBD6F-E3C4-4A7F-8388-95F1F853B23F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4825A582-C9A6-4CB6-ADFB-6B675B7676EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4825A582-C9A6-4CB6-ADFB-6B675B7676EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4825A582-C9A6-4CB6-ADFB-6B675B7676EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4825A582-C9A6-4CB6-ADFB-6B675B7676EB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C223FBB-E59F-4258-9062-A7B12F06A08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3C223FBB-E59F-4258-9062-A7B12F06A08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C223FBB-E59F-4258-9062-A7B12F06A08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
