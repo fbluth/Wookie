@@ -21,8 +21,7 @@ namespace Wookie.Employee.Contact
         public void SetConnection(SqlConnection sqlconnection, long? fkExternal)
         {
             ModulData.SqlConnectionClientDB = sqlconnection;
-            ModulData.FKContactData = fkExternal;
-            
+            ModulData.FKContactData = fkExternal;            
         }
 
         public XtraUserControl Control
@@ -30,15 +29,10 @@ namespace Wookie.Employee.Contact
             get
             {
                 if (this.control == null)
-                    control = new Control.ucContact();
+                    control = new Control.ucContact2();
                 return control;
             }
-        }
-
-        public RibbonControl RibbonControl
-        {
-            get { return ((Control.ucContact)Control).RibbonControl; }
-        }
+        }       
     }
 
     public static class ModulData

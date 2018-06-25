@@ -20,7 +20,7 @@ namespace Wookie
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            Application.Run(new Controls.frmWookieApp());
+            Application.Run(new Controls.XtraForm1());
         }
     }
 }

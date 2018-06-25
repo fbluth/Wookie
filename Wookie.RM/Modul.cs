@@ -10,7 +10,7 @@ using Wookie.Menu.MenuManager;
 
 namespace Wookie.RM
 {
-    public class Modul : Wookie.Menu.MenuManager.IModul
+    public class Modul 
     {
         private System.Data.SqlClient.SqlConnection sqlConnectionClientDB = null;
         private long? FKContactData = null;
@@ -27,19 +27,9 @@ namespace Wookie.RM
             this.FKContactData = fkExternal;
         }
 
-        public XtraUserControl Control
-        {
-            get { return ucNavigation; }
-        }
-
         public AccordionControl AccordionControl
         {
             get { return this.ucNavigation.AccordionControl; }
-        }
-
-        public NavigationFrame NavigationFrame
-        {
-            get { return this.ucNavigation.NavigationFrame; }
         }
     }
 }

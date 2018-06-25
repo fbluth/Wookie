@@ -1,41 +1,39 @@
 ﻿using DevExpress.Utils.Svg;
-using DevExpress.XtraBars.Navigation;
-using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
 using System.Data.Linq;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Wookie.Tools.Image;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using System.Windows.Forms;
+using System.Reflection;
+using System;
+using System.Data.SqlClient;
+using DevExpress.XtraBars.Navigation;
 
 namespace Wookie.Menu.MenuManager
 {
-    public class ModulItem
+    public class Category
     {
-        private AccordionControlElement accordionControlElement = null;
         private MenuManager menuManager = null;
         private string caption = null;
         private SvgImage svgImage = null;
+        private AccordionControlElement accordionControlElement = null;
         private NavigationPage navigationPage = null;
-        private ICategory category = null;
+        private ICategory categoryInstance = null;
 
-        public Item Item { get; set; }
         public string AssemblyFile { get; }
-        public SqlConnection SqlConnection { get; set; }
+        public SqlConnection SqlConnection {get; set;}
         public long? FKExternal { get; set; }
-
-        public ModulItem(string caption, string assemblyFile, SqlConnection sqlconnection, long? fkExternal)
-        {
+        
+        public Category(string caption, string assemblyFile, SqlConnection sqlconnection, long? fkExternal)
+        {   
             this.caption = caption;
             this.AssemblyFile = assemblyFile;
             this.FKExternal = fkExternal;
             this.SqlConnection = sqlconnection;
 
-            if (this.AssemblyFile != null)
+            this.navigationPage = new NavigationPage();
+
+            if (this.AssemblyFile != null )
             {
                 string assemblyFileDll = this.AssemblyFile.ToLower().EndsWith(".dll") ? this.AssemblyFile : (this.AssemblyFile + ".dll");
                 string assemblyFileWithoutDll = this.AssemblyFile.ToLower().EndsWith(".dll") ? this.AssemblyFile.Remove(this.AssemblyFile.Length - 4, 4) : this.AssemblyFile;
@@ -46,17 +44,23 @@ namespace Wookie.Menu.MenuManager
                     var assembly = Assembly.LoadFile(path);
                     dynamic instance = Activator.CreateInstance(assembly.GetType(assemblyFileWithoutDll + ".Category"));
                     ((ICategory)instance).SetConnection(this.SqlConnection, this.FKExternal);
-                    this.category = ((ICategory)instance);
+                    this.categoryInstance = ((ICategory)instance);
+
+                    if (this.categoryInstance != null)
+                    {
+                        this.categoryInstance.Control.Dock = DockStyle.Fill;                     
+                        this.navigationPage.Controls.Add(this.categoryInstance.Control);
+                    }
                 }
             }
         }
 
-        public ModulItem(string caption, SvgImage svgImage, string assemblyFile, SqlConnection sqlconnection, long? fkExternal) : this(caption, assemblyFile, sqlconnection, fkExternal)
-        {
+        public Category(string caption, SvgImage svgImage, string assemblyFile, SqlConnection sqlconnection, long? fkExternal) : this(caption, assemblyFile, sqlconnection, fkExternal)
+        {            
             this.svgImage = svgImage;
         }
 
-        public ModulItem(string caption, Binary binary, string assemblyFile, SqlConnection sqlconnection, long? fkExternal) : this(caption, assemblyFile, sqlconnection, fkExternal)
+        public Category(string caption, Binary binary, string assemblyFile, SqlConnection sqlconnection, long? fkExternal) : this(caption, assemblyFile, sqlconnection, fkExternal)
         {
             this.svgImage = Converter.GetSvgImageFromBinary(binary);
         }
@@ -79,11 +83,12 @@ namespace Wookie.Menu.MenuManager
             set { this.menuManager = value; }
         }
 
-        public ICategory Category
+        
+        public ICategory Instance
         {
             get
             {
-                return this.category;
+                return this.categoryInstance;
             }
         }
 
@@ -91,13 +96,6 @@ namespace Wookie.Menu.MenuManager
         {
             get
             {
-                if (this.category != null && this.navigationPage == null)
-                {
-                    this.navigationPage = new NavigationPage();
-                    XtraUserControl control = this.category.Control;
-                    control.Dock = DockStyle.Fill;
-                    this.navigationPage.Controls.Add(control);
-                }
                 return this.navigationPage;
             }
         }
@@ -109,8 +107,9 @@ namespace Wookie.Menu.MenuManager
                 if (accordionControlElement == null)
                 {
                     accordionControlElement = new AccordionControlElement();
-                    accordionControlElement.Text = caption;
-                    accordionControlElement.ImageOptions.SvgImage = svgImage;
+                    accordionControlElement.Text = this.caption;
+                    accordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+                    accordionControlElement.ImageOptions.SvgImage = this.svgImage;
                     accordionControlElement.Click += new EventHandler(this.accordionControlElement_Click);
                 }
                 return accordionControlElement;
@@ -119,17 +118,17 @@ namespace Wookie.Menu.MenuManager
 
         private void accordionControlElement_Click(object sender, EventArgs e)
         {
-            SendModulItemClicked();
+            SendCategoryClicked();
         }
 
-        public delegate void ModulItemEventHandler(ModulItem sender);
-        public event ModulItemEventHandler ModulItemClick;
+        public delegate void CategoryEventHandler(Category sender);
+        public event CategoryEventHandler CategoryClick;
 
-        protected virtual void SendModulItemClicked()
+        protected virtual void SendCategoryClicked()
         {
-            if ((this.ModulItemClick != null))
+            if ((this.CategoryClick != null))
             {
-                this.ModulItemClick(this);
+                this.CategoryClick(this);
             }
         }
     }

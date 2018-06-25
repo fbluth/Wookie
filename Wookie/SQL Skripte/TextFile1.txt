@@ -1,0 +1,47 @@
+﻿USE [BS_PM_Mandant1]
+GO
+UPDATE [dbo].tlkpCountry
+   SET Picture = (SELECT  *  FROM OPENROWSET  ( BULK 'C:\Temp\SVG\206589-international-flags\png\162-germany.png',SINGLE_CLOB) AS Document)
+   WHERE PKCountry = 1
+GO
+
+
+UPDATE [dbo].tlkpContactCommunicationType
+   SET Picture = (SELECT  *  FROM OPENROWSET  ( BULK 'C:\Temp\Wookie\CommunicationEMail\CommunicationEMail_32x32.png',SINGLE_CLOB) AS Document)
+   WHERE PKContactCommunicationType = 1
+GO
+
+UPDATE [dbo].tlkpContactCommunicationType
+   SET Picture = (SELECT  *  FROM OPENROWSET  ( BULK 'C:\Temp\Wookie\CommunicationPhone\CommunicationPhone_32x32.png',SINGLE_CLOB) AS Document)
+   WHERE PKContactCommunicationType = 2
+GO
+
+UPDATE [dbo].tlkpContactCommunicationType
+   SET Picture = (SELECT  *  FROM OPENROWSET  ( BULK 'C:\Temp\Wookie\CommunicationMobile\CommunicationMobile_32x32.png',SINGLE_CLOB) AS Document)
+   WHERE PKContactCommunicationType = 3
+GO
+
+UPDATE [dbo].tlkpContactCommunicationType
+   SET Picture = (SELECT  *  FROM OPENROWSET  ( BULK 'C:\Temp\SVG\174834-social-media-logos\png\015-skype.png',SINGLE_CLOB) AS Document)
+   WHERE PKContactCommunicationType = 4
+GO
+
+UPDATE [dbo].tlkpContactCommunicationType
+   SET Picture = (SELECT  *  FROM OPENROWSET  ( BULK 'C:\Temp\SVG\174834-social-media-logos\png\014-snapchat.png',SINGLE_CLOB) AS Document)
+   WHERE PKContactCommunicationType = 5 
+GO
+
+UPDATE [dbo].tlkpContactCommunicationType
+   SET Picture = (SELECT  *  FROM OPENROWSET  ( BULK 'C:\Temp\SVG\174834-social-media-logos\png\036-facebook.png',SINGLE_CLOB) AS Document)
+   WHERE PKContactCommunicationType = 6 
+GO
+
+UPDATE [dbo].tlkpContactCommunicationType
+   SET Picture = (SELECT  *  FROM OPENROWSET  ( BULK 'C:\Temp\SVG\174834-social-media-logos\png\008-twitter.png',SINGLE_CLOB) AS Document)
+   WHERE PKContactCommunicationType = 7 
+GO
+
+UPDATE [dbo].tlkpContactCommunicationType
+   SET Picture = (SELECT  *  FROM OPENROWSET  ( BULK 'C:\Temp\SVG\174834-social-media-logos\png\029-instagram.png',SINGLE_CLOB) AS Document)
+   WHERE PKContactCommunicationType = 8
+GO

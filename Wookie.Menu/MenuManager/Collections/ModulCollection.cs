@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace Wookie.Menu.MenuManager
 {
-    public class PageCollection:Dictionary<object, Page>
+    public class ModulCollection : Dictionary<object, Modul>
     {
         private MenuManager menuManager = null;
+        private ModulGroup modulGroup = null;        
 
-        public PageCollection(MenuManager menuManager)
+        public ModulCollection(MenuManager menuManager, ModulGroup modulGroup)
         {
-            this.menuManager = menuManager;              
+            this.menuManager = menuManager;
+            this.modulGroup = modulGroup;            
         }
 
         public MenuManager MenuManager
@@ -22,9 +24,8 @@ namespace Wookie.Menu.MenuManager
             set
             {
                 this.menuManager = value;
-                foreach (Page page in this.Values) { page.MenuManager = value; }
+                foreach (Modul modul in this.Values) { modul.MenuManager = value; }
             }
-        }   
-        
+        }        
     }
 }
