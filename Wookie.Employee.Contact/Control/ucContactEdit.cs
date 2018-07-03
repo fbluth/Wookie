@@ -15,41 +15,56 @@ namespace Wookie.Employee.Contact.Control
     public partial class ucContactEdit : DevExpress.XtraEditors.XtraUserControl
     {
         public event EventHandler StatusChanged;
-
         private Database.ContactDataContext dataContext = null;
-
         public long? pkContact;
+        private ModulData modulData = null;
 
-        public long? PKContact
+        public ucContactEdit(ModulData modulData)
         {
-            get { return this.pkContact; }
-            set { this.pkContact = value; this.LoadData(value); }
-        }
-
-        public ucContactEdit()
-        {
+            this.modulData = modulData;
             InitializeComponent();            
         }
 
-        private void LoadData(long? pkContact)
+        public void Edit(Database.tblContact contact)
         {
-            dataContext = new Database.ContactDataContext(ModulData.SqlConnectionClientDB);
+            if (contact == null) return;
+
+            dataContext = new Database.ContactDataContext(modulData.SqlConnectionClientDB);
+
+            tlkpContactPrefixBindingSource.DataSource = dataContext.tlkpContactPrefix;
+            tlkpContactCommunicationTypeBindingSource.DataSource = dataContext.tlkpContactCommunicationType;
+            tlkpCityBindingSource.DataSource = dataContext.tlkpCity;
+            tlkpFederalStateBindingSource.DataSource = dataContext.tlkpFederalState;
+            tlkpCountryBindingSource.DataSource = dataContext.tlkpCountry;
+
+            tblContactBindingSource.DataSource = from row in dataContext.tblContact
+                                                 where row.PKContact == contact.PKContact
+                                                 select row;
+            tblContactCommunicationBindingSource.DataSource = dataContext.tblContactCommunication;
+
+            LoadImageComboBoxItems();
+            gridView1.BestFitColumns(true);
+            tblContactBindingSource.MoveFirst();
+        }
+
+        public void New()
+        {
+            dataContext = new Database.ContactDataContext(modulData.SqlConnectionClientDB);
 
             tlkpContactPrefixBindingSource.DataSource = dataContext.tlkpContactPrefix;
             tlkpContactCommunicationTypeBindingSource.DataSource = dataContext.tlkpContactCommunicationType;
             tblContactCommunicationBindingSource.DataSource = dataContext.tblContactCommunication;
+            tlkpCityBindingSource.DataSource = dataContext.tlkpCity;
+            tlkpFederalStateBindingSource.DataSource = dataContext.tlkpFederalState;
+            tlkpCountryBindingSource.DataSource = dataContext.tlkpCountry;
 
             LoadImageComboBoxItems();
 
-            /*tlkpCityBindingSource.DataSource = dataContext.tlkpCity;
-            tlkpFederalStateBindingSource.DataSource = dataContext.tlkpFederalState;
-            tlkpCountryBindingSource.DataSource = dataContext.tlkpCountry;
-            
-            */
+            Database.tblContact c = new Database.tblContact();
+            c.FKContactData = modulData.FKContactData;
 
-            tblContactBindingSource.DataSource = from row in dataContext.tblContact
-                                                 where row.PKContact == PKContact
-                                                 select row;
+            tblContactBindingSource.DataSource = c;
+            dataContext.tblContact.InsertOnSubmit(c);
 
             gridView1.BestFitColumns(true);
             tblContactBindingSource.MoveFirst();
@@ -90,7 +105,7 @@ namespace Wookie.Employee.Contact.Control
 
         private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            if (((PictureEdit)sender).EditValue is Image)
+            if (((PictureEdit)sender).EditValue is Image) 
             {
                 Database.tblContact c = (Database.tblContact)tblContactBindingSource.Current;
                 c.Picture = Wookie.Tools.Image.Converter.GetBinaryFromImage(((PictureEdit)sender).EditValue as Image);
@@ -109,5 +124,31 @@ namespace Wookie.Employee.Contact.Control
             }
         }
 
+        
+
+        
+
+        private void tlkpCitytlkpFederalStatePKFederalStateLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            //Federal State
+            
+            //Database.tlkpFederalState tlkpFederalState = (Database.tlkpFederalState)cboFederalstate.EditValue;
+            //tlkpCityBindingSource.DataSource = from row in dataContext.tlkpCity
+            //                                   where row.FKFederalState == tlkpFederalState.PKFederalState
+            //                                   select row;
+            //this.cboZipCode.Properties.DataSource = tlkpCityBindingSource.DataSource;
+            //this.cboCity.Properties.DataSource = tlkpCityBindingSource.DataSource;
+        }
+
+        private void cboCountry_EditValueChanged(object sender, EventArgs e)
+        {
+            //Country
+            
+            //Database.tlkpCountry tlkpCountry = (Database.tlkpCountry)cboCountry.EditValue;
+            //tlkpFederalStateBindingSource.DataSource = from row in dataContext.tlkpFederalState
+            //                                   where row.FKCountry == tlkpCountry.PKCountry
+            //                                   select row;
+            //this.cboFederalstate.Properties.DataSource = tlkpFederalStateBindingSource.DataSource;
+        }
     }
 }

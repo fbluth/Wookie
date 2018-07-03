@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucContact2));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.tblContactBindingSource = new System.Windows.Forms.BindingSource();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -361,6 +361,7 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry = new DevExpress.XtraLayout.LayoutControlItem();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -441,6 +442,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry)).BeginInit();
+            this.tabNavigationPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -471,7 +474,7 @@
             this.riLookupFederalState,
             this.riLookupPrefix,
             this.riLookupCountry});
-            this.gridControl1.Size = new System.Drawing.Size(750, 706);
+            this.gridControl1.Size = new System.Drawing.Size(755, 713);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -733,6 +736,7 @@
             this.btnContactNew.Id = 5;
             this.btnContactNew.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnContactNew.ImageOptions.SvgImage")));
             this.btnContactNew.Name = "btnContactNew";
+            this.btnContactNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnContactNew_ItemClick);
             // 
             // btnContactEdit
             // 
@@ -1079,71 +1083,85 @@
             // 
             // undoItem1
             // 
+            this.undoItem1.Enabled = false;
             this.undoItem1.Id = 13;
             this.undoItem1.Name = "undoItem1";
             // 
             // redoItem1
             // 
+            this.redoItem1.Enabled = false;
             this.redoItem1.Id = 14;
             this.redoItem1.Name = "redoItem1";
             // 
             // fileNewItem1
             // 
+            this.fileNewItem1.Enabled = false;
             this.fileNewItem1.Id = 15;
             this.fileNewItem1.Name = "fileNewItem1";
             // 
             // fileOpenItem1
             // 
+            this.fileOpenItem1.Enabled = false;
             this.fileOpenItem1.Id = 16;
             this.fileOpenItem1.Name = "fileOpenItem1";
             // 
             // fileSaveItem1
             // 
+            this.fileSaveItem1.Enabled = false;
             this.fileSaveItem1.Id = 17;
             this.fileSaveItem1.Name = "fileSaveItem1";
             // 
             // fileSaveAsItem1
             // 
+            this.fileSaveAsItem1.Enabled = false;
             this.fileSaveAsItem1.Id = 18;
             this.fileSaveAsItem1.Name = "fileSaveAsItem1";
             // 
             // quickPrintItem1
             // 
+            this.quickPrintItem1.Enabled = false;
             this.quickPrintItem1.Id = 19;
             this.quickPrintItem1.Name = "quickPrintItem1";
             // 
             // printItem1
             // 
+            this.printItem1.Enabled = false;
             this.printItem1.Id = 20;
             this.printItem1.Name = "printItem1";
             // 
             // printPreviewItem1
             // 
+            this.printPreviewItem1.Enabled = false;
             this.printPreviewItem1.Id = 21;
             this.printPreviewItem1.Name = "printPreviewItem1";
             // 
             // showDocumentPropertiesFormItem1
             // 
+            this.showDocumentPropertiesFormItem1.Enabled = false;
             this.showDocumentPropertiesFormItem1.Id = 22;
             this.showDocumentPropertiesFormItem1.Name = "showDocumentPropertiesFormItem1";
             // 
             // pasteItem1
             // 
+            this.pasteItem1.Enabled = false;
             this.pasteItem1.Id = 23;
             this.pasteItem1.Name = "pasteItem1";
             // 
             // cutItem1
             // 
+            this.cutItem1.Enabled = false;
             this.cutItem1.Id = 24;
             this.cutItem1.Name = "cutItem1";
             // 
             // copyItem1
             // 
+            this.copyItem1.Enabled = false;
             this.copyItem1.Id = 25;
             this.copyItem1.Name = "copyItem1";
             // 
             // pasteSpecialItem1
             // 
+            this.pasteSpecialItem1.Enabled = false;
             this.pasteSpecialItem1.Id = 26;
             this.pasteSpecialItem1.Name = "pasteSpecialItem1";
             // 
@@ -1178,61 +1196,73 @@
             // 
             // fontSizeIncreaseItem1
             // 
+            this.fontSizeIncreaseItem1.Enabled = false;
             this.fontSizeIncreaseItem1.Id = 29;
             this.fontSizeIncreaseItem1.Name = "fontSizeIncreaseItem1";
             // 
             // fontSizeDecreaseItem1
             // 
+            this.fontSizeDecreaseItem1.Enabled = false;
             this.fontSizeDecreaseItem1.Id = 30;
             this.fontSizeDecreaseItem1.Name = "fontSizeDecreaseItem1";
             // 
             // toggleFontBoldItem1
             // 
+            this.toggleFontBoldItem1.Enabled = false;
             this.toggleFontBoldItem1.Id = 31;
             this.toggleFontBoldItem1.Name = "toggleFontBoldItem1";
             // 
             // toggleFontItalicItem1
             // 
+            this.toggleFontItalicItem1.Enabled = false;
             this.toggleFontItalicItem1.Id = 32;
             this.toggleFontItalicItem1.Name = "toggleFontItalicItem1";
             // 
             // toggleFontUnderlineItem1
             // 
+            this.toggleFontUnderlineItem1.Enabled = false;
             this.toggleFontUnderlineItem1.Id = 33;
             this.toggleFontUnderlineItem1.Name = "toggleFontUnderlineItem1";
             // 
             // toggleFontDoubleUnderlineItem1
             // 
+            this.toggleFontDoubleUnderlineItem1.Enabled = false;
             this.toggleFontDoubleUnderlineItem1.Id = 34;
             this.toggleFontDoubleUnderlineItem1.Name = "toggleFontDoubleUnderlineItem1";
             // 
             // toggleFontStrikeoutItem1
             // 
+            this.toggleFontStrikeoutItem1.Enabled = false;
             this.toggleFontStrikeoutItem1.Id = 35;
             this.toggleFontStrikeoutItem1.Name = "toggleFontStrikeoutItem1";
             // 
             // toggleFontDoubleStrikeoutItem1
             // 
+            this.toggleFontDoubleStrikeoutItem1.Enabled = false;
             this.toggleFontDoubleStrikeoutItem1.Id = 36;
             this.toggleFontDoubleStrikeoutItem1.Name = "toggleFontDoubleStrikeoutItem1";
             // 
             // toggleFontSuperscriptItem1
             // 
+            this.toggleFontSuperscriptItem1.Enabled = false;
             this.toggleFontSuperscriptItem1.Id = 37;
             this.toggleFontSuperscriptItem1.Name = "toggleFontSuperscriptItem1";
             // 
             // toggleFontSubscriptItem1
             // 
+            this.toggleFontSubscriptItem1.Enabled = false;
             this.toggleFontSubscriptItem1.Id = 38;
             this.toggleFontSubscriptItem1.Name = "toggleFontSubscriptItem1";
             // 
             // changeFontColorItem1
             // 
+            this.changeFontColorItem1.Enabled = false;
             this.changeFontColorItem1.Id = 39;
             this.changeFontColorItem1.Name = "changeFontColorItem1";
             // 
             // changeFontHighlightColorItem1
             // 
+            this.changeFontHighlightColorItem1.Enabled = false;
             this.changeFontHighlightColorItem1.Id = 40;
             this.changeFontHighlightColorItem1.Name = "changeFontHighlightColorItem1";
             // 
@@ -1278,61 +1308,73 @@
             // 
             // clearFormattingItem1
             // 
+            this.clearFormattingItem1.Enabled = false;
             this.clearFormattingItem1.Id = 46;
             this.clearFormattingItem1.Name = "clearFormattingItem1";
             // 
             // showFontFormItem1
             // 
+            this.showFontFormItem1.Enabled = false;
             this.showFontFormItem1.Id = 47;
             this.showFontFormItem1.Name = "showFontFormItem1";
             // 
             // toggleBulletedListItem1
             // 
+            this.toggleBulletedListItem1.Enabled = false;
             this.toggleBulletedListItem1.Id = 48;
             this.toggleBulletedListItem1.Name = "toggleBulletedListItem1";
             // 
             // toggleNumberingListItem1
             // 
+            this.toggleNumberingListItem1.Enabled = false;
             this.toggleNumberingListItem1.Id = 49;
             this.toggleNumberingListItem1.Name = "toggleNumberingListItem1";
             // 
             // toggleMultiLevelListItem1
             // 
+            this.toggleMultiLevelListItem1.Enabled = false;
             this.toggleMultiLevelListItem1.Id = 50;
             this.toggleMultiLevelListItem1.Name = "toggleMultiLevelListItem1";
             // 
             // decreaseIndentItem1
             // 
+            this.decreaseIndentItem1.Enabled = false;
             this.decreaseIndentItem1.Id = 51;
             this.decreaseIndentItem1.Name = "decreaseIndentItem1";
             // 
             // increaseIndentItem1
             // 
+            this.increaseIndentItem1.Enabled = false;
             this.increaseIndentItem1.Id = 52;
             this.increaseIndentItem1.Name = "increaseIndentItem1";
             // 
             // toggleParagraphAlignmentLeftItem1
             // 
+            this.toggleParagraphAlignmentLeftItem1.Enabled = false;
             this.toggleParagraphAlignmentLeftItem1.Id = 53;
             this.toggleParagraphAlignmentLeftItem1.Name = "toggleParagraphAlignmentLeftItem1";
             // 
             // toggleParagraphAlignmentCenterItem1
             // 
+            this.toggleParagraphAlignmentCenterItem1.Enabled = false;
             this.toggleParagraphAlignmentCenterItem1.Id = 54;
             this.toggleParagraphAlignmentCenterItem1.Name = "toggleParagraphAlignmentCenterItem1";
             // 
             // toggleParagraphAlignmentRightItem1
             // 
+            this.toggleParagraphAlignmentRightItem1.Enabled = false;
             this.toggleParagraphAlignmentRightItem1.Id = 55;
             this.toggleParagraphAlignmentRightItem1.Name = "toggleParagraphAlignmentRightItem1";
             // 
             // toggleParagraphAlignmentJustifyItem1
             // 
+            this.toggleParagraphAlignmentJustifyItem1.Enabled = false;
             this.toggleParagraphAlignmentJustifyItem1.Id = 56;
             this.toggleParagraphAlignmentJustifyItem1.Name = "toggleParagraphAlignmentJustifyItem1";
             // 
             // toggleShowWhitespaceItem1
             // 
+            this.toggleShowWhitespaceItem1.Enabled = false;
             this.toggleShowWhitespaceItem1.Id = 57;
             this.toggleShowWhitespaceItem1.Name = "toggleShowWhitespaceItem1";
             // 
@@ -1410,11 +1452,13 @@
             // 
             // changeParagraphBackColorItem1
             // 
+            this.changeParagraphBackColorItem1.Enabled = false;
             this.changeParagraphBackColorItem1.Id = 67;
             this.changeParagraphBackColorItem1.Name = "changeParagraphBackColorItem1";
             // 
             // showParagraphFormItem1
             // 
+            this.showParagraphFormItem1.Enabled = false;
             this.showParagraphFormItem1.Id = 68;
             this.showParagraphFormItem1.Name = "showParagraphFormItem1";
             // 
@@ -1435,76 +1479,91 @@
             // 
             // showEditStyleFormItem1
             // 
+            this.showEditStyleFormItem1.Enabled = false;
             this.showEditStyleFormItem1.Id = 70;
             this.showEditStyleFormItem1.Name = "showEditStyleFormItem1";
             // 
             // findItem1
             // 
+            this.findItem1.Enabled = false;
             this.findItem1.Id = 71;
             this.findItem1.Name = "findItem1";
             // 
             // replaceItem1
             // 
+            this.replaceItem1.Enabled = false;
             this.replaceItem1.Id = 72;
             this.replaceItem1.Name = "replaceItem1";
             // 
             // insertPageBreakItem21
             // 
+            this.insertPageBreakItem21.Enabled = false;
             this.insertPageBreakItem21.Id = 73;
             this.insertPageBreakItem21.Name = "insertPageBreakItem21";
             // 
             // insertTableItem1
             // 
+            this.insertTableItem1.Enabled = false;
             this.insertTableItem1.Id = 74;
             this.insertTableItem1.Name = "insertTableItem1";
             // 
             // insertPictureItem1
             // 
+            this.insertPictureItem1.Enabled = false;
             this.insertPictureItem1.Id = 75;
             this.insertPictureItem1.Name = "insertPictureItem1";
             // 
             // insertFloatingPictureItem1
             // 
+            this.insertFloatingPictureItem1.Enabled = false;
             this.insertFloatingPictureItem1.Id = 76;
             this.insertFloatingPictureItem1.Name = "insertFloatingPictureItem1";
             // 
             // insertBookmarkItem1
             // 
+            this.insertBookmarkItem1.Enabled = false;
             this.insertBookmarkItem1.Id = 77;
             this.insertBookmarkItem1.Name = "insertBookmarkItem1";
             // 
             // insertHyperlinkItem1
             // 
+            this.insertHyperlinkItem1.Enabled = false;
             this.insertHyperlinkItem1.Id = 78;
             this.insertHyperlinkItem1.Name = "insertHyperlinkItem1";
             // 
             // editPageHeaderItem1
             // 
+            this.editPageHeaderItem1.Enabled = false;
             this.editPageHeaderItem1.Id = 79;
             this.editPageHeaderItem1.Name = "editPageHeaderItem1";
             // 
             // editPageFooterItem1
             // 
+            this.editPageFooterItem1.Enabled = false;
             this.editPageFooterItem1.Id = 80;
             this.editPageFooterItem1.Name = "editPageFooterItem1";
             // 
             // insertPageNumberItem1
             // 
+            this.insertPageNumberItem1.Enabled = false;
             this.insertPageNumberItem1.Id = 81;
             this.insertPageNumberItem1.Name = "insertPageNumberItem1";
             // 
             // insertPageCountItem1
             // 
+            this.insertPageCountItem1.Enabled = false;
             this.insertPageCountItem1.Id = 82;
             this.insertPageCountItem1.Name = "insertPageCountItem1";
             // 
             // insertTextBoxItem1
             // 
+            this.insertTextBoxItem1.Enabled = false;
             this.insertTextBoxItem1.Id = 83;
             this.insertTextBoxItem1.Name = "insertTextBoxItem1";
             // 
             // insertSymbolItem1
             // 
+            this.insertSymbolItem1.Enabled = false;
             this.insertSymbolItem1.Id = 84;
             this.insertSymbolItem1.Name = "insertSymbolItem1";
             // 
@@ -1583,6 +1642,7 @@
             // 
             // changeSectionPaperKindItem1
             // 
+            this.changeSectionPaperKindItem1.Enabled = false;
             this.changeSectionPaperKindItem1.Id = 94;
             this.changeSectionPaperKindItem1.Name = "changeSectionPaperKindItem1";
             // 
@@ -1732,16 +1792,19 @@
             // 
             // changePageColorItem1
             // 
+            this.changePageColorItem1.Enabled = false;
             this.changePageColorItem1.Id = 113;
             this.changePageColorItem1.Name = "changePageColorItem1";
             // 
             // insertTableOfContentsItem1
             // 
+            this.insertTableOfContentsItem1.Enabled = false;
             this.insertTableOfContentsItem1.Id = 114;
             this.insertTableOfContentsItem1.Name = "insertTableOfContentsItem1";
             // 
             // updateTableOfContentsItem1
             // 
+            this.updateTableOfContentsItem1.Enabled = false;
             this.updateTableOfContentsItem1.Id = 115;
             this.updateTableOfContentsItem1.Name = "updateTableOfContentsItem1";
             // 
@@ -1909,56 +1972,67 @@
             // 
             // updateTableOfFiguresItem1
             // 
+            this.updateTableOfFiguresItem1.Enabled = false;
             this.updateTableOfFiguresItem1.Id = 135;
             this.updateTableOfFiguresItem1.Name = "updateTableOfFiguresItem1";
             // 
             // insertMergeFieldItem1
             // 
+            this.insertMergeFieldItem1.Enabled = false;
             this.insertMergeFieldItem1.Id = 136;
             this.insertMergeFieldItem1.Name = "insertMergeFieldItem1";
             // 
             // showAllFieldCodesItem1
             // 
+            this.showAllFieldCodesItem1.Enabled = false;
             this.showAllFieldCodesItem1.Id = 137;
             this.showAllFieldCodesItem1.Name = "showAllFieldCodesItem1";
             // 
             // showAllFieldResultsItem1
             // 
+            this.showAllFieldResultsItem1.Enabled = false;
             this.showAllFieldResultsItem1.Id = 138;
             this.showAllFieldResultsItem1.Name = "showAllFieldResultsItem1";
             // 
             // toggleViewMergedDataItem1
             // 
+            this.toggleViewMergedDataItem1.Enabled = false;
             this.toggleViewMergedDataItem1.Id = 139;
             this.toggleViewMergedDataItem1.Name = "toggleViewMergedDataItem1";
             // 
             // checkSpellingItem1
             // 
+            this.checkSpellingItem1.Enabled = false;
             this.checkSpellingItem1.Id = 140;
             this.checkSpellingItem1.Name = "checkSpellingItem1";
             // 
             // changeLanguageItem1
             // 
+            this.changeLanguageItem1.Enabled = false;
             this.changeLanguageItem1.Id = 141;
             this.changeLanguageItem1.Name = "changeLanguageItem1";
             // 
             // protectDocumentItem1
             // 
+            this.protectDocumentItem1.Enabled = false;
             this.protectDocumentItem1.Id = 142;
             this.protectDocumentItem1.Name = "protectDocumentItem1";
             // 
             // changeRangeEditingPermissionsItem1
             // 
+            this.changeRangeEditingPermissionsItem1.Enabled = false;
             this.changeRangeEditingPermissionsItem1.Id = 143;
             this.changeRangeEditingPermissionsItem1.Name = "changeRangeEditingPermissionsItem1";
             // 
             // unprotectDocumentItem1
             // 
+            this.unprotectDocumentItem1.Enabled = false;
             this.unprotectDocumentItem1.Id = 144;
             this.unprotectDocumentItem1.Name = "unprotectDocumentItem1";
             // 
             // newCommentItem1
             // 
+            this.newCommentItem1.Enabled = false;
             this.newCommentItem1.Id = 145;
             this.newCommentItem1.Name = "newCommentItem1";
             // 
@@ -1996,137 +2070,163 @@
             // 
             // previousCommentItem1
             // 
+            this.previousCommentItem1.Enabled = false;
             this.previousCommentItem1.Id = 150;
             this.previousCommentItem1.Name = "previousCommentItem1";
             // 
             // nextCommentItem1
             // 
+            this.nextCommentItem1.Enabled = false;
             this.nextCommentItem1.Id = 151;
             this.nextCommentItem1.Name = "nextCommentItem1";
             // 
             // changeCommentItem1
             // 
+            this.changeCommentItem1.Enabled = false;
             this.changeCommentItem1.Id = 152;
             this.changeCommentItem1.Name = "changeCommentItem1";
             // 
             // reviewersItem1
             // 
+            this.reviewersItem1.Enabled = false;
             this.reviewersItem1.Id = 153;
             this.reviewersItem1.Name = "reviewersItem1";
             // 
             // reviewingPaneItem1
             // 
+            this.reviewingPaneItem1.Enabled = false;
             this.reviewingPaneItem1.Id = 154;
             this.reviewingPaneItem1.Name = "reviewingPaneItem1";
             // 
             // switchToSimpleViewItem1
             // 
+            this.switchToSimpleViewItem1.Enabled = false;
             this.switchToSimpleViewItem1.Id = 155;
             this.switchToSimpleViewItem1.Name = "switchToSimpleViewItem1";
             // 
             // switchToDraftViewItem1
             // 
+            this.switchToDraftViewItem1.Enabled = false;
             this.switchToDraftViewItem1.Id = 156;
             this.switchToDraftViewItem1.Name = "switchToDraftViewItem1";
             // 
             // switchToPrintLayoutViewItem1
             // 
+            this.switchToPrintLayoutViewItem1.Enabled = false;
             this.switchToPrintLayoutViewItem1.Id = 157;
             this.switchToPrintLayoutViewItem1.Name = "switchToPrintLayoutViewItem1";
             // 
             // toggleShowHorizontalRulerItem1
             // 
+            this.toggleShowHorizontalRulerItem1.Enabled = false;
             this.toggleShowHorizontalRulerItem1.Id = 158;
             this.toggleShowHorizontalRulerItem1.Name = "toggleShowHorizontalRulerItem1";
             // 
             // toggleShowVerticalRulerItem1
             // 
+            this.toggleShowVerticalRulerItem1.Enabled = false;
             this.toggleShowVerticalRulerItem1.Id = 159;
             this.toggleShowVerticalRulerItem1.Name = "toggleShowVerticalRulerItem1";
             // 
             // zoomOutItem1
             // 
+            this.zoomOutItem1.Enabled = false;
             this.zoomOutItem1.Id = 160;
             this.zoomOutItem1.Name = "zoomOutItem1";
             // 
             // zoomInItem1
             // 
+            this.zoomInItem1.Enabled = false;
             this.zoomInItem1.Id = 161;
             this.zoomInItem1.Name = "zoomInItem1";
             // 
             // goToPageHeaderItem1
             // 
+            this.goToPageHeaderItem1.Enabled = false;
             this.goToPageHeaderItem1.Id = 162;
             this.goToPageHeaderItem1.Name = "goToPageHeaderItem1";
             // 
             // goToPageFooterItem1
             // 
+            this.goToPageFooterItem1.Enabled = false;
             this.goToPageFooterItem1.Id = 163;
             this.goToPageFooterItem1.Name = "goToPageFooterItem1";
             // 
             // goToNextHeaderFooterItem1
             // 
+            this.goToNextHeaderFooterItem1.Enabled = false;
             this.goToNextHeaderFooterItem1.Id = 164;
             this.goToNextHeaderFooterItem1.Name = "goToNextHeaderFooterItem1";
             // 
             // goToPreviousHeaderFooterItem1
             // 
+            this.goToPreviousHeaderFooterItem1.Enabled = false;
             this.goToPreviousHeaderFooterItem1.Id = 165;
             this.goToPreviousHeaderFooterItem1.Name = "goToPreviousHeaderFooterItem1";
             // 
             // toggleLinkToPreviousItem1
             // 
+            this.toggleLinkToPreviousItem1.Enabled = false;
             this.toggleLinkToPreviousItem1.Id = 166;
             this.toggleLinkToPreviousItem1.Name = "toggleLinkToPreviousItem1";
             // 
             // toggleDifferentFirstPageItem1
             // 
+            this.toggleDifferentFirstPageItem1.Enabled = false;
             this.toggleDifferentFirstPageItem1.Id = 167;
             this.toggleDifferentFirstPageItem1.Name = "toggleDifferentFirstPageItem1";
             // 
             // toggleDifferentOddAndEvenPagesItem1
             // 
+            this.toggleDifferentOddAndEvenPagesItem1.Enabled = false;
             this.toggleDifferentOddAndEvenPagesItem1.Id = 168;
             this.toggleDifferentOddAndEvenPagesItem1.Name = "toggleDifferentOddAndEvenPagesItem1";
             // 
             // closePageHeaderFooterItem1
             // 
+            this.closePageHeaderFooterItem1.Enabled = false;
             this.closePageHeaderFooterItem1.Id = 169;
             this.closePageHeaderFooterItem1.Name = "closePageHeaderFooterItem1";
             // 
             // toggleFirstRowItem1
             // 
             this.toggleFirstRowItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            this.toggleFirstRowItem1.Enabled = false;
             this.toggleFirstRowItem1.Id = 170;
             this.toggleFirstRowItem1.Name = "toggleFirstRowItem1";
             // 
             // toggleLastRowItem1
             // 
             this.toggleLastRowItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            this.toggleLastRowItem1.Enabled = false;
             this.toggleLastRowItem1.Id = 171;
             this.toggleLastRowItem1.Name = "toggleLastRowItem1";
             // 
             // toggleBandedRowsItem1
             // 
             this.toggleBandedRowsItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            this.toggleBandedRowsItem1.Enabled = false;
             this.toggleBandedRowsItem1.Id = 172;
             this.toggleBandedRowsItem1.Name = "toggleBandedRowsItem1";
             // 
             // toggleFirstColumnItem1
             // 
             this.toggleFirstColumnItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            this.toggleFirstColumnItem1.Enabled = false;
             this.toggleFirstColumnItem1.Id = 173;
             this.toggleFirstColumnItem1.Name = "toggleFirstColumnItem1";
             // 
             // toggleLastColumnItem1
             // 
             this.toggleLastColumnItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            this.toggleLastColumnItem1.Enabled = false;
             this.toggleLastColumnItem1.Id = 174;
             this.toggleLastColumnItem1.Name = "toggleLastColumnItem1";
             // 
             // toggleBandedColumnsItem1
             // 
             this.toggleBandedColumnsItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            this.toggleBandedColumnsItem1.Enabled = false;
             this.toggleBandedColumnsItem1.Id = 175;
             this.toggleBandedColumnsItem1.Name = "toggleBandedColumnsItem1";
             // 
@@ -2141,7 +2241,7 @@
             // 
             this.galleryChangeTableStyleItem1.Gallery.ColumnCount = 3;
             this.galleryChangeTableStyleItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup3});
+            galleryItemGroup1});
             this.galleryChangeTableStyleItem1.Gallery.ImageSize = new System.Drawing.Size(65, 46);
             this.galleryChangeTableStyleItem1.Id = 176;
             this.galleryChangeTableStyleItem1.ModifyItemLink = null;
@@ -2183,6 +2283,7 @@
             // 
             // changeTableBorderColorItem1
             // 
+            this.changeTableBorderColorItem1.Enabled = false;
             this.changeTableBorderColorItem1.Id = 179;
             this.changeTableBorderColorItem1.Name = "changeTableBorderColorItem1";
             // 
@@ -2284,11 +2385,13 @@
             // 
             // changeTableCellsShadingItem1
             // 
+            this.changeTableCellsShadingItem1.Enabled = false;
             this.changeTableCellsShadingItem1.Id = 192;
             this.changeTableCellsShadingItem1.Name = "changeTableCellsShadingItem1";
             // 
             // showBorderShadingFormItem1
             // 
+            this.showBorderShadingFormItem1.Enabled = false;
             this.showBorderShadingFormItem1.Id = 193;
             this.showBorderShadingFormItem1.Name = "showBorderShadingFormItem1";
             // 
@@ -2334,6 +2437,7 @@
             // 
             // showTablePropertiesFormItem1
             // 
+            this.showTablePropertiesFormItem1.Enabled = false;
             this.showTablePropertiesFormItem1.Id = 199;
             this.showTablePropertiesFormItem1.Name = "showTablePropertiesFormItem1";
             // 
@@ -2379,41 +2483,49 @@
             // 
             // insertTableRowAboveItem1
             // 
+            this.insertTableRowAboveItem1.Enabled = false;
             this.insertTableRowAboveItem1.Id = 205;
             this.insertTableRowAboveItem1.Name = "insertTableRowAboveItem1";
             // 
             // insertTableRowBelowItem1
             // 
+            this.insertTableRowBelowItem1.Enabled = false;
             this.insertTableRowBelowItem1.Id = 206;
             this.insertTableRowBelowItem1.Name = "insertTableRowBelowItem1";
             // 
             // insertTableColumnToLeftItem1
             // 
+            this.insertTableColumnToLeftItem1.Enabled = false;
             this.insertTableColumnToLeftItem1.Id = 207;
             this.insertTableColumnToLeftItem1.Name = "insertTableColumnToLeftItem1";
             // 
             // insertTableColumnToRightItem1
             // 
+            this.insertTableColumnToRightItem1.Enabled = false;
             this.insertTableColumnToRightItem1.Id = 208;
             this.insertTableColumnToRightItem1.Name = "insertTableColumnToRightItem1";
             // 
             // showInsertTableCellsFormItem1
             // 
+            this.showInsertTableCellsFormItem1.Enabled = false;
             this.showInsertTableCellsFormItem1.Id = 209;
             this.showInsertTableCellsFormItem1.Name = "showInsertTableCellsFormItem1";
             // 
             // mergeTableCellsItem1
             // 
+            this.mergeTableCellsItem1.Enabled = false;
             this.mergeTableCellsItem1.Id = 210;
             this.mergeTableCellsItem1.Name = "mergeTableCellsItem1";
             // 
             // showSplitTableCellsForm1
             // 
+            this.showSplitTableCellsForm1.Enabled = false;
             this.showSplitTableCellsForm1.Id = 211;
             this.showSplitTableCellsForm1.Name = "showSplitTableCellsForm1";
             // 
             // splitTableItem1
             // 
+            this.splitTableItem1.Enabled = false;
             this.splitTableItem1.Id = 212;
             this.splitTableItem1.Name = "splitTableItem1";
             // 
@@ -2451,61 +2563,73 @@
             // 
             // toggleTableCellsTopLeftAlignmentItem1
             // 
+            this.toggleTableCellsTopLeftAlignmentItem1.Enabled = false;
             this.toggleTableCellsTopLeftAlignmentItem1.Id = 217;
             this.toggleTableCellsTopLeftAlignmentItem1.Name = "toggleTableCellsTopLeftAlignmentItem1";
             // 
             // toggleTableCellsMiddleLeftAlignmentItem1
             // 
+            this.toggleTableCellsMiddleLeftAlignmentItem1.Enabled = false;
             this.toggleTableCellsMiddleLeftAlignmentItem1.Id = 218;
             this.toggleTableCellsMiddleLeftAlignmentItem1.Name = "toggleTableCellsMiddleLeftAlignmentItem1";
             // 
             // toggleTableCellsBottomLeftAlignmentItem1
             // 
+            this.toggleTableCellsBottomLeftAlignmentItem1.Enabled = false;
             this.toggleTableCellsBottomLeftAlignmentItem1.Id = 219;
             this.toggleTableCellsBottomLeftAlignmentItem1.Name = "toggleTableCellsBottomLeftAlignmentItem1";
             // 
             // toggleTableCellsTopCenterAlignmentItem1
             // 
+            this.toggleTableCellsTopCenterAlignmentItem1.Enabled = false;
             this.toggleTableCellsTopCenterAlignmentItem1.Id = 220;
             this.toggleTableCellsTopCenterAlignmentItem1.Name = "toggleTableCellsTopCenterAlignmentItem1";
             // 
             // toggleTableCellsMiddleCenterAlignmentItem1
             // 
+            this.toggleTableCellsMiddleCenterAlignmentItem1.Enabled = false;
             this.toggleTableCellsMiddleCenterAlignmentItem1.Id = 221;
             this.toggleTableCellsMiddleCenterAlignmentItem1.Name = "toggleTableCellsMiddleCenterAlignmentItem1";
             // 
             // toggleTableCellsBottomCenterAlignmentItem1
             // 
+            this.toggleTableCellsBottomCenterAlignmentItem1.Enabled = false;
             this.toggleTableCellsBottomCenterAlignmentItem1.Id = 222;
             this.toggleTableCellsBottomCenterAlignmentItem1.Name = "toggleTableCellsBottomCenterAlignmentItem1";
             // 
             // toggleTableCellsTopRightAlignmentItem1
             // 
+            this.toggleTableCellsTopRightAlignmentItem1.Enabled = false;
             this.toggleTableCellsTopRightAlignmentItem1.Id = 223;
             this.toggleTableCellsTopRightAlignmentItem1.Name = "toggleTableCellsTopRightAlignmentItem1";
             // 
             // toggleTableCellsMiddleRightAlignmentItem1
             // 
+            this.toggleTableCellsMiddleRightAlignmentItem1.Enabled = false;
             this.toggleTableCellsMiddleRightAlignmentItem1.Id = 224;
             this.toggleTableCellsMiddleRightAlignmentItem1.Name = "toggleTableCellsMiddleRightAlignmentItem1";
             // 
             // toggleTableCellsBottomRightAlignmentItem1
             // 
+            this.toggleTableCellsBottomRightAlignmentItem1.Enabled = false;
             this.toggleTableCellsBottomRightAlignmentItem1.Id = 225;
             this.toggleTableCellsBottomRightAlignmentItem1.Name = "toggleTableCellsBottomRightAlignmentItem1";
             // 
             // showTableOptionsFormItem1
             // 
+            this.showTableOptionsFormItem1.Enabled = false;
             this.showTableOptionsFormItem1.Id = 226;
             this.showTableOptionsFormItem1.Name = "showTableOptionsFormItem1";
             // 
             // changeFloatingObjectFillColorItem1
             // 
+            this.changeFloatingObjectFillColorItem1.Enabled = false;
             this.changeFloatingObjectFillColorItem1.Id = 227;
             this.changeFloatingObjectFillColorItem1.Name = "changeFloatingObjectFillColorItem1";
             // 
             // changeFloatingObjectOutlineColorItem1
             // 
+            this.changeFloatingObjectOutlineColorItem1.Enabled = false;
             this.changeFloatingObjectOutlineColorItem1.Id = 228;
             this.changeFloatingObjectOutlineColorItem1.Name = "changeFloatingObjectOutlineColorItem1";
             // 
@@ -2738,6 +2862,7 @@
             this.pictureEdit1.Properties.OptionsMask.MaskType = DevExpress.XtraEditors.Controls.PictureEditMaskType.RoundedRect;
             this.pictureEdit1.Properties.OptionsMask.RectCornerRadius = 25;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.ShowMenu = false;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit1.Size = new System.Drawing.Size(156, 157);
             this.pictureEdit1.TabIndex = 0;
@@ -2746,12 +2871,14 @@
             // 
             this.lblName.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Appearance.Options.UseFont = true;
+            this.lblName.Appearance.Options.UseTextOptions = true;
+            this.lblName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Bottom;
             this.lblName.AutoEllipsis = true;
             this.lblName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblName.Location = new System.Drawing.Point(161, 40);
+            this.lblName.Location = new System.Drawing.Point(161, 56);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(278, 46);
+            this.lblName.Size = new System.Drawing.Size(278, 35);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Name";
             // 
@@ -2759,12 +2886,14 @@
             // 
             this.lblTitel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitel.Appearance.Options.UseFont = true;
+            this.lblTitel.Appearance.Options.UseTextOptions = true;
+            this.lblTitel.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.lblTitel.AutoEllipsis = true;
             this.lblTitel.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblTitel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitel.Location = new System.Drawing.Point(161, 86);
+            this.lblTitel.Location = new System.Drawing.Point(161, 91);
             this.lblTitel.Name = "lblTitel";
-            this.lblTitel.Size = new System.Drawing.Size(278, 39);
+            this.lblTitel.Size = new System.Drawing.Size(278, 34);
             this.lblTitel.TabIndex = 2;
             this.lblTitel.Text = "Title";
             // 
@@ -2801,7 +2930,7 @@
             this.tabNavigationPage2});
             this.tabPane1.RegularSize = new System.Drawing.Size(439, 526);
             this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(439, 526);
+            this.tabPane1.Size = new System.Drawing.Size(439, 533);
             this.tabPane1.TabIndex = 3;
             // 
             // tabNavigationPage1
@@ -2809,7 +2938,7 @@
             this.tabNavigationPage1.Caption = "Adresse";
             this.tabNavigationPage1.Controls.Add(this.dataLayoutControl1);
             this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(439, 497);
+            this.tabNavigationPage1.Size = new System.Drawing.Size(439, 506);
             // 
             // dataLayoutControl1
             // 
@@ -2835,19 +2964,19 @@
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1248, 457, 650, 400);
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(439, 497);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(439, 506);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // gridControl2
             // 
             this.gridControl2.DataSource = this.tblContactCommunicationBindingSource;
-            this.gridControl2.Location = new System.Drawing.Point(12, 263);
+            this.gridControl2.Location = new System.Drawing.Point(12, 264);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.riCommunicationType});
-            this.gridControl2.Size = new System.Drawing.Size(415, 222);
+            this.gridControl2.Size = new System.Drawing.Size(415, 230);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -2954,7 +3083,6 @@
             this.tlkpCityZipcodeTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.tlkpCityZipcodeTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.tlkpCityZipcodeTextEdit.Properties.Mask.EditMask = "N0";
-            this.tlkpCityZipcodeTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.tlkpCityZipcodeTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.tlkpCityZipcodeTextEdit.Properties.ReadOnly = true;
             this.tlkpCityZipcodeTextEdit.Properties.UseReadOnlyAppearance = false;
@@ -3044,7 +3172,7 @@
             this.cboCountry.MenuManager = this.barManager1;
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Properties.Appearance.Options.UseTextOptions = true;
-            this.cboCountry.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.cboCountry.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.cboCountry.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboCountry.Properties.ReadOnly = true;
@@ -3080,7 +3208,7 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(439, 497);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(439, 506);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -3103,7 +3231,7 @@
             this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(419, 477);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(419, 486);
             // 
             // ItemForTitle
             // 
@@ -3192,9 +3320,9 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl2;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 251);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 252);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(419, 226);
+            this.layoutControlItem1.Size = new System.Drawing.Size(419, 234);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -3203,7 +3331,7 @@
             this.simpleSeparator1.AllowHotTrack = false;
             this.simpleSeparator1.Location = new System.Drawing.Point(0, 240);
             this.simpleSeparator1.Name = "simpleSeparator1";
-            this.simpleSeparator1.Size = new System.Drawing.Size(419, 11);
+            this.simpleSeparator1.Size = new System.Drawing.Size(419, 12);
             this.simpleSeparator1.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 5, 5);
             // 
             // layoutControlItem2
@@ -3227,9 +3355,22 @@
             // tabNavigationPage2
             // 
             this.tabNavigationPage2.Caption = "Notizen";
+            this.tabNavigationPage2.Controls.Add(this.memoEdit1);
             this.tabNavigationPage2.Name = "tabNavigationPage2";
             this.tabNavigationPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.tabNavigationPage2.Size = new System.Drawing.Size(439, 497);
+            this.tabNavigationPage2.Size = new System.Drawing.Size(439, 506);
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tblContactBindingSource, "Notes", true));
+            this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit1.Location = new System.Drawing.Point(5, 5);
+            this.memoEdit1.MenuManager = this.barManager1;
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Properties.ReadOnly = true;
+            this.memoEdit1.Properties.UseReadOnlyAppearance = false;
+            this.memoEdit1.Size = new System.Drawing.Size(429, 496);
+            this.memoEdit1.TabIndex = 0;
             // 
             // separatorControl1
             // 
@@ -3335,7 +3476,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl3.Location = new System.Drawing.Point(161, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(278, 40);
+            this.panelControl3.Size = new System.Drawing.Size(278, 56);
             this.panelControl3.TabIndex = 2;
             // 
             // panelControl4
@@ -3697,6 +3838,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry)).EndInit();
+            this.tabNavigationPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -4066,5 +4209,6 @@
         private DevExpress.XtraRichEdit.UI.FloatingObjectSendToBackItem floatingObjectSendToBackItem1;
         private DevExpress.XtraRichEdit.UI.FloatingObjectSendBehindTextItem floatingObjectSendBehindTextItem1;
         private DevExpress.XtraRichEdit.UI.RichEditBarController richEditBarController1;
+        private DevExpress.XtraEditors.MemoEdit memoEdit1;
     }
 }

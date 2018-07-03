@@ -13,6 +13,7 @@ namespace Wookie.Employee.Contact
     {
 
         private XtraUserControl control = null;
+        private ModulData modulData = null;
 
         public Category()
         {   
@@ -20,8 +21,9 @@ namespace Wookie.Employee.Contact
 
         public void SetConnection(SqlConnection sqlconnection, long? fkExternal)
         {
-            ModulData.SqlConnectionClientDB = sqlconnection;
-            ModulData.FKContactData = fkExternal;            
+            this.modulData = new ModulData();
+            this.modulData.SqlConnectionClientDB = sqlconnection;
+            this.modulData.FKContactData = fkExternal;            
         }
 
         public XtraUserControl Control
@@ -29,15 +31,23 @@ namespace Wookie.Employee.Contact
             get
             {
                 if (this.control == null)
-                    control = new Control.ucContact2();
+                    control = new Control.ucContact2(modulData);
                 return control;
             }
-        }       
+        }
+
+        public ModulData ModulData
+        {
+            get
+            {
+                return this.modulData;
+            }
+        }
     }
 
-    public static class ModulData
+    public class ModulData
     {
-        public static SqlConnection SqlConnectionClientDB;
-        public static long? FKContactData;
+        public SqlConnection SqlConnectionClientDB;
+        public long? FKContactData;
     }
 }

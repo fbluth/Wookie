@@ -4421,7 +4421,7 @@ namespace Wookie.Employee.Contact.Database
 		
 		private System.Nullable<long> _FKCity;
 		
-		private long _FKContactPrefix;
+		private System.Nullable<long> _FKContactPrefix;
 		
 		private string _Title;
 		
@@ -4437,7 +4437,7 @@ namespace Wookie.Employee.Contact.Database
 		
 		private string _Street;
 		
-		private System.Data.Linq.Binary _Notes;
+		private string _Notes;
 		
 		private System.Nullable<long> _FKUserCreated;
 		
@@ -4471,7 +4471,7 @@ namespace Wookie.Employee.Contact.Database
     partial void OnFKContactDataChanged();
     partial void OnFKCityChanging(System.Nullable<long> value);
     partial void OnFKCityChanged();
-    partial void OnFKContactPrefixChanging(long value);
+    partial void OnFKContactPrefixChanging(System.Nullable<long> value);
     partial void OnFKContactPrefixChanged();
     partial void OnTitleChanging(string value);
     partial void OnTitleChanged();
@@ -4487,7 +4487,7 @@ namespace Wookie.Employee.Contact.Database
     partial void OnBirthdateChanged();
     partial void OnStreetChanging(string value);
     partial void OnStreetChanged();
-    partial void OnNotesChanging(System.Data.Linq.Binary value);
+    partial void OnNotesChanging(string value);
     partial void OnNotesChanged();
     partial void OnFKUserCreatedChanging(System.Nullable<long> value);
     partial void OnFKUserCreatedChanged();
@@ -4576,8 +4576,8 @@ namespace Wookie.Employee.Contact.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactPrefix", DbType="BigInt NOT NULL")]
-		public long FKContactPrefix
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKContactPrefix", DbType="BigInt")]
+		public System.Nullable<long> FKContactPrefix
 		{
 			get
 			{
@@ -4740,8 +4740,8 @@ namespace Wookie.Employee.Contact.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Notes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Notes
 		{
 			get
 			{
@@ -4973,7 +4973,7 @@ namespace Wookie.Employee.Contact.Database
 					}
 					else
 					{
-						this._FKContactPrefix = default(long);
+						this._FKContactPrefix = default(Nullable<long>);
 					}
 					this.SendPropertyChanged("tlkpContactPrefix");
 				}

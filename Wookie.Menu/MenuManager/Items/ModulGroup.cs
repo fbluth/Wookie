@@ -15,7 +15,7 @@ namespace Wookie.Menu.MenuManager
         private string caption = null;
         private SvgImage svgImage = null;
         private ModulCollection moduls = null;
-        private AccordionControlElement accordionControlElement = new AccordionControlElement();
+        private AccordionControlElement accordionControlElement = null;
         private MenuManager menuManager = null;
 
         public ModulGroup(string caption)
@@ -65,7 +65,19 @@ namespace Wookie.Menu.MenuManager
                 {
                     accordionControlElement = new AccordionControlElement();
                     accordionControlElement.Text = this.caption;
-                    accordionControlElement.ImageOptions.SvgImage = this.svgImage;                    
+                    accordionControlElement.ImageOptions.SvgImage = this.svgImage;
+
+                    DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+                    DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+                    DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+                    toolTipTitleItem1.ImageOptions.SvgImage = this.svgImage;
+                    toolTipTitleItem1.Text = caption;
+                    toolTipItem1.LeftIndent = 6;
+                    toolTipItem1.Text = caption;
+                    superToolTip1.Items.Add(toolTipTitleItem1);
+                    superToolTip1.Items.Add(toolTipItem1);
+                    accordionControlElement.SuperTip = superToolTip1;
+
                 }
                 return accordionControlElement;
             }

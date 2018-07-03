@@ -16,7 +16,7 @@ using DevExpress.XtraBars;
 
 namespace Wookie.Controls
 {
-    public partial class XtraForm1 : DevExpress.XtraEditors.XtraForm
+    public partial class XtraForm1 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
 
         private SqlConnection SqlConnection = new SqlConnection("Data Source=localhost;Initial Catalog=BS_PM_Mandant1;Persist Security Info=True;User ID=sa;Password=19theta#01");
@@ -29,7 +29,8 @@ namespace Wookie.Controls
 
             menuManager = new MenuManager(Wookie.Tools.Database.MasterDatabase.SqlConnectionMasterDB, this.navigationFrame1,this.accordionControl1);
             menuManager.ClientChanged += new ClientChangeEventHandler(this.ClientChange);
-            menuManager.AddClients(this.btnClient);
+            menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
+            menuManager.AddClients(this.btnClient);            
         }
 
         public XtraForm1(XtraForm parent):this()
@@ -40,9 +41,16 @@ namespace Wookie.Controls
         private void ClientChange(object sender, ClientChangeEventArgs e)
         {            
             menuManager.LoadData(e.Client.PKClient);
+            menuManager.AddSettings();
+
+            this.navigationFrame1.SelectedPage = navPageWelcome;
             this.Text = "Wookie - " + e.Client.Name;
         }
 
+        private void SettingsClicked(object sender, EventArgs e)
+        {
+            this.bar2.Visible = !this.bar2.Visible;
+        }
 
         public void Duplicate(XtraForm parent)
         {
@@ -61,32 +69,9 @@ namespace Wookie.Controls
                 XtraForm1 XtraForm1 = new XtraForm1(this);
                 XtraForm1.Show();
             }
+        }       
 
-        }
-
-        //private void accordionControlElement11_Click(object sender, EventArgs e)
-        //{
-        //    if (this.AssemblyFile != null)
-        //    {
-        //        string assemblyFileDll = this.AssemblyFile.ToLower().EndsWith(".dll") ? this.AssemblyFile : (this.AssemblyFile + ".dll");
-        //        string assemblyFileWithoutDll = this.AssemblyFile.ToLower().EndsWith(".dll") ? this.AssemblyFile.Remove(this.AssemblyFile.Length - 4, 4) : this.AssemblyFile;
-        //        string path = Application.StartupPath + "\\" + assemblyFileDll;
-
-        //        if (System.IO.File.Exists(path))
-        //        {
-        //            var assembly = Assembly.LoadFile(path);
-        //            dynamic instance = Activator.CreateInstance(assembly.GetType(assemblyFileWithoutDll + ".Category"));
-        //            ((ICategory)instance).SetConnection(this.SqlConnection, this.FKExternal);
-        //            XtraUserControl a = ((ICategory)instance).Control;
-        //            a.Dock = DockStyle.Fill;
-
-        //            this.navigationPage1.Controls.Add(a);
-        //            this.navigationFrame1.SelectedPage = this.navigationPage1;
-        //        }
-        //    }
-        //}
-
-        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnStyle_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (SvgSkinPaletteSelector svgSkinPaletteSelector = new SvgSkinPaletteSelector(this))
             {

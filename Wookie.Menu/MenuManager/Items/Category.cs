@@ -111,6 +111,17 @@ namespace Wookie.Menu.MenuManager
                     accordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
                     accordionControlElement.ImageOptions.SvgImage = this.svgImage;
                     accordionControlElement.Click += new EventHandler(this.accordionControlElement_Click);
+
+                    DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+                    DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+                    DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+                    toolTipTitleItem1.ImageOptions.SvgImage = this.svgImage;
+                    toolTipTitleItem1.Text = caption;
+                    toolTipItem1.LeftIndent = 6;
+                    toolTipItem1.Text = caption;
+                    superToolTip1.Items.Add(toolTipTitleItem1);
+                    superToolTip1.Items.Add(toolTipItem1);
+                    accordionControlElement.SuperTip = superToolTip1;
                 }
                 return accordionControlElement;
             }

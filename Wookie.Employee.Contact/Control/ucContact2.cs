@@ -19,41 +19,39 @@ namespace Wookie.Employee.Contact.Control
     {
         private Database.ContactDataContext dataContext = null;
         private ucContactEdit ucContactEdit = null;
-        private ArrayList rows = null;
+        private ModulData modulData = null;
 
-        public ucContact2()
+        public ucContact2(ModulData modulData)
         {
             InitializeComponent();
-
-            this.ucContactEdit = new ucContactEdit {Dock = DockStyle.Fill};
+            this.modulData = modulData;
+            this.ucContactEdit = new ucContactEdit(modulData) {Dock = DockStyle.Fill};
             this.ucContactEdit.StatusChanged += new EventHandler(this.ucContactEdit_StatusChanged);
             this.navEdit.Controls.Add(this.ucContactEdit);
 
             this.LoadData();
+            this.LoadImageComboBoxItems();
 
             this.navigationFrame1.SelectedPage = this.navSelect;
         }
 
         private void LoadData()
         {
-            dataContext = new Database.ContactDataContext(ModulData.SqlConnectionClientDB);
+            dataContext = new Database.ContactDataContext(modulData.SqlConnectionClientDB);
             
             tlkpCityBindingSource.DataSource = dataContext.tlkpCity;
             tlkpContactPrefixBindingSource.DataSource = dataContext.tlkpContactPrefix;
             tlkpFederalStateBindingSource.DataSource = dataContext.tlkpFederalState;
             tlkpCountryBindingSource.DataSource = dataContext.tlkpCountry;
             tlkpContactCommunicationTypeBindingSource.DataSource = dataContext.tlkpContactCommunicationType;
-            tblContactCommunicationBindingSource.DataSource = dataContext.tblContact;
-
-            LoadImageComboBoxItems();
+            //tblContactCommunicationBindingSource.DataSource = dataContext.tblContact;
 
             tblContactBindingSource.DataSource = from row in dataContext.tblContact
-                                                 where row.FKContactData == ModulData.FKContactData
+                                                 where row.FKContactData == modulData.FKContactData
                                                  select row;
 
             gridView1.BestFitColumns(true);
-            tblContactBindingSource.MoveFirst();
-            
+            tblContactBindingSource.MoveFirst();            
         }
 
         private void LoadImageComboBoxItems()
@@ -90,22 +88,26 @@ namespace Wookie.Employee.Contact.Control
             }
         }
 
-        public RibbonControl RibbonControl
-        {
-            get { return null; }
-        }
-
         private void RefreshDataOnScreen()
         {
             Database.tblContact c = (Database.tblContact)tblContactBindingSource.Current;
-            
-            if (this.gridView1.GetSelectedRows().Count() > 0)
-                this.gridView1.RefreshRow(this.gridView1.GetSelectedRows()[0]);
+            if (c != null)
+            {
+                if (this.gridView1.GetSelectedRows().Count() > 0)
+                    this.gridView1.RefreshRow(this.gridView1.GetSelectedRows()[0]);
 
-            this.lblName.Text = ((string)(c.Surname + " " + c.Middlename)).Trim() + " " + c.Name;
-            this.lblTitel.Text = ((string)(c.Title));
+                this.lblName.Text = ((string)(c.Surname + " " + c.Middlename)).Trim() + " " + c.Name;
+                this.lblTitel.Text = ((string)(c.Title));
 
-            tblContactCommunicationBindingSource.DataSource = c;
+                tblContactCommunicationBindingSource.DataSource = c;
+            }
+            else
+            {
+                this.lblName.Text = "Name";
+                this.lblTitel.Text = "Title";
+
+                tblContactCommunicationBindingSource.DataSource = null;
+            }
         }
 
         private void btnContactEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -121,31 +123,56 @@ namespace Wookie.Employee.Contact.Control
         private void EditContact()
         {
             Database.tblContact c = (Database.tblContact)tblContactBindingSource.Current;
-            ucContactEdit.PKContact = c.PKContact;
+            if (c == null) return;
 
-            this.rows = new ArrayList();
+            navigationFrame1.SelectedPage = navEdit;
+            ucContactEdit.Edit(c);
+        }
 
-            // Add the selected rows to the list.
-            Int32[] selectedRowHandles = gridView1.GetSelectedRows();
-            for (int i = 0; i < selectedRowHandles.Length; i++)
-            {
-                int selectedRowHandle = selectedRowHandles[i];
-                if (selectedRowHandle >= 0)
-                    rows.Add(gridView1.GetDataRow(selectedRowHandle));
-            }
-            
-            this.navigationFrame1.SelectedPage = this.navEdit;            
+        private void NewContact()
+        {
+            navigationFrame1.SelectedPage = navEdit;
+            ucContactEdit.New();
         }
 
         private void ucContactEdit_StatusChanged(object sender, EventArgs e)
-        {            
-            this.navigationFrame1.SelectedPage = this.navSelect;
+        {
+            navigationFrame1.SelectedPage = navSelect;
             LoadData();
         }
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LoadData();
+        }
+
+        private void btnContactDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {            
+            try
+            {
+                Database.tblContact c = (Database.tblContact)tblContactBindingSource.Current;
+                if (c != null)
+                {
+                    dataContext.tblContact.DeleteOnSubmit(c);
+                    dataContext.SubmitChanges(System.Data.Linq.ConflictMode.FailOnFirstConflict);
+                }
+            }
+            catch (SqlException exception)
+            {
+                if (exception.Number == 547)
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Datensatz wird noch von anderer Stelle referenziert und kann daher nicht gelöscht werden.", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                    DevExpress.XtraEditors.XtraMessageBox.Show(e.ToString(), "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                LoadData();
+            }
+        }
+
+        private void btnContactNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            NewContact();
         }
 
         private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -159,28 +186,6 @@ namespace Wookie.Employee.Contact.Control
         private void tblContactBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             RefreshDataOnScreen();
-        }
-
-        private void btnContactDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
-            try
-            {
-                Database.tblContact c = (Database.tblContact)tblContactBindingSource.Current;
-                dataContext.tblContact.DeleteOnSubmit(c);
-                dataContext.SubmitChanges(System.Data.Linq.ConflictMode.FailOnFirstConflict);                
-            }
-            catch (SqlException exception)
-            {
-                if (exception.Number == 547)
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Datensatz wird noch von anderer Stelle referenziert und kann daher nicht gelöscht werden.", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                else
-                    DevExpress.XtraEditors.XtraMessageBox.Show(e.ToString(), "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            finally
-            {
-                this.LoadData();
-            }
         }
     }
 }

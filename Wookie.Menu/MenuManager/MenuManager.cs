@@ -19,6 +19,7 @@ namespace Wookie.Menu.MenuManager
         private AccordionControl accordionControl = null;
 
         public event ClientChangeEventHandler ClientChanged;
+        public event EventHandler SettingsClicked;
 
         public MenuManager(System.Data.SqlClient.SqlConnection sqlConnection, NavigationFrame navigationFrame, AccordionControl accordionControl)
         {
@@ -135,7 +136,7 @@ namespace Wookie.Menu.MenuManager
             this.accordionControl.Elements.Clear();
 
             foreach (ModulGroup modulGroup in this.modulGroupCollection.Values)
-            {   
+            {
                 this.accordionControl.Elements.Add(modulGroup.AccordionControlElement);
 
                 if (modulGroup.Moduls == null) continue;
@@ -151,8 +152,48 @@ namespace Wookie.Menu.MenuManager
                     }
                 }
             }
+
+            
         }
-        
+
+        public void AddSettings()
+        {
+            // Add Settings
+            DevExpress.XtraBars.Navigation.AccordionControlElement aceSettings;
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+
+            aceSettings = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            aceSettings.ControlFooterAlignment = DevExpress.XtraBars.Navigation.AccordionItemFooterAlignment.Far;
+            aceSettings.Expanded = true;
+            //aceSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image")));
+            aceSettings.Name = "aceSettings";
+            //toolTipTitleItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Text = "Settings";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Modify general settings which apply to all instances.";
+            toolTipTitleItem2.LeftIndent = 6;
+            toolTipTitleItem2.Text = "T-Systems - Wookie";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.Items.Add(toolTipSeparatorItem1);
+            superToolTip1.Items.Add(toolTipTitleItem2);
+            aceSettings.SuperTip = superToolTip1;
+            aceSettings.Text = "Settings";
+            aceSettings.Click += new System.EventHandler(this.Settings_Click);
+
+            this.accordionControl.Elements.Add(aceSettings);
+        }
+
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            EventArgs eventArgs = new EventArgs();
+            SettingsClicked?.Invoke(this, eventArgs);
+        }
+
         private void categoryClick(Category sender)
         {
             if (sender.NavigationPage != null)
@@ -166,8 +207,6 @@ namespace Wookie.Menu.MenuManager
                 this.navigationFrame.SelectedPage = sender.NavigationPage;
             }      
         }
-
-        
 
         public ModulGroupCollection ModulGroups
         {
