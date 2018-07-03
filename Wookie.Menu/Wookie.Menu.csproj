@@ -88,9 +88,6 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Wookie.Tools\Wookie.Tools.csproj">
