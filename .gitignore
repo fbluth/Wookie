@@ -328,3 +328,7 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/Wookie/Properties/licenses.licx
+/Wookie.Employee.Contact/Properties/licenses.licx
+/Wookie.Menu/Properties/licenses.licx
+/Wookie.Tools/Properties/licenses.licx

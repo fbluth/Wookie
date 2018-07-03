@@ -66,11 +66,14 @@ namespace Wookie.Menu.MenuManager
                     accordionControlElement = new AccordionControlElement();
                     accordionControlElement.Text = this.caption;
                     accordionControlElement.ImageOptions.SvgImage = this.svgImage;
+                  
 
                     DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
                     DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
                     DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
                     toolTipTitleItem1.ImageOptions.SvgImage = this.svgImage;
+                    toolTipTitleItem1.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
+
                     toolTipTitleItem1.Text = caption;
                     toolTipItem1.LeftIndent = 6;
                     toolTipItem1.Text = caption;

@@ -177,9 +177,14 @@ namespace Wookie.Employee.Contact.Control
 
         private void gridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
-            if (e.MenuType == DevExpress.XtraGrid.Views.Grid.GridMenuType.Row)
+            switch (e.MenuType) 
             {
-                popupMenu1.ShowPopup(new Point(MousePosition.X, MousePosition.Y));
+                case DevExpress.XtraGrid.Views.Grid.GridMenuType.Row:
+                    popupMenu1.ShowPopup(new Point(MousePosition.X, MousePosition.Y));
+                    break;
+                case DevExpress.XtraGrid.Views.Grid.GridMenuType.User:
+                    popupMenu1.ShowPopup(new Point(MousePosition.X, MousePosition.Y));
+                    break;
             }
         }
 

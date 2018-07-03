@@ -13,6 +13,8 @@ using Wookie.Menu.MenuManager;
 using System.Data.SqlClient;
 using DevExpress.Customization;
 using DevExpress.XtraBars;
+using DevExpress.LookAndFeel;
+using DevExpress.Skins;
 
 namespace Wookie.Controls
 {
@@ -26,11 +28,30 @@ namespace Wookie.Controls
         public XtraForm1()
         {
             InitializeComponent();
-
+            //SetMinHeight(1); 
             menuManager = new MenuManager(Wookie.Tools.Database.MasterDatabase.SqlConnectionMasterDB, this.navigationFrame1,this.accordionControl1);
             menuManager.ClientChanged += new ClientChangeEventHandler(this.ClientChange);
             menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
-            menuManager.AddClients(this.btnClient);            
+            menuManager.AddClients(this.btnClient);
+
+            
+        }
+
+        private void SetMinHeight(int min)
+        {
+            SkinElement element = AccordionControlSkins.GetSkin(UserLookAndFeel.Default)[AccordionControlSkins.SkinRootGroup];
+            element.ContentMargins.Top = element.ContentMargins.Bottom = 0;
+            element.Size.MinSize = new Size(element.Size.MinSize.Width, min);
+
+            element = AccordionControlSkins.GetSkin(UserLookAndFeel.Default)[AccordionControlSkins.SkinGroup];
+            element.ContentMargins.Top = element.ContentMargins.Bottom = 0;
+            element.Size.MinSize = new Size(element.Size.MinSize.Width, min);
+
+            element = AccordionControlSkins.GetSkin(UserLookAndFeel.Default)[AccordionControlSkins.SkinItem];
+            element.ContentMargins.Top = element.ContentMargins.Bottom = 0;
+            element.Size.MinSize = new Size(element.Size.MinSize.Width, min);
+
+            
         }
 
         public XtraForm1(XtraForm parent):this()
@@ -49,7 +70,8 @@ namespace Wookie.Controls
 
         private void SettingsClicked(object sender, EventArgs e)
         {
-            this.bar2.Visible = !this.bar2.Visible;
+            //this.barTool.Visible = !this.barTool.Visible;
+            flyoutPanel1.ShowPopup();
         }
 
         public void Duplicate(XtraForm parent)
@@ -78,5 +100,7 @@ namespace Wookie.Controls
                 svgSkinPaletteSelector.ShowDialog();
             }
         }
+
+        
     }
 }
