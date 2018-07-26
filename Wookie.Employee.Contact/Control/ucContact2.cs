@@ -44,6 +44,8 @@ namespace Wookie.Employee.Contact.Control
             tlkpFederalStateBindingSource.DataSource = dataContext.tlkpFederalState;
             tlkpCountryBindingSource.DataSource = dataContext.tlkpCountry;
             tlkpContactCommunicationTypeBindingSource.DataSource = dataContext.tlkpContactCommunicationType;
+            tlkpContactCommunicationCategoryBindingSource.DataSource = dataContext.tlkpContactCommunicationCategory;
+
             //tblContactCommunicationBindingSource.DataSource = dataContext.tblContact;
 
             tblContactBindingSource.DataSource = from row in dataContext.tblContact
@@ -51,6 +53,7 @@ namespace Wookie.Employee.Contact.Control
                                                  select row;
 
             gridView1.BestFitColumns(true);
+            gridView2.BestFitColumns(true);
             tblContactBindingSource.MoveFirst();            
         }
 
@@ -100,6 +103,7 @@ namespace Wookie.Employee.Contact.Control
                 this.lblTitel.Text = ((string)(c.Title));
 
                 tblContactCommunicationBindingSource.DataSource = c;
+                gridView2.BestFitColumns(true);
             }
             else
             {

@@ -37,6 +37,8 @@
             this.cboCity = new DevExpress.XtraEditors.LookUpEdit();
             this.tlkpCityBindingSource = new System.Windows.Forms.BindingSource();
             this.cboZipCode = new DevExpress.XtraEditors.LookUpEdit();
+            this.cboFederalstate = new DevExpress.XtraEditors.LookUpEdit();
+            this.tlkpFederalStateBindingSource = new System.Windows.Forms.BindingSource();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.TitleTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -59,8 +61,6 @@
             this.cboPrefix = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.imgCollectionPrefix = new DevExpress.Utils.ImageCollection();
             this.PictureTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.cboFederalstate = new DevExpress.XtraEditors.LookUpEdit();
-            this.tlkpFederalStateBindingSource = new System.Windows.Forms.BindingSource();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -85,6 +85,10 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.colCategory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.tlkpContactCommunicationCategoryBindingSource = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.tblContactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
@@ -94,6 +98,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboCity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlkpCityBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboZipCode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFederalstate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlkpFederalStateBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TitleTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
@@ -113,8 +119,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboPrefix.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCollectionPrefix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboFederalstate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tlkpFederalStateBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
@@ -138,6 +142,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tlkpContactPrefixBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlkpContactCommunicationCategoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tblContactBindingSource
@@ -167,7 +174,7 @@
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1});
-            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 51);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(825, 176, 650, 400);
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
@@ -245,6 +252,30 @@
             this.cboZipCode.Size = new System.Drawing.Size(105, 20);
             this.cboZipCode.StyleController = this.dataLayoutControl1;
             this.cboZipCode.TabIndex = 13;
+            // 
+            // cboFederalstate
+            // 
+            this.cboFederalstate.Location = new System.Drawing.Point(279, 180);
+            this.cboFederalstate.Name = "cboFederalstate";
+            this.cboFederalstate.Properties.Appearance.Options.UseTextOptions = true;
+            this.cboFederalstate.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.cboFederalstate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboFederalstate.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name", 37, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Shortname", "Shortname", 62, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.cboFederalstate.Properties.DataSource = this.tlkpFederalStateBindingSource;
+            this.cboFederalstate.Properties.DisplayMember = "Name";
+            this.cboFederalstate.Properties.KeyMember = "PKFederalState";
+            this.cboFederalstate.Properties.NullText = "";
+            this.cboFederalstate.Size = new System.Drawing.Size(671, 20);
+            this.cboFederalstate.StyleController = this.dataLayoutControl1;
+            this.cboFederalstate.TabIndex = 17;
+            this.cboFederalstate.EditValueChanged += new System.EventHandler(this.tlkpCitytlkpFederalStatePKFederalStateLookUpEdit_EditValueChanged);
+            // 
+            // tlkpFederalStateBindingSource
+            // 
+            this.tlkpFederalStateBindingSource.DataSource = typeof(Wookie.Employee.Contact.Database.tlkpFederalState);
             // 
             // memoEdit1
             // 
@@ -324,7 +355,9 @@
             this.tblContactCommunicationGridControl.Name = "tblContactCommunicationGridControl";
             this.tblContactCommunicationGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.riCommunicationType,
-            this.repositoryItemGridLookUpEdit1});
+            this.repositoryItemGridLookUpEdit1,
+            this.repositoryItemComboBox1,
+            this.repositoryItemLookUpEdit1});
             this.tblContactCommunicationGridControl.Size = new System.Drawing.Size(467, 347);
             this.tblContactCommunicationGridControl.TabIndex = 10;
             this.tblContactCommunicationGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -339,7 +372,8 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.coltlkpContactCommunicationType,
-            this.colCommunication});
+            this.colCommunication,
+            this.colCategory});
             this.gridView1.GridControl = this.tblContactCommunicationGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
@@ -357,7 +391,7 @@
             this.coltlkpContactCommunicationType.Name = "coltlkpContactCommunicationType";
             this.coltlkpContactCommunicationType.Visible = true;
             this.coltlkpContactCommunicationType.VisibleIndex = 0;
-            this.coltlkpContactCommunicationType.Width = 150;
+            this.coltlkpContactCommunicationType.Width = 50;
             // 
             // riCommunicationType
             // 
@@ -377,8 +411,8 @@
             this.colCommunication.FieldName = "Communication";
             this.colCommunication.Name = "colCommunication";
             this.colCommunication.Visible = true;
-            this.colCommunication.VisibleIndex = 1;
-            this.colCommunication.Width = 602;
+            this.colCommunication.VisibleIndex = 2;
+            this.colCommunication.Width = 303;
             // 
             // repositoryItemGridLookUpEdit1
             // 
@@ -443,30 +477,6 @@
             this.PictureTextEdit.Size = new System.Drawing.Size(0, 0);
             this.PictureTextEdit.StyleController = this.dataLayoutControl1;
             this.PictureTextEdit.TabIndex = 16;
-            // 
-            // cboFederalstate
-            // 
-            this.cboFederalstate.Location = new System.Drawing.Point(279, 180);
-            this.cboFederalstate.Name = "cboFederalstate";
-            this.cboFederalstate.Properties.Appearance.Options.UseTextOptions = true;
-            this.cboFederalstate.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.cboFederalstate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboFederalstate.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name", 37, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Shortname", "Shortname", 62, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.cboFederalstate.Properties.DataSource = this.tlkpFederalStateBindingSource;
-            this.cboFederalstate.Properties.DisplayMember = "Name";
-            this.cboFederalstate.Properties.KeyMember = "PKFederalState";
-            this.cboFederalstate.Properties.NullText = "";
-            this.cboFederalstate.Size = new System.Drawing.Size(671, 20);
-            this.cboFederalstate.StyleController = this.dataLayoutControl1;
-            this.cboFederalstate.TabIndex = 17;
-            this.cboFederalstate.EditValueChanged += new System.EventHandler(this.tlkpCitytlkpFederalStatePKFederalStateLookUpEdit_EditValueChanged);
-            // 
-            // tlkpFederalStateBindingSource
-            // 
-            this.tlkpFederalStateBindingSource.DataSource = typeof(Wookie.Employee.Contact.Database.tlkpFederalState);
             // 
             // layoutControlItem1
             // 
@@ -688,8 +698,8 @@
             // 
             this.panelControl1.Controls.Add(this.btnSave);
             this.panelControl1.Controls.Add(this.btnCancel);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(0, 622);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(5);
             this.panelControl1.Size = new System.Drawing.Size(962, 51);
@@ -697,24 +707,59 @@
             // 
             // btnSave
             // 
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSave.ImageOptions.SvgImage")));
-            this.btnSave.Location = new System.Drawing.Point(47, 7);
+            this.btnSave.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
+            this.btnSave.Location = new System.Drawing.Point(813, 10);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(40, 37);
+            this.btnSave.Size = new System.Drawing.Size(139, 31);
             this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "&Speichern";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCancel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCancel.ImageOptions.SvgImage")));
-            this.btnCancel.Location = new System.Drawing.Point(7, 7);
+            this.btnCancel.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
+            this.btnCancel.Location = new System.Drawing.Point(660, 10);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(40, 37);
+            this.btnCancel.Size = new System.Drawing.Size(147, 31);
             this.btnCancel.TabIndex = 0;
+            this.btnCancel.Text = "&Abbrechen";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // colCategory
+            // 
+            this.colCategory.Caption = "Art";
+            this.colCategory.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.colCategory.FieldName = "tlkpContactCommunicationCategory";
+            this.colCategory.Name = "colCategory";
+            this.colCategory.Visible = true;
+            this.colCategory.VisibleIndex = 1;
+            this.colCategory.Width = 112;
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description", "Art", 63, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.repositoryItemLookUpEdit1.DataSource = this.tlkpContactCommunicationCategoryBindingSource;
+            this.repositoryItemLookUpEdit1.DisplayMember = "Description";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            // 
+            // tlkpContactCommunicationCategoryBindingSource
+            // 
+            this.tlkpContactCommunicationCategoryBindingSource.DataSource = typeof(Wookie.Employee.Contact.Database.tlkpContactCommunicationCategory);
             // 
             // ucContactEdit
             // 
@@ -733,6 +778,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboCity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlkpCityBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboZipCode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFederalstate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlkpFederalStateBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TitleTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
@@ -752,8 +799,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboPrefix.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCollectionPrefix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboFederalstate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tlkpFederalStateBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
@@ -777,6 +822,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tlkpContactPrefixBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlkpContactCommunicationCategoryBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -838,5 +886,9 @@
         private DevExpress.XtraEditors.LookUpEdit cboCountry;
         private System.Windows.Forms.BindingSource tlkpCountryBindingSource;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraGrid.Columns.GridColumn colCategory;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private System.Windows.Forms.BindingSource tlkpContactCommunicationCategoryBindingSource;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
     }
 }

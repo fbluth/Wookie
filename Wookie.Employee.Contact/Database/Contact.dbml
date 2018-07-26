@@ -52,20 +52,6 @@
       <Association Name="tblContact_tblContactAppointmentParticipant" Member="tblContact" ThisKey="FKContact" OtherKey="PKContact" Type="tblContact" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tblContactCommunication" Member="tblContactCommunication">
-    <Type Name="tblContactCommunication">
-      <Column Name="PKContactCommunication" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FKContact" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="FKContactCommunicationType" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="Communication" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="tlkpContactCommunicationType_tblContactCommunication" Member="tlkpContactCommunicationType" ThisKey="FKContactCommunicationType" OtherKey="PKContactCommunicationType" Type="tlkpContactCommunicationType" IsForeignKey="true" />
-      <Association Name="tblContact_tblContactCommunication" Member="tblContact" ThisKey="FKContact" OtherKey="PKContact" Type="tblContact" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tblContactCorrespondence" Member="tblContactCorrespondence">
     <Type Name="tblContactCorrespondence">
       <Column Name="PKContactCorrespondence" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -218,10 +204,39 @@
       <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Association Name="tblContact_tblContactAppointment" Member="tblContactAppointment" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactAppointment" />
       <Association Name="tblContact_tblContactAppointmentParticipant" Member="tblContactAppointmentParticipant" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactAppointmentParticipant" />
-      <Association Name="tblContact_tblContactCommunication" Member="tblContactCommunication" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactCommunication" />
       <Association Name="tblContact_tblContactCorrespondence" Member="tblContactCorrespondence" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactCorrespondence" />
+      <Association Name="tblContact_tblContactCommunication" Member="tblContactCommunication" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactCommunication" />
       <Association Name="tlkpCity_tblContact" Member="tlkpCity" ThisKey="FKCity" OtherKey="PKCity" Type="tlkpCity" IsForeignKey="true" />
       <Association Name="tlkpContactPrefix_tblContact" Member="tlkpContactPrefix" ThisKey="FKContactPrefix" OtherKey="PKContactPrefix" Type="tlkpContactPrefix" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactCommunicationCategory" Member="tlkpContactCommunicationCategory">
+    <Type Name="tlkpContactCommunicationCategory">
+      <Column Name="PKContactCommunicationCategory" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactCommunicationCategory_tblContactCommunication" Member="tblContactCommunication" ThisKey="PKContactCommunicationCategory" OtherKey="FKContactCommunicationCategory" Type="tblContactCommunication" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblContactCommunication" Member="tblContactCommunication">
+    <Type Name="tblContactCommunication">
+      <Column Name="PKContactCommunication" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContact" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactCommunicationType" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactCommunicationCategory" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Communication" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tblContact_tblContactCommunication" Member="tblContact" ThisKey="FKContact" OtherKey="PKContact" Type="tblContact" IsForeignKey="true" />
+      <Association Name="tlkpContactCommunicationCategory_tblContactCommunication" Member="tlkpContactCommunicationCategory" ThisKey="FKContactCommunicationCategory" OtherKey="PKContactCommunicationCategory" Type="tlkpContactCommunicationCategory" IsForeignKey="true" />
+      <Association Name="tlkpContactCommunicationType_tblContactCommunication" Member="tlkpContactCommunicationType" ThisKey="FKContactCommunicationType" OtherKey="PKContactCommunicationType" Type="tlkpContactCommunicationType" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

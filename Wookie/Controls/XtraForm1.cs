@@ -15,6 +15,7 @@ using DevExpress.Customization;
 using DevExpress.XtraBars;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
+using DevExpress.XtraBars.Navigation;
 
 namespace Wookie.Controls
 {
@@ -28,31 +29,15 @@ namespace Wookie.Controls
         public XtraForm1()
         {
             InitializeComponent();
-            //SetMinHeight(1); 
-            menuManager = new MenuManager(Wookie.Tools.Database.MasterDatabase.SqlConnectionMasterDB, this.navigationFrame1,this.accordionControl1);
+
+            menuManager = new MenuManager(Wookie.Tools.Database.MasterDatabase.SqlConnectionMasterDB, this.navigationFrame1, this.accordionControl1);
             menuManager.ClientChanged += new ClientChangeEventHandler(this.ClientChange);
             menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
             menuManager.AddClients(this.btnClient);
-
             
         }
 
-        private void SetMinHeight(int min)
-        {
-            SkinElement element = AccordionControlSkins.GetSkin(UserLookAndFeel.Default)[AccordionControlSkins.SkinRootGroup];
-            element.ContentMargins.Top = element.ContentMargins.Bottom = 0;
-            element.Size.MinSize = new Size(element.Size.MinSize.Width, min);
-
-            element = AccordionControlSkins.GetSkin(UserLookAndFeel.Default)[AccordionControlSkins.SkinGroup];
-            element.ContentMargins.Top = element.ContentMargins.Bottom = 0;
-            element.Size.MinSize = new Size(element.Size.MinSize.Width, min);
-
-            element = AccordionControlSkins.GetSkin(UserLookAndFeel.Default)[AccordionControlSkins.SkinItem];
-            element.ContentMargins.Top = element.ContentMargins.Bottom = 0;
-            element.Size.MinSize = new Size(element.Size.MinSize.Width, min);
-
-            
-        }
+        
 
         public XtraForm1(XtraForm parent):this()
         {
@@ -61,7 +46,7 @@ namespace Wookie.Controls
 
         private void ClientChange(object sender, ClientChangeEventArgs e)
         {            
-            menuManager.LoadData(e.Client.PKClient);
+            menuManager.LoadData(e.Client.PKClient,false);
             menuManager.AddSettings();
 
             this.navigationFrame1.SelectedPage = navPageWelcome;
@@ -69,9 +54,8 @@ namespace Wookie.Controls
         }
 
         private void SettingsClicked(object sender, EventArgs e)
-        {
-            //this.barTool.Visible = !this.barTool.Visible;
-            flyoutPanel1.ShowPopup();
+        {            
+         
         }
 
         public void Duplicate(XtraForm parent)
@@ -101,6 +85,27 @@ namespace Wookie.Controls
             }
         }
 
-        
+        private void btnSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            flyoutPanel1.ShowPopup();
+        }
+
+       
+
+        private void accordionControl1_ElementClick(object sender, DevExpress.XtraBars.Navigation.ElementClickEventArgs e)
+        {
+            if (
+                accordionControl1.OptionsMinimizing.State == AccordionControlState.Minimized)
+            {
+                AccordionFlyoutForm a = accordionControl1.FlyoutForm;
+
+            }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Wookie.Tools.ImagePicker.ImagePicker imagePicker = new Tools.ImagePicker.ImagePicker();
+            imagePicker.ShowDialog();
+        }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using DevExpress.Utils.Svg;
 using System.Data.Linq;
 using Wookie.Tools.Image;
-using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
 using System.Windows.Forms;
 using System.Reflection;
 using System;
@@ -11,7 +9,7 @@ using DevExpress.XtraBars.Navigation;
 
 namespace Wookie.Menu.MenuManager
 {
-    public class Category
+    public class Category: IDisposable
     {
         private MenuManager menuManager = null;
         private string caption = null;
@@ -106,13 +104,14 @@ namespace Wookie.Menu.MenuManager
             {
                 if (accordionControlElement == null)
                 {
-                    accordionControlElement = new AccordionControlElement();
-                    accordionControlElement.Text = this.caption;
-                    accordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+                    accordionControlElement = new AccordionControlElement
+                    {
+                        Text = this.caption,
+                        Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+                    };
                     accordionControlElement.ImageOptions.SvgImage = this.svgImage;
                     accordionControlElement.Click += new EventHandler(this.accordionControlElement_Click);
                     
-
                     DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
                     DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
                     DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -145,5 +144,41 @@ namespace Wookie.Menu.MenuManager
                 this.CategoryClick(this);
             }
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // Dient zur Erkennung redundanter Aufrufe.
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: verwalteten Zustand (verwaltete Objekte) entsorgen.
+                    this.accordionControlElement.Dispose();
+                    this.navigationPage.Dispose();
+                }
+
+                // TODO: nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.
+                // TODO: große Felder auf Null setzen.
+                this.accordionControlElement = null;
+                this.navigationPage = null;
+                this.categoryInstance = null;
+                this.svgImage = null;
+                this.menuManager = null;
+                this.caption = null;
+                disposedValue = true;
+            }
+        }
+
+        // Dieser Code wird hinzugefügt, um das Dispose-Muster richtig zu implementieren.
+        public void Dispose()
+        {
+            // Ändern Sie diesen Code nicht. Fügen Sie Bereinigungscode in Dispose(bool disposing) weiter oben ein.
+            Dispose(true);
+            // TODO: Auskommentierung der folgenden Zeile aufheben, wenn der Finalizer weiter oben überschrieben wird.
+            // GC.SuppressFinalize(this);
+        }        
+        #endregion
     }
 }

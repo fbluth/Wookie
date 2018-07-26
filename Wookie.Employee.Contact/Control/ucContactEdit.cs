@@ -36,14 +36,17 @@ namespace Wookie.Employee.Contact.Control
             tlkpCityBindingSource.DataSource = dataContext.tlkpCity;
             tlkpFederalStateBindingSource.DataSource = dataContext.tlkpFederalState;
             tlkpCountryBindingSource.DataSource = dataContext.tlkpCountry;
+            tlkpContactCommunicationCategoryBindingSource.DataSource = dataContext.tlkpContactCommunicationCategory;
 
             tblContactBindingSource.DataSource = from row in dataContext.tblContact
                                                  where row.PKContact == contact.PKContact
                                                  select row;
+
             tblContactCommunicationBindingSource.DataSource = dataContext.tblContactCommunication;
 
             LoadImageComboBoxItems();
             gridView1.BestFitColumns(true);
+            
             tblContactBindingSource.MoveFirst();
         }
 

@@ -100,7 +100,6 @@
             this.toggleFontSubscriptItem1 = new DevExpress.XtraRichEdit.UI.ToggleFontSubscriptItem();
             this.changeFontColorItem1 = new DevExpress.XtraRichEdit.UI.ChangeFontColorItem();
             this.changeFontHighlightColorItem1 = new DevExpress.XtraRichEdit.UI.ChangeFontHighlightColorItem();
-            this.changeTextCaseItem1 = new DevExpress.XtraRichEdit.UI.ChangeTextCaseItem();
             this.makeTextUpperCaseItem1 = new DevExpress.XtraRichEdit.UI.MakeTextUpperCaseItem();
             this.makeTextLowerCaseItem1 = new DevExpress.XtraRichEdit.UI.MakeTextLowerCaseItem();
             this.capitalizeEachWordCaseItem1 = new DevExpress.XtraRichEdit.UI.CapitalizeEachWordCaseItem();
@@ -117,7 +116,6 @@
             this.toggleParagraphAlignmentRightItem1 = new DevExpress.XtraRichEdit.UI.ToggleParagraphAlignmentRightItem();
             this.toggleParagraphAlignmentJustifyItem1 = new DevExpress.XtraRichEdit.UI.ToggleParagraphAlignmentJustifyItem();
             this.toggleShowWhitespaceItem1 = new DevExpress.XtraRichEdit.UI.ToggleShowWhitespaceItem();
-            this.changeParagraphLineSpacingItem1 = new DevExpress.XtraRichEdit.UI.ChangeParagraphLineSpacingItem();
             this.setSingleParagraphSpacingItem1 = new DevExpress.XtraRichEdit.UI.SetSingleParagraphSpacingItem();
             this.setSesquialteralParagraphSpacingItem1 = new DevExpress.XtraRichEdit.UI.SetSesquialteralParagraphSpacingItem();
             this.setDoubleParagraphSpacingItem1 = new DevExpress.XtraRichEdit.UI.SetDoubleParagraphSpacingItem();
@@ -318,20 +316,15 @@
             this.floatingObjectSendBackwardItem1 = new DevExpress.XtraRichEdit.UI.FloatingObjectSendBackwardItem();
             this.floatingObjectSendToBackItem1 = new DevExpress.XtraRichEdit.UI.FloatingObjectSendToBackItem();
             this.floatingObjectSendBehindTextItem1 = new DevExpress.XtraRichEdit.UI.FloatingObjectSendBehindTextItem();
+            this.changeTextCaseItem1 = new DevExpress.XtraRichEdit.UI.ChangeTextCaseItem();
+            this.changeParagraphLineSpacingItem1 = new DevExpress.XtraRichEdit.UI.ChangeParagraphLineSpacingItem();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.lblName = new DevExpress.XtraEditors.LabelControl();
             this.lblTitel = new DevExpress.XtraEditors.LabelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
-            this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabAddress = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.tblContactCommunicationBindingSource = new System.Windows.Forms.BindingSource();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.coltlkpContactCommunicationType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.riCommunicationType = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.imgCollectionCommunicationType = new DevExpress.Utils.ImageCollection();
-            this.colCommunication = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BirthdateDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.StreetTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.tlkpCityNameTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -356,12 +349,18 @@
             this.ItemFortlkpCityName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemFortlkpCitytlkpFederalStateName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForBirthdate = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleSeparator1 = new DevExpress.XtraLayout.SimpleSeparator();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry = new DevExpress.XtraLayout.LayoutControlItem();
-            this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabNotes = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.tabCommunication = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.tblContactCommunicationBindingSource = new System.Windows.Forms.BindingSource();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.coltlkpContactCommunicationType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.riCommunicationType = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.imgCollectionCommunicationType = new DevExpress.Utils.ImageCollection();
+            this.colCommunication = new DevExpress.XtraGrid.Columns.GridColumn();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -378,6 +377,9 @@
             this.navSelect = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.navEdit = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.richEditBarController1 = new DevExpress.XtraRichEdit.UI.RichEditBarController();
+            this.colCategory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.tlkpContactCommunicationCategoryBindingSource = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblContactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -405,14 +407,9 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
-            this.tabNavigationPage1.SuspendLayout();
+            this.tabAddress.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblContactCommunicationBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.riCommunicationType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCollectionCommunicationType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BirthdateDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BirthdateDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StreetTextEdit.Properties)).BeginInit();
@@ -438,12 +435,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCityName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStateName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBirthdate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry)).BeginInit();
-            this.tabNavigationPage2.SuspendLayout();
+            this.tabNotes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            this.tabCommunication.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblContactCommunicationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riCommunicationType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCollectionCommunicationType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -459,6 +460,8 @@
             this.navigationFrame1.SuspendLayout();
             this.navSelect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.richEditBarController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlkpContactCommunicationCategoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -1264,18 +1267,6 @@
             this.changeFontHighlightColorItem1.Id = 40;
             this.changeFontHighlightColorItem1.Name = "changeFontHighlightColorItem1";
             // 
-            // changeTextCaseItem1
-            // 
-            this.changeTextCaseItem1.Caption = "Wechsle Argument";
-            this.changeTextCaseItem1.Enabled = false;
-            this.changeTextCaseItem1.Id = 41;
-            this.changeTextCaseItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.makeTextUpperCaseItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.makeTextLowerCaseItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.capitalizeEachWordCaseItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.toggleTextCaseItem1)});
-            this.changeTextCaseItem1.Name = "changeTextCaseItem1";
-            // 
             // makeTextUpperCaseItem1
             // 
             this.makeTextUpperCaseItem1.Caption = "Großbuchstaben";
@@ -1375,22 +1366,6 @@
             this.toggleShowWhitespaceItem1.Enabled = false;
             this.toggleShowWhitespaceItem1.Id = 57;
             this.toggleShowWhitespaceItem1.Name = "toggleShowWhitespaceItem1";
-            // 
-            // changeParagraphLineSpacingItem1
-            // 
-            this.changeParagraphLineSpacingItem1.Caption = "Zeilenabstand";
-            this.changeParagraphLineSpacingItem1.Enabled = false;
-            this.changeParagraphLineSpacingItem1.Id = 58;
-            this.changeParagraphLineSpacingItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.setSingleParagraphSpacingItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.setSesquialteralParagraphSpacingItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.setDoubleParagraphSpacingItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.showLineSpacingFormItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, this.addSpacingBeforeParagraphItem1, "", false, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.Standard, "", ""),
-            new DevExpress.XtraBars.LinkPersistInfo(this.removeSpacingBeforeParagraphItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.addSpacingAfterParagraphItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.removeSpacingAfterParagraphItem1)});
-            this.changeParagraphLineSpacingItem1.Name = "changeParagraphLineSpacingItem1";
             // 
             // setSingleParagraphSpacingItem1
             // 
@@ -2847,6 +2822,34 @@
             this.floatingObjectSendBehindTextItem1.Id = 254;
             this.floatingObjectSendBehindTextItem1.Name = "floatingObjectSendBehindTextItem1";
             // 
+            // changeTextCaseItem1
+            // 
+            this.changeTextCaseItem1.Caption = "Wechsle Argument";
+            this.changeTextCaseItem1.Enabled = false;
+            this.changeTextCaseItem1.Id = 41;
+            this.changeTextCaseItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.makeTextUpperCaseItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.makeTextLowerCaseItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.capitalizeEachWordCaseItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.toggleTextCaseItem1)});
+            this.changeTextCaseItem1.Name = "changeTextCaseItem1";
+            // 
+            // changeParagraphLineSpacingItem1
+            // 
+            this.changeParagraphLineSpacingItem1.Caption = "Zeilenabstand";
+            this.changeParagraphLineSpacingItem1.Enabled = false;
+            this.changeParagraphLineSpacingItem1.Id = 58;
+            this.changeParagraphLineSpacingItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.setSingleParagraphSpacingItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.setSesquialteralParagraphSpacingItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.setDoubleParagraphSpacingItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.showLineSpacingFormItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, this.addSpacingBeforeParagraphItem1, "", false, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.Standard, "", ""),
+            new DevExpress.XtraBars.LinkPersistInfo(this.removeSpacingBeforeParagraphItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.addSpacingAfterParagraphItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.removeSpacingAfterParagraphItem1)});
+            this.changeParagraphLineSpacingItem1.Name = "changeParagraphLineSpacingItem1";
+            // 
             // pictureEdit1
             // 
             this.pictureEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tblContactBindingSource, "Picture", true));
@@ -2918,31 +2921,32 @@
             // tabPane1
             // 
             this.tabPane1.AllowCollapse = DevExpress.Utils.DefaultBoolean.Default;
-            this.tabPane1.Controls.Add(this.tabNavigationPage1);
-            this.tabPane1.Controls.Add(this.tabNavigationPage2);
+            this.tabPane1.Controls.Add(this.tabAddress);
+            this.tabPane1.Controls.Add(this.tabNotes);
+            this.tabPane1.Controls.Add(this.tabCommunication);
             this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPane1.Location = new System.Drawing.Point(0, 180);
             this.tabPane1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
-            this.tabNavigationPage1,
-            this.tabNavigationPage2});
+            this.tabAddress,
+            this.tabCommunication,
+            this.tabNotes});
             this.tabPane1.RegularSize = new System.Drawing.Size(439, 526);
-            this.tabPane1.SelectedPage = this.tabNavigationPage1;
+            this.tabPane1.SelectedPage = this.tabAddress;
             this.tabPane1.Size = new System.Drawing.Size(439, 526);
             this.tabPane1.TabIndex = 3;
             // 
-            // tabNavigationPage1
+            // tabAddress
             // 
-            this.tabNavigationPage1.Caption = "Adresse";
-            this.tabNavigationPage1.Controls.Add(this.dataLayoutControl1);
-            this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(439, 497);
+            this.tabAddress.Caption = "Adresse";
+            this.tabAddress.Controls.Add(this.dataLayoutControl1);
+            this.tabAddress.Name = "tabAddress";
+            this.tabAddress.Size = new System.Drawing.Size(439, 497);
             // 
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.AllowGeneratingNestedGroups = DevExpress.Utils.DefaultBoolean.True;
-            this.dataLayoutControl1.Controls.Add(this.gridControl2);
             this.dataLayoutControl1.Controls.Add(this.BirthdateDateEdit);
             this.dataLayoutControl1.Controls.Add(this.StreetTextEdit);
             this.dataLayoutControl1.Controls.Add(this.tlkpCityNameTextEdit);
@@ -2966,69 +2970,6 @@
             this.dataLayoutControl1.Size = new System.Drawing.Size(439, 497);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
-            // 
-            // gridControl2
-            // 
-            this.gridControl2.DataSource = this.tblContactCommunicationBindingSource;
-            this.gridControl2.Location = new System.Drawing.Point(12, 263);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.riCommunicationType});
-            this.gridControl2.Size = new System.Drawing.Size(415, 222);
-            this.gridControl2.TabIndex = 0;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // tblContactCommunicationBindingSource
-            // 
-            this.tblContactCommunicationBindingSource.DataMember = "tblContactCommunication";
-            this.tblContactCommunicationBindingSource.DataSource = typeof(Wookie.Employee.Contact.Database.tblContact);
-            // 
-            // gridView2
-            // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.coltlkpContactCommunicationType,
-            this.colCommunication});
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView2.OptionsView.ShowColumnHeaders = false;
-            this.gridView2.OptionsView.ShowDetailButtons = false;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
-            this.gridView2.OptionsView.ShowIndicator = false;
-            // 
-            // coltlkpContactCommunicationType
-            // 
-            this.coltlkpContactCommunicationType.Caption = "Wert";
-            this.coltlkpContactCommunicationType.ColumnEdit = this.riCommunicationType;
-            this.coltlkpContactCommunicationType.FieldName = "FKContactCommunicationType";
-            this.coltlkpContactCommunicationType.Name = "coltlkpContactCommunicationType";
-            this.coltlkpContactCommunicationType.Visible = true;
-            this.coltlkpContactCommunicationType.VisibleIndex = 0;
-            this.coltlkpContactCommunicationType.Width = 41;
-            // 
-            // riCommunicationType
-            // 
-            this.riCommunicationType.AutoHeight = false;
-            this.riCommunicationType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.riCommunicationType.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.riCommunicationType.Name = "riCommunicationType";
-            this.riCommunicationType.SmallImages = this.imgCollectionCommunicationType;
-            // 
-            // imgCollectionCommunicationType
-            // 
-            this.imgCollectionCommunicationType.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgCollectionCommunicationType.ImageStream")));
-            // 
-            // colCommunication
-            // 
-            this.colCommunication.FieldName = "Communication";
-            this.colCommunication.Name = "colCommunication";
-            this.colCommunication.Visible = true;
-            this.colCommunication.VisibleIndex = 1;
-            this.colCommunication.Width = 354;
             // 
             // BirthdateDateEdit
             // 
@@ -3224,8 +3165,6 @@
             this.ItemFortlkpCityName,
             this.ItemFortlkpCitytlkpFederalStateName,
             this.ItemForBirthdate,
-            this.layoutControlItem1,
-            this.simpleSeparator1,
             this.layoutControlItem2,
             this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
@@ -3281,7 +3220,8 @@
             // 
             this.ItemFortlkpCityZipcode.Control = this.tlkpCityZipcodeTextEdit;
             this.ItemFortlkpCityZipcode.Location = new System.Drawing.Point(0, 144);
-            this.ItemFortlkpCityZipcode.MinSize = new System.Drawing.Size(114, 24);
+            this.ItemFortlkpCityZipcode.MaxSize = new System.Drawing.Size(124, 24);
+            this.ItemFortlkpCityZipcode.MinSize = new System.Drawing.Size(124, 24);
             this.ItemFortlkpCityZipcode.Name = "ItemFortlkpCityZipcode";
             this.ItemFortlkpCityZipcode.Size = new System.Drawing.Size(124, 24);
             this.ItemFortlkpCityZipcode.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
@@ -3312,26 +3252,9 @@
             this.ItemForBirthdate.Control = this.BirthdateDateEdit;
             this.ItemForBirthdate.Location = new System.Drawing.Point(0, 216);
             this.ItemForBirthdate.Name = "ItemForBirthdate";
-            this.ItemForBirthdate.Size = new System.Drawing.Size(419, 24);
+            this.ItemForBirthdate.Size = new System.Drawing.Size(419, 261);
             this.ItemForBirthdate.Text = "Birthdate";
             this.ItemForBirthdate.TextSize = new System.Drawing.Size(56, 13);
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.gridControl2;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 251);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(419, 226);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
-            // simpleSeparator1
-            // 
-            this.simpleSeparator1.AllowHotTrack = false;
-            this.simpleSeparator1.Location = new System.Drawing.Point(0, 240);
-            this.simpleSeparator1.Name = "simpleSeparator1";
-            this.simpleSeparator1.Size = new System.Drawing.Size(419, 11);
-            this.simpleSeparator1.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 5, 5);
             // 
             // layoutControlItem2
             // 
@@ -3351,13 +3274,13 @@
             this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry.Text = "Land";
             this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry.TextSize = new System.Drawing.Size(56, 13);
             // 
-            // tabNavigationPage2
+            // tabNotes
             // 
-            this.tabNavigationPage2.Caption = "Notizen";
-            this.tabNavigationPage2.Controls.Add(this.memoEdit1);
-            this.tabNavigationPage2.Name = "tabNavigationPage2";
-            this.tabNavigationPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.tabNavigationPage2.Size = new System.Drawing.Size(439, 506);
+            this.tabNotes.Caption = "Notizen";
+            this.tabNotes.Controls.Add(this.memoEdit1);
+            this.tabNotes.Name = "tabNotes";
+            this.tabNotes.Padding = new System.Windows.Forms.Padding(5);
+            this.tabNotes.Size = new System.Drawing.Size(439, 526);
             // 
             // memoEdit1
             // 
@@ -3368,8 +3291,81 @@
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Properties.ReadOnly = true;
             this.memoEdit1.Properties.UseReadOnlyAppearance = false;
-            this.memoEdit1.Size = new System.Drawing.Size(429, 496);
+            this.memoEdit1.Size = new System.Drawing.Size(429, 516);
             this.memoEdit1.TabIndex = 0;
+            // 
+            // tabCommunication
+            // 
+            this.tabCommunication.Caption = "Kommunikation";
+            this.tabCommunication.Controls.Add(this.gridControl2);
+            this.tabCommunication.Name = "tabCommunication";
+            this.tabCommunication.Size = new System.Drawing.Size(439, 497);
+            // 
+            // gridControl2
+            // 
+            this.gridControl2.DataSource = this.tblContactCommunicationBindingSource;
+            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl2.Location = new System.Drawing.Point(0, 0);
+            this.gridControl2.MainView = this.gridView2;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.riCommunicationType,
+            this.repositoryItemLookUpEdit1});
+            this.gridControl2.Size = new System.Drawing.Size(439, 497);
+            this.gridControl2.TabIndex = 1;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // tblContactCommunicationBindingSource
+            // 
+            this.tblContactCommunicationBindingSource.DataMember = "tblContactCommunication";
+            this.tblContactCommunicationBindingSource.DataSource = typeof(Wookie.Employee.Contact.Database.tblContact);
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.coltlkpContactCommunicationType,
+            this.colCategory,
+            this.colCommunication});
+            this.gridView2.GridControl = this.gridControl2;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowColumnHeaders = false;
+            this.gridView2.OptionsView.ShowDetailButtons = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.OptionsView.ShowIndicator = false;
+            // 
+            // coltlkpContactCommunicationType
+            // 
+            this.coltlkpContactCommunicationType.Caption = "Wert";
+            this.coltlkpContactCommunicationType.ColumnEdit = this.riCommunicationType;
+            this.coltlkpContactCommunicationType.FieldName = "FKContactCommunicationType";
+            this.coltlkpContactCommunicationType.Name = "coltlkpContactCommunicationType";
+            this.coltlkpContactCommunicationType.Visible = true;
+            this.coltlkpContactCommunicationType.VisibleIndex = 0;
+            this.coltlkpContactCommunicationType.Width = 40;
+            // 
+            // riCommunicationType
+            // 
+            this.riCommunicationType.AutoHeight = false;
+            this.riCommunicationType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.riCommunicationType.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.riCommunicationType.Name = "riCommunicationType";
+            this.riCommunicationType.SmallImages = this.imgCollectionCommunicationType;
+            // 
+            // imgCollectionCommunicationType
+            // 
+            this.imgCollectionCommunicationType.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgCollectionCommunicationType.ImageStream")));
+            // 
+            // colCommunication
+            // 
+            this.colCommunication.FieldName = "Communication";
+            this.colCommunication.Name = "colCommunication";
+            this.colCommunication.Visible = true;
+            this.colCommunication.VisibleIndex = 2;
+            this.colCommunication.Width = 300;
             // 
             // separatorControl1
             // 
@@ -3762,6 +3758,32 @@
             this.richEditBarController1.BarItems.Add(this.floatingObjectSendToBackItem1);
             this.richEditBarController1.BarItems.Add(this.floatingObjectSendBehindTextItem1);
             // 
+            // colCategory
+            // 
+            this.colCategory.Caption = "Art";
+            this.colCategory.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.colCategory.FieldName = "tlkpContactCommunicationCategory";
+            this.colCategory.Name = "colCategory";
+            this.colCategory.Visible = true;
+            this.colCategory.VisibleIndex = 1;
+            this.colCategory.Width = 39;
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description", "Description", 63, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.repositoryItemLookUpEdit1.DataSource = this.tlkpContactCommunicationCategoryBindingSource;
+            this.repositoryItemLookUpEdit1.DisplayMember = "Description";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.ReadOnly = true;
+            // 
+            // tlkpContactCommunicationCategoryBindingSource
+            // 
+            this.tlkpContactCommunicationCategoryBindingSource.DataSource = typeof(Wookie.Employee.Contact.Database.tlkpContactCommunicationCategory);
+            // 
             // ucContact2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3800,14 +3822,9 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
             this.tabPane1.ResumeLayout(false);
-            this.tabNavigationPage1.ResumeLayout(false);
+            this.tabAddress.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblContactCommunicationBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.riCommunicationType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCollectionCommunicationType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BirthdateDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BirthdateDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StreetTextEdit.Properties)).EndInit();
@@ -3833,12 +3850,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCityName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStateName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBirthdate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStatetlkpCountryPKCountry)).EndInit();
-            this.tabNavigationPage2.ResumeLayout(false);
+            this.tabNotes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            this.tabCommunication.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblContactCommunicationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riCommunicationType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCollectionCommunicationType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -3854,6 +3875,8 @@
             this.navigationFrame1.ResumeLayout(false);
             this.navSelect.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.richEditBarController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlkpContactCommunicationCategoryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3893,16 +3916,11 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraBars.Navigation.TabPane tabPane1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabAddress;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNotes;
         private System.Windows.Forms.BindingSource tblContactCommunicationBindingSource;
-        private DevExpress.XtraGrid.Columns.GridColumn coltlkpContactCommunicationType;
-        private DevExpress.XtraGrid.Columns.GridColumn colCommunication;
         private System.Windows.Forms.BindingSource tlkpContactCommunicationTypeBindingSource;
         private DevExpress.Utils.ImageCollection imgCollectionCommunicationType;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox riCommunicationType;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -3952,9 +3970,7 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemFortlkpCitytlkpFederalStateName;
         private DevExpress.XtraLayout.LayoutControlItem ItemFortlkpCitytlkpFederalStatetlkpCountryName;
         private DevExpress.XtraLayout.LayoutControlItem ItemForBirthdate;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboPrefix;
-        private DevExpress.XtraLayout.SimpleSeparator simpleSeparator1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboCountry;
         private DevExpress.XtraEditors.TextEdit tlkpCitytlkpFederalStatetlkpCountryNameTextEdit;
@@ -4209,5 +4225,14 @@
         private DevExpress.XtraRichEdit.UI.FloatingObjectSendBehindTextItem floatingObjectSendBehindTextItem1;
         private DevExpress.XtraRichEdit.UI.RichEditBarController richEditBarController1;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabCommunication;
+        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn coltlkpContactCommunicationType;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox riCommunicationType;
+        private DevExpress.XtraGrid.Columns.GridColumn colCommunication;
+        private DevExpress.XtraGrid.Columns.GridColumn colCategory;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private System.Windows.Forms.BindingSource tlkpContactCommunicationCategoryBindingSource;
     }
 }

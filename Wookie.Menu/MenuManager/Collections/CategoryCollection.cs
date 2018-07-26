@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Wookie.Menu.MenuManager
 {
+    [Serializable]
     public class CategoryCollection: Dictionary<object,Category>
     {
         private MenuManager menuManager = null;

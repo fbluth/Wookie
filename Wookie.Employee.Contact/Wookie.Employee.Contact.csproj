@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -124,6 +125,7 @@
     <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tblContactCommunication.datasource" />
     <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tblDepartment.datasource" />
     <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tlkpCity.datasource" />
+    <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tlkpContactCommunicationCategory.datasource" />
     <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tlkpContactCommunicationType.datasource" />
     <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tlkpContactPrefix.datasource" />
     <None Include="Properties\DataSources\Wookie.Employee.Contact.Database.tlkpCountry.datasource" />

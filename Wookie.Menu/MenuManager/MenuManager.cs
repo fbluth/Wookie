@@ -1,16 +1,13 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraBars.Navigation;
-using DevExpress.XtraBars.Ribbon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wookie.Tools.Image;
 
 namespace Wookie.Menu.MenuManager
 {
-    public class MenuManager
+    public class MenuManager:IDisposable
     {
         private ModulGroupCollection modulGroupCollection = null;
         private Database.MenuDataContext context = null;
@@ -56,7 +53,7 @@ namespace Wookie.Menu.MenuManager
             }
         }
 
-        public void LoadData(long pkClient)
+        public void LoadData(long pkClient, bool clear)
         {
             Dictionary<long, Client> clientDictionary = new Dictionary<long, Client>();
 
@@ -125,15 +122,15 @@ namespace Wookie.Menu.MenuManager
                 modulGroupCollection.MenuManager = this;
             }
 
-            this.BuildMenu();
+            this.BuildMenu(clear);
         }
 
-        public void BuildMenu()
+        public void BuildMenu(bool clear)
         {
             if (this.accordionControl == null) return;
             if (this.modulGroupCollection == null) return;
 
-            this.accordionControl.Elements.Clear();
+            if (clear) this.accordionControl.Elements.Clear();
 
             foreach (ModulGroup modulGroup in this.modulGroupCollection.Values)
             {
@@ -220,5 +217,46 @@ namespace Wookie.Menu.MenuManager
             ClientChangeEventArgs eventArgs = new ClientChangeEventArgs(this.clientDictionary[e.Item]);
             ClientChanged?.Invoke(this, eventArgs);
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // Dient zur Erkennung redundanter Aufrufe.
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    this.context.Dispose();
+                    this.modulGroupCollection.Clear();
+                    this.clientDictionary.Clear();
+                }
+
+                // TODO: nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.
+                // TODO: große Felder auf Null setzen.
+                this.modulGroupCollection = null;
+                this.navigationFrame = null;
+                this.clientDictionary = null;
+                this.accordionControl = null;
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: Finalizer nur überschreiben, wenn Dispose(bool disposing) weiter oben Code für die Freigabe nicht verwalteter Ressourcen enthält.
+        // ~MenuManager() {
+        //   // Ändern Sie diesen Code nicht. Fügen Sie Bereinigungscode in Dispose(bool disposing) weiter oben ein.
+        //   Dispose(false);
+        // }
+
+        // Dieser Code wird hinzugefügt, um das Dispose-Muster richtig zu implementieren.
+        public void Dispose()
+        {
+            // Ändern Sie diesen Code nicht. Fügen Sie Bereinigungscode in Dispose(bool disposing) weiter oben ein.
+            Dispose(true);
+            // TODO: Auskommentierung der folgenden Zeile aufheben, wenn der Finalizer weiter oben überschrieben wird.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }
