@@ -2,6 +2,7 @@
 using DevExpress.XtraBars.Navigation;
 using System;
 using System.Data.Linq;
+using System.Drawing;
 using Wookie.Tools.Image;
 
 namespace Wookie.Menu.MenuManager
@@ -11,7 +12,7 @@ namespace Wookie.Menu.MenuManager
         private AccordionControlElement accordionControlElement = null;
         private MenuManager menuManager = null;
         private string caption = null;
-        private SvgImage svgImage = null;
+        private Image image = null;
         private CategoryCollection categories = null;
 
         public Modul(string caption)
@@ -20,14 +21,14 @@ namespace Wookie.Menu.MenuManager
             this.caption = caption;
         }
 
-        public Modul(string caption, SvgImage svgImage) : this(caption)
+        public Modul(string caption, Image image) : this(caption)
         {
-            this.svgImage = svgImage;
+            this.image = image;
         }
 
         public Modul(string caption, Binary binary) : this(caption)
         {
-            this.svgImage = Converter.GetSvgImageFromBinary(binary);
+            this.image = Converter.GetImageFromBinary(binary);
         }
 
         public string Caption
@@ -36,10 +37,10 @@ namespace Wookie.Menu.MenuManager
             set { if (accordionControlElement != null) accordionControlElement.Text = value; this.caption = value; }
         }
 
-        public SvgImage SvgImage
+        public Image Image
         {
-            get { return this.svgImage; }
-            set { if (this.accordionControlElement != null) accordionControlElement.ImageOptions.SvgImage = value; this.svgImage = value; }
+            get { return this.image; }
+            set { if (this.accordionControlElement != null) accordionControlElement.ImageOptions.Image = value; this.image = value; }
         }
 
         public MenuManager MenuManager
@@ -67,15 +68,15 @@ namespace Wookie.Menu.MenuManager
                         new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
                         new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons),
                         new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl)});
-                    accordionControlElement.ImageOptions.SvgImage = this.svgImage;
+                    accordionControlElement.ImageOptions.Image = this.image;
                     
 
                     DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
                     DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
                     DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-                    toolTipTitleItem1.ImageOptions.SvgImage = this.svgImage;
+                    toolTipTitleItem1.ImageOptions.Image = this.image;
                     toolTipTitleItem1.Text = caption;
-                    toolTipTitleItem1.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
+                    //toolTipTitleItem1.ImageOptions.ImageSize = new System.Drawing.Size(25, 25);
 
                     toolTipItem1.LeftIndent = 6;
                     toolTipItem1.Text = caption;
@@ -106,7 +107,7 @@ namespace Wookie.Menu.MenuManager
                 // TODO: große Felder auf Null setzen.
                 this.accordionControlElement = null;
                 this.categories = null;
-                this.svgImage = null;
+                this.image = null;
                 this.caption = null;
                 this.menuManager = null;
                 disposedValue = true;

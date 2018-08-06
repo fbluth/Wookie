@@ -2,6 +2,8 @@
 using DevExpress.XtraBars.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using Wookie.Tools.Image;
 
@@ -26,29 +28,52 @@ namespace Wookie.Menu.MenuManager
             context = new Database.MenuDataContext(sqlConnection);
         }
 
-        public void AddClients(DevExpress.XtraBars.BarSubItem bsiClient)
+        public void AddClients(BarSubItem bsiClient)
         {
             // Lese aus der Datenbank alle Mandanten aus
             var clientQuery = from client in context.tsysClient orderby client.SortOrder select client;
 
             // Falls keine Mandanten in der Datenbank hinterlegt sind, ist nichts zu tun
-            if (clientQuery.Count() == 0) return;
+            if (clientQuery == null || clientQuery.Count() == 0) return;
 
             foreach (Database.tsysClient client in clientQuery)
             {
                 BarButtonItem item = new BarButtonItem();
                 item.Caption = client.Name;
-                item.ImageOptions.SvgImage = Converter.GetSvgImageFromBinary(client.SvgImage);
+                item.ImageOptions.Image = Converter.GetImageFromBinary(client.Image);
                 item.ItemClick += new ItemClickEventHandler(this.bsiClientClick);
            
                 bsiClient.LinksPersistInfo.Add(new LinkPersistInfo(item));
-           
-                this.clientDictionary.Add(item, new Client(client.PKClient, new System.Data.SqlClient.SqlConnection(client.ConnectionString), client.Name));
+                try
+                {
+                    SqlConnectionStringBuilder connBuilder = new SqlConnectionStringBuilder();
+
+                    connBuilder.DataSource = client.Datasource;
+                    connBuilder.UserID = client.UserID;
+                    connBuilder.PersistSecurityInfo = client.PersistSecurityInfo.Value;
+                    connBuilder.Password = client.Password;
+                    connBuilder.InitialCatalog = client.InitialCatalog;
+
+                    SqlConnection sqlConnection = new SqlConnection(connBuilder.ConnectionString);
+
+                    //Überprüfe ob eine Verbindung zur Datenbank möglich ist.
+                    sqlConnection.Open();
+                    sqlConnection.Close();
+
+                    //Falls Verbindung möglich in Liste aufnehmen.
+                    this.clientDictionary.Add(item, new Client(client.PKClient, sqlConnection, client.Name));
+                }
+                catch
+                {
+                    //Falls Verbindung zur Datenbank nicht möglich ist, dann Item auf enabled = false setzen.
+                    item.Enabled = false;
+                    item.Caption = client.Name + " (No connection to database)";
+                }                
             }
             
             if (this.clientDictionary.Count() > 0)
             {
-                ClientChangeEventArgs eventArgs = new ClientChangeEventArgs(clientDictionary.ToArray()[0].Value);
+                ClientChangeEventArgs eventArgs = new ClientChangeEventArgs((Client)clientDictionary.ToArray()[0].Value);
                 ClientChanged?.Invoke(this, eventArgs);
             }
         }
@@ -63,10 +88,11 @@ namespace Wookie.Menu.MenuManager
                         where row.PKClient == pkClient
                         orderby row.ModulGroupSortOrder ascending,
                                 row.ModulSortOrder ascending,
-                                row.CategorySortOrder ascending
+                                row.CategorySortOrder ascending,
+                                row.SubCategorySortOrder ascending
                         select row;
 
-            if (query.Count() == 0) return;
+            if (query == null || query.Count() == 0) return;
             
             foreach (Database.v_Wookie_Menu_0000 row in query)
             {
@@ -74,12 +100,18 @@ namespace Wookie.Menu.MenuManager
                 ModulGroup modulGroup = null;
                 Modul modul = null;
                 Category category = null;
+                SqlConnectionStringBuilder connBuilder = new SqlConnectionStringBuilder();
+                connBuilder.DataSource = row.Datasource;
+                connBuilder.InitialCatalog = row.InitialCatalog;
+                connBuilder.PersistSecurityInfo = row.PersistSecurityInfo.Value;
+                connBuilder.UserID = row.UserID;
+                connBuilder.Password = row.Password;
                 
 
                 //Client
                 if (!clientDictionary.ContainsKey(row.PKClient))
                 {
-                    client = new Client(row.PKClient, new System.Data.SqlClient.SqlConnection(row.ClientConnectionString), row.ClientName);
+                    client = new Client(row.PKClient, connBuilder.ConnectionString, row.ClientName);
                     clientDictionary.Add(row.PKClient, client);
                 }
 
@@ -89,7 +121,7 @@ namespace Wookie.Menu.MenuManager
                 if (!row.PKModulGroup.HasValue) continue;
                 if (!modulGroupCollection.ContainsKey(row.PKModulGroup.Value))
                 {
-                    modulGroupCollection.Add(row.PKModulGroup.Value, new ModulGroup(row.ModulGroupName, row.ModulGroupSvgImage));
+                    modulGroupCollection.Add(row.PKModulGroup.Value, new ModulGroup(row.ModulGroupName, row.ModulGroupImage));
                 }
 
                 modulGroup = modulGroupCollection[row.PKModulGroup.Value];
@@ -98,7 +130,7 @@ namespace Wookie.Menu.MenuManager
                 if (!row.PKModul.HasValue) continue;
                 if (!modulGroup.Moduls.ContainsKey(row.PKModul))
                 {
-                    modulGroup.Moduls.Add(row.PKModul, new Modul(row.ModulName, row.ModulSvgImage));
+                    modulGroup.Moduls.Add(row.PKModul, new Modul(row.ModulName, row.ModulImage));
                 }
 
                 modul = modulGroup.Moduls[row.PKModul.Value];
@@ -111,13 +143,27 @@ namespace Wookie.Menu.MenuManager
                         row.PKCategory, 
                         new Category(
                             row.CategoryName, 
-                            row.CategorySvgImage, 
-                            row.Assemblyname, 
-                            new System.Data.SqlClient.SqlConnection(row.ClientConnectionString), 
+                            row.CategoryImage, 
+                            row.CategoryAssemblyname,
+                            connBuilder.ConnectionString,
                             row.FKExternal));
                 }
 
                 category = modul.Categories[row.PKCategory.Value];
+
+                // Category
+                if (!row.PKSubCategory.HasValue) continue;
+                if (!category.SubCategories.ContainsKey(row.PKSubCategory))
+                {
+                    category.SubCategories.Add(
+                        row.PKSubCategory,
+                        new SubCategory(
+                            row.SubCategoryName,
+                            row.SubCategoryImage,
+                            row.SubCategoryAssemblyname,
+                            connBuilder.ConnectionString,
+                            row.FKExternal));
+                }               
 
                 modulGroupCollection.MenuManager = this;
             }
@@ -129,6 +175,8 @@ namespace Wookie.Menu.MenuManager
         {
             if (this.accordionControl == null) return;
             if (this.modulGroupCollection == null) return;
+
+            accordionControl.BeginUpdate();
 
             if (clear) this.accordionControl.Elements.Clear();
 
@@ -146,25 +194,33 @@ namespace Wookie.Menu.MenuManager
                     {
                         modul.AccordionControlElement.Elements.Add(category.AccordionControlElement);
                         category.CategoryClick += new Category.CategoryEventHandler(this.categoryClick);
+
+                        if (category.SubCategories == null) continue;
+                        foreach (SubCategory subCategory in category.SubCategories.Values)
+                        {
+                            category.AccordionControlElement.Style = ElementStyle.Group;
+                            category.AccordionControlElement.Elements.Add(subCategory.AccordionControlElement);
+                            subCategory.CategoryClick += new Category.CategoryEventHandler(this.categoryClick);
+                        }
                     }
                 }
             }
 
-            
+            accordionControl.EndUpdate();
         }
 
         public void AddSettings()
         {
             // Add Settings
-            DevExpress.XtraBars.Navigation.AccordionControlElement aceSettings;
+            AccordionControlElement aceSettings;
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
 
-            aceSettings = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            aceSettings.ControlFooterAlignment = DevExpress.XtraBars.Navigation.AccordionItemFooterAlignment.Far;
+            aceSettings = new AccordionControlElement();
+            aceSettings.ControlFooterAlignment = AccordionItemFooterAlignment.Far;
             aceSettings.Expanded = true;
             //aceSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image")));
             aceSettings.Name = "aceSettings";

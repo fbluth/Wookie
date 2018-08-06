@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9158C093-AE52-47A9-8DA9-50AF12669C40}</ProjectGuid>
+    <ProjectGuid>{40D12E15-4B24-455E-B9A0-994E8FA8DAA8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wookie.Tools</RootNamespace>
-    <AssemblyName>Wookie.Tools</AssemblyName>
+    <RootNamespace>Wookie.Master.Menu</RootNamespace>
+    <AssemblyName>Wookie.Master.Menu</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,11 +16,10 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Wookie\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,15 +31,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Dialogs.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Images.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraDialogs.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,22 +51,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cryptography\StringCipher.cs" />
-    <Compile Include="Database\MasterDatabase.cs" />
-    <Compile Include="ImagePicker\ImagePicker.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Category.cs" />
+    <Compile Include="Control\ucMenu.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ImagePicker\ImagePicker.Designer.cs">
-      <DependentUpon>ImagePicker.cs</DependentUpon>
+    <Compile Include="Control\ucMenu.Designer.cs">
+      <DependentUpon>ucMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Image\Converter.cs" />
+    <Compile Include="Database\Menu.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ImagePicker\ImagePicker.resx">
-      <DependentUpon>ImagePicker.cs</DependentUpon>
+    <ProjectReference Include="..\Wookie.Menu\Wookie.Menu.csproj">
+      <Project>{16cebd6f-e3c4-4a7f-8388-95f1f853b23f}</Project>
+      <Name>Wookie.Menu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wookie.Tools\Wookie.Tools.csproj">
+      <Project>{9158c093-ae52-47a9-8da9-50af12669c40}</Project>
+      <Name>Wookie.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Control\ucMenu.resx">
+      <DependentUpon>ucMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Database\Menu.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Menu.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database\Menu.dbml.layout">
+      <DependentUpon>Menu.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysCategory.datasource" />
+    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysClient.datasource" />
+    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysModul.datasource" />
+    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysModulGroup.datasource" />
+    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysSubCategory.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

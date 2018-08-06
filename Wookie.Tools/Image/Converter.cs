@@ -28,7 +28,14 @@ namespace Wookie.Tools.Image
 
             using (MemoryStream ms = new MemoryStream(binary.ToArray()))
             {
-                returnImage = System.Drawing.Image.FromStream(ms);
+                try
+                {
+                    returnImage = System.Drawing.Image.FromStream(ms);
+                }
+                catch
+                {
+                    returnImage = null;
+                }
 
             }
 
@@ -42,8 +49,14 @@ namespace Wookie.Tools.Image
 
             using (MemoryStream ms = new MemoryStream(binary.ToArray()))
             {
-                returnImage = SvgImage.FromStream(ms);
-
+                try
+                {
+                    returnImage = SvgImage.FromStream(ms);
+                }
+                catch
+                {
+                    returnImage = null;
+                }
             }
 
             return returnImage;

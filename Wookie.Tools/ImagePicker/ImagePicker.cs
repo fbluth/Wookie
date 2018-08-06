@@ -16,7 +16,8 @@ namespace Wookie.Tools.ImagePicker
     public partial class ImagePicker : DevExpress.XtraEditors.XtraForm
     {
         private Dictionary<string, GalleryItem> galleryItemDictionary = new Dictionary<string, GalleryItem>();
-        
+        private System.Drawing.Image selectedImage = null;
+
         public ImagePicker()
         {
             InitializeComponent();
@@ -171,11 +172,13 @@ namespace Wookie.Tools.ImagePicker
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -196,7 +199,7 @@ namespace Wookie.Tools.ImagePicker
 
         private void gControlImages_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
-            System.Drawing.Image image = e.Item.ImageOptions.Image;
+            selectedImage = e.Item.ImageOptions.Image;
         }
 
         private void buttonEdit1_EditValueChanged(object sender, EventArgs e)
@@ -205,6 +208,16 @@ namespace Wookie.Tools.ImagePicker
         }
 
         private void cListBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        public System.Drawing.Image SelectedImage
+        {
+            get { return this.selectedImage; }
+        }
+
+        private void buttonEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             
         }

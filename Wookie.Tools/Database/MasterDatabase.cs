@@ -3,28 +3,66 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Wookie.Tools.Database
 {
     public static class MasterDatabase
     {
-        private static System.Data.SqlClient.SqlConnection sqlConnectionMasterDB;
+        #region Variables
+        private static SqlConnection sqlConnection = null;
+        #endregion
 
-        public static System.Data.SqlClient.SqlConnection SqlConnectionMasterDB
+        #region Public Properties
+        public static SqlConnection SqlConnection
         {
             get
             {
-                if (sqlConnectionMasterDB == null)
+                if (sqlConnection == null && KeyFileExists)
                 {
-                    sqlConnectionMasterDB = new System.Data.SqlClient.SqlConnection(GetSQLConnectionString(""));
+                    string connectionString = GetSQLConnectionString(KeyFileName);
+                    sqlConnection = new System.Data.SqlClient.SqlConnection(connectionString);
                 }
-                return sqlConnectionMasterDB;
+                return sqlConnection;
             }
         }
 
+        public static bool KeyFileExists
+        {
+            get { return System.IO.File.Exists(KeyFileName); }
+        }
+
+        public static string KeyFileName { get; } = Application.StartupPath + "\\Master.key";
+
+        public static bool Connected
+        {
+            get
+            {
+                try
+                {
+                    SqlConnection.Open();
+                    SqlConnection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        #endregion;
+
+        #region Private Properties
         private static string GetSQLConnectionString(string filename)
         {
-            return "Data Source=localhost;Initial Catalog=BS_PM_Master;Persist Security Info=True;User ID=sa;Password=19theta#01";
+            string connectionString = null;
+            if (System.IO.File.Exists(filename))
+            {
+                connectionString = Cryptography.StringCipher.Decrypt(System.IO.File.ReadAllText(filename),"19theta#01");
+            }
+            return connectionString;
         }
+        #endregion
     }
 }

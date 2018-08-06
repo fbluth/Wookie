@@ -6,6 +6,8 @@ using System.Reflection;
 using System;
 using System.Data.SqlClient;
 using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraEditors;
+using System.Drawing;
 
 namespace Wookie.Menu.MenuManager
 {
@@ -13,21 +15,35 @@ namespace Wookie.Menu.MenuManager
     {
         private MenuManager menuManager = null;
         private string caption = null;
-        private SvgImage svgImage = null;
+        private Image image = null;
         private AccordionControlElement accordionControlElement = null;
         private NavigationPage navigationPage = null;
         private ICategory categoryInstance = null;
+        private SubCategoryCollection subCategories = null;
 
         public string AssemblyFile { get; }
         public SqlConnection SqlConnection {get; set;}
         public long? FKExternal { get; set; }
-        
-        public Category(string caption, string assemblyFile, SqlConnection sqlconnection, long? fkExternal)
+
+        public delegate void CategoryEventHandler(Category sender);
+        public event CategoryEventHandler CategoryClick;
+
+        public Category(string caption, string assemblyFile, string sqlconnectionString, long? fkExternal)
         {   
             this.caption = caption;
             this.AssemblyFile = assemblyFile;
             this.FKExternal = fkExternal;
-            this.SqlConnection = sqlconnection;
+            this.SqlConnection = new SqlConnection(sqlconnectionString);
+
+            this.subCategories = new SubCategoryCollection(this.MenuManager, this);
+
+            LabelControl lblStatus = new LabelControl();
+            lblStatus.Dock = DockStyle.Fill;
+            lblStatus.AutoSizeMode = LabelAutoSizeMode.None;
+            lblStatus.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            lblStatus.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            lblStatus.Appearance.FontSizeDelta = 8;
+            lblStatus.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
 
             this.navigationPage = new NavigationPage();
 
@@ -41,26 +57,41 @@ namespace Wookie.Menu.MenuManager
                 {
                     var assembly = Assembly.LoadFile(path);
                     dynamic instance = Activator.CreateInstance(assembly.GetType(assemblyFileWithoutDll + ".Category"));
-                    ((ICategory)instance).SetConnection(this.SqlConnection, this.FKExternal);
-                    this.categoryInstance = ((ICategory)instance);
-
-                    if (this.categoryInstance != null)
+                   
+                    if (instance != null)
                     {
-                        this.categoryInstance.Control.Dock = DockStyle.Fill;                     
+                        ((ICategory)instance).SetConnection(this.SqlConnection, this.FKExternal);
+                        this.categoryInstance = ((ICategory)instance);
+                        this.categoryInstance.Control.Dock = DockStyle.Fill;
                         this.navigationPage.Controls.Add(this.categoryInstance.Control);
                     }
+                    else
+                    {
+                        lblStatus.Text = "Could not create instance from file: " + path;
+                        this.navigationPage.Controls.Add(lblStatus);
+                    }
                 }
+                else
+                {
+                    lblStatus.Text = "File not found: " + path;
+                    this.navigationPage.Controls.Add(lblStatus);
+                }
+            }
+            else
+            {
+                lblStatus.Text = "No assembly defined in database.";
+                this.navigationPage.Controls.Add(lblStatus);
             }
         }
 
-        public Category(string caption, SvgImage svgImage, string assemblyFile, SqlConnection sqlconnection, long? fkExternal) : this(caption, assemblyFile, sqlconnection, fkExternal)
+        public Category(string caption, Image image, string assemblyFile, string sqlconnectionString, long? fkExternal) : this(caption, assemblyFile, sqlconnectionString, fkExternal)
         {            
-            this.svgImage = svgImage;
+            this.Image = image;
         }
 
-        public Category(string caption, Binary binary, string assemblyFile, SqlConnection sqlconnection, long? fkExternal) : this(caption, assemblyFile, sqlconnection, fkExternal)
+        public Category(string caption, Binary binary, string assemblyFile, string sqlconnectionString, long? fkExternal) : this(caption, assemblyFile, sqlconnectionString, fkExternal)
         {
-            this.svgImage = Converter.GetSvgImageFromBinary(binary);
+            this.Image = Converter.GetImageFromBinary(binary);
         }
 
         public string Caption
@@ -69,10 +100,10 @@ namespace Wookie.Menu.MenuManager
             set { if (accordionControlElement != null) accordionControlElement.Text = value; this.caption = value; }
         }
 
-        public SvgImage SvgImage
+        public Image Image
         {
-            get { return this.svgImage; }
-            set { if (this.accordionControlElement != null) accordionControlElement.ImageOptions.SvgImage = value; this.svgImage = value; }
+            get { return this.Image; }
+            set { if (this.accordionControlElement != null) accordionControlElement.ImageOptions.Image = value; this.image = value; }
         }
 
         public MenuManager MenuManager
@@ -81,21 +112,19 @@ namespace Wookie.Menu.MenuManager
             set { this.menuManager = value; }
         }
 
-        
+        public SubCategoryCollection SubCategories
+        {
+            get { return this.subCategories; }
+        }
+
         public ICategory Instance
         {
-            get
-            {
-                return this.categoryInstance;
-            }
+            get { return this.categoryInstance; }
         }
 
         public NavigationPage NavigationPage
         {
-            get
-            {
-                return this.navigationPage;
-            }
+            get { return this.navigationPage; }
         }
 
         public AccordionControlElement AccordionControlElement
@@ -107,16 +136,16 @@ namespace Wookie.Menu.MenuManager
                     accordionControlElement = new AccordionControlElement
                     {
                         Text = this.caption,
-                        Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+                        Style = ElementStyle.Item
                     };
-                    accordionControlElement.ImageOptions.SvgImage = this.svgImage;
+                    accordionControlElement.ImageOptions.Image = this.image;
                     accordionControlElement.Click += new EventHandler(this.accordionControlElement_Click);
                     
                     DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
                     DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
                     DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-                    toolTipTitleItem1.ImageOptions.SvgImage = this.svgImage;
-                    toolTipTitleItem1.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
+                    toolTipTitleItem1.ImageOptions.Image = this.image;
+                    //toolTipTitleItem1.ImageOptions.ImageSize = new System.Drawing.Size(25, 25);
                     
                     toolTipTitleItem1.Text = caption;
                     toolTipItem1.LeftIndent = 6;
@@ -133,9 +162,6 @@ namespace Wookie.Menu.MenuManager
         {
             SendCategoryClicked();
         }
-
-        public delegate void CategoryEventHandler(Category sender);
-        public event CategoryEventHandler CategoryClick;
 
         protected virtual void SendCategoryClicked()
         {
@@ -154,17 +180,17 @@ namespace Wookie.Menu.MenuManager
             {
                 if (disposing)
                 {
-                    // TODO: verwalteten Zustand (verwaltete Objekte) entsorgen.
+                    // verwalteten Zustand (verwaltete Objekte) entsorgen.
                     this.accordionControlElement.Dispose();
                     this.navigationPage.Dispose();
                 }
 
-                // TODO: nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.
-                // TODO: große Felder auf Null setzen.
+                // nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.
+                // große Felder auf Null setzen.
                 this.accordionControlElement = null;
                 this.navigationPage = null;
                 this.categoryInstance = null;
-                this.svgImage = null;
+                this.image = null;
                 this.menuManager = null;
                 this.caption = null;
                 disposedValue = true;
@@ -176,7 +202,7 @@ namespace Wookie.Menu.MenuManager
         {
             // Ändern Sie diesen Code nicht. Fügen Sie Bereinigungscode in Dispose(bool disposing) weiter oben ein.
             Dispose(true);
-            // TODO: Auskommentierung der folgenden Zeile aufheben, wenn der Finalizer weiter oben überschrieben wird.
+            // Auskommentierung der folgenden Zeile aufheben, wenn der Finalizer weiter oben überschrieben wird.
             // GC.SuppressFinalize(this);
         }        
         #endregion

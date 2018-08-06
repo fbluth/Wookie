@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Menu.dbml</DependentUpon>
     </Compile>
+    <Compile Include="MenuManager\Collections\SubCategoryCollection.cs" />
     <Compile Include="MenuManager\Items\Client.cs" />
     <Compile Include="MenuManager\Events\ClientChangeEventArgs.cs" />
     <Compile Include="MenuManager\Items\Modul.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="MenuManager\Interfaces\ICategory.cs" />
     <Compile Include="MenuManager\Items\Category.cs" />
     <Compile Include="MenuManager\Collections\CategoryCollection.cs" />
+    <Compile Include="MenuManager\Items\SubCategory.cs" />
     <Compile Include="MenuManager\MenuManager.cs" />
     <Compile Include="MenuManager\Items\ModulGroup.cs" />
     <Compile Include="MenuManager\Collections\ModulGroupCollection.cs" />

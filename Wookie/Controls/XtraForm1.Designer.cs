@@ -30,10 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Wookie.Controls.MainSplashScreen), true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraForm1));
-            DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton1 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
-            DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton2 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barTool = new DevExpress.XtraBars.Bar();
             this.btnDuplicate = new DevExpress.XtraBars.BarButtonItem();
@@ -45,12 +42,12 @@
             this.btnDesign = new DevExpress.XtraBars.BarSubItem();
             this.btnSkin = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.btnStyle = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSettings = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnSettings = new DevExpress.XtraBars.BarButtonItem();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navPageWelcome = new DevExpress.XtraBars.Navigation.NavigationPage();
@@ -59,16 +56,6 @@
             this.accordionControl2 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceMitarbeiterverwaltung = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceSkills = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceJobCluster = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceKorrespondenz = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.aceTermine = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.fluentDesignFormContainer1.SuspendLayout();
@@ -83,10 +70,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // splashScreenManager1
-            // 
-            splashScreenManager1.ClosingDelay = 500;
             // 
             // barManager1
             // 
@@ -125,7 +108,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnClient),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnData),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDesign),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnSettings),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.barTool.OptionsBar.DrawDragBorder = false;
             this.barTool.OptionsBar.MultiLine = true;
@@ -211,14 +193,6 @@
             this.btnStyle.Name = "btnStyle";
             this.btnStyle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStyle_ItemClick);
             // 
-            // btnSettings
-            // 
-            this.btnSettings.Id = 36;
-            this.btnSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.ImageOptions.Image")));
-            this.btnSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettings.ImageOptions.LargeImage")));
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSettings_ItemClick);
-            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "barButtonItem1";
@@ -257,6 +231,13 @@
             this.barDockControlRight.Location = new System.Drawing.Point(972, 30);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(38, 696);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Id = 36;
+            this.btnSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.ImageOptions.Image")));
+            this.btnSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettings.ImageOptions.LargeImage")));
+            this.btnSettings.Name = "btnSettings";
             // 
             // fluentDesignFormContainer1
             // 
@@ -334,105 +315,16 @@
             // 
             this.accordionControl1.AllowItemSelection = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement1});
+            this.accordionControl1.ExpandGroupOnHeaderClick = false;
             this.accordionControl1.Location = new System.Drawing.Point(0, 30);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.RootDisplayMode = DevExpress.XtraBars.Navigation.AccordionControlRootDisplayMode.Footer;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.AutoCollapse;
+            this.accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Auto;
             this.accordionControl1.Size = new System.Drawing.Size(248, 696);
             this.accordionControl1.TabIndex = 11;
             this.accordionControl1.Text = "T-Systems";
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
-            this.accordionControl1.ElementClick += new DevExpress.XtraBars.Navigation.ElementClickEventHandler(this.accordionControl1_ElementClick);
-            // 
-            // accordionControlElement1
-            // 
-            this.accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement2,
-            this.accordionControlElement4,
-            this.accordionControlElement3});
-            this.accordionControlElement1.Expanded = true;
-            this.accordionControlElement1.Name = "accordionControlElement1";
-            this.accordionControlElement1.Text = "Ressource Management";
-            // 
-            // accordionControlElement2
-            // 
-            this.accordionControlElement2.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.aceMitarbeiterverwaltung,
-            this.accordionControlElement5});
-            this.accordionControlElement2.Expanded = true;
-            this.accordionControlElement2.Name = "accordionControlElement2";
-            this.accordionControlElement2.Text = "Mitarbeiter";
-            // 
-            // aceMitarbeiterverwaltung
-            // 
-            accordionContextButton1.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
-            accordionContextButton1.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
-            accordionContextButton1.Id = new System.Guid("d40ce855-8952-4401-9cfe-120d7d0bdb32");
-            accordionContextButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            accordionContextButton1.Name = "accordionContextButton1";
-            this.aceMitarbeiterverwaltung.ContextButtons.Add(accordionContextButton1);
-            this.aceMitarbeiterverwaltung.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceMitarbeiterverwaltung.ImageOptions.Image")));
-            this.aceMitarbeiterverwaltung.Name = "aceMitarbeiterverwaltung";
-            this.aceMitarbeiterverwaltung.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceMitarbeiterverwaltung.Text = "Mitarbeiterverwaltung";
-            // 
-            // accordionControlElement5
-            // 
-            accordionContextButton2.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
-            accordionContextButton2.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
-            accordionContextButton2.Id = new System.Guid("0f3a7d14-5da7-4d0a-a563-d80767aed384");
-            accordionContextButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            accordionContextButton2.Name = "accordionContextButton1";
-            this.accordionControlElement5.ContextButtons.Add(accordionContextButton2);
-            this.accordionControlElement5.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.aceSkills,
-            this.aceJobCluster,
-            this.aceKorrespondenz,
-            this.aceTermine});
-            this.accordionControlElement5.Expanded = true;
-            this.accordionControlElement5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement5.ImageOptions.Image")));
-            this.accordionControlElement5.Name = "accordionControlElement5";
-            this.accordionControlElement5.Text = "Mitarbeiter";
-            // 
-            // aceSkills
-            // 
-            this.aceSkills.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceSkills.ImageOptions.Image")));
-            this.aceSkills.Name = "aceSkills";
-            this.aceSkills.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceSkills.Text = "Skills";
-            // 
-            // aceJobCluster
-            // 
-            this.aceJobCluster.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceJobCluster.ImageOptions.Image")));
-            this.aceJobCluster.Name = "aceJobCluster";
-            this.aceJobCluster.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceJobCluster.Text = "Job Cluster";
-            // 
-            // aceKorrespondenz
-            // 
-            this.aceKorrespondenz.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceKorrespondenz.ImageOptions.Image")));
-            this.aceKorrespondenz.Name = "aceKorrespondenz";
-            this.aceKorrespondenz.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceKorrespondenz.Text = "Korrespondenz";
-            // 
-            // aceTermine
-            // 
-            this.aceTermine.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("aceTermine.ImageOptions.Image")));
-            this.aceTermine.Name = "aceTermine";
-            this.aceTermine.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceTermine.Text = "Termine";
-            // 
-            // accordionControlElement4
-            // 
-            this.accordionControlElement4.Name = "accordionControlElement4";
-            this.accordionControlElement4.Text = "Kunden";
-            // 
-            // accordionControlElement3
-            // 
-            this.accordionControlElement3.Name = "accordionControlElement3";
-            this.accordionControlElement3.Text = "Freelancer";
             // 
             // fluentDesignFormControl1
             // 
@@ -463,6 +355,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XtraForm1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.fluentDesignFormContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).EndInit();
@@ -506,16 +399,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
         private DevExpress.XtraBars.BarButtonItem btnSettings;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceMitarbeiterverwaltung;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceTermine;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceKorrespondenz;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceJobCluster;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement aceSkills;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

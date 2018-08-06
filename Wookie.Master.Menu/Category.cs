@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraBars.Ribbon;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wookie.Employee.Contact
+namespace Wookie.Master.Menu
 {
     public class Category : Wookie.Menu.MenuManager.ICategory, IDisposable
     {
@@ -16,7 +15,7 @@ namespace Wookie.Employee.Contact
         private ModulData modulData = null;
 
         public Category()
-        {   
+        {
         }
 
         public void SetConnection(SqlConnection sqlconnection, long? fkExternal)
@@ -31,7 +30,7 @@ namespace Wookie.Employee.Contact
             get
             {
                 if (this.control == null)
-                    control = new Control.ucContact2(modulData);
+                    control = new Control.ucMenu(modulData);
                 return control;
             }
         }

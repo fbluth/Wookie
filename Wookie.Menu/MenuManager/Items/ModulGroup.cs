@@ -3,13 +3,14 @@ using DevExpress.Utils.Svg;
 using System.Data.Linq;
 using Wookie.Tools.Image;
 using DevExpress.XtraBars.Navigation;
+using System.Drawing;
 
 namespace Wookie.Menu.MenuManager
 {
     public class ModulGroup : IDisposable
     {
         private string caption = null;
-        private SvgImage svgImage = null;
+        private Image image = null;
         private ModulCollection modulCollection = null;
         private AccordionControlElement accordionControlElement = null;
         private MenuManager menuManager = null;
@@ -20,14 +21,14 @@ namespace Wookie.Menu.MenuManager
             this.caption = caption;            
         }
 
-        public ModulGroup(string caption, SvgImage svgImage):this(caption)
+        public ModulGroup(string caption, Image image):this(caption)
         {
-            this.svgImage = svgImage;
+            this.image = image;
         }
 
         public ModulGroup(string caption, Binary binary):this(caption)
         {
-            this.svgImage = Converter.GetSvgImageFromBinary(binary);
+            this.image = Converter.GetImageFromBinary(binary);
         }
 
         public string Caption
@@ -36,10 +37,10 @@ namespace Wookie.Menu.MenuManager
             set { if (accordionControlElement != null) accordionControlElement.Text = value; this.caption = value; }
         }
 
-        public SvgImage SvgImage
+        public Image Image
         {
-            get { return this.svgImage; }
-            set { if (this.accordionControlElement != null) accordionControlElement.ImageOptions.SvgImage = value; this.svgImage = value; }
+            get { return this.image; }
+            set { if (this.accordionControlElement != null) accordionControlElement.ImageOptions.Image = value; this.image = value; }
         }
 
         public MenuManager MenuManager
@@ -61,14 +62,14 @@ namespace Wookie.Menu.MenuManager
                 {
                     accordionControlElement = new AccordionControlElement();
                     accordionControlElement.Text = this.caption;
-                    accordionControlElement.ImageOptions.SvgImage = this.svgImage;
+                    accordionControlElement.ImageOptions.Image = this.image;
                   
 
                     DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
                     DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
                     DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-                    toolTipTitleItem1.ImageOptions.SvgImage = this.svgImage;
-                    toolTipTitleItem1.ImageOptions.SvgImageSize = new System.Drawing.Size(25, 25);
+                    toolTipTitleItem1.ImageOptions.Image = this.image;
+                    //toolTipTitleItem1.ImageOptions.ImageSize = new System.Drawing.Size(25, 25);
 
                     toolTipTitleItem1.Text = caption;
                     toolTipItem1.LeftIndent = 6;
@@ -99,7 +100,7 @@ namespace Wookie.Menu.MenuManager
                 // TODO: nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.
                 // TODO: große Felder auf Null setzen.
                 this.modulCollection = null;
-                this.svgImage = null;
+                this.image = null;
                 this.caption = null;
                 this.menuManager = null;
                 disposedValue = true;

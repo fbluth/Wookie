@@ -16,46 +16,72 @@ using DevExpress.XtraBars;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars.Navigation;
+using Wookie.Tools.Database;
+using DevExpress.XtraSplashScreen;
 
 namespace Wookie.Controls
 {
     public partial class XtraForm1 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-
-        private SqlConnection SqlConnection = new SqlConnection("Data Source=localhost;Initial Catalog=BS_PM_Mandant1;Persist Security Info=True;User ID=sa;Password=19theta#01");
+        #region Variables
         private MenuManager menuManager = null;
         private XtraForm parent = null;
+        #endregion
 
         public XtraForm1()
         {
             InitializeComponent();
-
-            menuManager = new MenuManager(Wookie.Tools.Database.MasterDatabase.SqlConnectionMasterDB, this.navigationFrame1, this.accordionControl1);
-            menuManager.ClientChanged += new ClientChangeEventHandler(this.ClientChange);
-            menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
-            menuManager.AddClients(this.btnClient);
+            SplashScreenManager.ShowImage(Image.FromFile(".\\Images\\Splash.png"), true, true, SplashImagePainter.Painter);
+                        
+            SetSplashScreenInfo("Check connection to master database", 25);
             
+            if (MasterDatabase.KeyFileExists && MasterDatabase.Connected)
+            {
+                SetSplashScreenInfo("Building menu",50);
+               
+                menuManager = new MenuManager(MasterDatabase.SqlConnection, this.navigationFrame1, this.accordionControl1);
+                menuManager.ClientChanged += new ClientChangeEventHandler(this.ClientChange);
+                menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
+
+                SetSplashScreenInfo("Adding registered clients", 75);
+
+                menuManager.AddClients(this.btnClient);
+
+                SetSplashScreenInfo("Done", 100);                
+            }            
         }
-
         
-
         public XtraForm1(XtraForm parent):this()
         {
             this.parent = parent;
         }
 
+        private void SetSplashScreenInfo(string text, int counter)
+        {
+            SplashImagePainter.Painter.ViewInfo.Stage = text;
+            SplashImagePainter.Painter.ViewInfo.Counter = counter;
+            SplashScreenManager.Default.Invalidate();
+        }
+        
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);           
+            SplashScreenManager.HideImage();
+        }
+
+
         private void ClientChange(object sender, ClientChangeEventArgs e)
         {            
-            menuManager.LoadData(e.Client.PKClient,false);
+            menuManager.LoadData(e.Client.PKClient,true);
             menuManager.AddSettings();
 
             this.navigationFrame1.SelectedPage = navPageWelcome;
-            this.Text = "Wookie - " + e.Client.Name;
+            this.Text = Application.ProductName + " - " + e.Client.Name;
         }
 
         private void SettingsClicked(object sender, EventArgs e)
-        {            
-         
+        {
+            flyoutPanel1.ShowPopup();
         }
 
         public void Duplicate(XtraForm parent)
@@ -83,29 +109,21 @@ namespace Wookie.Controls
             {
                 svgSkinPaletteSelector.ShowDialog();
             }
-        }
-
-        private void btnSettings_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            flyoutPanel1.ShowPopup();
-        }
-
-       
-
-        private void accordionControl1_ElementClick(object sender, DevExpress.XtraBars.Navigation.ElementClickEventArgs e)
-        {
-            if (
-                accordionControl1.OptionsMinimizing.State == AccordionControlState.Minimized)
-            {
-                AccordionFlyoutForm a = accordionControl1.FlyoutForm;
-
-            }
-        }
+        }        
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
             Wookie.Tools.ImagePicker.ImagePicker imagePicker = new Tools.ImagePicker.ImagePicker();
             imagePicker.ShowDialog();
+        }
+
+        private void XtraForm1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.parent == null)
+            {
+                if (XtraMessageBox.Show("Hauptfenster. Alle anderen Fenster werden ebenfalls geschlossen. Fortfahren?", "Frage", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    e.Cancel = true;
+            }
         }
     }
 }
