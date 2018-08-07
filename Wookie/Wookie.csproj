@@ -73,12 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\SplashImagePainter.cs" />
-    <Compile Include="Controls\ucLogin.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucLogin.Designer.cs">
-      <DependentUpon>ucLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\XtraForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,9 +81,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\ucLogin.resx">
-      <DependentUpon>ucLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\XtraForm1.resx">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </EmbeddedResource>

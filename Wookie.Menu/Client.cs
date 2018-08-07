@@ -1,4 +1,4 @@
-﻿namespace Wookie.Menu.MenuManager
+﻿namespace Wookie.Menu
 {
     public class Client
     {
@@ -22,7 +22,7 @@
             this.PKClient = pkClient;
 
             this.SqlConnection = new System.Data.SqlClient.SqlConnection(connectionString);
-            
+
             this.Name = name;
         }
     }

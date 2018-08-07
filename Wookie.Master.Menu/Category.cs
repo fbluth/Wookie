@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Wookie.Master.Menu
 {
-    public class Category : Wookie.Menu.MenuManager.ICategory, IDisposable
+    public class Category : Wookie.Menu.IAssemblyInstance, IDisposable
     {
 
         private XtraUserControl control = null;
@@ -18,14 +18,34 @@ namespace Wookie.Master.Menu
         {
         }
 
-        public void SetConnection(SqlConnection sqlconnection, long? fkExternal)
+        public void Initialize(SqlConnection sqlconnection, long? foreignKeyExternal)
         {
             this.modulData = new ModulData();
             this.modulData.SqlConnectionClientDB = sqlconnection;
-            this.modulData.FKContactData = fkExternal;
+            this.modulData.FKContactData = foreignKeyExternal;
         }
 
-        public XtraUserControl Control
+
+        public ModulData ModulData
+        {
+            get
+            {
+                return this.modulData;
+            }
+        }
+
+        public SqlConnection SqlConnection
+        {
+            get
+            {
+                if (this.modulData != null)
+                    return this.modulData.SqlConnectionClientDB;
+
+                return null;
+            }
+        }
+
+        public XtraUserControl UserControl
         {
             get
             {
@@ -35,11 +55,14 @@ namespace Wookie.Master.Menu
             }
         }
 
-        public ModulData ModulData
+        public long? ForeignKeyExternal
         {
             get
             {
-                return this.modulData;
+                if (this.modulData != null)
+                    return this.modulData.FKContactData;
+
+                return null;
             }
         }
 

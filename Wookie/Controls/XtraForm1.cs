@@ -40,7 +40,7 @@ namespace Wookie.Controls
                 SetSplashScreenInfo("Building menu",50);
                
                 menuManager = new MenuManager(MasterDatabase.SqlConnection, this.navigationFrame1, this.accordionControl1);
-                menuManager.ClientChanged += new ClientChangeEventHandler(this.ClientChange);
+                menuManager.ClientChanged += MenuManager_ClientChanged;
                 menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
 
                 SetSplashScreenInfo("Adding registered clients", 75);
@@ -50,7 +50,8 @@ namespace Wookie.Controls
                 SetSplashScreenInfo("Done", 100);                
             }            
         }
-        
+
+       
         public XtraForm1(XtraForm parent):this()
         {
             this.parent = parent;
@@ -70,13 +71,13 @@ namespace Wookie.Controls
         }
 
 
-        private void ClientChange(object sender, ClientChangeEventArgs e)
-        {            
-            menuManager.LoadData(e.Client.PKClient,true);
+        private void MenuManager_ClientChanged(Menu.Client sender)
+        {
+            menuManager.LoadMenu(sender);
             menuManager.AddSettings();
 
             this.navigationFrame1.SelectedPage = navPageWelcome;
-            this.Text = Application.ProductName + " - " + e.Client.Name;
+            this.Text = Application.ProductName + " - " + sender.Name;
         }
 
         private void SettingsClicked(object sender, EventArgs e)
