@@ -97,11 +97,8 @@
     <None Include="Database\Menu.dbml.layout">
       <DependentUpon>Menu.dbml</DependentUpon>
     </None>
-    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysCategory.datasource" />
     <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysClient.datasource" />
-    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysModul.datasource" />
-    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysModulGroup.datasource" />
-    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysSubCategory.datasource" />
+    <None Include="Properties\DataSources\Wookie.Master.Menu.Database.tsysClientElement.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

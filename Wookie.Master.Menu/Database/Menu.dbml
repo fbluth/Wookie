@@ -1,22 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BS_PM_Master" Class="MenuDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BS_PM_Master;Integrated Security=True" SettingsObjectName="Wookie.Master.Menu.Properties.Settings" SettingsPropertyName="BS_PM_MasterConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tsysCategory" Member="tsysCategory">
-    <Type Name="tsysCategory">
-      <Column Name="PKCategory" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FKModul" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="FKExternal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Assemblyname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="tsysCategory_tsysSubCategory" Member="tsysSubCategory" ThisKey="PKCategory" OtherKey="FKCategory" Type="tsysSubCategory" />
-      <Association Name="tsysModul_tsysCategory" Member="tsysModul" ThisKey="FKModul" OtherKey="PKModul" Type="tsysModul" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tsysClient" Member="tsysClient">
     <Type Name="tsysClient">
       <Column Name="PKClient" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -32,52 +15,27 @@
       <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="tsysClient_tsysModulGroup" Member="tsysModulGroup" ThisKey="PKClient" OtherKey="FKClient" Type="tsysModulGroup" />
+      <Association Name="tsysClient_tsysClientElement" Member="tsysClientElement" ThisKey="PKClient" OtherKey="FKClient" Type="tsysClientElement" />
     </Type>
   </Table>
-  <Table Name="dbo.tsysModul" Member="tsysModul">
-    <Type Name="tsysModul">
-      <Column Name="PKModul" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FKModulGroup" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="tsysModul_tsysCategory" Member="tsysCategory" ThisKey="PKModul" OtherKey="FKModul" Type="tsysCategory" />
-      <Association Name="tsysModulGroup_tsysModul" Member="tsysModulGroup" ThisKey="FKModulGroup" OtherKey="PKModulGroup" Type="tsysModulGroup" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tsysModulGroup" Member="tsysModulGroup">
-    <Type Name="tsysModulGroup">
-      <Column Name="PKModulGroup" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.tsysClientElement" Member="tsysClientElement">
+    <Type Name="tsysClientElement">
+      <Column Name="PKClientElement" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FKClient" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKClientElement" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKExternal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="tsysModulGroup_tsysModul" Member="tsysModul" ThisKey="PKModulGroup" OtherKey="FKModulGroup" Type="tsysModul" />
-      <Association Name="tsysClient_tsysModulGroup" Member="tsysClient" ThisKey="FKClient" OtherKey="PKClient" Type="tsysClient" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tsysSubCategory" Member="tsysSubCategory">
-    <Type Name="tsysSubCategory">
-      <Column Name="PKSubCategory" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FKCategory" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Assemblyname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="tsysCategory_tsysSubCategory" Member="tsysCategory" ThisKey="FKCategory" OtherKey="PKCategory" Type="tsysCategory" IsForeignKey="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tsysClientElement_tsysClientElement" Member="tsysClientElement2" ThisKey="PKClientElement" OtherKey="FKClientElement" Type="tsysClientElement" />
+      <Association Name="tsysClient_tsysClientElement" Member="tsysClient" ThisKey="FKClient" OtherKey="PKClient" Type="tsysClient" IsForeignKey="true" />
+      <Association Name="tsysClientElement_tsysClientElement" Member="tsysClientElement1" ThisKey="FKClientElement" OtherKey="PKClientElement" Type="tsysClientElement" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
