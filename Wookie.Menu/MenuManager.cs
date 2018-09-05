@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Wookie.Tools.Image;
+using DevExpress.Images;
 
 namespace Wookie.Menu.MenuManager
 {
@@ -12,7 +13,7 @@ namespace Wookie.Menu.MenuManager
     {
         private Database.MenuDataContext context = null;
         private NavigationFrame navigationFrame = null;
-        private Dictionary<BarItem, Client> clientDictionary = new Dictionary<BarItem, Client>();
+        private Dictionary<AccordionControlElement, Client> clientDictionary = new Dictionary<AccordionControlElement, Client>();
         private AccordionControl accordionControl = null;
 
         
@@ -28,7 +29,7 @@ namespace Wookie.Menu.MenuManager
             this.context = new Database.MenuDataContext(sqlConnection);
         }
 
-        public void AddClients(BarSubItem bsiClient)
+        public void AddClients(AccordionControlElement aceClient)
         {
             // Lese aus der Datenbank alle Mandanten aus
             var clientQuery = from client in context.tsysClient orderby client.SortOrder select client;
@@ -38,15 +39,12 @@ namespace Wookie.Menu.MenuManager
 
             foreach (Database.tsysClient client in clientQuery)
             {
-                BarButtonItem item = new BarButtonItem
-                {
-                    Caption = client.Name
-                };
-                item.ImageOptions.Image = Converter.GetImageFromBinary(client.Image);
-                item.ItemClick += new ItemClickEventHandler(this.bsiClientClick);
-
-                bsiClient.LinksPersistInfo.Add(new LinkPersistInfo(item));
-
+                AccordionControlElement clientItem = new AccordionControlElement();
+                clientItem.Text = client.Name;
+                clientItem.ImageOptions.Image = Converter.GetImageFromBinary(client.Image);
+                clientItem.Click += ClientItem_Click;
+                clientItem.Style = ElementStyle.Item;
+               
                 try
                 {
                     SqlConnectionStringBuilder connBuilder = new SqlConnectionStringBuilder
@@ -65,20 +63,29 @@ namespace Wookie.Menu.MenuManager
                     sqlConnection.Close();
 
                     // Falls Verbindung möglich in Liste aufnehmen.
-                    this.clientDictionary.Add(item, new Client(client.PKClient, sqlConnection, client.Name));
+                    this.clientDictionary.Add(clientItem, new Client(client.PKClient, sqlConnection, client.Name));
                 }
                 catch
                 {
                     // Falls Verbindung zur Datenbank nicht möglich ist, dann Item auf enabled = false setzen.
-                    item.Enabled = false;
-                    item.Caption = client.Name + " (No connection to database)";
-                }                
+                    clientItem.Enabled = false;
+                    clientItem.Text = client.Name + " (No connection to database)";
+                }
+
+                aceClient.Elements.Add(clientItem);
             }
             
             if (this.clientDictionary.Count() > 0)
             {
                 ClientChanged?.Invoke((Client)clientDictionary.ToArray()[0].Value);
             }
+        }
+
+        private void ClientItem_Click(object sender, EventArgs e)
+        {
+            if (this.clientDictionary[(AccordionControlElement)sender] == null) return;
+
+            ClientChanged?.Invoke((Client)this.clientDictionary[(AccordionControlElement)sender]);
         }
 
         public void AddSettings()
@@ -95,7 +102,8 @@ namespace Wookie.Menu.MenuManager
             {
                 ControlFooterAlignment = AccordionItemFooterAlignment.Far,
                 Expanded = true,
-                Name = "aceSettings"
+                Name = "aceSettings",
+                Image = ImageResourceCache.Default.GetImage("images/setup/properties_32x32.png")
             };
             toolTipTitleItem1.Text = "Settings";
             toolTipItem1.LeftIndent = 6;
@@ -117,14 +125,14 @@ namespace Wookie.Menu.MenuManager
             if (this.accordionControl == null) return;
 
             this.accordionControl.BeginUpdate();
-            this.accordionControl.Elements.Clear();
 
+            this.accordionControl.Elements.Clear();
             this.CreateMenu(client, null, null);
 
             this.accordionControl.EndUpdate();
         }
 
-        public int CreateMenu(Client client, long? FKClientElement, AccordionControlElement element)
+        private int CreateMenu(Client client, long? FKClientElement, AccordionControlElement element)
         {
             var query = from row in context.tsysClientElement
                         where row.FKClient == client.PKClient
@@ -141,10 +149,9 @@ namespace Wookie.Menu.MenuManager
 
             foreach (Database.tsysClientElement row in query)
             {
-                MenuItem menuItem = new MenuItem(row.Name, row.Assemblyname, client.SqlConnection, row.FKExternal);
+                MenuItem menuItem = new MenuItem(row.Name, row.Image, row.Assemblyname, client.SqlConnection, row.FKExternal);
                 menuItem.MenuItemClick += new MenuItem.MenuItemEventHandler(this.menuItemClick);
                 
-
                 if (element == null)
                 {
                     this.accordionControl.Elements.Add(menuItem.AccordionControlElement);
@@ -173,13 +180,6 @@ namespace Wookie.Menu.MenuManager
             {
                 this.navigationFrame.SelectedPage = sender.NavigationPage;
             }
-        }
-
-        private void bsiClientClick(object sender, ItemClickEventArgs e)
-        {
-            if (this.clientDictionary[e.Item] == null) return;
-
-            ClientChanged?.Invoke((Client)this.clientDictionary[e.Item]);
         }
 
         private void Settings_Click(object sender, EventArgs e)

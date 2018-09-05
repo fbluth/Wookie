@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace Wookie.Menu
 {
@@ -8,6 +9,7 @@ namespace Wookie.Menu
         void Initialize(SqlConnection SqlConnection, long? foreignKeyExternal);
         SqlConnection SqlConnection { get; }
         XtraUserControl UserControl { get; }
-        long? ForeignKeyExternal { get; }        
+        long? ForeignKeyExternal { get; }  
+        Image Image { get; set; }
     }
 }

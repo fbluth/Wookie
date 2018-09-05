@@ -57,6 +57,14 @@ namespace Wookie.Employee.Contact.Control
             tblContactBindingSource.MoveFirst();            
         }
 
+        #region Public properties
+        public Image Image
+        {
+            get { return null; }
+            set {  }
+        }
+        #endregion
+
         private void LoadImageComboBoxItems()
         {
             // Prefix
@@ -166,7 +174,7 @@ namespace Wookie.Employee.Contact.Control
                 if (exception.Number == 547)
                     DevExpress.XtraEditors.XtraMessageBox.Show("Datensatz wird noch von anderer Stelle referenziert und kann daher nicht gelöscht werden.", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 else
-                    DevExpress.XtraEditors.XtraMessageBox.Show(e.ToString(), "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    DevExpress.XtraEditors.XtraMessageBox.Show(exception.ToString(), "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             finally
             {

@@ -30,12 +30,12 @@ namespace Wookie.Master.Menu.Database
 		
     #region Definitionen der Erweiterungsmethoden
     partial void OnCreated();
-    partial void InserttsysClient(tsysClient instance);
-    partial void UpdatetsysClient(tsysClient instance);
-    partial void DeletetsysClient(tsysClient instance);
     partial void InserttsysClientElement(tsysClientElement instance);
     partial void UpdatetsysClientElement(tsysClientElement instance);
     partial void DeletetsysClientElement(tsysClientElement instance);
+    partial void InserttsysClient(tsysClient instance);
+    partial void UpdatetsysClient(tsysClient instance);
+    partial void DeletetsysClient(tsysClient instance);
     #endregion
 		
 		public MenuDataContext() : 
@@ -68,14 +68,6 @@ namespace Wookie.Master.Menu.Database
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<tsysClient> tsysClient
-		{
-			get
-			{
-				return this.GetTable<tsysClient>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tsysClientElement> tsysClientElement
 		{
 			get
@@ -83,383 +75,13 @@ namespace Wookie.Master.Menu.Database
 				return this.GetTable<tsysClientElement>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tsysClient")]
-	public partial class tsysClient : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _PKClient;
-		
-		private string _Name;
-		
-		private System.Nullable<int> _SortOrder;
-		
-		private string _Datasource;
-		
-		private string _InitialCatalog;
-		
-		private System.Nullable<bool> _PersistSecurityInfo;
-		
-		private string _UserID;
-		
-		private string _Password;
-		
-		private System.Data.Linq.Binary _Image;
-		
-		private System.Nullable<System.DateTime> _CreatedOn;
-		
-		private System.Nullable<long> _FKUserCreated;
-		
-		private System.Nullable<System.DateTime> _ChangedOn;
-		
-		private System.Nullable<long> _FKUserChangedOn;
-		
-		private EntitySet<tsysClientElement> _tsysClientElement;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPKClientChanging(long value);
-    partial void OnPKClientChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnSortOrderChanging(System.Nullable<int> value);
-    partial void OnSortOrderChanged();
-    partial void OnDatasourceChanging(string value);
-    partial void OnDatasourceChanged();
-    partial void OnInitialCatalogChanging(string value);
-    partial void OnInitialCatalogChanged();
-    partial void OnPersistSecurityInfoChanging(System.Nullable<bool> value);
-    partial void OnPersistSecurityInfoChanged();
-    partial void OnUserIDChanging(string value);
-    partial void OnUserIDChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnImageChanging(System.Data.Linq.Binary value);
-    partial void OnImageChanged();
-    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedOnChanged();
-    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
-    partial void OnFKUserCreatedChanged();
-    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnChangedOnChanged();
-    partial void OnFKUserChangedOnChanging(System.Nullable<long> value);
-    partial void OnFKUserChangedOnChanged();
-    #endregion
-		
-		public tsysClient()
-		{
-			this._tsysClientElement = new EntitySet<tsysClientElement>(new Action<tsysClientElement>(this.attach_tsysClientElement), new Action<tsysClientElement>(this.detach_tsysClientElement));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKClient", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long PKClient
+		public System.Data.Linq.Table<tsysClient> tsysClient
 		{
 			get
 			{
-				return this._PKClient;
+				return this.GetTable<tsysClient>();
 			}
-			set
-			{
-				if ((this._PKClient != value))
-				{
-					this.OnPKClientChanging(value);
-					this.SendPropertyChanging();
-					this._PKClient = value;
-					this.SendPropertyChanged("PKClient");
-					this.OnPKClientChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SortOrder", DbType="Int")]
-		public System.Nullable<int> SortOrder
-		{
-			get
-			{
-				return this._SortOrder;
-			}
-			set
-			{
-				if ((this._SortOrder != value))
-				{
-					this.OnSortOrderChanging(value);
-					this.SendPropertyChanging();
-					this._SortOrder = value;
-					this.SendPropertyChanged("SortOrder");
-					this.OnSortOrderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datasource", DbType="NVarChar(255)")]
-		public string Datasource
-		{
-			get
-			{
-				return this._Datasource;
-			}
-			set
-			{
-				if ((this._Datasource != value))
-				{
-					this.OnDatasourceChanging(value);
-					this.SendPropertyChanging();
-					this._Datasource = value;
-					this.SendPropertyChanged("Datasource");
-					this.OnDatasourceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InitialCatalog", DbType="NVarChar(255)")]
-		public string InitialCatalog
-		{
-			get
-			{
-				return this._InitialCatalog;
-			}
-			set
-			{
-				if ((this._InitialCatalog != value))
-				{
-					this.OnInitialCatalogChanging(value);
-					this.SendPropertyChanging();
-					this._InitialCatalog = value;
-					this.SendPropertyChanged("InitialCatalog");
-					this.OnInitialCatalogChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersistSecurityInfo", DbType="Bit")]
-		public System.Nullable<bool> PersistSecurityInfo
-		{
-			get
-			{
-				return this._PersistSecurityInfo;
-			}
-			set
-			{
-				if ((this._PersistSecurityInfo != value))
-				{
-					this.OnPersistSecurityInfoChanging(value);
-					this.SendPropertyChanging();
-					this._PersistSecurityInfo = value;
-					this.SendPropertyChanged("PersistSecurityInfo");
-					this.OnPersistSecurityInfoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="NVarChar(255)")]
-		public string UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(255)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Image
-		{
-			get
-			{
-				return this._Image;
-			}
-			set
-			{
-				if ((this._Image != value))
-				{
-					this.OnImageChanging(value);
-					this.SendPropertyChanging();
-					this._Image = value;
-					this.SendPropertyChanged("Image");
-					this.OnImageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedOn
-		{
-			get
-			{
-				return this._CreatedOn;
-			}
-			set
-			{
-				if ((this._CreatedOn != value))
-				{
-					this.OnCreatedOnChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedOn = value;
-					this.SendPropertyChanged("CreatedOn");
-					this.OnCreatedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
-		public System.Nullable<long> FKUserCreated
-		{
-			get
-			{
-				return this._FKUserCreated;
-			}
-			set
-			{
-				if ((this._FKUserCreated != value))
-				{
-					this.OnFKUserCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._FKUserCreated = value;
-					this.SendPropertyChanged("FKUserCreated");
-					this.OnFKUserCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ChangedOn
-		{
-			get
-			{
-				return this._ChangedOn;
-			}
-			set
-			{
-				if ((this._ChangedOn != value))
-				{
-					this.OnChangedOnChanging(value);
-					this.SendPropertyChanging();
-					this._ChangedOn = value;
-					this.SendPropertyChanged("ChangedOn");
-					this.OnChangedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChangedOn", DbType="BigInt")]
-		public System.Nullable<long> FKUserChangedOn
-		{
-			get
-			{
-				return this._FKUserChangedOn;
-			}
-			set
-			{
-				if ((this._FKUserChangedOn != value))
-				{
-					this.OnFKUserChangedOnChanging(value);
-					this.SendPropertyChanging();
-					this._FKUserChangedOn = value;
-					this.SendPropertyChanged("FKUserChangedOn");
-					this.OnFKUserChangedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClient_tsysClientElement", Storage="_tsysClientElement", ThisKey="PKClient", OtherKey="FKClient")]
-		public EntitySet<tsysClientElement> tsysClientElement
-		{
-			get
-			{
-				return this._tsysClientElement;
-			}
-			set
-			{
-				this._tsysClientElement.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tsysClientElement(tsysClientElement entity)
-		{
-			this.SendPropertyChanging();
-			entity.tsysClient = this;
-		}
-		
-		private void detach_tsysClientElement(tsysClientElement entity)
-		{
-			this.SendPropertyChanging();
-			entity.tsysClient = null;
 		}
 	}
 	
@@ -497,9 +119,9 @@ namespace Wookie.Master.Menu.Database
 		
 		private EntitySet<tsysClientElement> _tsysClientElement2;
 		
-		private EntityRef<tsysClient> _tsysClient;
-		
 		private EntityRef<tsysClientElement> _tsysClientElement1;
+		
+		private EntityRef<tsysClient> _tsysClient;
 		
     #region Definitionen der Erweiterungsmethoden
     partial void OnLoaded();
@@ -536,8 +158,8 @@ namespace Wookie.Master.Menu.Database
 		public tsysClientElement()
 		{
 			this._tsysClientElement2 = new EntitySet<tsysClientElement>(new Action<tsysClientElement>(this.attach_tsysClientElement2), new Action<tsysClientElement>(this.detach_tsysClientElement2));
-			this._tsysClient = default(EntityRef<tsysClient>);
 			this._tsysClientElement1 = default(EntityRef<tsysClientElement>);
+			this._tsysClient = default(EntityRef<tsysClient>);
 			OnCreated();
 		}
 		
@@ -822,40 +444,6 @@ namespace Wookie.Master.Menu.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClient_tsysClientElement", Storage="_tsysClient", ThisKey="FKClient", OtherKey="PKClient", IsForeignKey=true)]
-		public tsysClient tsysClient
-		{
-			get
-			{
-				return this._tsysClient.Entity;
-			}
-			set
-			{
-				tsysClient previousValue = this._tsysClient.Entity;
-				if (((previousValue != value) 
-							|| (this._tsysClient.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tsysClient.Entity = null;
-						previousValue.tsysClientElement.Remove(this);
-					}
-					this._tsysClient.Entity = value;
-					if ((value != null))
-					{
-						value.tsysClientElement.Add(this);
-						this._FKClient = value.PKClient;
-					}
-					else
-					{
-						this._FKClient = default(Nullable<long>);
-					}
-					this.SendPropertyChanged("tsysClient");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClientElement_tsysClientElement", Storage="_tsysClientElement1", ThisKey="FKClientElement", OtherKey="PKClientElement", IsForeignKey=true)]
 		public tsysClientElement tsysClientElement1
 		{
@@ -890,6 +478,40 @@ namespace Wookie.Master.Menu.Database
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClient_tsysClientElement", Storage="_tsysClient", ThisKey="FKClient", OtherKey="PKClient", IsForeignKey=true)]
+		public tsysClient tsysClient
+		{
+			get
+			{
+				return this._tsysClient.Entity;
+			}
+			set
+			{
+				tsysClient previousValue = this._tsysClient.Entity;
+				if (((previousValue != value) 
+							|| (this._tsysClient.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tsysClient.Entity = null;
+						previousValue.tsysClientElement.Remove(this);
+					}
+					this._tsysClient.Entity = value;
+					if ((value != null))
+					{
+						value.tsysClientElement.Add(this);
+						this._FKClient = value.PKClient;
+					}
+					else
+					{
+						this._FKClient = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tsysClient");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -920,6 +542,600 @@ namespace Wookie.Master.Menu.Database
 		{
 			this.SendPropertyChanging();
 			entity.tsysClientElement1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tsysClient")]
+	public partial class tsysClient : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKClient;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _SortOrder;
+		
+		private string _Datasource;
+		
+		private string _InitialCatalog;
+		
+		private System.Nullable<bool> _PersistSecurityInfo;
+		
+		private string _UserID;
+		
+		private string _Password;
+		
+		private System.Nullable<int> _ConnectRetryCount;
+		
+		private System.Nullable<int> _ConnectRetryInterval;
+		
+		private System.Nullable<int> _ConnectTimeout;
+		
+		private System.Nullable<bool> _Encrypt;
+		
+		private string _FailoverPartner;
+		
+		private System.Nullable<bool> _IntegratedSecurity;
+		
+		private System.Nullable<bool> _Pooling;
+		
+		private System.Nullable<int> _PacketSize;
+		
+		private System.Data.Linq.Binary _Image;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private System.Nullable<long> _FKUserChangedOn;
+		
+		private System.Nullable<System.Guid> _UniqueIdentifier;
+		
+		private EntitySet<tsysClientElement> _tsysClientElement;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKClientChanging(long value);
+    partial void OnPKClientChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnSortOrderChanging(System.Nullable<int> value);
+    partial void OnSortOrderChanged();
+    partial void OnDatasourceChanging(string value);
+    partial void OnDatasourceChanged();
+    partial void OnInitialCatalogChanging(string value);
+    partial void OnInitialCatalogChanged();
+    partial void OnPersistSecurityInfoChanging(System.Nullable<bool> value);
+    partial void OnPersistSecurityInfoChanged();
+    partial void OnUserIDChanging(string value);
+    partial void OnUserIDChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnConnectRetryCountChanging(System.Nullable<int> value);
+    partial void OnConnectRetryCountChanged();
+    partial void OnConnectRetryIntervalChanging(System.Nullable<int> value);
+    partial void OnConnectRetryIntervalChanged();
+    partial void OnConnectTimeoutChanging(System.Nullable<int> value);
+    partial void OnConnectTimeoutChanged();
+    partial void OnEncryptChanging(System.Nullable<bool> value);
+    partial void OnEncryptChanged();
+    partial void OnFailoverPartnerChanging(string value);
+    partial void OnFailoverPartnerChanged();
+    partial void OnIntegratedSecurityChanging(System.Nullable<bool> value);
+    partial void OnIntegratedSecurityChanged();
+    partial void OnPoolingChanging(System.Nullable<bool> value);
+    partial void OnPoolingChanged();
+    partial void OnPacketSizeChanging(System.Nullable<int> value);
+    partial void OnPacketSizeChanged();
+    partial void OnImageChanging(System.Data.Linq.Binary value);
+    partial void OnImageChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    partial void OnFKUserChangedOnChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedOnChanged();
+    partial void OnUniqueIdentifierChanging(System.Nullable<System.Guid> value);
+    partial void OnUniqueIdentifierChanged();
+    #endregion
+		
+		public tsysClient()
+		{
+			this._tsysClientElement = new EntitySet<tsysClientElement>(new Action<tsysClientElement>(this.attach_tsysClientElement), new Action<tsysClientElement>(this.detach_tsysClientElement));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKClient", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKClient
+		{
+			get
+			{
+				return this._PKClient;
+			}
+			set
+			{
+				if ((this._PKClient != value))
+				{
+					this.OnPKClientChanging(value);
+					this.SendPropertyChanging();
+					this._PKClient = value;
+					this.SendPropertyChanged("PKClient");
+					this.OnPKClientChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SortOrder", DbType="Int")]
+		public System.Nullable<int> SortOrder
+		{
+			get
+			{
+				return this._SortOrder;
+			}
+			set
+			{
+				if ((this._SortOrder != value))
+				{
+					this.OnSortOrderChanging(value);
+					this.SendPropertyChanging();
+					this._SortOrder = value;
+					this.SendPropertyChanged("SortOrder");
+					this.OnSortOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datasource", DbType="NVarChar(255)")]
+		public string Datasource
+		{
+			get
+			{
+				return this._Datasource;
+			}
+			set
+			{
+				if ((this._Datasource != value))
+				{
+					this.OnDatasourceChanging(value);
+					this.SendPropertyChanging();
+					this._Datasource = value;
+					this.SendPropertyChanged("Datasource");
+					this.OnDatasourceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InitialCatalog", DbType="NVarChar(255)")]
+		public string InitialCatalog
+		{
+			get
+			{
+				return this._InitialCatalog;
+			}
+			set
+			{
+				if ((this._InitialCatalog != value))
+				{
+					this.OnInitialCatalogChanging(value);
+					this.SendPropertyChanging();
+					this._InitialCatalog = value;
+					this.SendPropertyChanged("InitialCatalog");
+					this.OnInitialCatalogChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersistSecurityInfo", DbType="Bit")]
+		public System.Nullable<bool> PersistSecurityInfo
+		{
+			get
+			{
+				return this._PersistSecurityInfo;
+			}
+			set
+			{
+				if ((this._PersistSecurityInfo != value))
+				{
+					this.OnPersistSecurityInfoChanging(value);
+					this.SendPropertyChanging();
+					this._PersistSecurityInfo = value;
+					this.SendPropertyChanged("PersistSecurityInfo");
+					this.OnPersistSecurityInfoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="NVarChar(255)")]
+		public string UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(255)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConnectRetryCount", DbType="Int")]
+		public System.Nullable<int> ConnectRetryCount
+		{
+			get
+			{
+				return this._ConnectRetryCount;
+			}
+			set
+			{
+				if ((this._ConnectRetryCount != value))
+				{
+					this.OnConnectRetryCountChanging(value);
+					this.SendPropertyChanging();
+					this._ConnectRetryCount = value;
+					this.SendPropertyChanged("ConnectRetryCount");
+					this.OnConnectRetryCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConnectRetryInterval", DbType="Int")]
+		public System.Nullable<int> ConnectRetryInterval
+		{
+			get
+			{
+				return this._ConnectRetryInterval;
+			}
+			set
+			{
+				if ((this._ConnectRetryInterval != value))
+				{
+					this.OnConnectRetryIntervalChanging(value);
+					this.SendPropertyChanging();
+					this._ConnectRetryInterval = value;
+					this.SendPropertyChanged("ConnectRetryInterval");
+					this.OnConnectRetryIntervalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConnectTimeout", DbType="Int")]
+		public System.Nullable<int> ConnectTimeout
+		{
+			get
+			{
+				return this._ConnectTimeout;
+			}
+			set
+			{
+				if ((this._ConnectTimeout != value))
+				{
+					this.OnConnectTimeoutChanging(value);
+					this.SendPropertyChanging();
+					this._ConnectTimeout = value;
+					this.SendPropertyChanged("ConnectTimeout");
+					this.OnConnectTimeoutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Encrypt", DbType="Bit")]
+		public System.Nullable<bool> Encrypt
+		{
+			get
+			{
+				return this._Encrypt;
+			}
+			set
+			{
+				if ((this._Encrypt != value))
+				{
+					this.OnEncryptChanging(value);
+					this.SendPropertyChanging();
+					this._Encrypt = value;
+					this.SendPropertyChanged("Encrypt");
+					this.OnEncryptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FailoverPartner", DbType="NVarChar(255)")]
+		public string FailoverPartner
+		{
+			get
+			{
+				return this._FailoverPartner;
+			}
+			set
+			{
+				if ((this._FailoverPartner != value))
+				{
+					this.OnFailoverPartnerChanging(value);
+					this.SendPropertyChanging();
+					this._FailoverPartner = value;
+					this.SendPropertyChanged("FailoverPartner");
+					this.OnFailoverPartnerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IntegratedSecurity", DbType="Bit")]
+		public System.Nullable<bool> IntegratedSecurity
+		{
+			get
+			{
+				return this._IntegratedSecurity;
+			}
+			set
+			{
+				if ((this._IntegratedSecurity != value))
+				{
+					this.OnIntegratedSecurityChanging(value);
+					this.SendPropertyChanging();
+					this._IntegratedSecurity = value;
+					this.SendPropertyChanged("IntegratedSecurity");
+					this.OnIntegratedSecurityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pooling", DbType="Bit")]
+		public System.Nullable<bool> Pooling
+		{
+			get
+			{
+				return this._Pooling;
+			}
+			set
+			{
+				if ((this._Pooling != value))
+				{
+					this.OnPoolingChanging(value);
+					this.SendPropertyChanging();
+					this._Pooling = value;
+					this.SendPropertyChanged("Pooling");
+					this.OnPoolingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PacketSize", DbType="Int")]
+		public System.Nullable<int> PacketSize
+		{
+			get
+			{
+				return this._PacketSize;
+			}
+			set
+			{
+				if ((this._PacketSize != value))
+				{
+					this.OnPacketSizeChanging(value);
+					this.SendPropertyChanging();
+					this._PacketSize = value;
+					this.SendPropertyChanged("PacketSize");
+					this.OnPacketSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChangedOn", DbType="BigInt")]
+		public System.Nullable<long> FKUserChangedOn
+		{
+			get
+			{
+				return this._FKUserChangedOn;
+			}
+			set
+			{
+				if ((this._FKUserChangedOn != value))
+				{
+					this.OnFKUserChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChangedOn = value;
+					this.SendPropertyChanged("FKUserChangedOn");
+					this.OnFKUserChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UniqueIdentifier", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> UniqueIdentifier
+		{
+			get
+			{
+				return this._UniqueIdentifier;
+			}
+			set
+			{
+				if ((this._UniqueIdentifier != value))
+				{
+					this.OnUniqueIdentifierChanging(value);
+					this.SendPropertyChanging();
+					this._UniqueIdentifier = value;
+					this.SendPropertyChanged("UniqueIdentifier");
+					this.OnUniqueIdentifierChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClient_tsysClientElement", Storage="_tsysClientElement", ThisKey="PKClient", OtherKey="FKClient")]
+		public EntitySet<tsysClientElement> tsysClientElement
+		{
+			get
+			{
+				return this._tsysClientElement;
+			}
+			set
+			{
+				this._tsysClientElement.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tsysClientElement(tsysClientElement entity)
+		{
+			this.SendPropertyChanging();
+			entity.tsysClient = this;
+		}
+		
+		private void detach_tsysClientElement(tsysClientElement entity)
+		{
+			this.SendPropertyChanging();
+			entity.tsysClient = null;
 		}
 	}
 }

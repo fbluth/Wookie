@@ -26,6 +26,7 @@ namespace Wookie.Controls
         #region Variables
         private MenuManager menuManager = null;
         private XtraForm parent = null;
+        public int FormCounter = 0;
         #endregion
 
         public XtraForm1()
@@ -45,7 +46,7 @@ namespace Wookie.Controls
 
                 SetSplashScreenInfo("Adding registered clients", 75);
 
-                menuManager.AddClients(this.btnClient);
+                menuManager.AddClients(this.aceClientList);
 
                 SetSplashScreenInfo("Done", 100);                
             }            
@@ -77,7 +78,7 @@ namespace Wookie.Controls
             menuManager.AddSettings();
 
             this.navigationFrame1.SelectedPage = navPageWelcome;
-            this.Text = Application.ProductName + " - " + sender.Name;
+            this.HtmlText = "<b>" + Application.ProductName + "</b>" + " - <i>" + sender.Name + "</i>";
         }
 
         private void SettingsClicked(object sender, EventArgs e)
@@ -87,11 +88,27 @@ namespace Wookie.Controls
 
         public void Duplicate(XtraForm parent)
         {
+            ((XtraForm1)parent).FormCounter++;
             XtraForm1 XtraForm1 = new XtraForm1(parent);
             XtraForm1.Show();
         }
 
-        private void biDuplicate_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnStyle_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void XtraForm1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.parent == null && this.FormCounter > 0)
+            {
+                if (XtraMessageBox.Show("Hauptfenster. Alle anderen Fenster werden ebenfalls geschlossen. Fortfahren?", "Frage", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    e.Cancel = true;
+            }
+            else if (this.parent != null) ((XtraForm1)parent).FormCounter--;
+        }
+
+        private void btnDuplicate_Click(object sender, EventArgs e)
         {
             if (parent != null)
             {
@@ -99,31 +116,15 @@ namespace Wookie.Controls
             }
             else
             {
-                XtraForm1 XtraForm1 = new XtraForm1(this);
-                XtraForm1.Show();
+                Duplicate(this);
             }
-        }       
+        }
 
-        private void btnStyle_ItemClick(object sender, ItemClickEventArgs e)
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (SvgSkinPaletteSelector svgSkinPaletteSelector = new SvgSkinPaletteSelector(this))
             {
                 svgSkinPaletteSelector.ShowDialog();
-            }
-        }        
-
-        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Wookie.Tools.ImagePicker.ImagePicker imagePicker = new Tools.ImagePicker.ImagePicker();
-            imagePicker.ShowDialog();
-        }
-
-        private void XtraForm1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (this.parent == null)
-            {
-                if (XtraMessageBox.Show("Hauptfenster. Alle anderen Fenster werden ebenfalls geschlossen. Fortfahren?", "Frage", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                    e.Cancel = true;
             }
         }
     }

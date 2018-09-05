@@ -2,6 +2,7 @@
 using System.Data.Linq;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Media;
 using System.Reflection;
 using System.Windows.Forms;
 using DevExpress.XtraBars.Navigation;
@@ -50,11 +51,14 @@ namespace Wookie.Menu
         public MenuItem(string text, Image image, string assemblyFile, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, sqlConnection, foreignKeyExternal)
         {
             this.AccordionControlElement.ImageOptions.Image = image;
+            if (this.assemblyInstance != null) this.assemblyInstance.Image = image;
+
         }
 
         public MenuItem(string text, Binary image, string assemblyFile, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, sqlConnection, foreignKeyExternal)
         {
             this.AccordionControlElement.ImageOptions.Image = Converter.GetImageFromBinary(image);
+            if ( this.assemblyInstance != null) this.assemblyInstance.Image = Converter.GetImageFromBinary(image); 
         }
         #endregion
 
@@ -81,16 +85,13 @@ namespace Wookie.Menu
             switch (loadResult)
             {
                 case AssemblyLoadResult.AssemblyFailed:
-                    this.lblStatus.Text = "Could not create instance";
-                    control = this.lblStatus;
+                    control = new ucError("Could not create instance");
                     break;
                 case AssemblyLoadResult.AssemblyMissing:
-                    this.lblStatus.Text = "No assembly defined";
-                    control = this.lblStatus;
+                    control = new ucError("No assembly defined");                    
                     break;
-                case AssemblyLoadResult.AssemblyNotFound:
-                    this.lblStatus.Text = "File not found";
-                    control = this.lblStatus;
+                case AssemblyLoadResult.AssemblyNotFound:                    
+                    control = new ucError("File not found");
                     break;
                 case AssemblyLoadResult.AssemblyLoaded:
                     if (this.assemblyInstance != null && this.assemblyInstance.UserControl != null)
@@ -100,7 +101,7 @@ namespace Wookie.Menu
                     }
                     break;
                 default:
-                    this.lblStatus.Text = "Undefined error";
+                    control = new ucError("Undefined error");
                     break;
             }
 

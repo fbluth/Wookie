@@ -21,13 +21,13 @@ namespace Wookie
         [STAThread]
         static void Main()
         {
+            WindowsFormsSettings.ForceDirectXPaint();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-
-            //string encrypted = Wookie.Tools.Cryptography.StringCipher.Encrypt("Data Source = localhost; Initial Catalog = BS_PM_Master; Persist Security Info = True; User ID = sa; Password = 19theta#01","19theta#01");
 
             if (MasterDatabase.KeyFileExists && MasterDatabase.Connected)
             {

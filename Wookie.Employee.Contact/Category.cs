@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,7 +67,13 @@ namespace Wookie.Employee.Contact
                 return null;
             }
         }
-        
+
+        public Image Image
+        {
+            get { return ((Control.ucContact2)this.UserControl).Image; }
+            set { ((Control.ucContact2)this.UserControl).Image = value; }
+        }
+
 
         #region IDisposable Support
         private bool disposedValue = false; // Dient zur Erkennung redundanter Aufrufe.

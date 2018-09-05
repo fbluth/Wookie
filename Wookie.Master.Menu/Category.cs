@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Wookie.Master.Menu
 
         private XtraUserControl control = null;
         private ModulData modulData = null;
+        
 
         public Category()
         {
@@ -22,7 +24,7 @@ namespace Wookie.Master.Menu
         {
             this.modulData = new ModulData();
             this.modulData.SqlConnectionClientDB = sqlconnection;
-            this.modulData.FKContactData = foreignKeyExternal;
+            this.modulData.FKContactData = foreignKeyExternal;            
         }
 
 
@@ -64,6 +66,12 @@ namespace Wookie.Master.Menu
 
                 return null;
             }
+        }
+
+        public Image Image
+        {
+            get { return ((Control.ucMenu)this.UserControl).Image; }
+            set { ((Control.ucMenu)this.UserControl).Image = value; }
         }
 
         #region IDisposable Support
