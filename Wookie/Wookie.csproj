@@ -99,6 +99,8 @@
     <None Include="Master.key">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SQL Server\Backups\BS_PM_Mandant1.bak" />
+    <None Include="SQL Server\Backups\BS_PM_Master.bak" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -117,8 +119,8 @@
     <Content Include="Images\Splash.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SQL Skripte\Category.sql" />
-    <Content Include="SQL Skripte\TextFile1.txt" />
+    <Content Include="SQL Server\SQL Skripte\Category.sql" />
+    <Content Include="SQL Server\SQL Skripte\TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
