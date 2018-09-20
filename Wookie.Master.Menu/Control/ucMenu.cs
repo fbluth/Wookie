@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data.Linq;
+using System.Linq;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
@@ -23,7 +24,8 @@ namespace Wookie.Master.Menu.Control
         private bool ignoreCurrentClientElementItemChanged = false;
         private DevExpress.Utils.Menu.DXMenuItem item = new DevExpress.Utils.Menu.DXMenuItem("Predefined Icons");
         private DevExpress.Utils.Menu.DXMenuItem item2 = new DevExpress.Utils.Menu.DXMenuItem("Predefined Icons");        
-        private enum Mode { Default = 0, Edit = 1};        
+        private enum Mode { Default = 0, Edit = 1};
+        private long PKClientElement = System.Int64.MaxValue;
         #endregion
 
         #region Constructor
@@ -37,7 +39,6 @@ namespace Wookie.Master.Menu.Control
                 this.item.Click += Item_Click;
                 this.item2.Click += Item2_Click;
 
-                this.SetMode(Mode.Default);
                 this.LoadData();
                 this.SetValidationRules();
 
@@ -111,8 +112,7 @@ namespace Wookie.Master.Menu.Control
                     this.groupControl1.CustomHeaderButtons[1].Properties.Visible = false; // Cancel
                     this.groupControl1.CustomHeaderButtons[2].Properties.Visible = true; // Refresh
                     break;
-                case Mode.Edit:
-                    this.RefreshDataOnScreen();
+                case Mode.Edit:                    
                     this.groupControl1.CustomHeaderButtons[0].Properties.Visible = true; // Save
                     this.groupControl1.CustomHeaderButtons[1].Properties.Visible = true; // Cancel
                     this.groupControl1.CustomHeaderButtons[2].Properties.Visible = false; // Refresh
@@ -126,6 +126,12 @@ namespace Wookie.Master.Menu.Control
             {
                 this.tsysClientElementBindingSource.DataSource = this.SelectedClient;
                 this.txtConnectionString.Control.Text = this.SqlConnectionStringBuilder.ConnectionString;
+            }
+            else
+            {
+                this.tsysClientElementBindingSource.Clear();
+                //this.treeMenu.Nodes.Clear();// ClearNodes();
+                this.txtConnectionString.Control.Text = System.String.Empty;
             }
         }
 
@@ -148,7 +154,7 @@ namespace Wookie.Master.Menu.Control
                 this.dataContext = new Database.MenuDataContext(this.modulData.SqlConnectionClientDB);
 
                 this.tsysClientBindingSource.DataSource = this.dataContext.tsysClient;
-                this.tsysClientElementBindingSource.DataSource = this.SelectedClient; //this.dataContext.tsysClient;
+                this.tsysClientElementBindingSource.DataSource = this.SelectedClient;
 
                 this.SetMode(Mode.Default);
 
@@ -165,9 +171,7 @@ namespace Wookie.Master.Menu.Control
         {
             try
             {
-                this.treeMenu.PostEditor();
-                this.treeMenu.EndCurrentEdit();
-                this.gridView1.PostEditor();
+                this.PostEditor();
 
                 if (dxValidationProvider1.Validate())
                 {
@@ -182,8 +186,8 @@ namespace Wookie.Master.Menu.Control
 
                 if (this.splashScreenManager1.IsSplashFormVisible) this.splashScreenManager1.CloseWaitForm();
 
-                if (dataContext.ChangeConflicts.Count > 0 && 
-                    dataContext.ChangeConflicts[0].IsDeleted && 
+                if (dataContext.ChangeConflicts.Count > 0 &&
+                    dataContext.ChangeConflicts[0].IsDeleted &&
                     dataContext.ChangeConflicts[0].Object is Database.tsysClient)
                 {
                     Database.tsysClient client = dataContext.ChangeConflicts[0].Object as Database.tsysClient;
@@ -191,7 +195,7 @@ namespace Wookie.Master.Menu.Control
                 }
                 else if (dataContext.ChangeConflicts.Count > 0 &&
                     dataContext.ChangeConflicts[0].MemberConflicts.Count > 0 &&
-                    dataContext.ChangeConflicts[0].MemberConflicts[0].IsModified && 
+                    dataContext.ChangeConflicts[0].MemberConflicts[0].IsModified &&
                     dataContext.ChangeConflicts[0].Object is Database.tsysClient)
                 {
                     Database.tsysClient client = dataContext.ChangeConflicts[0].Object as Database.tsysClient;
@@ -200,10 +204,10 @@ namespace Wookie.Master.Menu.Control
                             "Der Datensatz <b>\"{0}\"</b> wurde in der Datenbank geändert. Datenbankwert: {2}, Neuer Wert: {1}",
                             dataContext.ChangeConflicts[0].MemberConflicts[0].Member.Name,
                             dataContext.ChangeConflicts[0].MemberConflicts[0].CurrentValue,
-                            dataContext.ChangeConflicts[0].MemberConflicts[0].DatabaseValue), 
-                        "Fehler", 
-                        MessageBoxButtons.OK, 
-                        MessageBoxIcon.Exclamation, 
+                            dataContext.ChangeConflicts[0].MemberConflicts[0].DatabaseValue),
+                        "Fehler",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation,
                         DevExpress.Utils.DefaultBoolean.True);
                 }
 
@@ -215,15 +219,22 @@ namespace Wookie.Master.Menu.Control
             {
                 if (this.splashScreenManager1.IsSplashFormVisible) this.splashScreenManager1.CloseWaitForm();
 
-                if (exception.Number == 547)
+                if (exception.Number == 547) // Constraint error
                     DevExpress.XtraEditors.XtraMessageBox.Show("Datensatz wird noch von anderer Stelle referenziert und kann daher nicht gelöscht werden.", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 else
                     DevExpress.XtraEditors.XtraMessageBox.Show(exception.ToString(), "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 return false;
             }
-            finally
+            catch (Exception err)
             {
+                if (this.splashScreenManager1.IsSplashFormVisible) this.splashScreenManager1.CloseWaitForm();
+
+                DevExpress.XtraEditors.XtraMessageBox.Show(err.ToString(), "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            finally
+            {                
                 if (this.splashScreenManager1.IsSplashFormVisible) this.splashScreenManager1.CloseWaitForm();
             }
 
@@ -233,9 +244,8 @@ namespace Wookie.Master.Menu.Control
         {
             try
             {
-                this.treeMenu.PostEditor();
-                this.treeMenu.EndCurrentEdit();
-                this.gridView1.PostEditor();
+                this.PostEditor();
+
                 if (dxValidationProvider1.Validate())
                 {
                     this.splashScreenManager1.ShowWaitForm();
@@ -263,12 +273,15 @@ namespace Wookie.Master.Menu.Control
         {
             if (this.SelectedClient == null) return;
 
+            this.PostEditor();
+
             string msg = string.Format("The node <b>\"{0}\"</b> is about to be deleted. Do you want to proceed?", this.SelectedClient.Name);
 
-            if (XtraMessageBox.Show(msg, "Deleting node", MessageBoxButtons.YesNo, DevExpress.Utils.DefaultBoolean.True) == DialogResult.Yes)
-            {
-                this.dataContext.tsysClientElement.DeleteAllOnSubmit(this.SelectedClient.tsysClientElement);
-                this.dataContext.tsysClient.DeleteOnSubmit(this.SelectedClient);
+            if (XtraMessageBox.Show(msg, "Deleting node", MessageBoxButtons.YesNo, MessageBoxIcon.Question, DevExpress.Utils.DefaultBoolean.True) == DialogResult.Yes)
+            {   
+                foreach (Database.tsysClientElement element in this.SelectedClient.tsysClientElement)
+                    if (this.dataContext.tsysClientElement.Contains(element))
+                        this.dataContext.tsysClientElement.DeleteOnSubmit(element);
 
                 this.tsysClientBindingSource.Remove(this.SelectedClient);
 
@@ -278,9 +291,11 @@ namespace Wookie.Master.Menu.Control
 
         private void AddClient()
         {
+            this.PostEditor();
+
             Database.tsysClient client = new Database.tsysClient();
-            this.dataContext.tsysClient.InsertOnSubmit(client);
             int datasourceindex = this.tsysClientBindingSource.Add(client);
+            
             gridView1.FocusedRowHandle = gridView1.GetRowHandle(datasourceindex);
 
             this.SetMode(Mode.Edit);            
@@ -288,51 +303,55 @@ namespace Wookie.Master.Menu.Control
 
         private void RemoveNode()
         {
-            if (this.treeMenu.FocusedNode == null) return;
             if (this.SelectedClientElement == null) return;
 
+            this.PostEditor();
+
             string msg = string.Format("The node <b>\"{0}\"</b> is about to be deleted. Do you want to proceed?", this.SelectedClientElement.Name);
-            if (XtraMessageBox.Show(msg, "Deleting node", MessageBoxButtons.YesNo, DevExpress.Utils.DefaultBoolean.True) == DialogResult.Yes)
+
+            if (XtraMessageBox.Show(msg, "Deleting node", MessageBoxButtons.YesNo, MessageBoxIcon.Question, DevExpress.Utils.DefaultBoolean.True) == DialogResult.Yes)
             {
-                CustomNodeOperation operation = new CustomNodeOperation(treeMenu.FocusedNode);
-                treeMenu.NodesIterator.DoLocalOperation(operation, treeMenu.Nodes);
-
-                operation.TreeListNodes.Add(treeMenu.FocusedNode);
-                Database.tsysClientElement parentElement = treeMenu.GetDataRecordByNode(treeMenu.FocusedNode.ParentNode) as Database.tsysClientElement;
-
-                foreach (TreeListNode node in operation.TreeListNodes)
+                using (CustomNodeOperation operation = new CustomNodeOperation(treeMenu.FocusedNode))
                 {
-                    Database.tsysClientElement test = treeMenu.GetDataRecordByNode(node) as Database.tsysClientElement;
-                    if (test != null) 
-                    {
-                    
-                    //this.dataContext.tsysClientElement.DeleteOnSubmit(test);
-                        parentElement.tsysClientElement2.Remove(test);
-                        this.SelectedClient.tsysClientElement.Remove(test);
-                    this.tsysClientElementBindingSource.Remove(test);
+                    this.treeMenu.NodesIterator.DoLocalOperation(operation, treeMenu.Nodes);
+                    operation.ClientElements.Add(this.SelectedClientElement);
 
+                    this.treeMenu.BeginUpdate();
+                    this.treeMenu.SuspendLayout();
+
+                    foreach (Database.tsysClientElement element in operation.ClientElements)
+                    {
+                        this.tsysClientElementBindingSource.Remove(element);
+                       
+                        if (this.dataContext.tsysClientElement.Contains(element))
+                            this.dataContext.tsysClientElement.DeleteOnSubmit(element);
                     }
+
+                    this.treeMenu.EndUpdate();
+                    this.treeMenu.ResumeLayout();
                 }
-                
                 this.SetMode(Mode.Edit);
             }
-        }        
+        }
 
         private void AddNode()
         {
             if (this.SelectedClient == null) return;
+            
+            this.PostEditor();
 
-            Database.tsysClientElement parentElement = treeMenu.GetDataRecordByNode(treeMenu.FocusedNode) as Database.tsysClientElement;
             Database.tsysClientElement element = new Database.tsysClientElement();
-            parentElement.tsysClientElement2.Add(element);
-            //this.SelectedClient.tsysClientElement.Add(element);
-            //element.tsysClient = this.SelectedClient;
-            //if (parentElement != null) element.tsysClientElement1 = parentElement;
-
-            //this.dataContext.tsysClientElement.InsertOnSubmit(element);
+            element.PKClientElement = --PKClientElement;
             this.tsysClientElementBindingSource.Add(element);
-
+           
             this.SetMode(Mode.Edit);
+        }
+
+        private void PostEditor()
+        {
+            this.treeMenu.PostEditor();
+            this.treeMenu.EndCurrentEdit();
+            this.gridView1.PostEditor();
         }
         #endregion
 
@@ -524,29 +543,35 @@ namespace Wookie.Master.Menu.Control
         {
             btnEditPassword.Properties.UseSystemPasswordChar = !btnEditPassword.Properties.UseSystemPasswordChar;
         }
-        #endregion
+        #endregion        
     }
 
-    class CustomNodeOperation : TreeListOperation
+    class CustomNodeOperation : TreeListOperation, IDisposable 
     {
         TreeListNode selectedNode;
-        List<TreeListNode> treeListNodes;
+        List<Database.tsysClientElement> clientElements;
 
         public CustomNodeOperation(TreeListNode selectedNode) : base()
         {
             this.selectedNode = selectedNode;
-            this.treeListNodes = new List<TreeListNode>();
-            
+            this.clientElements = new List<Database.tsysClientElement>();            
         }
 
         public override void Execute(TreeListNode node)
         {
-            if (node.HasAsParent(selectedNode)) this.treeListNodes.Add(node);
+            if (node.HasAsParent(selectedNode)) this.clientElements.Add((Database.tsysClientElement)node.TreeList.GetDataRecordByNode(node));
         }
 
-        public List<TreeListNode> TreeListNodes
+        void IDisposable.Dispose()
         {
-            get { return this.treeListNodes; }
+            this.selectedNode = null;
+            this.clientElements.Clear();
+            this.clientElements = null;
+        }
+
+        public List<Database.tsysClientElement> ClientElements
+        {
+            get { return this.clientElements; }
         }
     }
 }

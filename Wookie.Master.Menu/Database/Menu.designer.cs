@@ -30,12 +30,12 @@ namespace Wookie.Master.Menu.Database
 		
     #region Definitionen der Erweiterungsmethoden
     partial void OnCreated();
-    partial void InserttsysClientElement(tsysClientElement instance);
-    partial void UpdatetsysClientElement(tsysClientElement instance);
-    partial void DeletetsysClientElement(tsysClientElement instance);
     partial void InserttsysClient(tsysClient instance);
     partial void UpdatetsysClient(tsysClient instance);
     partial void DeletetsysClient(tsysClient instance);
+    partial void InserttsysClientElement(tsysClientElement instance);
+    partial void UpdatetsysClientElement(tsysClientElement instance);
+    partial void DeletetsysClientElement(tsysClientElement instance);
     #endregion
 		
 		public MenuDataContext() : 
@@ -68,14 +68,6 @@ namespace Wookie.Master.Menu.Database
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<tsysClientElement> tsysClientElement
-		{
-			get
-			{
-				return this.GetTable<tsysClientElement>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tsysClient> tsysClient
 		{
 			get
@@ -83,465 +75,13 @@ namespace Wookie.Master.Menu.Database
 				return this.GetTable<tsysClient>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tsysClientElement")]
-	public partial class tsysClientElement : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _PKClientElement;
-		
-		private System.Nullable<long> _FKClient;
-		
-		private System.Nullable<long> _FKClientElement;
-		
-		private System.Nullable<long> _FKExternal;
-		
-		private System.Nullable<int> _SortOrder;
-		
-		private string _Name;
-		
-		private System.Data.Linq.Binary _Image;
-		
-		private string _Assemblyname;
-		
-		private System.Nullable<System.DateTime> _CreatedOn;
-		
-		private System.Nullable<long> _FKUserCreated;
-		
-		private System.Nullable<System.DateTime> _ChangedOn;
-		
-		private System.Nullable<long> _FKUserChangedOn;
-		
-		private System.Nullable<System.Guid> _UniqueIdentifier;
-		
-		private EntitySet<tsysClientElement> _tsysClientElement2;
-		
-		private EntityRef<tsysClientElement> _tsysClientElement1;
-		
-		private EntityRef<tsysClient> _tsysClient;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPKClientElementChanging(long value);
-    partial void OnPKClientElementChanged();
-    partial void OnFKClientChanging(System.Nullable<long> value);
-    partial void OnFKClientChanged();
-    partial void OnFKClientElementChanging(System.Nullable<long> value);
-    partial void OnFKClientElementChanged();
-    partial void OnFKExternalChanging(System.Nullable<long> value);
-    partial void OnFKExternalChanged();
-    partial void OnSortOrderChanging(System.Nullable<int> value);
-    partial void OnSortOrderChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnImageChanging(System.Data.Linq.Binary value);
-    partial void OnImageChanged();
-    partial void OnAssemblynameChanging(string value);
-    partial void OnAssemblynameChanged();
-    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedOnChanged();
-    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
-    partial void OnFKUserCreatedChanged();
-    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnChangedOnChanged();
-    partial void OnFKUserChangedOnChanging(System.Nullable<long> value);
-    partial void OnFKUserChangedOnChanged();
-    partial void OnUniqueIdentifierChanging(System.Nullable<System.Guid> value);
-    partial void OnUniqueIdentifierChanged();
-    #endregion
-		
-		public tsysClientElement()
-		{
-			this._tsysClientElement2 = new EntitySet<tsysClientElement>(new Action<tsysClientElement>(this.attach_tsysClientElement2), new Action<tsysClientElement>(this.detach_tsysClientElement2));
-			this._tsysClientElement1 = default(EntityRef<tsysClientElement>);
-			this._tsysClient = default(EntityRef<tsysClient>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKClientElement", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long PKClientElement
+		public System.Data.Linq.Table<tsysClientElement> tsysClientElement
 		{
 			get
 			{
-				return this._PKClientElement;
+				return this.GetTable<tsysClientElement>();
 			}
-			set
-			{
-				if ((this._PKClientElement != value))
-				{
-					this.OnPKClientElementChanging(value);
-					this.SendPropertyChanging();
-					this._PKClientElement = value;
-					this.SendPropertyChanged("PKClientElement");
-					this.OnPKClientElementChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKClient", DbType="BigInt")]
-		public System.Nullable<long> FKClient
-		{
-			get
-			{
-				return this._FKClient;
-			}
-			set
-			{
-				if ((this._FKClient != value))
-				{
-					if (this._tsysClient.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnFKClientChanging(value);
-					this.SendPropertyChanging();
-					this._FKClient = value;
-					this.SendPropertyChanged("FKClient");
-					this.OnFKClientChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKClientElement", DbType="BigInt")]
-		public System.Nullable<long> FKClientElement
-		{
-			get
-			{
-				return this._FKClientElement;
-			}
-			set
-			{
-				if ((this._FKClientElement != value))
-				{
-					if (this._tsysClientElement1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnFKClientElementChanging(value);
-					this.SendPropertyChanging();
-					this._FKClientElement = value;
-					this.SendPropertyChanged("FKClientElement");
-					this.OnFKClientElementChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKExternal", DbType="BigInt")]
-		public System.Nullable<long> FKExternal
-		{
-			get
-			{
-				return this._FKExternal;
-			}
-			set
-			{
-				if ((this._FKExternal != value))
-				{
-					this.OnFKExternalChanging(value);
-					this.SendPropertyChanging();
-					this._FKExternal = value;
-					this.SendPropertyChanged("FKExternal");
-					this.OnFKExternalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SortOrder", DbType="Int")]
-		public System.Nullable<int> SortOrder
-		{
-			get
-			{
-				return this._SortOrder;
-			}
-			set
-			{
-				if ((this._SortOrder != value))
-				{
-					this.OnSortOrderChanging(value);
-					this.SendPropertyChanging();
-					this._SortOrder = value;
-					this.SendPropertyChanged("SortOrder");
-					this.OnSortOrderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Image
-		{
-			get
-			{
-				return this._Image;
-			}
-			set
-			{
-				if ((this._Image != value))
-				{
-					this.OnImageChanging(value);
-					this.SendPropertyChanging();
-					this._Image = value;
-					this.SendPropertyChanged("Image");
-					this.OnImageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assemblyname", DbType="NVarChar(255)")]
-		public string Assemblyname
-		{
-			get
-			{
-				return this._Assemblyname;
-			}
-			set
-			{
-				if ((this._Assemblyname != value))
-				{
-					this.OnAssemblynameChanging(value);
-					this.SendPropertyChanging();
-					this._Assemblyname = value;
-					this.SendPropertyChanged("Assemblyname");
-					this.OnAssemblynameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedOn
-		{
-			get
-			{
-				return this._CreatedOn;
-			}
-			set
-			{
-				if ((this._CreatedOn != value))
-				{
-					this.OnCreatedOnChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedOn = value;
-					this.SendPropertyChanged("CreatedOn");
-					this.OnCreatedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
-		public System.Nullable<long> FKUserCreated
-		{
-			get
-			{
-				return this._FKUserCreated;
-			}
-			set
-			{
-				if ((this._FKUserCreated != value))
-				{
-					this.OnFKUserCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._FKUserCreated = value;
-					this.SendPropertyChanged("FKUserCreated");
-					this.OnFKUserCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ChangedOn
-		{
-			get
-			{
-				return this._ChangedOn;
-			}
-			set
-			{
-				if ((this._ChangedOn != value))
-				{
-					this.OnChangedOnChanging(value);
-					this.SendPropertyChanging();
-					this._ChangedOn = value;
-					this.SendPropertyChanged("ChangedOn");
-					this.OnChangedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChangedOn", DbType="BigInt")]
-		public System.Nullable<long> FKUserChangedOn
-		{
-			get
-			{
-				return this._FKUserChangedOn;
-			}
-			set
-			{
-				if ((this._FKUserChangedOn != value))
-				{
-					this.OnFKUserChangedOnChanging(value);
-					this.SendPropertyChanging();
-					this._FKUserChangedOn = value;
-					this.SendPropertyChanged("FKUserChangedOn");
-					this.OnFKUserChangedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UniqueIdentifier", DbType="UniqueIdentifier")]
-		public System.Nullable<System.Guid> UniqueIdentifier
-		{
-			get
-			{
-				return this._UniqueIdentifier;
-			}
-			set
-			{
-				if ((this._UniqueIdentifier != value))
-				{
-					this.OnUniqueIdentifierChanging(value);
-					this.SendPropertyChanging();
-					this._UniqueIdentifier = value;
-					this.SendPropertyChanged("UniqueIdentifier");
-					this.OnUniqueIdentifierChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClientElement_tsysClientElement", Storage="_tsysClientElement2", ThisKey="PKClientElement", OtherKey="FKClientElement")]
-		public EntitySet<tsysClientElement> tsysClientElement2
-		{
-			get
-			{
-				return this._tsysClientElement2;
-			}
-			set
-			{
-				this._tsysClientElement2.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClientElement_tsysClientElement", Storage="_tsysClientElement1", ThisKey="FKClientElement", OtherKey="PKClientElement", IsForeignKey=true)]
-		public tsysClientElement tsysClientElement1
-		{
-			get
-			{
-				return this._tsysClientElement1.Entity;
-			}
-			set
-			{
-				tsysClientElement previousValue = this._tsysClientElement1.Entity;
-				if (((previousValue != value) 
-							|| (this._tsysClientElement1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tsysClientElement1.Entity = null;
-						previousValue.tsysClientElement2.Remove(this);
-					}
-					this._tsysClientElement1.Entity = value;
-					if ((value != null))
-					{
-						value.tsysClientElement2.Add(this);
-						this._FKClientElement = value.PKClientElement;
-					}
-					else
-					{
-						this._FKClientElement = default(Nullable<long>);
-					}
-					this.SendPropertyChanged("tsysClientElement1");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClient_tsysClientElement", Storage="_tsysClient", ThisKey="FKClient", OtherKey="PKClient", IsForeignKey=true)]
-		public tsysClient tsysClient
-		{
-			get
-			{
-				return this._tsysClient.Entity;
-			}
-			set
-			{
-				tsysClient previousValue = this._tsysClient.Entity;
-				if (((previousValue != value) 
-							|| (this._tsysClient.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tsysClient.Entity = null;
-						previousValue.tsysClientElement.Remove(this);
-					}
-					this._tsysClient.Entity = value;
-					if ((value != null))
-					{
-						value.tsysClientElement.Add(this);
-						this._FKClient = value.PKClient;
-					}
-					else
-					{
-						this._FKClient = default(Nullable<long>);
-					}
-					this.SendPropertyChanged("tsysClient");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tsysClientElement2(tsysClientElement entity)
-		{
-			this.SendPropertyChanging();
-			entity.tsysClientElement1 = this;
-		}
-		
-		private void detach_tsysClientElement2(tsysClientElement entity)
-		{
-			this.SendPropertyChanging();
-			entity.tsysClientElement1 = null;
 		}
 	}
 	
@@ -1136,6 +676,466 @@ namespace Wookie.Master.Menu.Database
 		{
 			this.SendPropertyChanging();
 			entity.tsysClient = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tsysClientElement")]
+	public partial class tsysClientElement : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _PKClientElement;
+		
+		private System.Nullable<long> _FKClient;
+		
+		private System.Nullable<long> _FKClientElement;
+		
+		private System.Nullable<long> _FKExternal;
+		
+		private System.Nullable<int> _SortOrder;
+		
+		private string _Name;
+		
+		private System.Data.Linq.Binary _Image;
+		
+		private string _Assemblyname;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<long> _FKUserCreated;
+		
+		private System.Nullable<System.DateTime> _ChangedOn;
+		
+		private System.Nullable<long> _FKUserChangedOn;
+		
+		private System.Nullable<System.Guid> _UniqueIdentifier;
+		
+		private EntitySet<tsysClientElement> _tsysClientElement2;
+		
+		private EntityRef<tsysClient> _tsysClient;
+		
+		private EntityRef<tsysClientElement> _tsysClientElement1;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPKClientElementChanging(long value);
+    partial void OnPKClientElementChanged();
+    partial void OnFKClientChanging(System.Nullable<long> value);
+    partial void OnFKClientChanged();
+    partial void OnFKClientElementChanging(System.Nullable<long> value);
+    partial void OnFKClientElementChanged();
+    partial void OnFKExternalChanging(System.Nullable<long> value);
+    partial void OnFKExternalChanged();
+    partial void OnSortOrderChanging(System.Nullable<int> value);
+    partial void OnSortOrderChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnImageChanging(System.Data.Linq.Binary value);
+    partial void OnImageChanged();
+    partial void OnAssemblynameChanging(string value);
+    partial void OnAssemblynameChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnFKUserCreatedChanging(System.Nullable<long> value);
+    partial void OnFKUserCreatedChanged();
+    partial void OnChangedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnChangedOnChanged();
+    partial void OnFKUserChangedOnChanging(System.Nullable<long> value);
+    partial void OnFKUserChangedOnChanged();
+    partial void OnUniqueIdentifierChanging(System.Nullable<System.Guid> value);
+    partial void OnUniqueIdentifierChanged();
+    #endregion
+		
+		public tsysClientElement()
+		{
+			this._tsysClientElement2 = new EntitySet<tsysClientElement>(new Action<tsysClientElement>(this.attach_tsysClientElement2), new Action<tsysClientElement>(this.detach_tsysClientElement2));
+			this._tsysClient = default(EntityRef<tsysClient>);
+			this._tsysClientElement1 = default(EntityRef<tsysClientElement>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKClientElement", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long PKClientElement
+		{
+			get
+			{
+				return this._PKClientElement;
+			}
+			set
+			{
+				if ((this._PKClientElement != value))
+				{
+					this.OnPKClientElementChanging(value);
+					this.SendPropertyChanging();
+					this._PKClientElement = value;
+					this.SendPropertyChanged("PKClientElement");
+					this.OnPKClientElementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKClient", DbType="BigInt")]
+		public System.Nullable<long> FKClient
+		{
+			get
+			{
+				return this._FKClient;
+			}
+			set
+			{
+				if ((this._FKClient != value))
+				{
+					if (this._tsysClient.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKClientChanging(value);
+					this.SendPropertyChanging();
+					this._FKClient = value;
+					this.SendPropertyChanged("FKClient");
+					this.OnFKClientChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKClientElement", DbType="BigInt")]
+		public System.Nullable<long> FKClientElement
+		{
+			get
+			{
+				return this._FKClientElement;
+			}
+			set
+			{
+				if ((this._FKClientElement != value))
+				{
+					if (this._tsysClientElement1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFKClientElementChanging(value);
+					this.SendPropertyChanging();
+					this._FKClientElement = value;
+					this.SendPropertyChanged("FKClientElement");
+					this.OnFKClientElementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKExternal", DbType="BigInt")]
+		public System.Nullable<long> FKExternal
+		{
+			get
+			{
+				return this._FKExternal;
+			}
+			set
+			{
+				if ((this._FKExternal != value))
+				{
+					this.OnFKExternalChanging(value);
+					this.SendPropertyChanging();
+					this._FKExternal = value;
+					this.SendPropertyChanged("FKExternal");
+					this.OnFKExternalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SortOrder", DbType="Int")]
+		public System.Nullable<int> SortOrder
+		{
+			get
+			{
+				return this._SortOrder;
+			}
+			set
+			{
+				if ((this._SortOrder != value))
+				{
+					this.OnSortOrderChanging(value);
+					this.SendPropertyChanging();
+					this._SortOrder = value;
+					this.SendPropertyChanged("SortOrder");
+					this.OnSortOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assemblyname", DbType="NVarChar(255)")]
+		public string Assemblyname
+		{
+			get
+			{
+				return this._Assemblyname;
+			}
+			set
+			{
+				if ((this._Assemblyname != value))
+				{
+					this.OnAssemblynameChanging(value);
+					this.SendPropertyChanging();
+					this._Assemblyname = value;
+					this.SendPropertyChanged("Assemblyname");
+					this.OnAssemblynameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserCreated", DbType="BigInt")]
+		public System.Nullable<long> FKUserCreated
+		{
+			get
+			{
+				return this._FKUserCreated;
+			}
+			set
+			{
+				if ((this._FKUserCreated != value))
+				{
+					this.OnFKUserCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserCreated = value;
+					this.SendPropertyChanged("FKUserCreated");
+					this.OnFKUserCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChangedOn
+		{
+			get
+			{
+				return this._ChangedOn;
+			}
+			set
+			{
+				if ((this._ChangedOn != value))
+				{
+					this.OnChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._ChangedOn = value;
+					this.SendPropertyChanged("ChangedOn");
+					this.OnChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FKUserChangedOn", DbType="BigInt")]
+		public System.Nullable<long> FKUserChangedOn
+		{
+			get
+			{
+				return this._FKUserChangedOn;
+			}
+			set
+			{
+				if ((this._FKUserChangedOn != value))
+				{
+					this.OnFKUserChangedOnChanging(value);
+					this.SendPropertyChanging();
+					this._FKUserChangedOn = value;
+					this.SendPropertyChanged("FKUserChangedOn");
+					this.OnFKUserChangedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UniqueIdentifier", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> UniqueIdentifier
+		{
+			get
+			{
+				return this._UniqueIdentifier;
+			}
+			set
+			{
+				if ((this._UniqueIdentifier != value))
+				{
+					this.OnUniqueIdentifierChanging(value);
+					this.SendPropertyChanging();
+					this._UniqueIdentifier = value;
+					this.SendPropertyChanged("UniqueIdentifier");
+					this.OnUniqueIdentifierChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClientElement_tsysClientElement", Storage="_tsysClientElement2", ThisKey="PKClientElement", OtherKey="FKClientElement")]
+		public EntitySet<tsysClientElement> tsysClientElement2
+		{
+			get
+			{
+				return this._tsysClientElement2;
+			}
+			set
+			{
+				this._tsysClientElement2.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClient_tsysClientElement", Storage="_tsysClient", ThisKey="FKClient", OtherKey="PKClient", IsForeignKey=true)]
+		public tsysClient tsysClient
+		{
+			get
+			{
+				return this._tsysClient.Entity;
+			}
+			set
+			{
+				tsysClient previousValue = this._tsysClient.Entity;
+				if (((previousValue != value) 
+							|| (this._tsysClient.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tsysClient.Entity = null;
+						previousValue.tsysClientElement.Remove(this);
+					}
+					this._tsysClient.Entity = value;
+					if ((value != null))
+					{
+						value.tsysClientElement.Add(this);
+						this._FKClient = value.PKClient;
+					}
+					else
+					{
+						this._FKClient = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tsysClient");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClientElement_tsysClientElement", Storage="_tsysClientElement1", ThisKey="FKClientElement", OtherKey="PKClientElement", IsForeignKey=true)]
+		public tsysClientElement tsysClientElement1
+		{
+			get
+			{
+				return this._tsysClientElement1.Entity;
+			}
+			set
+			{
+				tsysClientElement previousValue = this._tsysClientElement1.Entity;
+				if (((previousValue != value) 
+							|| (this._tsysClientElement1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tsysClientElement1.Entity = null;
+						previousValue.tsysClientElement2.Remove(this);
+					}
+					this._tsysClientElement1.Entity = value;
+					if ((value != null))
+					{
+						value.tsysClientElement2.Add(this);
+						this._FKClientElement = value.PKClientElement;
+					}
+					else
+					{
+						this._FKClientElement = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("tsysClientElement1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tsysClientElement2(tsysClientElement entity)
+		{
+			this.SendPropertyChanging();
+			entity.tsysClientElement1 = this;
+		}
+		
+		private void detach_tsysClientElement2(tsysClientElement entity)
+		{
+			this.SendPropertyChanging();
+			entity.tsysClientElement1 = null;
 		}
 	}
 }

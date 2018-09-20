@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions9 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions10 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions11 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
@@ -46,7 +47,7 @@
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions7 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions8 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.gridClient = new DevExpress.XtraGrid.GridControl();
-            this.tsysClientBindingSource = new System.Windows.Forms.BindingSource();
+            this.tsysClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSortOrder = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -72,14 +73,14 @@
             this.colName1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colImage1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.picMenu = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
-            this.tsysClientElementBindingSource = new System.Windows.Forms.BindingSource();
+            this.tsysClientElementBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.splitContainerClient = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControlClient = new DevExpress.XtraEditors.GroupControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -133,23 +134,21 @@
             this.splitContainerMenu = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControlMenu = new DevExpress.XtraEditors.GroupControl();
             this.dataLayoutControl2 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.FKExternalTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.ImagePictureEdit = new DevExpress.XtraEditors.PictureEdit();
             this.AssemblynameTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForFKExternal = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForAssemblyname = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForImage = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Wookie.Master.Menu.Control.WaitForm1), true, true, typeof(System.Windows.Forms.UserControl));
             ((System.ComponentModel.ISupportInitialize)(this.gridClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsysClientBindingSource)).BeginInit();
@@ -216,18 +215,16 @@
             this.groupControlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl2)).BeginInit();
             this.dataLayoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FKExternalTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImagePictureEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AssemblynameTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForFKExternal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAssemblyname)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).BeginInit();
             this.navigationFrame1.SuspendLayout();
@@ -426,6 +423,7 @@
             this.treeMenu.ParentFieldName = "FKClientElement";
             this.treeMenu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.picMenu});
+            this.treeMenu.RootValue = null;
             this.treeMenu.Size = new System.Drawing.Size(520, 344);
             this.treeMenu.TabIndex = 2;
             this.treeMenu.AfterDragNode += new DevExpress.XtraTreeList.AfterDragNodeEventHandler(this.treeList1_AfterDragNode);
@@ -1193,40 +1191,23 @@
             // 
             // dataLayoutControl2
             // 
-            this.dataLayoutControl2.Controls.Add(this.FKExternalTextEdit);
             this.dataLayoutControl2.Controls.Add(this.textEdit1);
             this.dataLayoutControl2.Controls.Add(this.textEdit2);
+            this.dataLayoutControl2.Controls.Add(this.ImagePictureEdit);
             this.dataLayoutControl2.Controls.Add(this.AssemblynameTextEdit);
-            this.dataLayoutControl2.Controls.Add(this.pictureEdit2);
             this.dataLayoutControl2.DataSource = this.tsysClientElementBindingSource;
             this.dataLayoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl2.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl2.Name = "dataLayoutControl2";
             this.dataLayoutControl2.Root = this.layoutControlGroup3;
             this.dataLayoutControl2.Size = new System.Drawing.Size(524, 315);
-            this.dataLayoutControl2.TabIndex = 4;
+            this.dataLayoutControl2.TabIndex = 0;
             this.dataLayoutControl2.Text = "dataLayoutControl2";
-            // 
-            // FKExternalTextEdit
-            // 
-            this.FKExternalTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "FKExternal", true));
-            this.FKExternalTextEdit.Location = new System.Drawing.Point(129, 26);
-            this.FKExternalTextEdit.MenuManager = this.barManager1;
-            this.FKExternalTextEdit.Name = "FKExternalTextEdit";
-            this.FKExternalTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-            this.FKExternalTextEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.FKExternalTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.FKExternalTextEdit.Properties.Mask.EditMask = "N0";
-            this.FKExternalTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.FKExternalTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.FKExternalTextEdit.Size = new System.Drawing.Size(393, 20);
-            this.FKExternalTextEdit.StyleController = this.dataLayoutControl2;
-            this.FKExternalTextEdit.TabIndex = 4;
             // 
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "SortOrder", true));
-            this.textEdit1.Location = new System.Drawing.Point(385, 2);
+            this.textEdit1.Location = new System.Drawing.Point(148, 12);
             this.textEdit1.MenuManager = this.barManager1;
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -1235,40 +1216,39 @@
             this.textEdit1.Properties.Mask.EditMask = "N0";
             this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEdit1.Size = new System.Drawing.Size(137, 20);
+            this.textEdit1.Size = new System.Drawing.Size(364, 20);
             this.textEdit1.StyleController = this.dataLayoutControl2;
-            this.textEdit1.TabIndex = 5;
+            this.textEdit1.TabIndex = 4;
             // 
             // textEdit2
             // 
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "Name", true));
-            this.textEdit2.Location = new System.Drawing.Point(129, 2);
+            this.textEdit2.Location = new System.Drawing.Point(148, 36);
             this.textEdit2.MenuManager = this.barManager1;
             this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(194, 20);
+            this.textEdit2.Size = new System.Drawing.Size(364, 20);
             this.textEdit2.StyleController = this.dataLayoutControl2;
-            this.textEdit2.TabIndex = 6;
+            this.textEdit2.TabIndex = 5;
+            // 
+            // ImagePictureEdit
+            // 
+            this.ImagePictureEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "Image", true));
+            this.ImagePictureEdit.Location = new System.Drawing.Point(12, 12);
+            this.ImagePictureEdit.MenuManager = this.barManager1;
+            this.ImagePictureEdit.Name = "ImagePictureEdit";
+            this.ImagePictureEdit.Size = new System.Drawing.Size(58, 68);
+            this.ImagePictureEdit.StyleController = this.dataLayoutControl2;
+            this.ImagePictureEdit.TabIndex = 6;
             // 
             // AssemblynameTextEdit
             // 
             this.AssemblynameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "Assemblyname", true));
-            this.AssemblynameTextEdit.Location = new System.Drawing.Point(129, 50);
+            this.AssemblynameTextEdit.Location = new System.Drawing.Point(148, 60);
             this.AssemblynameTextEdit.MenuManager = this.barManager1;
             this.AssemblynameTextEdit.Name = "AssemblynameTextEdit";
-            this.AssemblynameTextEdit.Size = new System.Drawing.Size(393, 20);
+            this.AssemblynameTextEdit.Size = new System.Drawing.Size(364, 20);
             this.AssemblynameTextEdit.StyleController = this.dataLayoutControl2;
             this.AssemblynameTextEdit.TabIndex = 7;
-            // 
-            // pictureEdit2
-            // 
-            this.pictureEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "Image", true));
-            this.pictureEdit2.Location = new System.Drawing.Point(2, 2);
-            this.pictureEdit2.MenuManager = this.barManager1;
-            this.pictureEdit2.Name = "pictureEdit2";
-            this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit2.Size = new System.Drawing.Size(65, 68);
-            this.pictureEdit2.StyleController = this.dataLayoutControl2;
-            this.pictureEdit2.TabIndex = 8;
             // 
             // layoutControlGroup3
             // 
@@ -1277,7 +1257,6 @@
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup4});
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup3.Size = new System.Drawing.Size(524, 315);
             this.layoutControlGroup3.TextVisible = false;
             // 
@@ -1286,71 +1265,59 @@
             this.layoutControlGroup4.AllowDrawBackground = false;
             this.layoutControlGroup4.GroupBordersVisible = false;
             this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForFKExternal,
-            this.layoutControlItem2,
             this.layoutControlItem1,
-            this.layoutControlItem6,
+            this.layoutControlItem2,
             this.ItemForAssemblyname,
+            this.ItemForImage,
             this.emptySpaceItem1});
             this.layoutControlGroup4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup4.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(524, 315);
-            // 
-            // ItemForFKExternal
-            // 
-            this.ItemForFKExternal.Control = this.FKExternalTextEdit;
-            this.ItemForFKExternal.Location = new System.Drawing.Point(69, 24);
-            this.ItemForFKExternal.Name = "ItemForFKExternal";
-            this.ItemForFKExternal.Size = new System.Drawing.Size(455, 24);
-            this.ItemForFKExternal.Text = "FK External";
-            this.ItemForFKExternal.TextSize = new System.Drawing.Size(55, 13);
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.textEdit2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(69, 0);
-            this.layoutControlItem2.Name = "ItemForName";
-            this.layoutControlItem2.Size = new System.Drawing.Size(256, 24);
-            this.layoutControlItem2.Text = "Name";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(55, 13);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(504, 295);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.textEdit1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(325, 0);
+            this.layoutControlItem1.Location = new System.Drawing.Point(62, 0);
             this.layoutControlItem1.Name = "ItemForSortOrder";
-            this.layoutControlItem1.Size = new System.Drawing.Size(199, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(442, 24);
             this.layoutControlItem1.Text = "Sort Order";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(55, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(71, 13);
             // 
-            // layoutControlItem6
+            // layoutControlItem2
             // 
-            this.layoutControlItem6.Control = this.pictureEdit2;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(69, 72);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(69, 72);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(69, 72);
-            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
+            this.layoutControlItem2.Control = this.textEdit2;
+            this.layoutControlItem2.Location = new System.Drawing.Point(62, 24);
+            this.layoutControlItem2.Name = "ItemForName";
+            this.layoutControlItem2.Size = new System.Drawing.Size(442, 24);
+            this.layoutControlItem2.Text = "Name";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(71, 13);
             // 
             // ItemForAssemblyname
             // 
             this.ItemForAssemblyname.Control = this.AssemblynameTextEdit;
-            this.ItemForAssemblyname.CustomizationFormText = "Assembly";
-            this.ItemForAssemblyname.Location = new System.Drawing.Point(69, 48);
+            this.ItemForAssemblyname.Location = new System.Drawing.Point(62, 48);
             this.ItemForAssemblyname.Name = "ItemForAssemblyname";
-            this.ItemForAssemblyname.Size = new System.Drawing.Size(455, 24);
-            this.ItemForAssemblyname.Text = "Assembly";
-            this.ItemForAssemblyname.TextSize = new System.Drawing.Size(55, 13);
+            this.ItemForAssemblyname.Size = new System.Drawing.Size(442, 24);
+            this.ItemForAssemblyname.Text = "Assemblyname";
+            this.ItemForAssemblyname.TextSize = new System.Drawing.Size(71, 13);
+            // 
+            // ItemForImage
+            // 
+            this.ItemForImage.Control = this.ImagePictureEdit;
+            this.ItemForImage.Location = new System.Drawing.Point(0, 0);
+            this.ItemForImage.Name = "ItemForImage";
+            this.ItemForImage.Size = new System.Drawing.Size(62, 72);
+            this.ItemForImage.StartNewLine = true;
+            this.ItemForImage.Text = "Image";
+            this.ItemForImage.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForImage.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 72);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(524, 243);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(504, 223);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // navigationFrame1
@@ -1461,18 +1428,16 @@
             this.groupControlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl2)).EndInit();
             this.dataLayoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.FKExternalTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImagePictureEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AssemblynameTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForFKExternal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAssemblyname)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).EndInit();
             this.navigationFrame1.ResumeLayout(false);
@@ -1522,17 +1487,6 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForInitialCatalog;
         private DevExpress.XtraLayout.LayoutControlItem ItemForPersistSecurityInfo;
         private DevExpress.XtraLayout.LayoutControlItem ItemForUserID;
-        private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl2;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
-        private DevExpress.XtraEditors.TextEdit FKExternalTextEdit;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit AssemblynameTextEdit;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForFKExternal;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForAssemblyname;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerClient;
         private DevExpress.XtraBars.Navigation.NavigationFrame navigationFrame1;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPage1;
@@ -1583,13 +1537,22 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;        
         private DevExpress.XtraEditors.GroupControl groupControlClient;
         private DevExpress.XtraEditors.GroupControl groupControlMenu;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl2;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.PictureEdit ImagePictureEdit;
+        private DevExpress.XtraEditors.TextEdit AssemblynameTextEdit;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForAssemblyname;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForImage;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
 }
