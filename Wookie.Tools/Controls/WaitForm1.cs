@@ -7,11 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraWaitForm;
 
-namespace Wookie.Master.Menu.Control
+namespace Wookie.Tools.Controls
 {
-    public partial class WaitForm2 : WaitForm
+    public partial class WaitForm1 : WaitForm
     {
-        public WaitForm2()
+        public WaitForm1()
         {
             InitializeComponent();
             this.progressPanel1.AutoHeight = true;

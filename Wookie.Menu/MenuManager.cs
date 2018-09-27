@@ -6,29 +6,37 @@ using System.Data.SqlClient;
 using System.Linq;
 using Wookie.Tools.Image;
 using DevExpress.Images;
+using System.Drawing;
 
 namespace Wookie.Menu.MenuManager
 {
     public class MenuManager:IDisposable
     {
+        #region Variables
         private Database.MenuDataContext context = null;
         private NavigationFrame navigationFrame = null;
-        private Dictionary<AccordionControlElement, Client> clientDictionary = new Dictionary<AccordionControlElement, Client>();
+        private Dictionary<AccordionControlElement, Client> clients = new Dictionary<AccordionControlElement, Client>();
         private AccordionControl accordionControl = null;
+        private Bar statusBar;
 
-        
         public delegate void ClientChangeEventHandler(Client sender);
+        public delegate void CategoryChangeEventHandler(string caption, Image image);
         public event ClientChangeEventHandler ClientChanged;
+        public event CategoryChangeEventHandler CategoryChanged;
         public event EventHandler SettingsClicked;
+        #endregion
 
-
-        public MenuManager(System.Data.SqlClient.SqlConnection sqlConnection, NavigationFrame navigationFrame, AccordionControl accordionControl)
+        #region Constructor
+        public MenuManager(System.Data.SqlClient.SqlConnection sqlConnection, NavigationFrame navigationFrame, AccordionControl accordionControl, Bar statusBar)
         {
             this.navigationFrame = navigationFrame;
             this.accordionControl = accordionControl;
             this.context = new Database.MenuDataContext(sqlConnection);
+            this.statusBar = statusBar;
         }
+        #endregion
 
+        #region Public Functions
         public void AddClients(AccordionControlElement aceClient)
         {
             // Lese aus der Datenbank alle Mandanten aus
@@ -39,33 +47,20 @@ namespace Wookie.Menu.MenuManager
 
             foreach (Database.tsysClient client in clientQuery)
             {
-                AccordionControlElement clientItem = new AccordionControlElement();
-                clientItem.Text = client.Name;
-                clientItem.ImageOptions.Image = Converter.GetImageFromBinary(client.Image);
-                clientItem.Click += ClientItem_Click;
-                clientItem.Style = ElementStyle.Item;
-               
-                try
+                AccordionControlElement clientItem = new AccordionControlElement()
                 {
-                    SqlConnectionStringBuilder connBuilder = new SqlConnectionStringBuilder
-                    {
-                        DataSource = client.Datasource,
-                        UserID = client.UserID,
-                        PersistSecurityInfo = client.PersistSecurityInfo.Value,
-                        Password = client.Password,
-                        InitialCatalog = client.InitialCatalog
-                    };
+                    Text = client.Name,
+                    Style = ElementStyle.Item                    
+                };
 
-                    SqlConnection sqlConnection = new SqlConnection(connBuilder.ConnectionString);
+                clientItem.ImageOptions.Image = Converter.GetImageFromBinary(client.Image);                
+                clientItem.Click += Client_Click;
 
-                    // Überprüfe ob eine Verbindung zur Datenbank möglich ist.
-                    sqlConnection.Open();
-                    sqlConnection.Close();
-
-                    // Falls Verbindung möglich in Liste aufnehmen.
-                    this.clientDictionary.Add(clientItem, new Client(client.PKClient, sqlConnection, client.Name));
+                if (this.TestConnection(client))
+                {
+                    this.clients.Add(clientItem, new Client(client.PKClient, new SqlConnection(GetSqlConnectionBuilder(client).ConnectionString), client.Name));
                 }
-                catch
+                else
                 {
                     // Falls Verbindung zur Datenbank nicht möglich ist, dann Item auf enabled = false setzen.
                     clientItem.Enabled = false;
@@ -75,22 +70,62 @@ namespace Wookie.Menu.MenuManager
                 aceClient.Elements.Add(clientItem);
             }
             
-            if (this.clientDictionary.Count() > 0)
+            if (this.clients.Count() > 0)
             {
-                ClientChanged?.Invoke((Client)clientDictionary.ToArray()[0].Value);
+                Client client = clients.ToArray()[0].Value as Client;
+                this.AddMenu(client);
+                ClientChanged?.Invoke(client);
             }
         }
+        #endregion
 
-        private void ClientItem_Click(object sender, EventArgs e)
+        #region Private Functions
+        private int CreateMenu(Client client, Guid? id, AccordionControlElement element)
         {
-            if (this.clientDictionary[(AccordionControlElement)sender] == null) return;
+            var query = from row in context.tsysClientElement
+                        where row.FKClient == client.PKClient
+                        select row;
 
-            ClientChanged?.Invoke((Client)this.clientDictionary[(AccordionControlElement)sender]);
+            if (id != null)
+                query = query.Where(s => s.ParentID == id.Value);
+            else
+                query = query.Where(s => s.ParentID == null);
+
+            query = query.OrderBy( s => s.SortOrder);
+
+            if (query == null || query.Count() == 0) return 0;
+
+            foreach (Database.tsysClientElement row in query)
+            {
+                MenuItem menuItem = new MenuItem(row.Name, row.Image, row.Assemblyname, client.SqlConnection, row.FKExternal);
+                menuItem.MenuItemClick += new MenuItem.MenuItemEventHandler(this.MenuItem_Click);
+                menuItem.StatusBarChanged += MenuItem_StatusBarChanged;
+                if (element == null)
+                {
+                    this.accordionControl.Elements.Add(menuItem.AccordionControlElement);
+                }
+                else
+                {
+                    element.Elements.Add(menuItem.AccordionControlElement);
+                }
+
+                int count = CreateMenu(client, row.ID, menuItem.AccordionControlElement);
+                if (count == 0) menuItem.AccordionControlElement.Style = ElementStyle.Item;
+            }
+
+            return query.Count();
         }
 
-        public void AddSettings()
+        private void MenuItem_StatusBarChanged(StatusBarEventArgs args)
         {
-            // Add Settings
+            BarStaticItem barItem = new BarStaticItem();
+            barItem.Caption = args.Text;
+            this.statusBar.ClearLinks();
+            this.statusBar.AddItem(barItem);
+        }
+
+        private void AddSettings()
+        {
             AccordionControlElement aceSettings;
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
@@ -105,6 +140,7 @@ namespace Wookie.Menu.MenuManager
                 Name = "aceSettings",
                 Image = ImageResourceCache.Default.GetImage("images/setup/properties_32x32.png")
             };
+
             toolTipTitleItem1.Text = "Settings";
             toolTipItem1.LeftIndent = 6;
             toolTipItem1.Text = "Modify general settings which apply to all instances.";
@@ -120,65 +156,78 @@ namespace Wookie.Menu.MenuManager
             this.accordionControl.Elements.Add(aceSettings);
         }
 
-        public void LoadMenu(Client client)
+        private void AddMenu(Client client)
         {
             if (this.accordionControl == null) return;
 
             this.accordionControl.BeginUpdate();
-
             this.accordionControl.Elements.Clear();
             this.CreateMenu(client, null, null);
-
+            this.AddSettings();
             this.accordionControl.EndUpdate();
         }
 
-        private int CreateMenu(Client client, long? FKClientElement, AccordionControlElement element)
+        private SqlConnectionStringBuilder GetSqlConnectionBuilder(Database.tsysClient client)
         {
-            var query = from row in context.tsysClientElement
-                        where row.FKClient == client.PKClient
-                        select row;
+            if (client == null) return null;
 
-            if (FKClientElement != null)
-                query = query.Where(s => s.FKClientElement == FKClientElement.Value);
-            else
-                query = query.Where(s => s.FKClientElement == null);
+            SqlConnectionStringBuilder connBuilder = new SqlConnectionStringBuilder();
 
-            query = query.OrderBy( s => s.SortOrder);
+            if (client.Datasource != null) connBuilder.DataSource = client.Datasource;
+            if (client.UserID != null) connBuilder.UserID = client.UserID;
+            if (client.Password != null) connBuilder.Password = client.Password;
+            if (client.InitialCatalog != null) connBuilder.InitialCatalog = client.InitialCatalog;
+            if (client.FailoverPartner != null) connBuilder.FailoverPartner = client.FailoverPartner;
 
-            if (query == null || query.Count() == 0) return 0;
+            if (client.Encrypt.HasValue) connBuilder.Encrypt = client.Encrypt.Value;
+            if (client.PersistSecurityInfo.HasValue) connBuilder.PersistSecurityInfo = client.PersistSecurityInfo.Value;
+            if (client.ConnectTimeout.HasValue) connBuilder.ConnectTimeout = client.ConnectTimeout.Value;
+            if (client.ConnectRetryCount.HasValue) connBuilder.ConnectRetryCount = client.ConnectRetryCount.Value;
+            if (client.ConnectRetryInterval.HasValue) connBuilder.ConnectRetryInterval = client.ConnectRetryInterval.Value;
+            if (client.PacketSize.HasValue) connBuilder.PacketSize = client.PacketSize.Value;
+            if (client.Pooling.HasValue) connBuilder.Pooling = client.Pooling.Value;
 
-            foreach (Database.tsysClientElement row in query)
-            {
-                MenuItem menuItem = new MenuItem(row.Name, row.Image, row.Assemblyname, client.SqlConnection, row.FKExternal);
-                menuItem.MenuItemClick += new MenuItem.MenuItemEventHandler(this.menuItemClick);
-                
-                if (element == null)
-                {
-                    this.accordionControl.Elements.Add(menuItem.AccordionControlElement);
-                }
-                else
-                {
-                    element.Elements.Add(menuItem.AccordionControlElement);
-                }
-
-                int count = CreateMenu(client, row.PKClientElement, menuItem.AccordionControlElement);
-                if (count == 0) menuItem.AccordionControlElement.Style = ElementStyle.Item;
-            }
-
-            return query.Count();
+            return connBuilder;
         }
 
-        private void menuItemClick(MenuItem sender)
+        private bool TestConnection(Database.tsysClient client)
         {
-            if (sender.NavigationPage != null)
+            try
+            {
+                SqlConnectionStringBuilder connBuilder = GetSqlConnectionBuilder(client);
+
+                if (connBuilder != null)
+                {
+                    using (SqlConnection sqlConnection = new SqlConnection(connBuilder.ConnectionString))
+                    {
+                        // Überprüfe ob eine Verbindung zur Datenbank möglich ist.
+                        sqlConnection.Open();
+                        sqlConnection.Close();
+
+                        return true;                        
+                    }
+                }
+
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Events
+        private void MenuItem_Click(MenuItem sender)
+        {
+            if (sender != null && sender.NavigationPage != null)
             {
                 if (!this.navigationFrame.Pages.Contains(sender.NavigationPage))
                     this.navigationFrame.Pages.Add(sender.NavigationPage);
+
                 this.navigationFrame.SelectedPage = sender.NavigationPage;
-            }
-            else
-            {
-                this.navigationFrame.SelectedPage = sender.NavigationPage;
+
+                CategoryChanged?.Invoke(sender.Caption, sender.Image);
             }
         }
 
@@ -186,6 +235,18 @@ namespace Wookie.Menu.MenuManager
         {
             SettingsClicked?.Invoke(this, new EventArgs());
         }
+
+        private void Client_Click(object sender, EventArgs e)
+        {
+            Client client = this.clients[(AccordionControlElement)sender] as Client;
+
+            if (client == null) return;
+
+            this.AddMenu(client);            
+
+            this.ClientChanged?.Invoke(client);
+        }
+        #endregion
 
         #region IDisposable Support
         private bool disposedValue = false; // Dient zur Erkennung redundanter Aufrufe.
@@ -197,7 +258,7 @@ namespace Wookie.Menu.MenuManager
                 if (disposing)
                 {
                     this.context.Dispose();                    
-                    this.clientDictionary.Clear();
+                    this.clients.Clear();
                 }
 
                 // nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.

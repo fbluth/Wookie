@@ -3,19 +3,25 @@ using DevExpress.Utils.Drawing;
 using DevExpress.Utils.Text;
 using DevExpress.XtraSplashScreen;
 
-
 namespace Wookie.Controls
 {
-    class SplashImagePainter : ICustomImagePainter
+    internal class SplashImagePainter : ICustomImagePainter
     {
+        #region Variables
+        private ViewInfo info = null;
+        #endregion
+        
+        #region Constructor
         static SplashImagePainter()
         {
             Painter = new SplashImagePainter();
         }
         protected SplashImagePainter() { }
+        #endregion
+
+        #region Properties
         public static SplashImagePainter Painter { get; private set; }
 
-        ViewInfo info = null;
         public ViewInfo ViewInfo
         {
             get
@@ -24,6 +30,7 @@ namespace Wookie.Controls
                 return this.info;
             }
         }
+        #endregion
 
         #region Drawing
         public void Draw(GraphicsCache cache, Rectangle bounds)
@@ -36,17 +43,44 @@ namespace Wookie.Controls
         #endregion
     }
 
-    class ViewInfo
+    internal class ViewInfo
     {
+        #region Variables
+        private Font progressLabelFont = null;
+        private Brush brush = null;
+        #endregion
+
+        #region Constructor
         public ViewInfo()
         {
             Counter = 1;
             Stage = string.Empty;
         }
+        #endregion
 
+        #region Properties
         public int Counter { get; set; }
         public string Stage { get; set; }
+        public Font ProgressLabelFont
+        {
+            get
+            {
+                if (this.progressLabelFont == null) this.progressLabelFont = new Font("Calibri", 12);
+                return this.progressLabelFont;
+            }
+        }
+        public Brush Brush
+        {
+            get
+            {
+                if (this.brush == null) this.brush = new SolidBrush(Color.Black);
+                return this.brush;
+            }
+        }
+        public string Text { get { return string.Format("{0} - ({1}%)", Stage, Counter.ToString("D2")); } }
+        #endregion
 
+        #region Drawing
         public PointF CalcProgressLabelPoint(GraphicsCache cache, Rectangle bounds)
         {
             const int yOffset = 20;
@@ -59,25 +93,6 @@ namespace Wookie.Controls
             const int height = 20;
             return new Rectangle(new Point(0, bounds.Height - height), new Size(bounds.Width * Counter / 100, height));
         }
-        Font progressFont = null;
-        public Font ProgressLabelFont
-        {
-            get
-            {
-                if (this.progressFont == null) this.progressFont = new Font("Calibri", 12);
-                return this.progressFont;
-            }
-        }
-        Brush brush = null;
-        public Brush Brush
-        {
-            get
-            {
-                if (this.brush == null) this.brush = new SolidBrush(Color.Black);
-                return this.brush;
-            }
-        }
-        public string Text { get { return string.Format("{0} - ({1}%)", Stage, Counter.ToString("D2")); } }
+        #endregion
     }
-
 }

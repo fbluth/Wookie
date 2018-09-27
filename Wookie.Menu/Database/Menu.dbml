@@ -22,11 +22,20 @@
       <Column Name="PersistSecurityInfo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="UserID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ConnectRetryCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConnectRetryInterval" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConnectTimeout" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Encrypt" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FailoverPartner" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IntegratedSecurity" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Pooling" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PacketSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="FKUserChangedOn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Association Name="tsysClient_tsysClientElement" Member="tsysClientElement" ThisKey="PKClient" OtherKey="FKClient" Type="tsysClientElement" />
     </Type>
   </Table>
@@ -35,6 +44,8 @@
       <Column Name="PKClientElement" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FKClient" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="FKClientElement" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="FKExternal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />

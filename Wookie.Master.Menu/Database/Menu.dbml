@@ -32,6 +32,8 @@
       <Column Name="PKClientElement" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FKClient" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="FKClientElement" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="FKExternal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />

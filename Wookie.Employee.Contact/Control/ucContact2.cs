@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Data;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using Wookie.Employee.Contact;
-using DevExpress.XtraBars.Ribbon;
-using System.Collections;
 using System.Data.SqlClient;
+using Wookie.Menu;
 
 namespace Wookie.Employee.Contact.Control
 {
@@ -20,6 +13,7 @@ namespace Wookie.Employee.Contact.Control
         private Database.ContactDataContext dataContext = null;
         private ucContactEdit ucContactEdit = null;
         private ModulData modulData = null;
+        public event StatusBarEventHandler StatusBarChanged;
 
         public ucContact2(ModulData modulData)
         {
@@ -62,6 +56,12 @@ namespace Wookie.Employee.Contact.Control
         {
             get { return null; }
             set {  }
+        }
+
+        public String Caption
+        {
+            get { return this.splitContainerControl1.Text; }
+            set { this.splitContainerControl1.Text = value; }
         }
         #endregion
 

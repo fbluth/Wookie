@@ -1,47 +1,47 @@
 ﻿using DevExpress.XtraEditors;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Wookie.Menu;
 
 namespace Wookie.Master.Menu
 {
     public class Category : Wookie.Menu.IAssemblyInstance, IDisposable
     {
-
+        #region Variables
         private XtraUserControl control = null;
-        private ModulData modulData = null;
-        
+        private Wookie.Tools.Controls.ModulData modulData = null;
+        #endregion
 
+        #region Constructor
         public Category()
         {
         }
+        #endregion
 
-        public void Initialize(SqlConnection sqlconnection, long? foreignKeyExternal)
+        #region Public Functions
+        public void Initialize(SqlConnection sqlConnection, long? foreignKeyExternal)
         {
-            this.modulData = new ModulData();
-            this.modulData.SqlConnectionClientDB = sqlconnection;
-            this.modulData.FKContactData = foreignKeyExternal;            
+            this.modulData = new Wookie.Tools.Controls.ModulData();
+            this.modulData.SqlConnection = sqlConnection;
+            this.modulData.FKExternal = foreignKeyExternal;
         }
 
-
-        public ModulData ModulData
+        public event StatusBarEventHandler StatusBarChanged
         {
-            get
-            {
-                return this.modulData;
-            }
+            add { ((Control.ucMenu)this.UserControl).StatusBarChanged += value; }
+            remove { ((Control.ucMenu)this.UserControl).StatusBarChanged -= value; }
         }
+        #endregion
+
+        #region Public Properties
 
         public SqlConnection SqlConnection
         {
             get
             {
                 if (this.modulData != null)
-                    return this.modulData.SqlConnectionClientDB;
+                    return this.modulData.SqlConnection;
 
                 return null;
             }
@@ -62,7 +62,7 @@ namespace Wookie.Master.Menu
             get
             {
                 if (this.modulData != null)
-                    return this.modulData.FKContactData;
+                    return this.modulData.FKExternal;
 
                 return null;
             }
@@ -73,6 +73,13 @@ namespace Wookie.Master.Menu
             get { return ((Control.ucMenu)this.UserControl).Image; }
             set { ((Control.ucMenu)this.UserControl).Image = value; }
         }
+
+        public String Caption
+        {
+            get { return ((Control.ucMenu)this.UserControl).Caption; }
+            set { ((Control.ucMenu)this.UserControl).Caption = value; }
+        }
+        #endregion
 
         #region IDisposable Support
         private bool disposedValue = false; // Dient zur Erkennung redundanter Aufrufe.
@@ -110,11 +117,5 @@ namespace Wookie.Master.Menu
             // GC.SuppressFinalize(this);
         }
         #endregion
-    }
-
-    public class ModulData
-    {
-        public SqlConnection SqlConnectionClientDB;
-        public long? FKContactData;
-    }
+    }    
 }

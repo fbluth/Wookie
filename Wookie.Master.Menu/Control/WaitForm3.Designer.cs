@@ -1,6 +1,6 @@
 ﻿namespace Wookie.Master.Menu.Control
 {
-    partial class WaitForm2
+    partial class WaitForm3
     {
         /// <summary>
         /// Required designer variable.

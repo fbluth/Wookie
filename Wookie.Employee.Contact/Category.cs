@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wookie.Menu;
 
 namespace Wookie.Employee.Contact
 {
@@ -15,7 +16,7 @@ namespace Wookie.Employee.Contact
 
         private XtraUserControl control = null;
         private ModulData modulData = null;
-
+        
         public Category()
         {   
         }
@@ -74,6 +75,17 @@ namespace Wookie.Employee.Contact
             set { ((Control.ucContact2)this.UserControl).Image = value; }
         }
 
+        public String Caption
+        {
+            get { return ((Control.ucContact2)this.UserControl).Caption; }
+            set { ((Control.ucContact2)this.UserControl).Caption = value; }
+        }
+
+        public event StatusBarEventHandler StatusBarChanged
+        {
+            add { ((Control.ucContact2)this.UserControl).StatusBarChanged += value; }
+            remove { ((Control.ucContact2)this.UserControl).StatusBarChanged -= value; }
+        }
 
         #region IDisposable Support
         private bool disposedValue = false; // Dient zur Erkennung redundanter Aufrufe.

@@ -1,4 +1,4 @@
-﻿namespace Wookie.Master.Menu.Control
+﻿namespace Wookie.Tools.Controls
 {
     partial class WaitForm1
     {
@@ -41,23 +41,18 @@
             this.progressPanel1.AppearanceCaption.Options.UseFont = true;
             this.progressPanel1.AppearanceDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.progressPanel1.AppearanceDescription.Options.UseFont = true;
-            this.progressPanel1.BarAnimationElementThickness = 2;
-            this.progressPanel1.Caption = "Test";
-            this.progressPanel1.ContentAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.progressPanel1.Description = "Test 2";
             this.progressPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.progressPanel1.ImageHorzOffset = 20;
-            this.progressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Rectangle;
             this.progressPanel1.Location = new System.Drawing.Point(0, 17);
             this.progressPanel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.progressPanel1.Name = "progressPanel1";
-            this.progressPanel1.Size = new System.Drawing.Size(365, 67);
+            this.progressPanel1.Size = new System.Drawing.Size(246, 39);
             this.progressPanel1.TabIndex = 0;
             this.progressPanel1.Text = "progressPanel1";
-            this.progressPanel1.WaitAnimationType = DevExpress.Utils.Animation.WaitingAnimatorType.Line;
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -69,22 +64,24 @@
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 14, 0, 14);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(365, 101);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(246, 73);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // WaitForm1
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 101);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(246, 73);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
-            this.Name = "WaitForm1";
+            this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
-
+            this.PerformLayout();
         }
 
         #endregion

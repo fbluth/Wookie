@@ -691,6 +691,10 @@ namespace Wookie.Master.Menu.Database
 		
 		private System.Nullable<long> _FKClientElement;
 		
+		private System.Guid _ID;
+		
+		private System.Nullable<System.Guid> _ParentID;
+		
 		private System.Nullable<long> _FKExternal;
 		
 		private System.Nullable<int> _SortOrder;
@@ -727,6 +731,10 @@ namespace Wookie.Master.Menu.Database
     partial void OnFKClientChanged();
     partial void OnFKClientElementChanging(System.Nullable<long> value);
     partial void OnFKClientElementChanged();
+    partial void OnIDChanging(System.Guid value);
+    partial void OnIDChanged();
+    partial void OnParentIDChanging(System.Nullable<System.Guid> value);
+    partial void OnParentIDChanged();
     partial void OnFKExternalChanging(System.Nullable<long> value);
     partial void OnFKExternalChanged();
     partial void OnSortOrderChanging(System.Nullable<int> value);
@@ -821,6 +829,46 @@ namespace Wookie.Master.Menu.Database
 					this._FKClientElement = value;
 					this.SendPropertyChanged("FKClientElement");
 					this.OnFKClientElementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentID", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> ParentID
+		{
+			get
+			{
+				return this._ParentID;
+			}
+			set
+			{
+				if ((this._ParentID != value))
+				{
+					this.OnParentIDChanging(value);
+					this.SendPropertyChanging();
+					this._ParentID = value;
+					this.SendPropertyChanged("ParentID");
+					this.OnParentIDChanged();
 				}
 			}
 		}

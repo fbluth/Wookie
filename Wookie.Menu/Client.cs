@@ -20,9 +20,6 @@
         public Client(long pkClient, string connectionString, string name)
         {
             this.PKClient = pkClient;
-
-            this.SqlConnection = new System.Data.SqlClient.SqlConnection(connectionString);
-
             this.Name = name;
         }
     }

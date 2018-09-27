@@ -348,6 +348,22 @@ namespace Wookie.Menu.Database
 		
 		private string _Password;
 		
+		private System.Nullable<int> _ConnectRetryCount;
+		
+		private System.Nullable<int> _ConnectRetryInterval;
+		
+		private System.Nullable<int> _ConnectTimeout;
+		
+		private System.Nullable<bool> _Encrypt;
+		
+		private string _FailoverPartner;
+		
+		private System.Nullable<bool> _IntegratedSecurity;
+		
+		private System.Nullable<bool> _Pooling;
+		
+		private System.Nullable<int> _PacketSize;
+		
 		private System.Data.Linq.Binary _Image;
 		
 		private System.Nullable<System.DateTime> _CreatedOn;
@@ -357,6 +373,8 @@ namespace Wookie.Menu.Database
 		private System.Nullable<System.DateTime> _ChangedOn;
 		
 		private System.Nullable<long> _FKUserChangedOn;
+		
+		private System.Nullable<System.Guid> _UniqueIdentifier;
 		
 		private EntitySet<tsysClientElement> _tsysClientElement;
 		
@@ -380,6 +398,22 @@ namespace Wookie.Menu.Database
     partial void OnUserIDChanged();
     partial void OnPasswordChanging(string value);
     partial void OnPasswordChanged();
+    partial void OnConnectRetryCountChanging(System.Nullable<int> value);
+    partial void OnConnectRetryCountChanged();
+    partial void OnConnectRetryIntervalChanging(System.Nullable<int> value);
+    partial void OnConnectRetryIntervalChanged();
+    partial void OnConnectTimeoutChanging(System.Nullable<int> value);
+    partial void OnConnectTimeoutChanged();
+    partial void OnEncryptChanging(System.Nullable<bool> value);
+    partial void OnEncryptChanged();
+    partial void OnFailoverPartnerChanging(string value);
+    partial void OnFailoverPartnerChanged();
+    partial void OnIntegratedSecurityChanging(System.Nullable<bool> value);
+    partial void OnIntegratedSecurityChanged();
+    partial void OnPoolingChanging(System.Nullable<bool> value);
+    partial void OnPoolingChanged();
+    partial void OnPacketSizeChanging(System.Nullable<int> value);
+    partial void OnPacketSizeChanged();
     partial void OnImageChanging(System.Data.Linq.Binary value);
     partial void OnImageChanged();
     partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
@@ -390,6 +424,8 @@ namespace Wookie.Menu.Database
     partial void OnChangedOnChanged();
     partial void OnFKUserChangedOnChanging(System.Nullable<long> value);
     partial void OnFKUserChangedOnChanged();
+    partial void OnUniqueIdentifierChanging(System.Nullable<System.Guid> value);
+    partial void OnUniqueIdentifierChanged();
     #endregion
 		
 		public tsysClient()
@@ -558,6 +594,166 @@ namespace Wookie.Menu.Database
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConnectRetryCount", DbType="Int")]
+		public System.Nullable<int> ConnectRetryCount
+		{
+			get
+			{
+				return this._ConnectRetryCount;
+			}
+			set
+			{
+				if ((this._ConnectRetryCount != value))
+				{
+					this.OnConnectRetryCountChanging(value);
+					this.SendPropertyChanging();
+					this._ConnectRetryCount = value;
+					this.SendPropertyChanged("ConnectRetryCount");
+					this.OnConnectRetryCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConnectRetryInterval", DbType="Int")]
+		public System.Nullable<int> ConnectRetryInterval
+		{
+			get
+			{
+				return this._ConnectRetryInterval;
+			}
+			set
+			{
+				if ((this._ConnectRetryInterval != value))
+				{
+					this.OnConnectRetryIntervalChanging(value);
+					this.SendPropertyChanging();
+					this._ConnectRetryInterval = value;
+					this.SendPropertyChanged("ConnectRetryInterval");
+					this.OnConnectRetryIntervalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConnectTimeout", DbType="Int")]
+		public System.Nullable<int> ConnectTimeout
+		{
+			get
+			{
+				return this._ConnectTimeout;
+			}
+			set
+			{
+				if ((this._ConnectTimeout != value))
+				{
+					this.OnConnectTimeoutChanging(value);
+					this.SendPropertyChanging();
+					this._ConnectTimeout = value;
+					this.SendPropertyChanged("ConnectTimeout");
+					this.OnConnectTimeoutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Encrypt", DbType="Bit")]
+		public System.Nullable<bool> Encrypt
+		{
+			get
+			{
+				return this._Encrypt;
+			}
+			set
+			{
+				if ((this._Encrypt != value))
+				{
+					this.OnEncryptChanging(value);
+					this.SendPropertyChanging();
+					this._Encrypt = value;
+					this.SendPropertyChanged("Encrypt");
+					this.OnEncryptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FailoverPartner", DbType="NVarChar(255)")]
+		public string FailoverPartner
+		{
+			get
+			{
+				return this._FailoverPartner;
+			}
+			set
+			{
+				if ((this._FailoverPartner != value))
+				{
+					this.OnFailoverPartnerChanging(value);
+					this.SendPropertyChanging();
+					this._FailoverPartner = value;
+					this.SendPropertyChanged("FailoverPartner");
+					this.OnFailoverPartnerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IntegratedSecurity", DbType="Bit")]
+		public System.Nullable<bool> IntegratedSecurity
+		{
+			get
+			{
+				return this._IntegratedSecurity;
+			}
+			set
+			{
+				if ((this._IntegratedSecurity != value))
+				{
+					this.OnIntegratedSecurityChanging(value);
+					this.SendPropertyChanging();
+					this._IntegratedSecurity = value;
+					this.SendPropertyChanged("IntegratedSecurity");
+					this.OnIntegratedSecurityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pooling", DbType="Bit")]
+		public System.Nullable<bool> Pooling
+		{
+			get
+			{
+				return this._Pooling;
+			}
+			set
+			{
+				if ((this._Pooling != value))
+				{
+					this.OnPoolingChanging(value);
+					this.SendPropertyChanging();
+					this._Pooling = value;
+					this.SendPropertyChanged("Pooling");
+					this.OnPoolingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PacketSize", DbType="Int")]
+		public System.Nullable<int> PacketSize
+		{
+			get
+			{
+				return this._PacketSize;
+			}
+			set
+			{
+				if ((this._PacketSize != value))
+				{
+					this.OnPacketSizeChanging(value);
+					this.SendPropertyChanging();
+					this._PacketSize = value;
+					this.SendPropertyChanged("PacketSize");
+					this.OnPacketSizeChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Image
 		{
@@ -658,6 +854,26 @@ namespace Wookie.Menu.Database
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UniqueIdentifier", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> UniqueIdentifier
+		{
+			get
+			{
+				return this._UniqueIdentifier;
+			}
+			set
+			{
+				if ((this._UniqueIdentifier != value))
+				{
+					this.OnUniqueIdentifierChanging(value);
+					this.SendPropertyChanging();
+					this._UniqueIdentifier = value;
+					this.SendPropertyChanged("UniqueIdentifier");
+					this.OnUniqueIdentifierChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tsysClient_tsysClientElement", Storage="_tsysClientElement", ThisKey="PKClient", OtherKey="FKClient")]
 		public EntitySet<tsysClientElement> tsysClientElement
 		{
@@ -716,6 +932,10 @@ namespace Wookie.Menu.Database
 		
 		private System.Nullable<long> _FKClientElement;
 		
+		private System.Guid _ID;
+		
+		private System.Nullable<System.Guid> _ParentID;
+		
 		private System.Nullable<long> _FKExternal;
 		
 		private System.Nullable<int> _SortOrder;
@@ -752,6 +972,10 @@ namespace Wookie.Menu.Database
     partial void OnFKClientChanged();
     partial void OnFKClientElementChanging(System.Nullable<long> value);
     partial void OnFKClientElementChanged();
+    partial void OnIDChanging(System.Guid value);
+    partial void OnIDChanged();
+    partial void OnParentIDChanging(System.Nullable<System.Guid> value);
+    partial void OnParentIDChanged();
     partial void OnFKExternalChanging(System.Nullable<long> value);
     partial void OnFKExternalChanged();
     partial void OnSortOrderChanging(System.Nullable<int> value);
@@ -846,6 +1070,46 @@ namespace Wookie.Menu.Database
 					this._FKClientElement = value;
 					this.SendPropertyChanged("FKClientElement");
 					this.OnFKClientElementChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentID", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> ParentID
+		{
+			get
+			{
+				return this._ParentID;
+			}
+			set
+			{
+				if ((this._ParentID != value))
+				{
+					this.OnParentIDChanging(value);
+					this.SendPropertyChanging();
+					this._ParentID = value;
+					this.SendPropertyChanged("ParentID");
+					this.OnParentIDChanged();
 				}
 			}
 		}

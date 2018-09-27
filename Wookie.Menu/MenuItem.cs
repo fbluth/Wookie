@@ -13,7 +13,6 @@ namespace Wookie.Menu
 {
     public class MenuItem
     {
-
         #region Variables
         private enum AssemblyLoadResult
         {
@@ -26,8 +25,8 @@ namespace Wookie.Menu
         private IAssemblyInstance assemblyInstance = null;
         private string assemblyFile = null;
         private SqlConnection sqlConnection = null;
-        private LabelControl lblStatus = null;
-        
+        public Image Image { get; set; }
+        public string Caption {get; set; }
         public delegate void MenuItemEventHandler(MenuItem sender);
         public event MenuItemEventHandler MenuItemClick;
         #endregion
@@ -38,45 +37,35 @@ namespace Wookie.Menu
             this.assemblyFile = assemblyFile;
             this.sqlConnection = sqlConnection;
             this.ForeignKeyExternal = foreignKeyExternal;
-            AssemblyLoadResult result = AssemblyLoadResult.Undefined;
+            AssemblyLoadResult loadResult = AssemblyLoadResult.Undefined;
 
             this.InitializeAccordionControlElement();
-            this.InitializeStatusLabel();
-            result = this.InitializeAssembly();
-            this.InitializeNavigationPage(result);
+            loadResult = this.InitializeAssembly();
+            this.InitializeNavigationPage(loadResult);
 
+            if (this.assemblyInstance != null)
+                this.assemblyInstance.Caption = text;
+            
             this.AccordionControlElement.Text = text;
+            this.Caption = text;
         }
 
         public MenuItem(string text, Image image, string assemblyFile, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, sqlConnection, foreignKeyExternal)
         {
             this.AccordionControlElement.ImageOptions.Image = image;
-            if (this.assemblyInstance != null) this.assemblyInstance.Image = image;
-
+            this.Image = image;
+            if (this.assemblyInstance != null) this.assemblyInstance.Image = image;            
         }
 
         public MenuItem(string text, Binary image, string assemblyFile, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, sqlConnection, foreignKeyExternal)
         {
             this.AccordionControlElement.ImageOptions.Image = Converter.GetImageFromBinary(image);
+            this.Image = Converter.GetImageFromBinary(image); 
             if ( this.assemblyInstance != null) this.assemblyInstance.Image = Converter.GetImageFromBinary(image); 
         }
         #endregion
 
         #region Private functions
-        private void InitializeStatusLabel()
-        {
-            if (this.lblStatus == null)
-            {
-                this.lblStatus = new LabelControl();
-                this.lblStatus.Dock = DockStyle.Fill;
-                this.lblStatus.AutoSizeMode = LabelAutoSizeMode.None;
-                this.lblStatus.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-                this.lblStatus.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-                this.lblStatus.Appearance.FontSizeDelta = 8;
-                this.lblStatus.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            }
-        }
-
         private void InitializeNavigationPage(AssemblyLoadResult loadResult)
         {
             this.NavigationPage = new NavigationPage();
@@ -144,18 +133,7 @@ namespace Wookie.Menu
             if (this.AccordionControlElement == null)
             {
                 this.AccordionControlElement = new AccordionControlElement();
-                this.AccordionControlElement.Click += new EventHandler(this.accordionControlElement_Click);
-                //this.AccordionControlElement.Style = ElementStyle.Item;
-                //DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-                //DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-                //DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-
-                //toolTipTitleItem1.Text = caption;
-                //toolTipItem1.LeftIndent = 6;
-                //toolTipItem1.Text = caption;
-                //superToolTip1.Items.Add(toolTipTitleItem1);
-                //superToolTip1.Items.Add(toolTipItem1);
-                //accordionControlElement.SuperTip = superToolTip1;
+                this.AccordionControlElement.Click += new EventHandler(this.accordionControlElement_Click);                
             }
         }
         #endregion
@@ -166,6 +144,12 @@ namespace Wookie.Menu
         public AccordionControlElement AccordionControlElement { get; private set; } = null;
 
         public long? ForeignKeyExternal { get; private set; } = null;
+
+        public event StatusBarEventHandler StatusBarChanged
+        {
+            add { if (this.assemblyInstance != null) this.assemblyInstance.StatusBarChanged += value; }
+            remove { if (this.assemblyInstance != null) this.assemblyInstance.StatusBarChanged -= value; }
+        }
         #endregion
 
         #region Events

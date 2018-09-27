@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using System.Reflection;
 using Wookie.Menu.MenuManager;
-using System.Data.SqlClient;
 using DevExpress.Customization;
 using DevExpress.XtraBars;
-using DevExpress.LookAndFeel;
-using DevExpress.Skins;
-using DevExpress.XtraBars.Navigation;
 using Wookie.Tools.Database;
 using DevExpress.XtraSplashScreen;
 
@@ -29,73 +18,78 @@ namespace Wookie.Controls
         public int FormCounter = 0;
         #endregion
 
+        #region Constructor
         public XtraForm1()
         {
             InitializeComponent();
             SplashScreenManager.ShowImage(Image.FromFile(".\\Images\\Splash.png"), true, true, SplashImagePainter.Painter);
                         
-            SetSplashScreenInfo("Check connection to master database", 25);
+            this.SetSplashScreenInfo("Checking connection to master database", 25);
             
             if (MasterDatabase.KeyFileExists && MasterDatabase.Connected)
             {
-                SetSplashScreenInfo("Building menu",50);
-               
-                menuManager = new MenuManager(MasterDatabase.SqlConnection, this.navigationFrame1, this.accordionControl1);
-                menuManager.ClientChanged += MenuManager_ClientChanged;
-                menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
-
-                SetSplashScreenInfo("Adding registered clients", 75);
-
-                menuManager.AddClients(this.aceClientList);
-
-                SetSplashScreenInfo("Done", 100);                
+                this.SetSplashScreenInfo("Building menu",50);               
+                this.menuManager = new MenuManager(MasterDatabase.SqlConnection, this.navigationFrame1, this.accordionControl1, this.barStatus);
+                this.menuManager.ClientChanged += new MenuManager.ClientChangeEventHandler(ClientChanged);
+                this.menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
+                this.menuManager.CategoryChanged += MenuManager_CategoryChanged;
+                this.SetSplashScreenInfo("Adding registered clients", 75);
+                this.menuManager.AddClients(this.aceClient);
+                this.SetSplashScreenInfo("Done", 100);                
             }            
         }
 
-       
+        private void MenuManager_CategoryChanged(string caption, Image image)
+        {
+            //this.SetTitle(caption, image);
+        }
+
         public XtraForm1(XtraForm parent):this()
         {
             this.parent = parent;
         }
+        #endregion
 
+        #region Private Functions
         private void SetSplashScreenInfo(string text, int counter)
         {
             SplashImagePainter.Painter.ViewInfo.Stage = text;
             SplashImagePainter.Painter.ViewInfo.Counter = counter;
             SplashScreenManager.Default.Invalidate();
         }
-        
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);           
-            SplashScreenManager.HideImage();
-        }
+        #endregion
 
-
-        private void MenuManager_ClientChanged(Menu.Client sender)
-        {
-            menuManager.LoadMenu(sender);
-            menuManager.AddSettings();
-
-            this.navigationFrame1.SelectedPage = navPageWelcome;
-            this.HtmlText = "<b>" + Application.ProductName + "</b>" + " - <i>" + sender.Name + "</i>";
-        }
-
-        private void SettingsClicked(object sender, EventArgs e)
-        {
-            flyoutPanel1.ShowPopup();
-        }
-
+        #region Public Functions
         public void Duplicate(XtraForm parent)
         {
             ((XtraForm1)parent).FormCounter++;
             XtraForm1 XtraForm1 = new XtraForm1(parent);
             XtraForm1.Show();
         }
+        #endregion
 
-        private void btnStyle_ItemClick(object sender, ItemClickEventArgs e)
+        #region Events
+        private void ClientChanged(Menu.Client sender)
         {
+            if (sender == null) return;
 
+            this.navigationFrame1.SelectedPage = navPageWelcome;
+            this.HtmlText = "<b>" + Application.ProductName + "</b>" + " - " + sender.Name;
+            this.SetTitle(null, null);
+        }
+
+        public void SetTitle(string caption, Image image)
+        {
+            this.barStaticItem1.Caption = caption;
+            if (image != null && image.Size.Width > 16)
+                this.barStaticItem1.ImageOptions.Image = Wookie.Tools.Image.Converter.ResizeImage(image, 16, 16);
+            else
+                this.barStaticItem1.ImageOptions.Image = null;
+        }
+
+        private void SettingsClicked(object sender, EventArgs e)
+        {
+            this.flyoutPanel1.ShowPopup();
         }
 
         private void XtraForm1_FormClosing(object sender, FormClosingEventArgs e)
@@ -110,22 +104,29 @@ namespace Wookie.Controls
 
         private void btnDuplicate_Click(object sender, EventArgs e)
         {
-            if (parent != null)
+            if (this.parent != null)
             {
-                ((XtraForm1)this.parent).Duplicate(parent);
+                ((XtraForm1)this.parent).Duplicate(this.parent);
             }
             else
             {
-                Duplicate(this);
+                this.Duplicate(this);
             }
         }
 
-        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        private void itmColorSwatch_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (SvgSkinPaletteSelector svgSkinPaletteSelector = new SvgSkinPaletteSelector(this))
             {
                 svgSkinPaletteSelector.ShowDialog();
             }
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            SplashScreenManager.HideImage();
+        }
+        #endregion
     }
 }
