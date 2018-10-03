@@ -9,6 +9,10 @@ using DevExpress.XtraTreeList;
 using System.Data.Linq;
 using System.Windows.Forms.Design;
 using DevExpress.XtraEditors.DXErrorProvider;
+using DevExpress.XtraGrid.Menu;
+using DevExpress.XtraEditors.ButtonsPanelControl;
+using DevExpress.Utils.Menu;
+using System.Drawing;
 
 namespace Wookie.Tools.Controls
 {
@@ -19,6 +23,8 @@ namespace Wookie.Tools.Controls
         public enum Mode { Default = 0, Edit = 1 };
         private List<GridView> GridViews { get; set; } = new List<GridView>();
         private List<TreeList> TreeLists { get; set; } = new List<TreeList>();
+        private Dictionary<GridView, GroupControl> gridConnector = new Dictionary<GridView, GroupControl>();
+        private Dictionary<TreeList, GroupControl> treeConnector = new Dictionary<TreeList, GroupControl>();
         public System.Data.Linq.DataContext DataContext { get; set; } = null;
         private Dictionary<BindingSource, bool> ignore = new Dictionary<BindingSource, bool>();
         private ModulData modulData = null;
@@ -78,10 +84,79 @@ namespace Wookie.Tools.Controls
             ignore.Add(bindingSource, true);
         }
 
+        public void ConnectGroupControlWithGridView(GroupControl groupControl, GridView gridView)
+        {
+            if (!this.gridConnector.ContainsKey(gridView))
+            {
+                this.gridConnector.Add(gridView, groupControl);
+                gridView.PopupMenuShowing += GridView_PopupMenuShowing;
+            }
+        }
+
+        public void ConnectGroupControlWithTreeList(GroupControl groupControl, TreeList treeList)
+        {
+            if (!this.treeConnector.ContainsKey(treeList))
+            {
+                this.treeConnector.Add(treeList, groupControl);
+                treeList.MouseDown += treeMenu_MouseDown;
+            }
+        }
+
+        private void GridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.MenuType == GridMenuType.Row || e.MenuType == GridMenuType.User)
+            {
+                if (this.gridConnector.ContainsKey((GridView)sender))
+                {
+                    if (e.Menu == null) e.Menu = new GridViewMenu((GridView)sender);
+                    GridViewMenu menu = e.Menu as GridViewMenu;
+                    GroupControl groupControl = this.gridConnector[(GridView)sender];
+                    foreach (GroupBoxButton button in groupControl.CustomHeaderButtons)
+                    {
+                        DXMenuItem item = new DXMenuItem(button.Caption, new EventHandler(OnItemClick));
+                        item.ImageOptions.Image = button.ImageOptions.Image;
+                        item.ImageOptions.SvgImage = button.ImageOptions.SvgImage;
+                        item.Tag = groupControl.CustomHeaderButtons.IndexOf(button);
+                        menu.Items.Add(item); 
+                    }                    
+                }
+            }
+        }
+
+        private void OnItemClick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void treeMenu_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.treeConnector.ContainsKey((TreeList)sender))
+            {
+                TreeList view = sender as TreeList;
+                TreeListHitInfo hi = view.CalcHitInfo(new Point(e.X, e.Y));
+
+                if (e.Button == MouseButtons.Right)
+                {
+                    DevExpress.XtraTreeList.Menu.TreeListMenu menu = new DevExpress.XtraTreeList.Menu.TreeListMenu((TreeList)sender);
+                    GroupControl groupControl = this.treeConnector[(TreeList)sender];
+                    
+                    foreach (GroupBoxButton button in groupControl.CustomHeaderButtons)
+                    {
+                        DXMenuItem item = new DXMenuItem(button.Caption, new EventHandler(OnItemClick));
+                        item.ImageOptions.Image = button.ImageOptions.Image;
+                        item.ImageOptions.SvgImage = button.ImageOptions.SvgImage;
+                        item.Tag = groupControl.CustomHeaderButtons.IndexOf(button);
+                        menu.Items.Add(item);
+                    }
+                    
+                    menu.Init(hi);
+                    menu.Show(hi.HitTest.MousePoint);
+                }                
+            }
+        }        
+
         private void BindingSource_ListChanged(object sender, ListChangedEventArgs e)
         {
-            Console.WriteLine(System.String.Format("Bindingsource: {0}, {1}", ((BindingSource)sender). Current!=null?((BindingSource)sender).Current.ToString():null, e.ListChangedType.ToString()));
-
             switch (e.ListChangedType)
             {
                 case ListChangedType.ItemAdded:
@@ -158,14 +233,17 @@ namespace Wookie.Tools.Controls
 
         private void BindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
+            if (!this.ignore.ContainsKey((BindingSource)sender)) return;
+
             if (this.ignore[(BindingSource)sender]) this.ignore[(BindingSource)sender] = false;
             else this.SetMode(Mode.Edit);
         }
 
         private void BindingSource_CurrentChanged(object sender, EventArgs e)
         {
-            this.ignore[(BindingSource)sender] = true;
-            Console.WriteLine("DataRefresh called");
+            if (!this.ignore.ContainsKey((BindingSource)sender)) return;
+
+            this.ignore[(BindingSource)sender] = true;            
             DataRefresh?.Invoke(this, new EventArgs());
         }
 

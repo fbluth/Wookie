@@ -33,21 +33,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMenu));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions3 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions4 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions4 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions5 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions6 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.ucDefault1 = new Wookie.Tools.Controls.ucDefault();
             this.splitControlMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.splitControlClient = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControlClient = new DevExpress.XtraEditors.GroupControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridControlClient = new DevExpress.XtraGrid.GridControl();
             this.tsysClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridClient = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewClient = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPKClient = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colImage = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSortOrder = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -70,6 +71,11 @@
             this.colChangedOn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFKUserChangedOn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUniqueIdentifier = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.SortOrderTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -149,9 +155,10 @@
             this.splitControlClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlClient)).BeginInit();
             this.groupControlClient.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsysClientBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridClient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewClient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
@@ -269,17 +276,19 @@
             // 
             // groupControlClient
             // 
-            this.groupControlClient.Controls.Add(this.gridControl1);
+            this.groupControlClient.Controls.Add(this.gridControlClient);
             buttonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions1.SvgImage")));
             buttonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
             buttonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions2.SvgImage")));
             buttonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
             buttonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions3.SvgImage")));
             buttonImageOptions3.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions4.Image")));
             this.groupControlClient.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
             new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Neu", false, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
             new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Löschen", false, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Verbindung testen", false, buttonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Verbindung testen", false, buttonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Button", true, buttonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
             this.groupControlClient.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControlClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlClient.Location = new System.Drawing.Point(0, 0);
@@ -289,25 +298,26 @@
             this.groupControlClient.Text = "Client";
             this.groupControlClient.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.groupControlClient_CustomButtonClick);
             // 
-            // gridControl1
+            // gridControlClient
             // 
-            this.gridControl1.DataSource = this.tsysClientBindingSource;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(2, 27);
-            this.gridControl1.MainView = this.gridClient;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(521, 140);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridClient});
+            this.gridControlClient.DataSource = this.tsysClientBindingSource;
+            this.gridControlClient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlClient.Location = new System.Drawing.Point(2, 27);
+            this.gridControlClient.MainView = this.gridViewClient;
+            this.gridControlClient.MenuManager = this.barManager1;
+            this.gridControlClient.Name = "gridControlClient";
+            this.gridControlClient.Size = new System.Drawing.Size(521, 140);
+            this.gridControlClient.TabIndex = 0;
+            this.gridControlClient.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewClient});
             // 
             // tsysClientBindingSource
             // 
             this.tsysClientBindingSource.DataSource = typeof(Wookie.Master.Menu.Database.tsysClient);
             // 
-            // gridClient
+            // gridViewClient
             // 
-            this.gridClient.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewClient.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colPKClient,
             this.colImage,
             this.colSortOrder,
@@ -330,13 +340,14 @@
             this.colChangedOn,
             this.colFKUserChangedOn,
             this.colUniqueIdentifier});
-            this.gridClient.GridControl = this.gridControl1;
-            this.gridClient.Name = "gridClient";
-            this.gridClient.OptionsDetail.EnableMasterViewMode = false;
-            this.gridClient.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridClient.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.gridClient.OptionsView.ShowGroupPanel = false;
-            this.gridClient.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridClient_KeyDown);
+            this.gridViewClient.GridControl = this.gridControlClient;
+            this.gridViewClient.Name = "gridViewClient";
+            this.gridViewClient.OptionsDetail.EnableMasterViewMode = false;
+            this.gridViewClient.OptionsNavigation.AutoFocusNewRow = true;
+            this.gridViewClient.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewClient.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridViewClient.OptionsView.ShowGroupPanel = false;
+            this.gridViewClient.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridClient_KeyDown);
             // 
             // colPKClient
             // 
@@ -459,6 +470,47 @@
             // 
             this.colUniqueIdentifier.FieldName = "UniqueIdentifier";
             this.colUniqueIdentifier.Name = "colUniqueIdentifier";
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.MaxItemId = 0;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1029, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 729);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1029, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 729);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1029, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 729);
             // 
             // dataLayoutControl1
             // 
@@ -922,13 +974,13 @@
             // groupControlMenu
             // 
             this.groupControlMenu.Controls.Add(this.treeMenu);
-            buttonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions4.SvgImage")));
-            buttonImageOptions4.SvgImageSize = new System.Drawing.Size(16, 16);
             buttonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions5.SvgImage")));
             buttonImageOptions5.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions6.SvgImage")));
+            buttonImageOptions6.SvgImageSize = new System.Drawing.Size(16, 16);
             this.groupControlMenu.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Neu", false, buttonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Löschen", false, buttonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Neu", false, buttonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Löschen", false, buttonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
             this.groupControlMenu.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlMenu.Location = new System.Drawing.Point(0, 0);
@@ -1190,12 +1242,16 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
-            // XtraUserControl1
+            // ucMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ucDefault1);
-            this.Name = "XtraUserControl1";
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
+            this.Name = "ucMenu";
             this.Size = new System.Drawing.Size(1029, 729);
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).EndInit();
@@ -1207,9 +1263,10 @@
             this.splitControlClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlClient)).EndInit();
             this.groupControlClient.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsysClientBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridClient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewClient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
@@ -1272,6 +1329,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1282,9 +1340,9 @@
         private DevExpress.XtraEditors.SplitContainerControl splitControlMain;
         private DevExpress.XtraEditors.SplitContainerControl splitControlClient;
         private DevExpress.XtraEditors.GroupControl groupControlClient;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl gridControlClient;
         private System.Windows.Forms.BindingSource tsysClientBindingSource;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridClient;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewClient;
         private DevExpress.XtraGrid.Columns.GridColumn colPKClient;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colSortOrder;
@@ -1376,5 +1434,10 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private DevExpress.XtraEditors.ButtonEdit PasswordTextEdit;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
     }
 }

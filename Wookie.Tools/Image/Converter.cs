@@ -63,6 +63,21 @@ namespace Wookie.Tools.Image
             return returnImage;
         }
 
+        public static System.Data.Linq.Binary GetBinaryFromSvgImage(SvgImage image)
+        {
+            if (image == null) return null;
+            System.Data.Linq.Binary binary;
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                SvgSerializer.SaveSvgImageToXML(ms, image);                
+                binary = new System.Data.Linq.Binary(ms.GetBuffer());
+            }
+
+            return binary;
+        }
+
+
         /// <summary>
         /// Resize the image to the specified width and height.
         /// </summary>

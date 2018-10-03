@@ -1,8 +1,8 @@
-﻿using DevExpress.XtraEditors;
-using System;
+﻿using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using Wookie.Menu;
+using DevExpress.XtraEditors;
 
 namespace Wookie.Master.Menu
 {

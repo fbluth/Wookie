@@ -53,7 +53,7 @@ namespace Wookie.Tools.Database
         }
         #endregion;
 
-        #region Private Properties
+        #region Private functions
         private static string GetSQLConnectionString(string filename)
         {
             string connectionString = null;

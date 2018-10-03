@@ -13,6 +13,11 @@ using DevExpress.XtraTreeList.Nodes.Operations;
 using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraGrid.Views.Grid;
 using Wookie.Menu;
+using DevExpress.XtraGrid.Menu;
+using DevExpress.Utils.Menu;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraTreeList;
+using DevExpress.Utils.Svg;
 
 namespace Wookie.Master.Menu.Control
 {
@@ -32,12 +37,14 @@ namespace Wookie.Master.Menu.Control
         {
             InitializeComponent();
             this.modulData = modulData;
-            this.ucDefault1.RegisterGridView(this.gridClient);
+            this.ucDefault1.RegisterGridView(this.gridViewClient);
             this.ucDefault1.RegisterTreeList(this.treeMenu);
             this.ucDefault1.RegisterBindingSource(this.tsysClientBindingSource);
             this.ucDefault1.RegisterBindingSource(this.tsysClientElementBindingSource);
-            this.SetValidationRules();
+            this.ucDefault1.ConnectGroupControlWithGridView(groupControlClient, gridViewClient);
+            this.ucDefault1.ConnectGroupControlWithTreeList(groupControlMenu, treeMenu);
             this.ucDefault1.Initialize(modulData);
+            this.SetValidationRules();
 
             this.item.Click += Item_Click;
             this.item2.Click += Item2_Click;
@@ -165,7 +172,7 @@ namespace Wookie.Master.Menu.Control
             this.ucDefault1.PostEditor();
             Database.tsysClient client = new Database.tsysClient();
             int datasourceindex = this.tsysClientBindingSource.Add(client);
-            gridClient.FocusedRowHandle = gridClient.GetRowHandle(datasourceindex);
+            gridViewClient.FocusedRowHandle = gridViewClient.GetRowHandle(datasourceindex);
         }
 
         private void RemoveNode()
@@ -248,8 +255,8 @@ namespace Wookie.Master.Menu.Control
                     this.TestConnection();
                     break;
                 case 5: // Multiselect
-                    this.gridClient.OptionsSelection.MultiSelect = !this.gridClient.OptionsSelection.MultiSelect;
-                    this.gridClient.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
+                    this.gridViewClient.OptionsSelection.MultiSelect = !this.gridViewClient.OptionsSelection.MultiSelect;
+                    this.gridViewClient.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
                     break;
             }
         }
@@ -296,9 +303,18 @@ namespace Wookie.Master.Menu.Control
         {
             if (e.Value is DBNull || e.Value is System.Data.Linq.Binary)
                 return;
-            //e.Value = new System.Data.Linq.Binary((byte[])e.Value);
-            e.Value = Wookie.Tools.Image.Converter.GetBinaryFromImage((Image)e.Value);
-            e.Handled = true;            
+            
+            if (e.Value is System.Drawing.Image)
+            {
+                //e.Value = new System.Data.Linq.Binary((byte[])e.Value);
+                e.Value = Wookie.Tools.Image.Converter.GetBinaryFromImage((Image)e.Value);
+                e.Handled = true;
+            }
+            else if (e.Value is SvgImage)
+            {
+                e.Value = Wookie.Tools.Image.Converter.GetBinaryFromSvgImage((SvgImage)e.Value);
+                e.Handled = true;
+            }
         }
 
         private void picMenu_PopupMenuShowing(object sender, DevExpress.XtraEditors.Events.PopupMenuShowingEventArgs e)
@@ -335,7 +351,7 @@ namespace Wookie.Master.Menu.Control
                     element.Image = Wookie.Tools.Image.Converter.GetBinaryFromImage(imagePicker.SelectedImage);
                 }
             }
-        }        
+        }
         #endregion
     }
 

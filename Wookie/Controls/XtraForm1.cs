@@ -22,6 +22,9 @@ namespace Wookie.Controls
         public XtraForm1()
         {
             InitializeComponent();
+
+            this.accordionControl1.NavigationFrame = this.navigationFrame1;
+
             SplashScreenManager.ShowImage(Image.FromFile(".\\Images\\Splash.png"), true, true, SplashImagePainter.Painter);
                         
             this.SetSplashScreenInfo("Checking connection to master database", 25);
@@ -30,18 +33,13 @@ namespace Wookie.Controls
             {
                 this.SetSplashScreenInfo("Building menu",50);               
                 this.menuManager = new MenuManager(MasterDatabase.SqlConnection, this.navigationFrame1, this.accordionControl1, this.barStatus);
-                this.menuManager.ClientChanged += new MenuManager.ClientChangeEventHandler(ClientChanged);
+                this.menuManager.ClientChanged += new MenuManager.ClientChangeEventHandler(MenuManager_ClientChanged);
                 this.menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
                 this.menuManager.CategoryChanged += MenuManager_CategoryChanged;
                 this.SetSplashScreenInfo("Adding registered clients", 75);
                 this.menuManager.AddClients(this.aceClient);
                 this.SetSplashScreenInfo("Done", 100);                
             }            
-        }
-
-        private void MenuManager_CategoryChanged(string caption, Image image)
-        {
-            //this.SetTitle(caption, image);
         }
 
         public XtraForm1(XtraForm parent):this()
@@ -57,6 +55,15 @@ namespace Wookie.Controls
             SplashImagePainter.Painter.ViewInfo.Counter = counter;
             SplashScreenManager.Default.Invalidate();
         }
+
+        private void SetTitle(string caption, Image image)
+        {
+            this.barStaticItem1.Caption = caption;
+            if (image != null && image.Size.Width > 16)
+                this.barStaticItem1.ImageOptions.Image = Wookie.Tools.Image.Converter.ResizeImage(image, 16, 16);
+            else
+                this.barStaticItem1.ImageOptions.Image = null;
+        }
         #endregion
 
         #region Public Functions
@@ -69,7 +76,7 @@ namespace Wookie.Controls
         #endregion
 
         #region Events
-        private void ClientChanged(Menu.Client sender)
+        private void MenuManager_ClientChanged(Menu.Client sender)
         {
             if (sender == null) return;
 
@@ -78,13 +85,9 @@ namespace Wookie.Controls
             this.SetTitle(null, null);
         }
 
-        public void SetTitle(string caption, Image image)
+        private void MenuManager_CategoryChanged(string caption, Image image)
         {
-            this.barStaticItem1.Caption = caption;
-            if (image != null && image.Size.Width > 16)
-                this.barStaticItem1.ImageOptions.Image = Wookie.Tools.Image.Converter.ResizeImage(image, 16, 16);
-            else
-                this.barStaticItem1.ImageOptions.Image = null;
+
         }
 
         private void SettingsClicked(object sender, EventArgs e)

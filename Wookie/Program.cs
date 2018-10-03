@@ -41,9 +41,10 @@ namespace Wookie
                 }
                 else if (!MasterDatabase.Connected)
                 {
-                    string text = null;
-                    text += "Could not connect to database '" + MasterDatabase.SqlConnection.Database + "'";
-                    text += " on '" + MasterDatabase.SqlConnection.DataSource + "'";
+                    string text = System.String.Format("Could not connect to '{0}' on '{1}'", 
+                        MasterDatabase.SqlConnection.Database, 
+                        MasterDatabase.SqlConnection.DataSource);
+                    
                     XtraMessageBox.Show(text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);                 
                 }
             }
