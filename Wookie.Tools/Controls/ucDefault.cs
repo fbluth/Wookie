@@ -9,10 +9,11 @@ using DevExpress.XtraTreeList;
 using System.Data.Linq;
 using System.Windows.Forms.Design;
 using DevExpress.XtraEditors.DXErrorProvider;
-using DevExpress.XtraGrid.Menu;
 using DevExpress.XtraEditors.ButtonsPanelControl;
-using DevExpress.Utils.Menu;
 using System.Drawing;
+using DevExpress.XtraBars;
+using DevExpress.XtraSplashScreen;
+using DevExpress.Utils.Svg;
 
 namespace Wookie.Tools.Controls
 {
@@ -23,11 +24,12 @@ namespace Wookie.Tools.Controls
         public enum Mode { Default = 0, Edit = 1 };
         private List<GridView> GridViews { get; set; } = new List<GridView>();
         private List<TreeList> TreeLists { get; set; } = new List<TreeList>();
-        private Dictionary<GridView, GroupControl> gridConnector = new Dictionary<GridView, GroupControl>();
-        private Dictionary<TreeList, GroupControl> treeConnector = new Dictionary<TreeList, GroupControl>();
+        private Dictionary<GridView, PopupMenu> gridConnector = new Dictionary<GridView, PopupMenu>();
+        private Dictionary<TreeList, PopupMenu> treeConnector = new Dictionary<TreeList, PopupMenu>();
         public System.Data.Linq.DataContext DataContext { get; set; } = null;
         private Dictionary<BindingSource, bool> ignore = new Dictionary<BindingSource, bool>();
         private ModulData modulData = null;
+        private IOverlaySplashScreenHandle handle = null;
 
         [Category("Data")]
         public event EventHandler BeforeDataSave;
@@ -59,12 +61,47 @@ namespace Wookie.Tools.Controls
             }
         }
 
+        public void PreparePictureEdit(PictureEdit pictureEdit)
+        {
+            pictureEdit.FormatEditValue += PictureEdit_FormatEditValue;
+            pictureEdit.ParseEditValue += PictureEdit_ParseEditValue;
+        }
+
+        public void ShowProgressPanel()
+        {
+            try
+            {
+                OverlayWindowOptions options = new OverlayWindowOptions(true, true, Color.GhostWhite, Color.Black, 0.7);
+                handle = SplashScreenManager.ShowOverlayForm(this, options);
+            }
+            catch
+            {
+            }
+        }
+
+        public void CloseProgressPanel()
+        {
+            try
+            {
+                if (handle != null)
+                {
+                    SplashScreenManager.CloseOverlayForm(handle);
+                    handle = null;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
         public void RegisterGridView(GridView gridView)
         {
             if (!this.GridViews.Contains(gridView))
             {
                 this.GridViews.Add(gridView);
-                gridView.BeforeLeaveRow += GridView_BeforeLeaveRow;                
+                gridView.BeforeLeaveRow += GridView_BeforeLeaveRow;
+                gridView.PopupMenuShowing += GridView_PopupMenuShowing;
             }
         }
 
@@ -73,6 +110,7 @@ namespace Wookie.Tools.Controls
             if (!this.TreeLists.Contains(treeList))
             {
                 this.TreeLists.Add(treeList);
+                treeList.MouseDown += treeMenu_MouseDown;
             }
         }
 
@@ -84,88 +122,44 @@ namespace Wookie.Tools.Controls
             ignore.Add(bindingSource, true);
         }
 
-        public void ConnectGroupControlWithGridView(GroupControl groupControl, GridView gridView)
+        public void RegisterPopup(PopupMenu popupMenu, GroupControl groupControl)
+        {
+            foreach (LinkPersistInfo a in popupMenu.LinksPersistInfo)
+            {
+                ButtonImageOptions buttonImageOptions = new ButtonImageOptions();
+                GroupBoxButton button = new GroupBoxButton();
+                button.Tag = a.Item;
+                button.Caption = a.Item.Caption;
+                button.UseCaption = false;
+                button.ToolTip = a.Item.Caption;
+                button.ImageOptions.SvgImage = a.Item.ImageOptions.SvgImage;
+                button.ImageOptions.SvgImageSize = new Size(16, 16);
+                groupControl.CustomHeaderButtons.Add(button);
+            }
+            groupControl.CustomButtonClick += GroupControl_CustomButtonClick;
+        }
+
+        public void Connect(GroupControl groupControl, GridView gridView, PopupMenu popupMenu, BindingSource bindingSource)
         {
             if (!this.gridConnector.ContainsKey(gridView))
             {
-                this.gridConnector.Add(gridView, groupControl);
-                gridView.PopupMenuShowing += GridView_PopupMenuShowing;
+                this.gridConnector.Add(gridView, popupMenu);
+                this.RegisterBindingSource(bindingSource);
+                this.RegisterGridView(gridView);
+                this.RegisterPopup(popupMenu, groupControl);
             }
         }
 
-        public void ConnectGroupControlWithTreeList(GroupControl groupControl, TreeList treeList)
+        public void Connect(GroupControl groupControl, TreeList treeList, PopupMenu popupMenu, BindingSource bindingSource)
         {
             if (!this.treeConnector.ContainsKey(treeList))
             {
-                this.treeConnector.Add(treeList, groupControl);
-                treeList.MouseDown += treeMenu_MouseDown;
-            }
-        }
-
-        private void GridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-        {
-            if (e.MenuType == GridMenuType.Row || e.MenuType == GridMenuType.User)
-            {
-                if (this.gridConnector.ContainsKey((GridView)sender))
-                {
-                    if (e.Menu == null) e.Menu = new GridViewMenu((GridView)sender);
-                    GridViewMenu menu = e.Menu as GridViewMenu;
-                    GroupControl groupControl = this.gridConnector[(GridView)sender];
-                    foreach (GroupBoxButton button in groupControl.CustomHeaderButtons)
-                    {
-                        DXMenuItem item = new DXMenuItem(button.Caption, new EventHandler(OnItemClick));
-                        item.ImageOptions.Image = button.ImageOptions.Image;
-                        item.ImageOptions.SvgImage = button.ImageOptions.SvgImage;
-                        item.Tag = groupControl.CustomHeaderButtons.IndexOf(button);
-                        menu.Items.Add(item); 
-                    }                    
-                }
-            }
-        }
-
-        private void OnItemClick(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void treeMenu_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (this.treeConnector.ContainsKey((TreeList)sender))
-            {
-                TreeList view = sender as TreeList;
-                TreeListHitInfo hi = view.CalcHitInfo(new Point(e.X, e.Y));
-
-                if (e.Button == MouseButtons.Right)
-                {
-                    DevExpress.XtraTreeList.Menu.TreeListMenu menu = new DevExpress.XtraTreeList.Menu.TreeListMenu((TreeList)sender);
-                    GroupControl groupControl = this.treeConnector[(TreeList)sender];
-                    
-                    foreach (GroupBoxButton button in groupControl.CustomHeaderButtons)
-                    {
-                        DXMenuItem item = new DXMenuItem(button.Caption, new EventHandler(OnItemClick));
-                        item.ImageOptions.Image = button.ImageOptions.Image;
-                        item.ImageOptions.SvgImage = button.ImageOptions.SvgImage;
-                        item.Tag = groupControl.CustomHeaderButtons.IndexOf(button);
-                        menu.Items.Add(item);
-                    }
-                    
-                    menu.Init(hi);
-                    menu.Show(hi.HitTest.MousePoint);
-                }                
+                this.treeConnector.Add(treeList, popupMenu);
+                this.RegisterBindingSource(bindingSource);
+                this.RegisterTreeList(treeList);
+                this.RegisterPopup(popupMenu, groupControl);
             }
         }        
-
-        private void BindingSource_ListChanged(object sender, ListChangedEventArgs e)
-        {
-            switch (e.ListChangedType)
-            {
-                case ListChangedType.ItemAdded:
-                case ListChangedType.ItemChanged:
-                case ListChangedType.ItemDeleted:
-                    this.SetMode(Mode.Edit);
-                    break;                
-            }
-        }
 
         public void PostEditor()
         {
@@ -211,6 +205,12 @@ namespace Wookie.Tools.Controls
             set { this.dxValidationProvider = value; }
         }
 
+        [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public SplashScreenManager SplashScreenManager
+        {
+            get { return this.splashScreenManager; }
+            set { this.splashScreenManager = value; }
+        }
         #endregion
 
         #region Private Functions
@@ -231,40 +231,21 @@ namespace Wookie.Tools.Controls
             }
         }
 
-        private void BindingSource_CurrentItemChanged(object sender, EventArgs e)
-        {
-            if (!this.ignore.ContainsKey((BindingSource)sender)) return;
-
-            if (this.ignore[(BindingSource)sender]) this.ignore[(BindingSource)sender] = false;
-            else this.SetMode(Mode.Edit);
-        }
-
-        private void BindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-            if (!this.ignore.ContainsKey((BindingSource)sender)) return;
-
-            this.ignore[(BindingSource)sender] = true;            
-            DataRefresh?.Invoke(this, new EventArgs());
-        }
-
         private void LoadData()
         {
             try
             {
+                this.ShowProgressPanel();
                 BeforeDataLoad?.Invoke(this, new EventArgs());
-
-                this.splashScreenManager.ShowWaitForm();
-                this.splashScreenManager.SetWaitFormCaption("Lade Daten");
-                this.splashScreenManager.SetWaitFormDescription("Bitte warten");
-
+                
                 this.SetMode(Mode.Default);
-                if (this.splashScreenManager.IsSplashFormVisible) this.splashScreenManager.CloseWaitForm();
-
+                this.CloseProgressPanel();
                 DataLoaded?.Invoke(this, new EventArgs());
+                
             }
-            catch
+            catch (Exception err)
             {
-                if (this.splashScreenManager.IsSplashFormVisible) this.splashScreenManager.CloseWaitForm();
+                
                 XtraMessageBox.Show("Fehler beim laden der Daten", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -282,9 +263,7 @@ namespace Wookie.Tools.Controls
 
                 if (this.DataContext != null)
                 {
-                    this.splashScreenManager.ShowWaitForm();
-                    this.splashScreenManager.SetWaitFormCaption("Speichere Daten");
-                    this.splashScreenManager.SetWaitFormDescription("Bitte warten");
+                    this.ShowProgressPanel();
 
                     this.DataContext.SubmitChanges(ConflictMode.FailOnFirstConflict);
                     this.SetMode(Mode.Default);
@@ -296,7 +275,7 @@ namespace Wookie.Tools.Controls
             catch (ChangeConflictException e)
             {
 
-                if (this.splashScreenManager.IsSplashFormVisible) this.splashScreenManager.CloseWaitForm();
+                this.CloseProgressPanel();
 
                 //if (dataContext.ChangeConflicts.Count > 0 &&
                 //    dataContext.ChangeConflicts[0].IsDeleted &&
@@ -329,7 +308,7 @@ namespace Wookie.Tools.Controls
             }
             catch (SqlException exception)
             {
-                if (this.splashScreenManager.IsSplashFormVisible) this.splashScreenManager.CloseWaitForm();
+                this.CloseProgressPanel();
 
                 if (exception.Number == 547) // Constraint error
                     XtraMessageBox.Show("Datensatz wird noch von anderer Stelle referenziert und kann daher nicht gelöscht werden.", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -340,14 +319,14 @@ namespace Wookie.Tools.Controls
             }
             catch (Exception err)
             {
-                if (this.splashScreenManager.IsSplashFormVisible) this.splashScreenManager.CloseWaitForm();
+                this.CloseProgressPanel();
 
                 XtraMessageBox.Show(err.ToString(), "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
             finally
             {
-                if (this.splashScreenManager.IsSplashFormVisible) this.splashScreenManager.CloseWaitForm();
+                this.CloseProgressPanel();
             }
 
         }
@@ -372,8 +351,93 @@ namespace Wookie.Tools.Controls
                     break;
             }
         }
-        #endregion
 
+        private void GroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        {
+            BarItem item = e.Button.Properties.Tag as BarItem;
+            if (item != null) item.PerformClick();
+        }
+
+        private void GridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.MenuType == GridMenuType.Row || e.MenuType == GridMenuType.User)
+            {
+                if (this.gridConnector.ContainsKey((GridView)sender))
+                {
+                    PopupMenu popupMenu = this.gridConnector[(GridView)sender];
+                    popupMenu.ShowPopup((new Point(MousePosition.X, MousePosition.Y)));
+                }
+            }
+        }
+
+        private void treeMenu_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.treeConnector.ContainsKey((TreeList)sender))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    PopupMenu popupMenu = this.treeConnector[(TreeList)sender];
+                    popupMenu.ShowPopup((new Point(MousePosition.X, MousePosition.Y)));
+                }
+            }
+        }
+
+        private void PictureEdit_ParseEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
+        {
+            if (e.Value is DBNull || e.Value is System.Data.Linq.Binary)
+                return;
+
+            if (e.Value is System.Drawing.Image)
+            {
+
+                e.Value = Wookie.Tools.Image.Converter.GetBinaryFromImage((System.Drawing.Image)e.Value);
+                e.Handled = true;
+            }
+            else if (e.Value is SvgImage)
+            {
+                e.Value = Wookie.Tools.Image.Converter.GetBinaryFromSvgImage((SvgImage)e.Value);
+                e.Handled = true;
+            }
+        }
+
+        private void PictureEdit_FormatEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
+        {
+            var data = e.Value as System.Data.Linq.Binary;
+            if (data != null)
+            {
+                e.Handled = true;
+                e.Value = data;
+            }
+        }
+
+        private void BindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            switch (e.ListChangedType)
+            {
+                case ListChangedType.ItemAdded:
+                case ListChangedType.ItemChanged:
+                case ListChangedType.ItemDeleted:
+                    this.SetMode(Mode.Edit);
+                    break;
+            }
+        }
+
+        private void BindingSource_CurrentItemChanged(object sender, EventArgs e)
+        {
+            if (!this.ignore.ContainsKey((BindingSource)sender)) return;
+
+            if (this.ignore[(BindingSource)sender]) this.ignore[(BindingSource)sender] = false;
+            else this.SetMode(Mode.Edit);
+        }
+
+        private void BindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            if (!this.ignore.ContainsKey((BindingSource)sender)) return;
+
+            this.ignore[(BindingSource)sender] = true;
+            DataRefresh?.Invoke(this, new EventArgs());
+        }
+        #endregion
     }
 
     public class ModulData

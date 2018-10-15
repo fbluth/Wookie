@@ -65,12 +65,6 @@
     <Compile Include="Controls\ucDefault.Designer.cs">
       <DependentUpon>ucDefault.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WaitForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\WaitForm1.Designer.cs">
-      <DependentUpon>WaitForm1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cryptography\StringCipher.cs" />
     <Compile Include="Database\MasterDatabase.cs" />
     <Compile Include="ImagePicker\ImagePicker.cs">
@@ -91,9 +85,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\ucDefault.resx">
       <DependentUpon>ucDefault.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\WaitForm1.resx">
-      <DependentUpon>WaitForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImagePicker\ImagePicker.resx">
       <DependentUpon>ImagePicker.cs</DependentUpon>

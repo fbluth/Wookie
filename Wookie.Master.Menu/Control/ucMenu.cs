@@ -36,18 +36,30 @@ namespace Wookie.Master.Menu.Control
         public ucMenu(Wookie.Tools.Controls.ModulData modulData)
         {
             InitializeComponent();
+
             this.modulData = modulData;
-            this.ucDefault1.RegisterGridView(this.gridViewClient);
-            this.ucDefault1.RegisterTreeList(this.treeMenu);
-            this.ucDefault1.RegisterBindingSource(this.tsysClientBindingSource);
-            this.ucDefault1.RegisterBindingSource(this.tsysClientElementBindingSource);
-            this.ucDefault1.ConnectGroupControlWithGridView(groupControlClient, gridViewClient);
-            this.ucDefault1.ConnectGroupControlWithTreeList(groupControlMenu, treeMenu);
+
+            this.ucDefault1.Connect(
+                this.groupControlClient, 
+                this.gridViewClient, 
+                this.popupMenuClient, 
+                this.tsysClientBindingSource);
+
+            this.ucDefault1.Connect(
+                this.groupControlMenu, 
+                this.treeMenu, 
+                this.popupMenuTree, 
+                this.tsysClientElementBindingSource);
+
+            this.ucDefault1.PreparePictureEdit(this.ImagePictureEdit);
+            this.ucDefault1.PreparePictureEdit(this.pictureEdit1);
             this.ucDefault1.Initialize(modulData);
+
             this.SetValidationRules();
 
             this.item.Click += Item_Click;
             this.item2.Click += Item2_Click;
+
         }
         #endregion
 
@@ -119,14 +131,11 @@ namespace Wookie.Master.Menu.Control
             {
                 this.ucDefault1.PostEditor();
 
-                if (dxValidationProvider1.Validate())
+                if (this.ucDefault1.ValidationProvider.Validate())
                 {
                     //this.ChangeStatusBarText("Please wait. Testing connection.");
 
-                    this.splashScreenManager1.ShowWaitForm();
-                    this.splashScreenManager1.SetWaitFormCaption("Teste Verbindung zu Datenbank");
-                    this.splashScreenManager1.SetWaitFormDescription("Bitte warten");
-
+                    this.ucDefault1.ShowProgressPanel();
                     using (SqlConnection sqlConnection = new SqlConnection(this.SqlConnectionStringBuilder.ConnectionString))
                     {
                         // Überprüfe ob eine Verbindung zur Datenbank möglich ist.
@@ -135,17 +144,19 @@ namespace Wookie.Master.Menu.Control
 
                         //this.ChangeStatusBarText("Connection successfull.");
 
-                        if (this.splashScreenManager1.IsSplashFormVisible) this.splashScreenManager1.CloseWaitForm();
+                        this.ucDefault1.CloseProgressPanel();
 
-                        XtraMessageBox.Show("Connection successful", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string text = System.String.Format("Connection to '{0}' on '{1}' successful.", this.SqlConnectionStringBuilder.InitialCatalog, this.SqlConnectionStringBuilder.DataSource);
+                        XtraMessageBox.Show(text, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch
             {
-                if (this.splashScreenManager1.IsSplashFormVisible) this.splashScreenManager1.CloseWaitForm();
                 //this.ChangeStatusBarText("Connection not successful.");
-                XtraMessageBox.Show("Connection not successful", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.ucDefault1.CloseProgressPanel();
+                string text = System.String.Format("Connection to '{0}' on '{1}' not successful.", this.SqlConnectionStringBuilder.InitialCatalog, this.SqlConnectionStringBuilder.DataSource);
+                XtraMessageBox.Show(text, "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -236,85 +247,19 @@ namespace Wookie.Master.Menu.Control
                 this.tsysClientElementBindingSource.Clear();            
         }
 
-        private void groupControlClient_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
-        {
-            switch (groupControlClient.CustomHeaderButtons.IndexOf(e.Button))
-            {
-                case 0: //Add
-                    this.AddClient();
-                    break;
-                case 1: //Remove
-                    this.RemoveClient();
-                    break;
-                case 2: //Up  
-                    this.TestConnection();
-                    break;
-                case 3: // Down
-                    break;
-                case 4: // TestConnection
-                    this.TestConnection();
-                    break;
-                case 5: // Multiselect
-                    this.gridViewClient.OptionsSelection.MultiSelect = !this.gridViewClient.OptionsSelection.MultiSelect;
-                    this.gridViewClient.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
-                    break;
-            }
-        }
-
-        private void groupControlMenu_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
-        {
-            switch (groupControlMenu.CustomHeaderButtons.IndexOf(e.Button))
-            {
-                case 0: //Add
-                    this.AddNode();
-                    break;
-                case 1: //Remove
-                    this.RemoveNode();
-                    break;
-            }
-        }
-
         private void gridClient_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete) this.RemoveClient();
+            //if (e.KeyCode == Keys.Delete) this.RemoveClient();
         }
 
         private void treeMenu_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete) this.RemoveNode();
+            //if (e.KeyCode == Keys.Delete) this.RemoveNode();
         }
 
         private void btnEditPassword_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             PasswordTextEdit.Properties.UseSystemPasswordChar = !PasswordTextEdit.Properties.UseSystemPasswordChar;
-        }
-
-        private void picMenu_FormatEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
-        {
-            var data = e.Value as System.Data.Linq.Binary;
-            if (data != null)
-            {
-                e.Handled = true;
-                e.Value = data;
-            }
-        }
-
-        private void picMenu_ParseEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
-        {
-            if (e.Value is DBNull || e.Value is System.Data.Linq.Binary)
-                return;
-            
-            if (e.Value is System.Drawing.Image)
-            {
-                //e.Value = new System.Data.Linq.Binary((byte[])e.Value);
-                e.Value = Wookie.Tools.Image.Converter.GetBinaryFromImage((Image)e.Value);
-                e.Handled = true;
-            }
-            else if (e.Value is SvgImage)
-            {
-                e.Value = Wookie.Tools.Image.Converter.GetBinaryFromSvgImage((SvgImage)e.Value);
-                e.Handled = true;
-            }
         }
 
         private void picMenu_PopupMenuShowing(object sender, DevExpress.XtraEditors.Events.PopupMenuShowingEventArgs e)
@@ -351,6 +296,31 @@ namespace Wookie.Master.Menu.Control
                     element.Image = Wookie.Tools.Image.Converter.GetBinaryFromImage(imagePicker.SelectedImage);
                 }
             }
+        }
+
+        private void btnAddClient_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.AddClient();
+        }
+
+        private void btnRemoveClient_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.RemoveClient();
+        }
+
+        private void btnTestClientConnection_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.TestConnection();
+        }
+
+        private void btnRemoveMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.RemoveNode();
+        }
+
+        private void btnAddMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.AddNode();
         }
         #endregion
     }

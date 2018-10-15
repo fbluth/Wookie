@@ -29,19 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMenu));
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions3 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions4 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions5 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions6 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.ucDefault1 = new Wookie.Tools.Controls.ucDefault();
             this.splitControlMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.splitControlClient = new DevExpress.XtraEditors.SplitContainerControl();
@@ -71,11 +64,6 @@
             this.colChangedOn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFKUserChangedOn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUniqueIdentifier = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.SortOrderTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -144,8 +132,20 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Wookie.Master.Menu.Control.WaitForm3), true, true, typeof(System.Windows.Forms.UserControl));
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
+            this.popupMenuClient = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.btnAddClient = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRemoveClient = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTestClientConnection = new DevExpress.XtraBars.BarButtonItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnAddMenu = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRemoveMenu = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.popupMenuTree = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.WorkingArea)).BeginInit();
             this.ucDefault1.WorkingArea.SuspendLayout();
@@ -158,7 +158,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsysClientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewClient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
@@ -220,11 +219,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuClient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuTree)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dxValidationProvider1
-            // 
-            this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
             // 
             // ucDefault1
             // 
@@ -277,18 +275,6 @@
             // groupControlClient
             // 
             this.groupControlClient.Controls.Add(this.gridControlClient);
-            buttonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions1.SvgImage")));
-            buttonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions2.SvgImage")));
-            buttonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions3.SvgImage")));
-            buttonImageOptions3.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions4.Image")));
-            this.groupControlClient.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Neu", false, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Löschen", false, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Verbindung testen", false, buttonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Button", true, buttonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
             this.groupControlClient.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControlClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlClient.Location = new System.Drawing.Point(0, 0);
@@ -296,7 +282,6 @@
             this.groupControlClient.Size = new System.Drawing.Size(525, 169);
             this.groupControlClient.TabIndex = 0;
             this.groupControlClient.Text = "Client";
-            this.groupControlClient.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.groupControlClient_CustomButtonClick);
             // 
             // gridControlClient
             // 
@@ -304,7 +289,6 @@
             this.gridControlClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlClient.Location = new System.Drawing.Point(2, 27);
             this.gridControlClient.MainView = this.gridViewClient;
-            this.gridControlClient.MenuManager = this.barManager1;
             this.gridControlClient.Name = "gridControlClient";
             this.gridControlClient.Size = new System.Drawing.Size(521, 140);
             this.gridControlClient.TabIndex = 0;
@@ -471,47 +455,6 @@
             this.colUniqueIdentifier.FieldName = "UniqueIdentifier";
             this.colUniqueIdentifier.Name = "colUniqueIdentifier";
             // 
-            // barManager1
-            // 
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.MaxItemId = 0;
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1029, 0);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 729);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1029, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 729);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1029, 0);
-            this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 729);
-            // 
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Controls.Add(this.NameTextEdit);
@@ -586,6 +529,7 @@
             this.PersistSecurityInfoCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "PersistSecurityInfo", true));
             this.PersistSecurityInfoCheckEdit.Location = new System.Drawing.Point(273, 281);
             this.PersistSecurityInfoCheckEdit.Name = "PersistSecurityInfoCheckEdit";
+            this.PersistSecurityInfoCheckEdit.Properties.AllowGrayed = true;
             this.PersistSecurityInfoCheckEdit.Properties.Caption = "Persist Security Info";
             this.PersistSecurityInfoCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
             this.PersistSecurityInfoCheckEdit.Size = new System.Drawing.Size(238, 20);
@@ -651,6 +595,7 @@
             this.EncryptCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "Encrypt", true));
             this.EncryptCheckEdit.Location = new System.Drawing.Point(273, 353);
             this.EncryptCheckEdit.Name = "EncryptCheckEdit";
+            this.EncryptCheckEdit.Properties.AllowGrayed = true;
             this.EncryptCheckEdit.Properties.Caption = "Encrypt";
             this.EncryptCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
             this.EncryptCheckEdit.Size = new System.Drawing.Size(238, 20);
@@ -671,6 +616,7 @@
             this.IntegratedSecurityCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "IntegratedSecurity", true));
             this.IntegratedSecurityCheckEdit.Location = new System.Drawing.Point(273, 305);
             this.IntegratedSecurityCheckEdit.Name = "IntegratedSecurityCheckEdit";
+            this.IntegratedSecurityCheckEdit.Properties.AllowGrayed = true;
             this.IntegratedSecurityCheckEdit.Properties.Caption = "Integrated Security";
             this.IntegratedSecurityCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
             this.IntegratedSecurityCheckEdit.Size = new System.Drawing.Size(238, 20);
@@ -682,6 +628,7 @@
             this.PoolingCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "Pooling", true));
             this.PoolingCheckEdit.Location = new System.Drawing.Point(273, 329);
             this.PoolingCheckEdit.Name = "PoolingCheckEdit";
+            this.PoolingCheckEdit.Properties.AllowGrayed = true;
             this.PoolingCheckEdit.Properties.Caption = "Pooling";
             this.PoolingCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
             this.PoolingCheckEdit.Size = new System.Drawing.Size(238, 20);
@@ -713,18 +660,15 @@
             this.ImagePictureEdit.StyleController = this.dataLayoutControl1;
             this.ImagePictureEdit.TabIndex = 19;
             this.ImagePictureEdit.PopupMenuShowing += new DevExpress.XtraEditors.Events.PopupMenuShowingEventHandler(this.picMenu1_PopupMenuShowing);
-            this.ImagePictureEdit.ParseEditValue += new DevExpress.XtraEditors.Controls.ConvertEditValueEventHandler(this.picMenu_ParseEditValue);
-            this.ImagePictureEdit.FormatEditValue += new DevExpress.XtraEditors.Controls.ConvertEditValueEventHandler(this.picMenu_FormatEditValue);
             // 
             // PasswordTextEdit
             // 
             this.PasswordTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "Password", true));
             this.PasswordTextEdit.Location = new System.Drawing.Point(128, 208);
             this.PasswordTextEdit.Name = "PasswordTextEdit";
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
-            editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
+            editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
             this.PasswordTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PasswordTextEdit.Properties.UseSystemPasswordChar = true;
             this.PasswordTextEdit.Size = new System.Drawing.Size(383, 20);
             this.PasswordTextEdit.StyleController = this.dataLayoutControl1;
@@ -968,27 +912,19 @@
             this.splitControlMenu.Panel2.Controls.Add(this.dataLayoutControl2);
             this.splitControlMenu.Panel2.Text = "Panel2";
             this.splitControlMenu.Size = new System.Drawing.Size(490, 690);
-            this.splitControlMenu.SplitterPosition = 171;
+            this.splitControlMenu.SplitterPosition = 413;
             this.splitControlMenu.TabIndex = 0;
             // 
             // groupControlMenu
             // 
             this.groupControlMenu.Controls.Add(this.treeMenu);
-            buttonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions5.SvgImage")));
-            buttonImageOptions5.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions6.SvgImage")));
-            buttonImageOptions6.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.groupControlMenu.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Neu", false, buttonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Löschen", false, buttonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
             this.groupControlMenu.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlMenu.Location = new System.Drawing.Point(0, 0);
             this.groupControlMenu.Name = "groupControlMenu";
-            this.groupControlMenu.Size = new System.Drawing.Size(490, 171);
+            this.groupControlMenu.Size = new System.Drawing.Size(490, 413);
             this.groupControlMenu.TabIndex = 0;
             this.groupControlMenu.Text = "Menüstruktur";
-            this.groupControlMenu.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.groupControlMenu_CustomButtonClick);
             // 
             // treeMenu
             // 
@@ -1012,7 +948,8 @@
             this.treeMenu.OptionsBehavior.AutoNodeHeight = false;
             this.treeMenu.OptionsDragAndDrop.CanCloneNodesOnDrop = true;
             this.treeMenu.OptionsDragAndDrop.DragNodesMode = DevExpress.XtraTreeList.DragNodesMode.Single;
-            this.treeMenu.Size = new System.Drawing.Size(486, 142);
+            this.treeMenu.PreviewFieldName = "ParentID";
+            this.treeMenu.Size = new System.Drawing.Size(486, 384);
             this.treeMenu.TabIndex = 0;
             this.treeMenu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeMenu_KeyDown);
             // 
@@ -1095,7 +1032,7 @@
             this.dataLayoutControl2.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl2.Name = "dataLayoutControl2";
             this.dataLayoutControl2.Root = this.layoutControlGroup3;
-            this.dataLayoutControl2.Size = new System.Drawing.Size(490, 509);
+            this.dataLayoutControl2.Size = new System.Drawing.Size(490, 267);
             this.dataLayoutControl2.TabIndex = 0;
             this.dataLayoutControl2.Text = "dataLayoutControl2";
             // 
@@ -1133,8 +1070,6 @@
             this.pictureEdit1.StyleController = this.dataLayoutControl2;
             this.pictureEdit1.TabIndex = 6;
             this.pictureEdit1.PopupMenuShowing += new DevExpress.XtraEditors.Events.PopupMenuShowingEventHandler(this.picMenu_PopupMenuShowing);
-            this.pictureEdit1.ParseEditValue += new DevExpress.XtraEditors.Controls.ConvertEditValueEventHandler(this.picMenu_ParseEditValue);
-            this.pictureEdit1.FormatEditValue += new DevExpress.XtraEditors.Controls.ConvertEditValueEventHandler(this.picMenu_FormatEditValue);
             // 
             // AssemblynameTextEdit
             // 
@@ -1153,7 +1088,7 @@
             this.layoutControlGroup6});
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlGroup3.Size = new System.Drawing.Size(490, 509);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(490, 267);
             this.layoutControlGroup3.TextVisible = false;
             // 
             // layoutControlGroup6
@@ -1164,7 +1099,7 @@
             this.lcgMenuDetails});
             this.layoutControlGroup6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup6.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(490, 509);
+            this.layoutControlGroup6.Size = new System.Drawing.Size(490, 267);
             // 
             // lcgMenuDetails
             // 
@@ -1178,7 +1113,7 @@
             this.emptySpaceItem2});
             this.lcgMenuDetails.Location = new System.Drawing.Point(0, 0);
             this.lcgMenuDetails.Name = "lcgMenuDetails";
-            this.lcgMenuDetails.Size = new System.Drawing.Size(490, 509);
+            this.lcgMenuDetails.Size = new System.Drawing.Size(490, 267);
             this.lcgMenuDetails.Text = "Details";
             // 
             // layoutControlItem1
@@ -1235,12 +1170,134 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 107);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(466, 353);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(466, 111);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // splashScreenManager1
+            // popupMenuClient
             // 
-            this.splashScreenManager1.ClosingDelay = 500;
+            this.popupMenuClient.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnAddClient),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnRemoveClient),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnTestClientConnection)});
+            this.popupMenuClient.Manager = this.barManager1;
+            this.popupMenuClient.Name = "popupMenuClient";
+            // 
+            // btnAddClient
+            // 
+            this.btnAddClient.Caption = "Neu";
+            this.btnAddClient.Id = 0;
+            this.btnAddClient.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAddClient.ImageOptions.SvgImage")));
+            this.btnAddClient.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N));
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddClient_ItemClick);
+            // 
+            // btnRemoveClient
+            // 
+            this.btnRemoveClient.Caption = "Löschen";
+            this.btnRemoveClient.Id = 1;
+            this.btnRemoveClient.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRemoveClient.ImageOptions.SvgImage")));
+            this.btnRemoveClient.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D));
+            this.btnRemoveClient.Name = "btnRemoveClient";
+            this.btnRemoveClient.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRemoveClient_ItemClick);
+            // 
+            // btnTestClientConnection
+            // 
+            this.btnTestClientConnection.Caption = "Verbindungstest";
+            this.btnTestClientConnection.Id = 2;
+            this.btnTestClientConnection.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTestClientConnection.ImageOptions.SvgImage")));
+            this.btnTestClientConnection.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T));
+            this.btnTestClientConnection.Name = "btnTestClientConnection";
+            this.btnTestClientConnection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTestClientConnection_ItemClick);
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.btnAddClient,
+            this.btnRemoveClient,
+            this.btnTestClientConnection,
+            this.btnAddMenu,
+            this.btnRemoveMenu,
+            this.barSubItem1,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 7;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1029, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 729);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1029, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 729);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1029, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 729);
+            // 
+            // btnAddMenu
+            // 
+            this.btnAddMenu.Caption = "Add";
+            this.btnAddMenu.Id = 3;
+            this.btnAddMenu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAddMenu.ImageOptions.SvgImage")));
+            this.btnAddMenu.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Add));
+            this.btnAddMenu.Name = "btnAddMenu";
+            this.btnAddMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddMenu_ItemClick);
+            // 
+            // btnRemoveMenu
+            // 
+            this.btnRemoveMenu.Caption = "Remove";
+            this.btnRemoveMenu.Id = 4;
+            this.btnRemoveMenu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRemoveMenu.ImageOptions.SvgImage")));
+            this.btnRemoveMenu.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Subtract));
+            this.btnRemoveMenu.Name = "btnRemoveMenu";
+            this.btnRemoveMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRemoveMenu_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Test";
+            this.barSubItem1.Id = 5;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Test 2";
+            this.barButtonItem1.Id = 6;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // popupMenuTree
+            // 
+            this.popupMenuTree.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnAddMenu),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnRemoveMenu),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
+            this.popupMenuTree.Manager = this.barManager1;
+            this.popupMenuTree.Name = "popupMenuTree";
             // 
             // ucMenu
             // 
@@ -1253,7 +1310,6 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ucMenu";
             this.Size = new System.Drawing.Size(1029, 729);
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.WorkingArea)).EndInit();
             this.ucDefault1.WorkingArea.ResumeLayout(false);
@@ -1266,7 +1322,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsysClientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewClient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
@@ -1328,6 +1383,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuClient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuTree)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1336,7 +1394,6 @@
         #endregion
 
         private Tools.Controls.ucDefault ucDefault1;
-        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
         private DevExpress.XtraEditors.SplitContainerControl splitControlMain;
         private DevExpress.XtraEditors.SplitContainerControl splitControlClient;
         private DevExpress.XtraEditors.GroupControl groupControlClient;
@@ -1432,12 +1489,20 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private DevExpress.XtraEditors.ButtonEdit PasswordTextEdit;
+        private DevExpress.XtraBars.PopupMenu popupMenuClient;
+        private DevExpress.XtraBars.BarButtonItem btnAddClient;
+        private DevExpress.XtraBars.BarButtonItem btnRemoveClient;
+        private DevExpress.XtraBars.BarButtonItem btnTestClientConnection;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem btnAddMenu;
+        private DevExpress.XtraBars.BarButtonItem btnRemoveMenu;
+        private DevExpress.XtraBars.PopupMenu popupMenuTree;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

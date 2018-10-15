@@ -299,14 +299,15 @@
             // 
             // accordionControl1
             // 
-            this.accordionControl1.AllowHorizontalResizing = DevExpress.Utils.DefaultBoolean.False;
+            this.accordionControl1.AllowHorizontalResizing = DevExpress.Utils.DefaultBoolean.True;
             this.accordionControl1.AllowItemSelection = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl1.ExpandGroupOnHeaderClick = false;            
+            this.accordionControl1.ExpandGroupOnHeaderClick = false;
             this.accordionControl1.Location = new System.Drawing.Point(0, 30);
             this.accordionControl1.Name = "accordionControl1";
+            this.accordionControl1.NavigationFrame = null;
             this.accordionControl1.OptionsMinimizing.NormalWidth = 150;
             this.accordionControl1.RootDisplayMode = DevExpress.XtraBars.Navigation.AccordionControlRootDisplayMode.Footer;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
@@ -318,6 +319,7 @@
             // 
             // accordionControlElement1
             // 
+            this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "Element1";
             // 
