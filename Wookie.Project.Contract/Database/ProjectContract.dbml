@@ -55,6 +55,7 @@
       <Column Name="ContractNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ContractName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="ContractFile" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ContractCalculation" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

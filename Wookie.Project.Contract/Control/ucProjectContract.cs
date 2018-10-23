@@ -20,7 +20,7 @@ namespace Wookie.Project.Contract.Control
         #region Variables
         private Database.ProjectContractDataContext dataContext = null;
         private Wookie.Tools.Controls.ModulData modulData = null;
-
+        
         public event StatusBarEventHandler StatusBarChanged;
         #endregion
 
@@ -122,15 +122,24 @@ namespace Wookie.Project.Contract.Control
         private void ucDefault1_DataRefresh(object sender, EventArgs e)
         {
             pdfViewer1.CloseDocument();
-            
+            spreadsheetControl1.Document.CreateNewDocument();
+
             if (this.SelectedProjectContract != null && this.SelectedProjectContract.ContractFile != null)
             {
                 using (MemoryStream ms = new MemoryStream(this.SelectedProjectContract.ContractFile.ToArray()))
                 {
-                    
                     pdfViewer1.LoadDocument(ms);
                 }
             }
+
+            if (this.SelectedProjectContract != null && this.SelectedProjectContract.ContractCalculation != null)
+            {
+                using (MemoryStream ms = new MemoryStream(this.SelectedProjectContract.ContractCalculation.ToArray()))
+                {
+                    spreadsheetControl1.LoadDocument(ms);
+                }
+            }
+
 
             pdfViewer1.Refresh();
         }
@@ -168,6 +177,49 @@ namespace Wookie.Project.Contract.Control
         private void btnExportToExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Export();
+        }
+
+        private void groupControl2_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        {
+            switch (groupControl2.CustomHeaderButtons.IndexOf(e.Button))
+            {
+                case 0: //AST
+                    this.navigationFrame1.SelectedPage = navigationPage2;
+                    break;
+                case 1: //LV
+                    this.navigationFrame1.SelectedPage = navigationPage1;
+                    break;
+            }
+        }
+
+        private void ContractCalculationButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (this.xtraOpenFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                using (FileStream fsSource = new FileStream(this.xtraOpenFileDialog1.FileName, FileMode.Open, FileAccess.Read))
+                {
+
+                    // Read the source file into a byte array.
+                    byte[] bytes = new byte[fsSource.Length];
+                    int numBytesToRead = (int)fsSource.Length;
+                    int numBytesRead = 0;
+                    while (numBytesToRead > 0)
+                    {
+                        // Read may return anything from 0 to numBytesToRead.
+                        int n = fsSource.Read(bytes, numBytesRead, numBytesToRead);
+
+                        // Break when the end of the file is reached.
+                        if (n == 0)
+                            break;
+
+                        numBytesRead += n;
+                        numBytesToRead -= n;
+                    }
+
+                    this.SelectedProjectContract.ContractCalculation = new System.Data.Linq.Binary(bytes);
+                }
+            }
         }
     }
 }

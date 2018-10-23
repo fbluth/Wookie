@@ -1069,6 +1069,8 @@ namespace Wookie.Project.Contract.Database
 		
 		private System.Data.Linq.Binary _ContractFile;
 		
+		private System.Data.Linq.Binary _ContractCalculation;
+		
 		private System.Nullable<double> _Price;
 		
 		private System.Nullable<System.DateTime> _StartDate;
@@ -1111,6 +1113,8 @@ namespace Wookie.Project.Contract.Database
     partial void OnContractNameChanged();
     partial void OnContractFileChanging(System.Data.Linq.Binary value);
     partial void OnContractFileChanged();
+    partial void OnContractCalculationChanging(System.Data.Linq.Binary value);
+    partial void OnContractCalculationChanged();
     partial void OnPriceChanging(System.Nullable<double> value);
     partial void OnPriceChanged();
     partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
@@ -1287,6 +1291,26 @@ namespace Wookie.Project.Contract.Database
 					this._ContractFile = value;
 					this.SendPropertyChanged("ContractFile");
 					this.OnContractFileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContractCalculation", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary ContractCalculation
+		{
+			get
+			{
+				return this._ContractCalculation;
+			}
+			set
+			{
+				if ((this._ContractCalculation != value))
+				{
+					this.OnContractCalculationChanging(value);
+					this.SendPropertyChanging();
+					this._ContractCalculation = value;
+					this.SendPropertyChanged("ContractCalculation");
+					this.OnContractCalculationChanged();
 				}
 			}
 		}

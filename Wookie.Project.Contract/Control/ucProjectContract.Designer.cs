@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucProjectContract));
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.ucDefault1 = new Wookie.Tools.Controls.ucDefault();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -71,6 +73,7 @@
             this.tblClusterContractLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.tlkpProjectContractStatusLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.tlkpProjectContractTypeLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.ContractCalculationButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForContractNumber = new DevExpress.XtraLayout.LayoutControlItem();
@@ -85,9 +88,14 @@
             this.ItemForContractFile = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForEndDate = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.ItemForContractCalculation = new DevExpress.XtraLayout.LayoutControlItem();
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
+            this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
+            this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.spreadsheetControl1 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).BeginInit();
@@ -122,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tblClusterContractLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlkpProjectContractStatusLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlkpProjectContractTypeLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContractCalculationButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForContractNumber)).BeginInit();
@@ -136,8 +145,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForContractFile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEndDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForContractCalculation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).BeginInit();
+            this.navigationFrame1.SuspendLayout();
+            this.navigationPage1.SuspendLayout();
+            this.navigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -386,6 +400,7 @@
             this.dataLayoutControl1.Controls.Add(this.tblClusterContractLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.tlkpProjectContractStatusLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.tlkpProjectContractTypeLookUpEdit);
+            this.dataLayoutControl1.Controls.Add(this.ContractCalculationButtonEdit);
             this.dataLayoutControl1.DataSource = this.tblProjectContractBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
@@ -609,6 +624,19 @@
             this.tlkpProjectContractTypeLookUpEdit.StyleController = this.dataLayoutControl1;
             this.tlkpProjectContractTypeLookUpEdit.TabIndex = 13;
             // 
+            // ContractCalculationButtonEdit
+            // 
+            this.ContractCalculationButtonEdit.Location = new System.Drawing.Point(148, 252);
+            this.ContractCalculationButtonEdit.MenuManager = this.barManager1;
+            this.ContractCalculationButtonEdit.Name = "ContractCalculationButtonEdit";
+            this.ContractCalculationButtonEdit.Properties.AutoHeight = false;
+            this.ContractCalculationButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.ContractCalculationButtonEdit.Size = new System.Drawing.Size(304, 20);
+            this.ContractCalculationButtonEdit.StyleController = this.dataLayoutControl1;
+            this.ContractCalculationButtonEdit.TabIndex = 14;
+            this.ContractCalculationButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ContractCalculationButtonEdit_ButtonClick);
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -635,7 +663,8 @@
             this.emptySpaceItem1,
             this.ItemForContractFile,
             this.ItemForEndDate,
-            this.emptySpaceItem2});
+            this.emptySpaceItem2,
+            this.ItemForContractCalculation});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
             this.layoutControlGroup2.Size = new System.Drawing.Size(444, 289);
@@ -715,9 +744,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 240);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 264);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(444, 49);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(444, 25);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // ItemForContractFile
@@ -750,6 +779,19 @@
             this.emptySpaceItem2.Size = new System.Drawing.Size(202, 72);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // ItemForContractCalculation
+            // 
+            this.ItemForContractCalculation.Control = this.ContractCalculationButtonEdit;
+            this.ItemForContractCalculation.Location = new System.Drawing.Point(0, 240);
+            this.ItemForContractCalculation.MaxSize = new System.Drawing.Size(0, 24);
+            this.ItemForContractCalculation.MinSize = new System.Drawing.Size(190, 24);
+            this.ItemForContractCalculation.Name = "ItemForContractCalculation";
+            this.ItemForContractCalculation.Size = new System.Drawing.Size(444, 24);
+            this.ItemForContractCalculation.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.ItemForContractCalculation.StartNewLine = true;
+            this.ItemForContractCalculation.Text = "Contract Calculation";
+            this.ItemForContractCalculation.TextSize = new System.Drawing.Size(133, 13);
+            // 
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -761,24 +803,72 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.pdfViewer1);
+            this.groupControl2.Controls.Add(this.navigationFrame1);
+            buttonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions1.SvgImage")));
+            buttonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions2.SvgImage")));
+            buttonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.groupControl2.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Kalkulation", false, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "Kalkulation", -1, true, null, true, false, true, null, -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Leistungsvereinbarung", false, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "Leistungsvereinbarung", -1, true, null, true, false, true, null, -1)});
+            this.groupControl2.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupControl2.Location = new System.Drawing.Point(479, 5);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(378, 577);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "Document";
+            this.groupControl2.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.groupControl2_CustomButtonClick);
+            // 
+            // navigationFrame1
+            // 
+            this.navigationFrame1.Controls.Add(this.navigationPage1);
+            this.navigationFrame1.Controls.Add(this.navigationPage2);
+            this.navigationFrame1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navigationFrame1.Location = new System.Drawing.Point(2, 27);
+            this.navigationFrame1.Name = "navigationFrame1";
+            this.navigationFrame1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
+            this.navigationPage1,
+            this.navigationPage2});
+            this.navigationFrame1.SelectedPage = this.navigationPage2;
+            this.navigationFrame1.Size = new System.Drawing.Size(374, 548);
+            this.navigationFrame1.TabIndex = 1;
+            this.navigationFrame1.Text = "navigationFrame1";
+            // 
+            // navigationPage1
+            // 
+            this.navigationPage1.Controls.Add(this.pdfViewer1);
+            this.navigationPage1.Name = "navigationPage1";
+            this.navigationPage1.Size = new System.Drawing.Size(374, 548);
             // 
             // pdfViewer1
             // 
             this.pdfViewer1.DetachStreamAfterLoadComplete = true;
             this.pdfViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pdfViewer1.Location = new System.Drawing.Point(2, 27);
+            this.pdfViewer1.Location = new System.Drawing.Point(0, 0);
             this.pdfViewer1.Name = "pdfViewer1";
             this.pdfViewer1.NavigationPanePageVisibility = DevExpress.XtraPdfViewer.PdfNavigationPanePageVisibility.None;
             this.pdfViewer1.Size = new System.Drawing.Size(374, 548);
             this.pdfViewer1.TabIndex = 0;
             this.pdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToWidth;
+            // 
+            // navigationPage2
+            // 
+            this.navigationPage2.Controls.Add(this.spreadsheetControl1);
+            this.navigationPage2.Name = "navigationPage2";
+            this.navigationPage2.Size = new System.Drawing.Size(374, 548);
+            // 
+            // spreadsheetControl1
+            // 
+            this.spreadsheetControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spreadsheetControl1.Location = new System.Drawing.Point(0, 0);
+            this.spreadsheetControl1.MenuManager = this.barManager1;
+            this.spreadsheetControl1.Name = "spreadsheetControl1";
+            this.spreadsheetControl1.Options.Import.Csv.Encoding = ((System.Text.Encoding)(resources.GetObject("spreadsheetControl1.Options.Import.Csv.Encoding")));
+            this.spreadsheetControl1.Options.Import.Txt.Encoding = ((System.Text.Encoding)(resources.GetObject("spreadsheetControl1.Options.Import.Txt.Encoding")));
+            this.spreadsheetControl1.Size = new System.Drawing.Size(374, 548);
+            this.spreadsheetControl1.TabIndex = 0;
+            this.spreadsheetControl1.Text = "spreadsheetControl1";
             // 
             // popupMenu1
             // 
@@ -836,6 +926,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tblClusterContractLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlkpProjectContractStatusLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlkpProjectContractTypeLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContractCalculationButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForContractNumber)).EndInit();
@@ -850,8 +941,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForContractFile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEndDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForContractCalculation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).EndInit();
+            this.navigationFrame1.ResumeLayout(false);
+            this.navigationPage1.ResumeLayout(false);
+            this.navigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -920,5 +1016,11 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraBars.BarButtonItem btnExportToExcel;
+        private DevExpress.XtraBars.Navigation.NavigationFrame navigationFrame1;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage1;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage2;
+        private DevExpress.XtraSpreadsheet.SpreadsheetControl spreadsheetControl1;
+        private DevExpress.XtraEditors.ButtonEdit ContractCalculationButtonEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForContractCalculation;
     }
 }

@@ -20,31 +20,31 @@
         <elementListCompartment Id="c7a361e4-2b2d-4ef2-b74e-c864e90f6e80" absoluteBounds="0.51500000000000012, 2.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="76e9a9f3-2bbb-4277-8e7e-512837997420" absoluteBounds="3.125, 1.875, 2, 3.8862125651041666">
+    <classShape Id="aaeef90a-d292-48d0-9970-043fe6ac0941" absoluteBounds="3.375, 2, 2, 4.0785139973958326">
       <DataClassMoniker Name="/ProjectContractDataContext/tblProjectContract" />
       <nestedChildShapes>
-        <elementListCompartment Id="02abb87f-e6c3-4c5f-ae6d-ff9fe41596ed" absoluteBounds="3.14, 2.335, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0bdb3535-fbce-4029-bc3b-59d301e9374b" absoluteBounds="3.39, 2.46, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 3.46715413411458); (3.125 : 3.46715413411458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 3.52965413411458); (3.375 : 3.52965413411458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ProjectContractDataContext/tblClusterContract/tblClusterContract_tblProjectContract" />
       <nodes>
         <classShapeMoniker Id="b0e27f3f-22ee-408b-80f4-c3154f4d2224" />
-        <classShapeMoniker Id="76e9a9f3-2bbb-4277-8e7e-512837997420" />
+        <classShapeMoniker Id="aaeef90a-d292-48d0-9970-043fe6ac0941" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.625 : 3.14505126953125); (5.125 : 3.14505126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.625 : 3.20755126953125); (5.375 : 3.20755126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ProjectContractDataContext/tlkpProjectContractStatus/tlkpProjectContractStatus_tblProjectContract" />
       <nodes>
         <classShapeMoniker Id="41592705-24b7-42ff-ae57-fde4a224db51" />
-        <classShapeMoniker Id="76e9a9f3-2bbb-4277-8e7e-512837997420" />
+        <classShapeMoniker Id="aaeef90a-d292-48d0-9970-043fe6ac0941" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.625 : 5.25560628255208); (5.125 : 5.25560628255208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.625 : 5.41425699869792); (5.375 : 5.41425699869792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ProjectContractDataContext/tlkpProjectContractType/tlkpProjectContractType_tblProjectContract" />
       <nodes>
         <classShapeMoniker Id="361602c3-4a38-4436-906a-c6ba691dec7a" />
-        <classShapeMoniker Id="76e9a9f3-2bbb-4277-8e7e-512837997420" />
+        <classShapeMoniker Id="aaeef90a-d292-48d0-9970-043fe6ac0941" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
