@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMenu));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ucDefault1 = new Wookie.Tools.Controls.ucDefault();
             this.splitControlMain = new DevExpress.XtraEditors.SplitContainerControl();
             this.splitControlClient = new DevExpress.XtraEditors.SplitContainerControl();
@@ -117,6 +117,7 @@
             this.colChangedOn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colFKUserChangedOn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colUniqueIdentifier1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colNamespace = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.tsysClientElementBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataLayoutControl2 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
@@ -231,8 +232,9 @@
             this.ucDefault1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDefault1.Image = null;
             this.ucDefault1.Location = new System.Drawing.Point(0, 0);
+            this.ucDefault1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ucDefault1.Name = "ucDefault1";
-            this.ucDefault1.Size = new System.Drawing.Size(1029, 729);
+            this.ucDefault1.Size = new System.Drawing.Size(1200, 897);
             this.ucDefault1.TabIndex = 0;
             // 
             // ucDefault1.WorkingArea
@@ -240,9 +242,9 @@
             this.ucDefault1.WorkingArea.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.ucDefault1.WorkingArea.Controls.Add(this.splitControlMain);
             this.ucDefault1.WorkingArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDefault1.WorkingArea.Location = new System.Drawing.Point(2, 37);
+            this.ucDefault1.WorkingArea.Location = new System.Drawing.Point(2, 45);
             this.ucDefault1.WorkingArea.Name = "WorkingArea";
-            this.ucDefault1.WorkingArea.Size = new System.Drawing.Size(1025, 690);
+            this.ucDefault1.WorkingArea.Size = new System.Drawing.Size(1196, 850);
             this.ucDefault1.WorkingArea.TabIndex = 0;
             this.ucDefault1.BeforeDataLoad += new System.EventHandler(this.ucDefault1_BeforeDataLoad);
             this.ucDefault1.DataRefresh += new System.EventHandler(this.ucDefault1_DataRefresh);
@@ -254,8 +256,8 @@
             this.splitControlMain.Name = "splitControlMain";
             this.splitControlMain.Panel1.Controls.Add(this.splitControlClient);
             this.splitControlMain.Panel2.Controls.Add(this.splitControlMenu);
-            this.splitControlMain.Size = new System.Drawing.Size(1025, 690);
-            this.splitControlMain.SplitterPosition = 525;
+            this.splitControlMain.Size = new System.Drawing.Size(1196, 850);
+            this.splitControlMain.SplitterPosition = 544;
             this.splitControlMain.TabIndex = 0;
             // 
             // splitControlClient
@@ -263,13 +265,14 @@
             this.splitControlClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitControlClient.Horizontal = false;
             this.splitControlClient.Location = new System.Drawing.Point(0, 0);
+            this.splitControlClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitControlClient.Name = "splitControlClient";
             this.splitControlClient.Panel1.Controls.Add(this.groupControlClient);
             this.splitControlClient.Panel1.Text = "Panel1";
             this.splitControlClient.Panel2.Controls.Add(this.dataLayoutControl1);
             this.splitControlClient.Panel2.Text = "Panel2";
-            this.splitControlClient.Size = new System.Drawing.Size(525, 690);
-            this.splitControlClient.SplitterPosition = 169;
+            this.splitControlClient.Size = new System.Drawing.Size(544, 850);
+            this.splitControlClient.SplitterPosition = 208;
             this.splitControlClient.TabIndex = 0;
             // 
             // groupControlClient
@@ -278,8 +281,9 @@
             this.groupControlClient.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControlClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlClient.Location = new System.Drawing.Point(0, 0);
+            this.groupControlClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupControlClient.Name = "groupControlClient";
-            this.groupControlClient.Size = new System.Drawing.Size(525, 169);
+            this.groupControlClient.Size = new System.Drawing.Size(544, 208);
             this.groupControlClient.TabIndex = 0;
             this.groupControlClient.Text = "Client";
             // 
@@ -287,10 +291,12 @@
             // 
             this.gridControlClient.DataSource = this.tsysClientBindingSource;
             this.gridControlClient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlClient.Location = new System.Drawing.Point(2, 27);
+            this.gridControlClient.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gridControlClient.Location = new System.Drawing.Point(2, 33);
             this.gridControlClient.MainView = this.gridViewClient;
+            this.gridControlClient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridControlClient.Name = "gridControlClient";
-            this.gridControlClient.Size = new System.Drawing.Size(521, 140);
+            this.gridControlClient.Size = new System.Drawing.Size(540, 173);
             this.gridControlClient.TabIndex = 0;
             this.gridControlClient.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewClient});
@@ -324,6 +330,7 @@
             this.colChangedOn,
             this.colFKUserChangedOn,
             this.colUniqueIdentifier});
+            this.gridViewClient.DetailHeight = 431;
             this.gridViewClient.GridControl = this.gridControlClient;
             this.gridViewClient.Name = "gridViewClient";
             this.gridViewClient.OptionsDetail.EnableMasterViewMode = false;
@@ -336,124 +343,166 @@
             // colPKClient
             // 
             this.colPKClient.FieldName = "PKClient";
+            this.colPKClient.MinWidth = 23;
             this.colPKClient.Name = "colPKClient";
+            this.colPKClient.Width = 87;
             // 
             // colImage
             // 
             this.colImage.FieldName = "Image";
+            this.colImage.MinWidth = 23;
             this.colImage.Name = "colImage";
             this.colImage.Visible = true;
             this.colImage.VisibleIndex = 0;
+            this.colImage.Width = 87;
             // 
             // colSortOrder
             // 
             this.colSortOrder.FieldName = "SortOrder";
+            this.colSortOrder.MinWidth = 23;
             this.colSortOrder.Name = "colSortOrder";
+            this.colSortOrder.Width = 87;
             // 
             // colName
             // 
             this.colName.FieldName = "Name";
+            this.colName.MinWidth = 23;
             this.colName.Name = "colName";
             this.colName.Visible = true;
             this.colName.VisibleIndex = 1;
+            this.colName.Width = 87;
             // 
             // colDatasource
             // 
             this.colDatasource.FieldName = "Datasource";
+            this.colDatasource.MinWidth = 23;
             this.colDatasource.Name = "colDatasource";
             this.colDatasource.Visible = true;
             this.colDatasource.VisibleIndex = 2;
+            this.colDatasource.Width = 87;
             // 
             // colInitialCatalog
             // 
             this.colInitialCatalog.FieldName = "InitialCatalog";
+            this.colInitialCatalog.MinWidth = 23;
             this.colInitialCatalog.Name = "colInitialCatalog";
             this.colInitialCatalog.Visible = true;
             this.colInitialCatalog.VisibleIndex = 3;
+            this.colInitialCatalog.Width = 87;
             // 
             // colPersistSecurityInfo
             // 
             this.colPersistSecurityInfo.FieldName = "PersistSecurityInfo";
+            this.colPersistSecurityInfo.MinWidth = 23;
             this.colPersistSecurityInfo.Name = "colPersistSecurityInfo";
+            this.colPersistSecurityInfo.Width = 87;
             // 
             // colUserID
             // 
             this.colUserID.FieldName = "UserID";
+            this.colUserID.MinWidth = 23;
             this.colUserID.Name = "colUserID";
             this.colUserID.Visible = true;
             this.colUserID.VisibleIndex = 4;
+            this.colUserID.Width = 87;
             // 
             // colPassword
             // 
             this.colPassword.FieldName = "Password";
+            this.colPassword.MinWidth = 23;
             this.colPassword.Name = "colPassword";
-            this.colPassword.Visible = true;
-            this.colPassword.VisibleIndex = 5;
+            this.colPassword.Width = 87;
             // 
             // colConnectRetryCount
             // 
             this.colConnectRetryCount.FieldName = "ConnectRetryCount";
+            this.colConnectRetryCount.MinWidth = 23;
             this.colConnectRetryCount.Name = "colConnectRetryCount";
+            this.colConnectRetryCount.Width = 87;
             // 
             // colConnectRetryInterval
             // 
             this.colConnectRetryInterval.FieldName = "ConnectRetryInterval";
+            this.colConnectRetryInterval.MinWidth = 23;
             this.colConnectRetryInterval.Name = "colConnectRetryInterval";
+            this.colConnectRetryInterval.Width = 87;
             // 
             // colConnectTimeout
             // 
             this.colConnectTimeout.FieldName = "ConnectTimeout";
+            this.colConnectTimeout.MinWidth = 23;
             this.colConnectTimeout.Name = "colConnectTimeout";
+            this.colConnectTimeout.Width = 87;
             // 
             // colEncrypt
             // 
             this.colEncrypt.FieldName = "Encrypt";
+            this.colEncrypt.MinWidth = 23;
             this.colEncrypt.Name = "colEncrypt";
+            this.colEncrypt.Width = 87;
             // 
             // colFailoverPartner
             // 
             this.colFailoverPartner.FieldName = "FailoverPartner";
+            this.colFailoverPartner.MinWidth = 23;
             this.colFailoverPartner.Name = "colFailoverPartner";
+            this.colFailoverPartner.Width = 87;
             // 
             // colIntegratedSecurity
             // 
             this.colIntegratedSecurity.FieldName = "IntegratedSecurity";
+            this.colIntegratedSecurity.MinWidth = 23;
             this.colIntegratedSecurity.Name = "colIntegratedSecurity";
+            this.colIntegratedSecurity.Width = 87;
             // 
             // colPooling
             // 
             this.colPooling.FieldName = "Pooling";
+            this.colPooling.MinWidth = 23;
             this.colPooling.Name = "colPooling";
+            this.colPooling.Width = 87;
             // 
             // colPacketSize
             // 
             this.colPacketSize.FieldName = "PacketSize";
+            this.colPacketSize.MinWidth = 23;
             this.colPacketSize.Name = "colPacketSize";
+            this.colPacketSize.Width = 87;
             // 
             // colCreatedOn
             // 
             this.colCreatedOn.FieldName = "CreatedOn";
+            this.colCreatedOn.MinWidth = 23;
             this.colCreatedOn.Name = "colCreatedOn";
+            this.colCreatedOn.Width = 87;
             // 
             // colFKUserCreated
             // 
             this.colFKUserCreated.FieldName = "FKUserCreated";
+            this.colFKUserCreated.MinWidth = 23;
             this.colFKUserCreated.Name = "colFKUserCreated";
+            this.colFKUserCreated.Width = 87;
             // 
             // colChangedOn
             // 
             this.colChangedOn.FieldName = "ChangedOn";
+            this.colChangedOn.MinWidth = 23;
             this.colChangedOn.Name = "colChangedOn";
+            this.colChangedOn.Width = 87;
             // 
             // colFKUserChangedOn
             // 
             this.colFKUserChangedOn.FieldName = "FKUserChangedOn";
+            this.colFKUserChangedOn.MinWidth = 23;
             this.colFKUserChangedOn.Name = "colFKUserChangedOn";
+            this.colFKUserChangedOn.Width = 87;
             // 
             // colUniqueIdentifier
             // 
             this.colUniqueIdentifier.FieldName = "UniqueIdentifier";
+            this.colUniqueIdentifier.MinWidth = 23;
             this.colUniqueIdentifier.Name = "colUniqueIdentifier";
+            this.colUniqueIdentifier.Width = 87;
             // 
             // dataLayoutControl1
             // 
@@ -476,25 +525,28 @@
             this.dataLayoutControl1.DataSource = this.tsysClientBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.dataLayoutControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(525, 511);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(544, 630);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // NameTextEdit
             // 
             this.NameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "Name", true));
-            this.NameTextEdit.Location = new System.Drawing.Point(222, 39);
+            this.NameTextEdit.Location = new System.Drawing.Point(254, 45);
+            this.NameTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NameTextEdit.Name = "NameTextEdit";
-            this.NameTextEdit.Size = new System.Drawing.Size(103, 20);
+            this.NameTextEdit.Size = new System.Drawing.Size(71, 22);
             this.NameTextEdit.StyleController = this.dataLayoutControl1;
             this.NameTextEdit.TabIndex = 4;
             // 
             // SortOrderTextEdit
             // 
             this.SortOrderTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "SortOrder", true));
-            this.SortOrderTextEdit.Location = new System.Drawing.Point(443, 39);
+            this.SortOrderTextEdit.Location = new System.Drawing.Point(459, 45);
+            this.SortOrderTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SortOrderTextEdit.Name = "SortOrderTextEdit";
             this.SortOrderTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.SortOrderTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -502,53 +554,58 @@
             this.SortOrderTextEdit.Properties.Mask.EditMask = "N0";
             this.SortOrderTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.SortOrderTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.SortOrderTextEdit.Size = new System.Drawing.Size(68, 20);
+            this.SortOrderTextEdit.Size = new System.Drawing.Size(71, 22);
             this.SortOrderTextEdit.StyleController = this.dataLayoutControl1;
             this.SortOrderTextEdit.TabIndex = 5;
             // 
             // DatasourceTextEdit
             // 
             this.DatasourceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "Datasource", true));
-            this.DatasourceTextEdit.Location = new System.Drawing.Point(222, 63);
+            this.DatasourceTextEdit.Location = new System.Drawing.Point(254, 71);
+            this.DatasourceTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DatasourceTextEdit.Name = "DatasourceTextEdit";
-            this.DatasourceTextEdit.Size = new System.Drawing.Size(289, 20);
+            this.DatasourceTextEdit.Size = new System.Drawing.Size(276, 22);
             this.DatasourceTextEdit.StyleController = this.dataLayoutControl1;
             this.DatasourceTextEdit.TabIndex = 6;
             // 
             // InitialCatalogTextEdit
             // 
             this.InitialCatalogTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "InitialCatalog", true));
-            this.InitialCatalogTextEdit.Location = new System.Drawing.Point(222, 87);
+            this.InitialCatalogTextEdit.Location = new System.Drawing.Point(254, 97);
+            this.InitialCatalogTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InitialCatalogTextEdit.Name = "InitialCatalogTextEdit";
-            this.InitialCatalogTextEdit.Size = new System.Drawing.Size(289, 20);
+            this.InitialCatalogTextEdit.Size = new System.Drawing.Size(276, 22);
             this.InitialCatalogTextEdit.StyleController = this.dataLayoutControl1;
             this.InitialCatalogTextEdit.TabIndex = 7;
             // 
             // PersistSecurityInfoCheckEdit
             // 
             this.PersistSecurityInfoCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "PersistSecurityInfo", true));
-            this.PersistSecurityInfoCheckEdit.Location = new System.Drawing.Point(273, 281);
+            this.PersistSecurityInfoCheckEdit.Location = new System.Drawing.Point(284, 325);
+            this.PersistSecurityInfoCheckEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PersistSecurityInfoCheckEdit.Name = "PersistSecurityInfoCheckEdit";
             this.PersistSecurityInfoCheckEdit.Properties.AllowGrayed = true;
             this.PersistSecurityInfoCheckEdit.Properties.Caption = "Persist Security Info";
             this.PersistSecurityInfoCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
-            this.PersistSecurityInfoCheckEdit.Size = new System.Drawing.Size(238, 20);
+            this.PersistSecurityInfoCheckEdit.Size = new System.Drawing.Size(246, 24);
             this.PersistSecurityInfoCheckEdit.StyleController = this.dataLayoutControl1;
             this.PersistSecurityInfoCheckEdit.TabIndex = 8;
             // 
             // UserIDTextEdit
             // 
             this.UserIDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "UserID", true));
-            this.UserIDTextEdit.Location = new System.Drawing.Point(128, 184);
+            this.UserIDTextEdit.Location = new System.Drawing.Point(144, 218);
+            this.UserIDTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.UserIDTextEdit.Name = "UserIDTextEdit";
-            this.UserIDTextEdit.Size = new System.Drawing.Size(383, 20);
+            this.UserIDTextEdit.Size = new System.Drawing.Size(386, 22);
             this.UserIDTextEdit.StyleController = this.dataLayoutControl1;
             this.UserIDTextEdit.TabIndex = 9;
             // 
             // ConnectRetryCountTextEdit
             // 
             this.ConnectRetryCountTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "ConnectRetryCount", true));
-            this.ConnectRetryCountTextEdit.Location = new System.Drawing.Point(128, 305);
+            this.ConnectRetryCountTextEdit.Location = new System.Drawing.Point(144, 351);
+            this.ConnectRetryCountTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConnectRetryCountTextEdit.Name = "ConnectRetryCountTextEdit";
             this.ConnectRetryCountTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.ConnectRetryCountTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -556,14 +613,15 @@
             this.ConnectRetryCountTextEdit.Properties.Mask.EditMask = "N0";
             this.ConnectRetryCountTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.ConnectRetryCountTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.ConnectRetryCountTextEdit.Size = new System.Drawing.Size(131, 20);
+            this.ConnectRetryCountTextEdit.Size = new System.Drawing.Size(124, 22);
             this.ConnectRetryCountTextEdit.StyleController = this.dataLayoutControl1;
             this.ConnectRetryCountTextEdit.TabIndex = 11;
             // 
             // ConnectRetryIntervalTextEdit
             // 
             this.ConnectRetryIntervalTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "ConnectRetryInterval", true));
-            this.ConnectRetryIntervalTextEdit.Location = new System.Drawing.Point(128, 329);
+            this.ConnectRetryIntervalTextEdit.Location = new System.Drawing.Point(144, 377);
+            this.ConnectRetryIntervalTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConnectRetryIntervalTextEdit.Name = "ConnectRetryIntervalTextEdit";
             this.ConnectRetryIntervalTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.ConnectRetryIntervalTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -571,14 +629,15 @@
             this.ConnectRetryIntervalTextEdit.Properties.Mask.EditMask = "N0";
             this.ConnectRetryIntervalTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.ConnectRetryIntervalTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.ConnectRetryIntervalTextEdit.Size = new System.Drawing.Size(131, 20);
+            this.ConnectRetryIntervalTextEdit.Size = new System.Drawing.Size(124, 22);
             this.ConnectRetryIntervalTextEdit.StyleController = this.dataLayoutControl1;
             this.ConnectRetryIntervalTextEdit.TabIndex = 12;
             // 
             // ConnectTimeoutTextEdit
             // 
             this.ConnectTimeoutTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "ConnectTimeout", true));
-            this.ConnectTimeoutTextEdit.Location = new System.Drawing.Point(128, 353);
+            this.ConnectTimeoutTextEdit.Location = new System.Drawing.Point(144, 403);
+            this.ConnectTimeoutTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConnectTimeoutTextEdit.Name = "ConnectTimeoutTextEdit";
             this.ConnectTimeoutTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.ConnectTimeoutTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -586,59 +645,64 @@
             this.ConnectTimeoutTextEdit.Properties.Mask.EditMask = "N0";
             this.ConnectTimeoutTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.ConnectTimeoutTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.ConnectTimeoutTextEdit.Size = new System.Drawing.Size(131, 20);
+            this.ConnectTimeoutTextEdit.Size = new System.Drawing.Size(124, 22);
             this.ConnectTimeoutTextEdit.StyleController = this.dataLayoutControl1;
             this.ConnectTimeoutTextEdit.TabIndex = 13;
             // 
             // EncryptCheckEdit
             // 
             this.EncryptCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "Encrypt", true));
-            this.EncryptCheckEdit.Location = new System.Drawing.Point(273, 353);
+            this.EncryptCheckEdit.Location = new System.Drawing.Point(284, 409);
+            this.EncryptCheckEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.EncryptCheckEdit.Name = "EncryptCheckEdit";
             this.EncryptCheckEdit.Properties.AllowGrayed = true;
             this.EncryptCheckEdit.Properties.Caption = "Encrypt";
             this.EncryptCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
-            this.EncryptCheckEdit.Size = new System.Drawing.Size(238, 20);
+            this.EncryptCheckEdit.Size = new System.Drawing.Size(246, 24);
             this.EncryptCheckEdit.StyleController = this.dataLayoutControl1;
             this.EncryptCheckEdit.TabIndex = 14;
             // 
             // FailoverPartnerTextEdit
             // 
             this.FailoverPartnerTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "FailoverPartner", true));
-            this.FailoverPartnerTextEdit.Location = new System.Drawing.Point(222, 111);
+            this.FailoverPartnerTextEdit.Location = new System.Drawing.Point(254, 123);
+            this.FailoverPartnerTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FailoverPartnerTextEdit.Name = "FailoverPartnerTextEdit";
-            this.FailoverPartnerTextEdit.Size = new System.Drawing.Size(289, 20);
+            this.FailoverPartnerTextEdit.Size = new System.Drawing.Size(276, 22);
             this.FailoverPartnerTextEdit.StyleController = this.dataLayoutControl1;
             this.FailoverPartnerTextEdit.TabIndex = 15;
             // 
             // IntegratedSecurityCheckEdit
             // 
             this.IntegratedSecurityCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "IntegratedSecurity", true));
-            this.IntegratedSecurityCheckEdit.Location = new System.Drawing.Point(273, 305);
+            this.IntegratedSecurityCheckEdit.Location = new System.Drawing.Point(284, 353);
+            this.IntegratedSecurityCheckEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.IntegratedSecurityCheckEdit.Name = "IntegratedSecurityCheckEdit";
             this.IntegratedSecurityCheckEdit.Properties.AllowGrayed = true;
             this.IntegratedSecurityCheckEdit.Properties.Caption = "Integrated Security";
             this.IntegratedSecurityCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
-            this.IntegratedSecurityCheckEdit.Size = new System.Drawing.Size(238, 20);
+            this.IntegratedSecurityCheckEdit.Size = new System.Drawing.Size(246, 24);
             this.IntegratedSecurityCheckEdit.StyleController = this.dataLayoutControl1;
             this.IntegratedSecurityCheckEdit.TabIndex = 16;
             // 
             // PoolingCheckEdit
             // 
             this.PoolingCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "Pooling", true));
-            this.PoolingCheckEdit.Location = new System.Drawing.Point(273, 329);
+            this.PoolingCheckEdit.Location = new System.Drawing.Point(284, 381);
+            this.PoolingCheckEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PoolingCheckEdit.Name = "PoolingCheckEdit";
             this.PoolingCheckEdit.Properties.AllowGrayed = true;
             this.PoolingCheckEdit.Properties.Caption = "Pooling";
             this.PoolingCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
-            this.PoolingCheckEdit.Size = new System.Drawing.Size(238, 20);
+            this.PoolingCheckEdit.Size = new System.Drawing.Size(246, 24);
             this.PoolingCheckEdit.StyleController = this.dataLayoutControl1;
             this.PoolingCheckEdit.TabIndex = 17;
             // 
             // PacketSizeTextEdit
             // 
             this.PacketSizeTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "PacketSize", true));
-            this.PacketSizeTextEdit.Location = new System.Drawing.Point(128, 281);
+            this.PacketSizeTextEdit.Location = new System.Drawing.Point(144, 325);
+            this.PacketSizeTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PacketSizeTextEdit.Name = "PacketSizeTextEdit";
             this.PacketSizeTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.PacketSizeTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -646,17 +710,18 @@
             this.PacketSizeTextEdit.Properties.Mask.EditMask = "N0";
             this.PacketSizeTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.PacketSizeTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.PacketSizeTextEdit.Size = new System.Drawing.Size(131, 20);
+            this.PacketSizeTextEdit.Size = new System.Drawing.Size(124, 22);
             this.PacketSizeTextEdit.StyleController = this.dataLayoutControl1;
             this.PacketSizeTextEdit.TabIndex = 18;
             // 
             // ImagePictureEdit
             // 
             this.ImagePictureEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "Image", true));
-            this.ImagePictureEdit.Location = new System.Drawing.Point(14, 39);
+            this.ImagePictureEdit.Location = new System.Drawing.Point(14, 45);
+            this.ImagePictureEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ImagePictureEdit.Name = "ImagePictureEdit";
             this.ImagePictureEdit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.ImagePictureEdit.Size = new System.Drawing.Size(90, 92);
+            this.ImagePictureEdit.Size = new System.Drawing.Size(106, 114);
             this.ImagePictureEdit.StyleController = this.dataLayoutControl1;
             this.ImagePictureEdit.TabIndex = 19;
             this.ImagePictureEdit.PopupMenuShowing += new DevExpress.XtraEditors.Events.PopupMenuShowingEventHandler(this.picMenu1_PopupMenuShowing);
@@ -664,13 +729,15 @@
             // PasswordTextEdit
             // 
             this.PasswordTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientBindingSource, "Password", true));
-            this.PasswordTextEdit.Location = new System.Drawing.Point(128, 208);
+            this.PasswordTextEdit.Location = new System.Drawing.Point(144, 244);
+            this.PasswordTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PasswordTextEdit.Name = "PasswordTextEdit";
-            editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
             this.PasswordTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PasswordTextEdit.Properties.UseSystemPasswordChar = true;
-            this.PasswordTextEdit.Size = new System.Drawing.Size(383, 20);
+            this.PasswordTextEdit.Size = new System.Drawing.Size(386, 22);
             this.PasswordTextEdit.StyleController = this.dataLayoutControl1;
             this.PasswordTextEdit.TabIndex = 10;
             this.PasswordTextEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnEditPassword_ButtonClick);
@@ -683,7 +750,7 @@
             this.layoutControlGroup2});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(525, 511);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(544, 630);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -696,7 +763,7 @@
             this.lcgSettings});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(525, 511);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(544, 630);
             // 
             // lcgDatabase
             // 
@@ -709,53 +776,53 @@
             this.ItemForFailoverPartner});
             this.lcgDatabase.Location = new System.Drawing.Point(0, 0);
             this.lcgDatabase.Name = "lcgDatabase";
-            this.lcgDatabase.Size = new System.Drawing.Size(525, 145);
+            this.lcgDatabase.Size = new System.Drawing.Size(544, 173);
             this.lcgDatabase.Text = "Datenbank";
             // 
             // ItemForName
             // 
             this.ItemForName.Control = this.NameTextEdit;
-            this.ItemForName.Location = new System.Drawing.Point(94, 0);
+            this.ItemForName.Location = new System.Drawing.Point(110, 0);
             this.ItemForName.Name = "ItemForName";
-            this.ItemForName.Size = new System.Drawing.Size(221, 24);
+            this.ItemForName.Size = new System.Drawing.Size(205, 26);
             this.ItemForName.Text = "Name";
-            this.ItemForName.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForName.TextSize = new System.Drawing.Size(127, 16);
             // 
             // ItemForSortOrder
             // 
             this.ItemForSortOrder.Control = this.SortOrderTextEdit;
             this.ItemForSortOrder.Location = new System.Drawing.Point(315, 0);
             this.ItemForSortOrder.Name = "ItemForSortOrder";
-            this.ItemForSortOrder.Size = new System.Drawing.Size(186, 24);
+            this.ItemForSortOrder.Size = new System.Drawing.Size(205, 26);
             this.ItemForSortOrder.Text = "Sort Order";
-            this.ItemForSortOrder.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForSortOrder.TextSize = new System.Drawing.Size(127, 16);
             // 
             // ItemForDatasource
             // 
             this.ItemForDatasource.Control = this.DatasourceTextEdit;
-            this.ItemForDatasource.Location = new System.Drawing.Point(94, 24);
+            this.ItemForDatasource.Location = new System.Drawing.Point(110, 26);
             this.ItemForDatasource.Name = "ItemForDatasource";
-            this.ItemForDatasource.Size = new System.Drawing.Size(407, 24);
+            this.ItemForDatasource.Size = new System.Drawing.Size(410, 26);
             this.ItemForDatasource.Text = "Datasource";
-            this.ItemForDatasource.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForDatasource.TextSize = new System.Drawing.Size(127, 16);
             // 
             // ItemForInitialCatalog
             // 
             this.ItemForInitialCatalog.Control = this.InitialCatalogTextEdit;
-            this.ItemForInitialCatalog.Location = new System.Drawing.Point(94, 48);
+            this.ItemForInitialCatalog.Location = new System.Drawing.Point(110, 52);
             this.ItemForInitialCatalog.Name = "ItemForInitialCatalog";
-            this.ItemForInitialCatalog.Size = new System.Drawing.Size(407, 24);
+            this.ItemForInitialCatalog.Size = new System.Drawing.Size(410, 26);
             this.ItemForInitialCatalog.Text = "Initial Catalog";
-            this.ItemForInitialCatalog.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForInitialCatalog.TextSize = new System.Drawing.Size(127, 16);
             // 
             // ItemForImage
             // 
             this.ItemForImage.Control = this.ImagePictureEdit;
             this.ItemForImage.Location = new System.Drawing.Point(0, 0);
-            this.ItemForImage.MaxSize = new System.Drawing.Size(94, 96);
-            this.ItemForImage.MinSize = new System.Drawing.Size(94, 96);
+            this.ItemForImage.MaxSize = new System.Drawing.Size(110, 118);
+            this.ItemForImage.MinSize = new System.Drawing.Size(110, 118);
             this.ItemForImage.Name = "ItemForImage";
-            this.ItemForImage.Size = new System.Drawing.Size(94, 96);
+            this.ItemForImage.Size = new System.Drawing.Size(110, 118);
             this.ItemForImage.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.ItemForImage.StartNewLine = true;
             this.ItemForImage.Text = "Image";
@@ -765,11 +832,11 @@
             // ItemForFailoverPartner
             // 
             this.ItemForFailoverPartner.Control = this.FailoverPartnerTextEdit;
-            this.ItemForFailoverPartner.Location = new System.Drawing.Point(94, 72);
+            this.ItemForFailoverPartner.Location = new System.Drawing.Point(110, 78);
             this.ItemForFailoverPartner.Name = "ItemForFailoverPartner";
-            this.ItemForFailoverPartner.Size = new System.Drawing.Size(407, 24);
+            this.ItemForFailoverPartner.Size = new System.Drawing.Size(410, 40);
             this.ItemForFailoverPartner.Text = "Failover Partner";
-            this.ItemForFailoverPartner.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForFailoverPartner.TextSize = new System.Drawing.Size(127, 16);
             // 
             // lcgCredentials
             // 
@@ -777,9 +844,9 @@
             this.lcgCredentials.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.ItemForUserID,
             this.ItemForPassword});
-            this.lcgCredentials.Location = new System.Drawing.Point(0, 145);
+            this.lcgCredentials.Location = new System.Drawing.Point(0, 173);
             this.lcgCredentials.Name = "lcgCredentials";
-            this.lcgCredentials.Size = new System.Drawing.Size(525, 97);
+            this.lcgCredentials.Size = new System.Drawing.Size(544, 107);
             this.lcgCredentials.Text = "Zugangsdaten";
             // 
             // ItemForUserID
@@ -787,18 +854,18 @@
             this.ItemForUserID.Control = this.UserIDTextEdit;
             this.ItemForUserID.Location = new System.Drawing.Point(0, 0);
             this.ItemForUserID.Name = "ItemForUserID";
-            this.ItemForUserID.Size = new System.Drawing.Size(501, 24);
+            this.ItemForUserID.Size = new System.Drawing.Size(520, 26);
             this.ItemForUserID.Text = "User ID";
-            this.ItemForUserID.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForUserID.TextSize = new System.Drawing.Size(127, 16);
             // 
             // ItemForPassword
             // 
             this.ItemForPassword.Control = this.PasswordTextEdit;
-            this.ItemForPassword.Location = new System.Drawing.Point(0, 24);
+            this.ItemForPassword.Location = new System.Drawing.Point(0, 26);
             this.ItemForPassword.Name = "ItemForPassword";
-            this.ItemForPassword.Size = new System.Drawing.Size(501, 24);
+            this.ItemForPassword.Size = new System.Drawing.Size(520, 26);
             this.ItemForPassword.Text = "Password";
-            this.ItemForPassword.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForPassword.TextSize = new System.Drawing.Size(127, 16);
             // 
             // lcgSettings
             // 
@@ -813,9 +880,9 @@
             this.ItemForPooling,
             this.ItemForEncrypt,
             this.splitterItem1});
-            this.lcgSettings.Location = new System.Drawing.Point(0, 242);
+            this.lcgSettings.Location = new System.Drawing.Point(0, 280);
             this.lcgSettings.Name = "lcgSettings";
-            this.lcgSettings.Size = new System.Drawing.Size(525, 269);
+            this.lcgSettings.Size = new System.Drawing.Size(544, 350);
             this.lcgSettings.Text = "Datenbankeinstellungen";
             // 
             // ItemForPacketSize
@@ -823,43 +890,43 @@
             this.ItemForPacketSize.Control = this.PacketSizeTextEdit;
             this.ItemForPacketSize.Location = new System.Drawing.Point(0, 0);
             this.ItemForPacketSize.Name = "ItemForPacketSize";
-            this.ItemForPacketSize.Size = new System.Drawing.Size(249, 24);
+            this.ItemForPacketSize.Size = new System.Drawing.Size(258, 26);
             this.ItemForPacketSize.Text = "Packet Size";
-            this.ItemForPacketSize.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForPacketSize.TextSize = new System.Drawing.Size(127, 16);
             // 
             // ItemForConnectRetryCount
             // 
             this.ItemForConnectRetryCount.Control = this.ConnectRetryCountTextEdit;
-            this.ItemForConnectRetryCount.Location = new System.Drawing.Point(0, 24);
+            this.ItemForConnectRetryCount.Location = new System.Drawing.Point(0, 26);
             this.ItemForConnectRetryCount.Name = "ItemForConnectRetryCount";
-            this.ItemForConnectRetryCount.Size = new System.Drawing.Size(249, 24);
+            this.ItemForConnectRetryCount.Size = new System.Drawing.Size(258, 26);
             this.ItemForConnectRetryCount.Text = "Connect Retry Count";
-            this.ItemForConnectRetryCount.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForConnectRetryCount.TextSize = new System.Drawing.Size(127, 16);
             // 
             // ItemForConnectRetryInterval
             // 
             this.ItemForConnectRetryInterval.Control = this.ConnectRetryIntervalTextEdit;
-            this.ItemForConnectRetryInterval.Location = new System.Drawing.Point(0, 48);
+            this.ItemForConnectRetryInterval.Location = new System.Drawing.Point(0, 52);
             this.ItemForConnectRetryInterval.Name = "ItemForConnectRetryInterval";
-            this.ItemForConnectRetryInterval.Size = new System.Drawing.Size(249, 24);
+            this.ItemForConnectRetryInterval.Size = new System.Drawing.Size(258, 26);
             this.ItemForConnectRetryInterval.Text = "Connect Retry Interval";
-            this.ItemForConnectRetryInterval.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForConnectRetryInterval.TextSize = new System.Drawing.Size(127, 16);
             // 
             // ItemForConnectTimeout
             // 
             this.ItemForConnectTimeout.Control = this.ConnectTimeoutTextEdit;
-            this.ItemForConnectTimeout.Location = new System.Drawing.Point(0, 72);
+            this.ItemForConnectTimeout.Location = new System.Drawing.Point(0, 78);
             this.ItemForConnectTimeout.Name = "ItemForConnectTimeout";
-            this.ItemForConnectTimeout.Size = new System.Drawing.Size(249, 148);
+            this.ItemForConnectTimeout.Size = new System.Drawing.Size(258, 217);
             this.ItemForConnectTimeout.Text = "Connect Timeout";
-            this.ItemForConnectTimeout.TextSize = new System.Drawing.Size(111, 13);
+            this.ItemForConnectTimeout.TextSize = new System.Drawing.Size(127, 16);
             // 
             // ItemForPersistSecurityInfo
             // 
             this.ItemForPersistSecurityInfo.Control = this.PersistSecurityInfoCheckEdit;
-            this.ItemForPersistSecurityInfo.Location = new System.Drawing.Point(259, 0);
+            this.ItemForPersistSecurityInfo.Location = new System.Drawing.Point(270, 0);
             this.ItemForPersistSecurityInfo.Name = "ItemForPersistSecurityInfo";
-            this.ItemForPersistSecurityInfo.Size = new System.Drawing.Size(242, 24);
+            this.ItemForPersistSecurityInfo.Size = new System.Drawing.Size(250, 28);
             this.ItemForPersistSecurityInfo.Text = "Persist Security Info";
             this.ItemForPersistSecurityInfo.TextSize = new System.Drawing.Size(0, 0);
             this.ItemForPersistSecurityInfo.TextVisible = false;
@@ -867,9 +934,9 @@
             // ItemForIntegratedSecurity
             // 
             this.ItemForIntegratedSecurity.Control = this.IntegratedSecurityCheckEdit;
-            this.ItemForIntegratedSecurity.Location = new System.Drawing.Point(259, 24);
+            this.ItemForIntegratedSecurity.Location = new System.Drawing.Point(270, 28);
             this.ItemForIntegratedSecurity.Name = "ItemForIntegratedSecurity";
-            this.ItemForIntegratedSecurity.Size = new System.Drawing.Size(242, 24);
+            this.ItemForIntegratedSecurity.Size = new System.Drawing.Size(250, 28);
             this.ItemForIntegratedSecurity.Text = "Integrated Security";
             this.ItemForIntegratedSecurity.TextSize = new System.Drawing.Size(0, 0);
             this.ItemForIntegratedSecurity.TextVisible = false;
@@ -877,9 +944,9 @@
             // ItemForPooling
             // 
             this.ItemForPooling.Control = this.PoolingCheckEdit;
-            this.ItemForPooling.Location = new System.Drawing.Point(259, 48);
+            this.ItemForPooling.Location = new System.Drawing.Point(270, 56);
             this.ItemForPooling.Name = "ItemForPooling";
-            this.ItemForPooling.Size = new System.Drawing.Size(242, 24);
+            this.ItemForPooling.Size = new System.Drawing.Size(250, 28);
             this.ItemForPooling.Text = "Pooling";
             this.ItemForPooling.TextSize = new System.Drawing.Size(0, 0);
             this.ItemForPooling.TextVisible = false;
@@ -887,9 +954,9 @@
             // ItemForEncrypt
             // 
             this.ItemForEncrypt.Control = this.EncryptCheckEdit;
-            this.ItemForEncrypt.Location = new System.Drawing.Point(259, 72);
+            this.ItemForEncrypt.Location = new System.Drawing.Point(270, 84);
             this.ItemForEncrypt.Name = "ItemForEncrypt";
-            this.ItemForEncrypt.Size = new System.Drawing.Size(242, 148);
+            this.ItemForEncrypt.Size = new System.Drawing.Size(250, 211);
             this.ItemForEncrypt.Text = "Encrypt";
             this.ItemForEncrypt.TextSize = new System.Drawing.Size(0, 0);
             this.ItemForEncrypt.TextVisible = false;
@@ -897,22 +964,23 @@
             // splitterItem1
             // 
             this.splitterItem1.AllowHotTrack = true;
-            this.splitterItem1.Location = new System.Drawing.Point(249, 0);
+            this.splitterItem1.Location = new System.Drawing.Point(258, 0);
             this.splitterItem1.Name = "splitterItem1";
-            this.splitterItem1.Size = new System.Drawing.Size(10, 220);
+            this.splitterItem1.Size = new System.Drawing.Size(12, 295);
             // 
             // splitControlMenu
             // 
             this.splitControlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitControlMenu.Horizontal = false;
             this.splitControlMenu.Location = new System.Drawing.Point(0, 0);
+            this.splitControlMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitControlMenu.Name = "splitControlMenu";
             this.splitControlMenu.Panel1.Controls.Add(this.groupControlMenu);
             this.splitControlMenu.Panel1.Text = "Panel1";
             this.splitControlMenu.Panel2.Controls.Add(this.dataLayoutControl2);
             this.splitControlMenu.Panel2.Text = "Panel2";
-            this.splitControlMenu.Size = new System.Drawing.Size(490, 690);
-            this.splitControlMenu.SplitterPosition = 413;
+            this.splitControlMenu.Size = new System.Drawing.Size(640, 850);
+            this.splitControlMenu.SplitterPosition = 508;
             this.splitControlMenu.TabIndex = 0;
             // 
             // groupControlMenu
@@ -921,8 +989,9 @@
             this.groupControlMenu.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlMenu.Location = new System.Drawing.Point(0, 0);
+            this.groupControlMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupControlMenu.Name = "groupControlMenu";
-            this.groupControlMenu.Size = new System.Drawing.Size(490, 413);
+            this.groupControlMenu.Size = new System.Drawing.Size(640, 508);
             this.groupControlMenu.TabIndex = 0;
             this.groupControlMenu.Text = "Menüstruktur";
             // 
@@ -939,82 +1008,119 @@
             this.colFKUserCreated1,
             this.colChangedOn1,
             this.colFKUserChangedOn1,
-            this.colUniqueIdentifier1});
+            this.colUniqueIdentifier1,
+            this.colNamespace});
             this.treeMenu.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeMenu.DataSource = this.tsysClientElementBindingSource;
             this.treeMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeMenu.Location = new System.Drawing.Point(2, 27);
+            this.treeMenu.Location = new System.Drawing.Point(2, 33);
+            this.treeMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.treeMenu.MinWidth = 23;
             this.treeMenu.Name = "treeMenu";
             this.treeMenu.OptionsBehavior.AutoNodeHeight = false;
+            this.treeMenu.OptionsBehavior.PopulateServiceColumns = true;
             this.treeMenu.OptionsDragAndDrop.CanCloneNodesOnDrop = true;
             this.treeMenu.OptionsDragAndDrop.DragNodesMode = DevExpress.XtraTreeList.DragNodesMode.Single;
             this.treeMenu.PreviewFieldName = "ParentID";
-            this.treeMenu.Size = new System.Drawing.Size(486, 384);
+            this.treeMenu.Size = new System.Drawing.Size(636, 473);
             this.treeMenu.TabIndex = 0;
+            this.treeMenu.TreeLevelWidth = 21;
             this.treeMenu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeMenu_KeyDown);
             // 
             // colPKClientElement
             // 
             this.colPKClientElement.FieldName = "PKClientElement";
+            this.colPKClientElement.MinWidth = 27;
             this.colPKClientElement.Name = "colPKClientElement";
+            this.colPKClientElement.Width = 101;
             // 
             // colFKExternal
             // 
             this.colFKExternal.FieldName = "FKExternal";
+            this.colFKExternal.MinWidth = 27;
             this.colFKExternal.Name = "colFKExternal";
             this.colFKExternal.Visible = true;
-            this.colFKExternal.VisibleIndex = 3;
+            this.colFKExternal.VisibleIndex = 4;
+            this.colFKExternal.Width = 101;
             // 
             // colSortOrder1
             // 
             this.colSortOrder1.FieldName = "SortOrder";
+            this.colSortOrder1.MinWidth = 27;
             this.colSortOrder1.Name = "colSortOrder1";
+            this.colSortOrder1.Width = 101;
             // 
             // colName1
             // 
             this.colName1.FieldName = "Name";
+            this.colName1.MinWidth = 27;
             this.colName1.Name = "colName1";
             this.colName1.Visible = true;
             this.colName1.VisibleIndex = 1;
+            this.colName1.Width = 101;
             // 
             // colImage1
             // 
             this.colImage1.FieldName = "Image";
+            this.colImage1.MinWidth = 27;
             this.colImage1.Name = "colImage1";
             this.colImage1.Visible = true;
             this.colImage1.VisibleIndex = 0;
+            this.colImage1.Width = 101;
             // 
             // colAssemblyname
             // 
             this.colAssemblyname.FieldName = "Assemblyname";
+            this.colAssemblyname.MinWidth = 27;
             this.colAssemblyname.Name = "colAssemblyname";
             this.colAssemblyname.Visible = true;
             this.colAssemblyname.VisibleIndex = 2;
+            this.colAssemblyname.Width = 101;
             // 
             // colCreatedOn1
             // 
             this.colCreatedOn1.FieldName = "CreatedOn";
+            this.colCreatedOn1.MinWidth = 27;
             this.colCreatedOn1.Name = "colCreatedOn1";
+            this.colCreatedOn1.Width = 101;
             // 
             // colFKUserCreated1
             // 
             this.colFKUserCreated1.FieldName = "FKUserCreated";
+            this.colFKUserCreated1.MinWidth = 27;
             this.colFKUserCreated1.Name = "colFKUserCreated1";
+            this.colFKUserCreated1.Width = 101;
             // 
             // colChangedOn1
             // 
             this.colChangedOn1.FieldName = "ChangedOn";
+            this.colChangedOn1.MinWidth = 27;
             this.colChangedOn1.Name = "colChangedOn1";
+            this.colChangedOn1.Width = 101;
             // 
             // colFKUserChangedOn1
             // 
             this.colFKUserChangedOn1.FieldName = "FKUserChangedOn";
+            this.colFKUserChangedOn1.MinWidth = 27;
             this.colFKUserChangedOn1.Name = "colFKUserChangedOn1";
+            this.colFKUserChangedOn1.Width = 101;
             // 
             // colUniqueIdentifier1
             // 
             this.colUniqueIdentifier1.FieldName = "UniqueIdentifier";
+            this.colUniqueIdentifier1.MinWidth = 27;
             this.colUniqueIdentifier1.Name = "colUniqueIdentifier1";
+            this.colUniqueIdentifier1.Width = 101;
+            // 
+            // colNamespace
+            // 
+            this.colNamespace.Caption = "Namespace";
+            this.colNamespace.FieldName = "Namespace";
+            this.colNamespace.MinWidth = 23;
+            this.colNamespace.Name = "colNamespace";
+            this.colNamespace.Visible = true;
+            this.colNamespace.VisibleIndex = 3;
+            this.colNamespace.Width = 87;
             // 
             // tsysClientElementBindingSource
             // 
@@ -1030,16 +1136,18 @@
             this.dataLayoutControl2.DataSource = this.tsysClientElementBindingSource;
             this.dataLayoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl2.Location = new System.Drawing.Point(0, 0);
+            this.dataLayoutControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataLayoutControl2.Name = "dataLayoutControl2";
             this.dataLayoutControl2.Root = this.layoutControlGroup3;
-            this.dataLayoutControl2.Size = new System.Drawing.Size(490, 267);
+            this.dataLayoutControl2.Size = new System.Drawing.Size(640, 330);
             this.dataLayoutControl2.TabIndex = 0;
             this.dataLayoutControl2.Text = "dataLayoutControl2";
             // 
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "SortOrder", true));
-            this.textEdit1.Location = new System.Drawing.Point(417, 39);
+            this.textEdit1.Location = new System.Drawing.Point(531, 45);
+            this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.textEdit1.Properties.Appearance.Options.UseTextOptions = true;
@@ -1047,26 +1155,28 @@
             this.textEdit1.Properties.Mask.EditMask = "N0";
             this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.textEdit1.Size = new System.Drawing.Size(59, 20);
+            this.textEdit1.Size = new System.Drawing.Size(95, 22);
             this.textEdit1.StyleController = this.dataLayoutControl2;
             this.textEdit1.TabIndex = 4;
             // 
             // textEdit2
             // 
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "Name", true));
-            this.textEdit2.Location = new System.Drawing.Point(195, 39);
+            this.textEdit2.Location = new System.Drawing.Point(228, 45);
+            this.textEdit2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(144, 20);
+            this.textEdit2.Size = new System.Drawing.Size(210, 22);
             this.textEdit2.StyleController = this.dataLayoutControl2;
             this.textEdit2.TabIndex = 5;
             // 
             // pictureEdit1
             // 
             this.pictureEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "Image", true));
-            this.pictureEdit1.Location = new System.Drawing.Point(14, 39);
+            this.pictureEdit1.Location = new System.Drawing.Point(14, 45);
+            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit1.Size = new System.Drawing.Size(103, 103);
+            this.pictureEdit1.Size = new System.Drawing.Size(121, 128);
             this.pictureEdit1.StyleController = this.dataLayoutControl2;
             this.pictureEdit1.TabIndex = 6;
             this.pictureEdit1.PopupMenuShowing += new DevExpress.XtraEditors.Events.PopupMenuShowingEventHandler(this.picMenu_PopupMenuShowing);
@@ -1074,9 +1184,10 @@
             // AssemblynameTextEdit
             // 
             this.AssemblynameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tsysClientElementBindingSource, "Assemblyname", true));
-            this.AssemblynameTextEdit.Location = new System.Drawing.Point(195, 63);
+            this.AssemblynameTextEdit.Location = new System.Drawing.Point(228, 71);
+            this.AssemblynameTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AssemblynameTextEdit.Name = "AssemblynameTextEdit";
-            this.AssemblynameTextEdit.Size = new System.Drawing.Size(281, 20);
+            this.AssemblynameTextEdit.Size = new System.Drawing.Size(398, 22);
             this.AssemblynameTextEdit.StyleController = this.dataLayoutControl2;
             this.AssemblynameTextEdit.TabIndex = 7;
             // 
@@ -1088,7 +1199,7 @@
             this.layoutControlGroup6});
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlGroup3.Size = new System.Drawing.Size(490, 267);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(640, 330);
             this.layoutControlGroup3.TextVisible = false;
             // 
             // layoutControlGroup6
@@ -1099,7 +1210,7 @@
             this.lcgMenuDetails});
             this.layoutControlGroup6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup6.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(490, 267);
+            this.layoutControlGroup6.Size = new System.Drawing.Size(640, 330);
             // 
             // lcgMenuDetails
             // 
@@ -1113,44 +1224,44 @@
             this.emptySpaceItem2});
             this.lcgMenuDetails.Location = new System.Drawing.Point(0, 0);
             this.lcgMenuDetails.Name = "lcgMenuDetails";
-            this.lcgMenuDetails.Size = new System.Drawing.Size(490, 267);
+            this.lcgMenuDetails.Size = new System.Drawing.Size(640, 330);
             this.lcgMenuDetails.Text = "Details";
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.textEdit1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(329, 0);
+            this.layoutControlItem1.Location = new System.Drawing.Point(428, 0);
             this.layoutControlItem1.Name = "ItemForSortOrder";
-            this.layoutControlItem1.Size = new System.Drawing.Size(137, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(188, 26);
             this.layoutControlItem1.Text = "Sort Order";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(71, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(86, 16);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.textEdit2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(107, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(125, 0);
             this.layoutControlItem2.Name = "ItemForName";
-            this.layoutControlItem2.Size = new System.Drawing.Size(222, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(303, 26);
             this.layoutControlItem2.Text = "Name";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(71, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(86, 16);
             // 
             // ItemForAssemblyname
             // 
             this.ItemForAssemblyname.Control = this.AssemblynameTextEdit;
-            this.ItemForAssemblyname.Location = new System.Drawing.Point(107, 24);
+            this.ItemForAssemblyname.Location = new System.Drawing.Point(125, 26);
             this.ItemForAssemblyname.Name = "ItemForAssemblyname";
-            this.ItemForAssemblyname.Size = new System.Drawing.Size(359, 24);
+            this.ItemForAssemblyname.Size = new System.Drawing.Size(491, 26);
             this.ItemForAssemblyname.Text = "Assemblyname";
-            this.ItemForAssemblyname.TextSize = new System.Drawing.Size(71, 13);
+            this.ItemForAssemblyname.TextSize = new System.Drawing.Size(86, 16);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.pictureEdit1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem3.MaxSize = new System.Drawing.Size(107, 107);
-            this.layoutControlItem3.MinSize = new System.Drawing.Size(107, 107);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(125, 132);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(125, 132);
             this.layoutControlItem3.Name = "ItemForImage";
-            this.layoutControlItem3.Size = new System.Drawing.Size(107, 107);
+            this.layoutControlItem3.Size = new System.Drawing.Size(125, 132);
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.StartNewLine = true;
             this.layoutControlItem3.Text = "Image";
@@ -1160,17 +1271,17 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(107, 48);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(125, 52);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(359, 59);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(491, 80);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 107);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 132);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(466, 111);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(616, 143);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // popupMenuClient
@@ -1232,15 +1343,17 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1029, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(1200, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 729);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 897);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1029, 0);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1200, 0);
             // 
             // barDockControlLeft
             // 
@@ -1248,15 +1361,17 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 729);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 897);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1029, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1200, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 729);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 897);
             // 
             // btnAddMenu
             // 
@@ -1301,15 +1416,16 @@
             // 
             // ucMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ucDefault1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ucMenu";
-            this.Size = new System.Drawing.Size(1029, 729);
+            this.Size = new System.Drawing.Size(1200, 897);
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.WorkingArea)).EndInit();
             this.ucDefault1.WorkingArea.ResumeLayout(false);
@@ -1504,5 +1620,6 @@
         private DevExpress.XtraBars.PopupMenu popupMenuTree;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colNamespace;
     }
 }

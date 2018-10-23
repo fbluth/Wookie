@@ -24,6 +24,7 @@ namespace Wookie.Menu
         };
         private IAssemblyInstance assemblyInstance = null;
         private string assemblyFile = null;
+        private string nameSpace = null;
         private SqlConnection sqlConnection = null;
         public Image Image { get; set; }
         public string Caption {get; set; }
@@ -32,11 +33,13 @@ namespace Wookie.Menu
         #endregion
 
         #region Constructor
-        public MenuItem(string text, string assemblyFile, SqlConnection sqlConnection, long? foreignKeyExternal)
+        public MenuItem(string text, string assemblyFile, string nameSpace, SqlConnection sqlConnection, long? foreignKeyExternal)
         {   
             this.assemblyFile = assemblyFile;
             this.sqlConnection = sqlConnection;
             this.ForeignKeyExternal = foreignKeyExternal;
+            this.nameSpace = nameSpace;
+
             AssemblyLoadResult loadResult = AssemblyLoadResult.Undefined;
 
             this.InitializeAccordionControlElement();
@@ -50,14 +53,14 @@ namespace Wookie.Menu
             this.Caption = text;
         }
 
-        public MenuItem(string text, Image image, string assemblyFile, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, sqlConnection, foreignKeyExternal)
+        public MenuItem(string text, Image image, string assemblyFile, string nameSpace, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, nameSpace, sqlConnection, foreignKeyExternal)
         {
             this.AccordionControlElement.ImageOptions.Image = image;
             this.Image = image;
             if (this.assemblyInstance != null) this.assemblyInstance.Image = image;            
         }
 
-        public MenuItem(string text, Binary image, string assemblyFile, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, sqlConnection, foreignKeyExternal)
+        public MenuItem(string text, Binary image, string assemblyFile, string nameSpace, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, nameSpace, sqlConnection, foreignKeyExternal)
         {
             this.AccordionControlElement.ImageOptions.Image = Converter.GetImageFromBinary(image);
             this.Image = Converter.GetImageFromBinary(image); 
@@ -104,13 +107,13 @@ namespace Wookie.Menu
             string assemblyFileDll = this.assemblyFile.ToLower().EndsWith(".dll") ? this.assemblyFile : (this.assemblyFile + ".dll");
             string assemblyFileWithoutDll = this.assemblyFile.ToLower().EndsWith(".dll") ? this.assemblyFile.Remove(this.assemblyFile.Length - 4, 4) : this.assemblyFile;
             string path = Application.StartupPath + "\\" + assemblyFileDll;
-
+            string nameSpace = this.nameSpace == null ? assemblyFileWithoutDll : this.nameSpace;
             if (!System.IO.File.Exists(path)) return AssemblyLoadResult.AssemblyNotFound;
 
             try
             {
                 var assembly = Assembly.LoadFile(path);
-                dynamic instance = Activator.CreateInstance(assembly.GetType(assemblyFileWithoutDll + ".Category"));
+                dynamic instance = Activator.CreateInstance(assembly.GetType(nameSpace + ".Category"));
 
                 if (instance != null)
                 {

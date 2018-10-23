@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.25" name="ProjectManagement">
+  <DataContextMoniker Name="/ProjectManagementDataContext" />
+  <nestedChildShapes>
+    <classShape Id="bf94e0f7-eadd-41ca-a320-ef3dcb3c1637" absoluteBounds="2.25, 3.875, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ProjectManagementDataContext/tblProject" />
+      <nestedChildShapes>
+        <elementListCompartment Id="867513cb-842e-4402-ba0a-836ee7867ccf" absoluteBounds="2.265, 4.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="29676eac-d34c-4831-8469-2f6d484a0fbe" absoluteBounds="6.125, 3.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/ProjectManagementDataContext/tlkpProjectCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="29fbdcaf-a51c-493e-995e-9fc33f6f71a7" absoluteBounds="6.14, 3.9600000000000009, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.125 : 4.95755126953125); (4.25 : 4.95755126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ProjectManagementDataContext/tlkpProjectCategory/tlkpProjectCategory_tblProject" />
+      <nodes>
+        <classShapeMoniker Id="29676eac-d34c-4831-8469-2f6d484a0fbe" />
+        <classShapeMoniker Id="bf94e0f7-eadd-41ca-a320-ef3dcb3c1637" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5f7d3f9e-ada6-4e27-b27d-148d7be3fad4" absoluteBounds="6.125, 6.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/ProjectManagementDataContext/tlkpProjectType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5c3bb8cc-c2da-4de3-9a9e-fbf1b39d544c" absoluteBounds="6.1400000000000006, 6.9600000000000009, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.125 : 7.82375375520833); (3.25 : 7.82375375520833); (3.25 : 6.60740397135417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ProjectManagementDataContext/tlkpProjectType/tlkpProjectType_tblProject" />
+      <nodes>
+        <classShapeMoniker Id="5f7d3f9e-ada6-4e27-b27d-148d7be3fad4" />
+        <classShapeMoniker Id="bf94e0f7-eadd-41ca-a320-ef3dcb3c1637" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

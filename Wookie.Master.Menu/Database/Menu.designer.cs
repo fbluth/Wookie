@@ -705,6 +705,8 @@ namespace Wookie.Master.Menu.Database
 		
 		private string _Assemblyname;
 		
+		private string _Namespace;
+		
 		private System.Nullable<System.DateTime> _CreatedOn;
 		
 		private System.Nullable<long> _FKUserCreated;
@@ -745,6 +747,8 @@ namespace Wookie.Master.Menu.Database
     partial void OnImageChanged();
     partial void OnAssemblynameChanging(string value);
     partial void OnAssemblynameChanged();
+    partial void OnNamespaceChanging(string value);
+    partial void OnNamespaceChanged();
     partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
     partial void OnCreatedOnChanged();
     partial void OnFKUserCreatedChanging(System.Nullable<long> value);
@@ -969,6 +973,26 @@ namespace Wookie.Master.Menu.Database
 					this._Assemblyname = value;
 					this.SendPropertyChanged("Assemblyname");
 					this.OnAssemblynameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Namespace", DbType="NVarChar(255)")]
+		public string Namespace
+		{
+			get
+			{
+				return this._Namespace;
+			}
+			set
+			{
+				if ((this._Namespace != value))
+				{
+					this.OnNamespaceChanging(value);
+					this.SendPropertyChanging();
+					this._Namespace = value;
+					this.SendPropertyChanged("Namespace");
+					this.OnNamespaceChanged();
 				}
 			}
 		}

@@ -28,19 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true, typeof(System.Windows.Forms.UserControl));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDefault));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions3 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true, typeof(System.Windows.Forms.UserControl));
             this.gcMain = new DevExpress.XtraEditors.GroupControl();
             this.pnlWorkingArea = new DevExpress.XtraEditors.PanelControl();
-            this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
+            this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gcMain)).BeginInit();
             this.gcMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlWorkingArea)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).BeginInit();
             this.SuspendLayout();
+            // 
+            // splashScreenManager1
+            // 
+            splashScreenManager1.ClosingDelay = 500;
             // 
             // gcMain
             // 
@@ -59,7 +64,7 @@
             this.gcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcMain.Location = new System.Drawing.Point(0, 0);
             this.gcMain.Name = "gcMain";
-            this.gcMain.Size = new System.Drawing.Size(487, 375);
+            this.gcMain.Size = new System.Drawing.Size(764, 550);
             this.gcMain.TabIndex = 0;
             this.gcMain.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.gcMain_CustomButtonClick);
             // 
@@ -70,16 +75,12 @@
             this.pnlWorkingArea.Location = new System.Drawing.Point(2, 37);
             this.pnlWorkingArea.Name = "pnlWorkingArea";
             this.pnlWorkingArea.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlWorkingArea.Size = new System.Drawing.Size(483, 336);
+            this.pnlWorkingArea.Size = new System.Drawing.Size(760, 511);
             this.pnlWorkingArea.TabIndex = 0;
             // 
             // dxValidationProvider
             // 
             this.dxValidationProvider.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
-            // 
-            // splashScreenManager1
-            // 
-            splashScreenManager1.ClosingDelay = 500;
             // 
             // ucDefault
             // 
@@ -87,7 +88,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gcMain);
             this.Name = "ucDefault";
-            this.Size = new System.Drawing.Size(487, 375);
+            this.Size = new System.Drawing.Size(764, 550);
             ((System.ComponentModel.ISupportInitialize)(this.gcMain)).EndInit();
             this.gcMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlWorkingArea)).EndInit();
@@ -101,6 +102,6 @@
         private DevExpress.XtraEditors.GroupControl gcMain;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider;
         private DevExpress.XtraEditors.PanelControl pnlWorkingArea;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager;
+        
     }
 }

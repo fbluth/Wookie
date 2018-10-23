@@ -97,7 +97,7 @@ namespace Wookie.Menu.MenuManager
 
             foreach (Database.tsysClientElement row in query)
             {
-                MenuItem menuItem = new MenuItem(row.Name, row.Image, row.Assemblyname, client.SqlConnection, row.FKExternal);
+                MenuItem menuItem = new MenuItem(row.Name, row.Image, row.Assemblyname, row.Namespace, client.SqlConnection, row.FKExternal);
                 menuItem.MenuItemClick += new MenuItem.MenuItemEventHandler(this.MenuItem_Click);
                 menuItem.StatusBarChanged += MenuItem_StatusBarChanged;
                 if (element == null)

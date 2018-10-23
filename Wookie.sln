@@ -4,6 +4,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie", "Wookie\Wookie.csproj", "{5D92A564-FE3D-49BE-A96C-42A19D7F1C74}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2CFC0C0A-88A3-47A3-AABC-67C161AEE68A} = {2CFC0C0A-88A3-47A3-AABC-67C161AEE68A}
+		{40D12E15-4B24-455E-B9A0-994E8FA8DAA8} = {40D12E15-4B24-455E-B9A0-994E8FA8DAA8}
+		{90EF1F93-67B3-4E98-9C90-E09FAAFC2AEA} = {90EF1F93-67B3-4E98-9C90-E09FAAFC2AEA}
+		{3C223FBB-E59F-4258-9062-A7B12F06A08F} = {3C223FBB-E59F-4258-9062-A7B12F06A08F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Tools", "Wookie.Tools\Wookie.Tools.csproj", "{9158C093-AE52-47A9-8DA9-50AF12669C40}"
 EndProject
@@ -12,6 +18,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Employee.Contact", "Wookie.Employee.Contact\Wookie.Employee.Contact.csproj", "{3C223FBB-E59F-4258-9062-A7B12F06A08F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Master.Menu", "Wookie.Master.Menu\Wookie.Master.Menu.csproj", "{40D12E15-4B24-455E-B9A0-994E8FA8DAA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Employee.MasterData", "Wookie.Employee.MasterData\Wookie.Employee.MasterData.csproj", "{2CFC0C0A-88A3-47A3-AABC-67C161AEE68A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Project.Management", "Wookie.Project.Management\Wookie.Project.Management.csproj", "{90EF1F93-67B3-4E98-9C90-E09FAAFC2AEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wookie.Project.Contract", "Wookie.Project.Contract\Wookie.Project.Contract.csproj", "{E8DE8D49-1061-4749-9B86-79854AB5EB4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +51,18 @@ Global
 		{40D12E15-4B24-455E-B9A0-994E8FA8DAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40D12E15-4B24-455E-B9A0-994E8FA8DAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40D12E15-4B24-455E-B9A0-994E8FA8DAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CFC0C0A-88A3-47A3-AABC-67C161AEE68A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CFC0C0A-88A3-47A3-AABC-67C161AEE68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CFC0C0A-88A3-47A3-AABC-67C161AEE68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CFC0C0A-88A3-47A3-AABC-67C161AEE68A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90EF1F93-67B3-4E98-9C90-E09FAAFC2AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90EF1F93-67B3-4E98-9C90-E09FAAFC2AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90EF1F93-67B3-4E98-9C90-E09FAAFC2AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90EF1F93-67B3-4E98-9C90-E09FAAFC2AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8DE8D49-1061-4749-9B86-79854AB5EB4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8DE8D49-1061-4749-9B86-79854AB5EB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8DE8D49-1061-4749-9B86-79854AB5EB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8DE8D49-1061-4749-9B86-79854AB5EB4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

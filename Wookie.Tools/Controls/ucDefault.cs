@@ -17,7 +17,7 @@ using DevExpress.Utils.Svg;
 
 namespace Wookie.Tools.Controls
 {
-    [Designer(typeof(Wookie.Tools.Controls.TestControlDesigner))]
+    [Designer(typeof(Wookie.Tools.Controls.TestControlDesigner))]   
     public partial class ucDefault : DevExpress.XtraEditors.XtraUserControl
     {
         #region Variables
@@ -205,12 +205,7 @@ namespace Wookie.Tools.Controls
             set { this.dxValidationProvider = value; }
         }
 
-        [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public SplashScreenManager SplashScreenManager
-        {
-            get { return this.splashScreenManager; }
-            set { this.splashScreenManager = value; }
-        }
+        
         #endregion
 
         #region Private Functions
@@ -243,7 +238,7 @@ namespace Wookie.Tools.Controls
                 DataLoaded?.Invoke(this, new EventArgs());
                 
             }
-            catch (Exception err)
+            catch 
             {
                 
                 XtraMessageBox.Show("Fehler beim laden der Daten", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);

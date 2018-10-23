@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BS_PM_Mandant1" Class="ProjectManagementDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BS_PM_Mandant1;Persist Security Info=True;User ID=sa" SettingsObjectName="Wookie.Project.Management.Properties.Settings" SettingsPropertyName="BS_PM_Mandant1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblProject" Member="tblProject">
+    <Type Name="tblProject">
+      <Column Name="PKProject" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKProjectCategory" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKProjectType" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Projectname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpProjectCategory_tblProject" Member="tlkpProjectCategory" ThisKey="FKProjectCategory" OtherKey="PKProjectCategory" Type="tlkpProjectCategory" IsForeignKey="true" />
+      <Association Name="tlkpProjectType_tblProject" Member="tlkpProjectType" ThisKey="FKProjectType" OtherKey="PKProjectType" Type="tlkpProjectType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpProjectCategory" Member="tlkpProjectCategory">
+    <Type Name="tlkpProjectCategory">
+      <Column Name="PKProjectCategory" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpProjectCategory_tblProject" Member="tblProject" ThisKey="PKProjectCategory" OtherKey="FKProjectCategory" Type="tblProject" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpProjectType" Member="tlkpProjectType">
+    <Type Name="tlkpProjectType">
+      <Column Name="PKProjectType" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpProjectType_tblProject" Member="tblProject" ThisKey="PKProjectType" OtherKey="FKProjectType" Type="tblProject" />
+    </Type>
+  </Table>
+</Database>

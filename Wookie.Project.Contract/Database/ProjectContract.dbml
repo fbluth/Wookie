@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BS_PM_Mandant1" Class="ProjectContractDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BS_PM_Mandant1;Persist Security Info=True;User ID=sa" SettingsObjectName="Wookie.Project.Contract.Properties.Settings" SettingsPropertyName="BS_PM_Mandant1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tlkpProjectContractStatus" Member="tlkpProjectContractStatus">
+    <Type Name="tlkpProjectContractStatus">
+      <Column Name="PKProjectContractStatus" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpProjectContractStatus_tblProjectContract" Member="tblProjectContract" ThisKey="PKProjectContractStatus" OtherKey="FKProjectContractStatus" Type="tblProjectContract" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpProjectContractType" Member="tlkpProjectContractType">
+    <Type Name="tlkpProjectContractType">
+      <Column Name="PKProjectContractType" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpProjectContractType_tblProjectContract" Member="tblProjectContract" ThisKey="PKProjectContractType" OtherKey="FKProjectContractType" Type="tblProjectContract" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblClusterContract" Member="tblClusterContract">
+    <Type Name="tblClusterContract">
+      <Column Name="PKClusterContract" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKProject" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKCluster" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKClusterContractStatus" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Budget" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tblClusterContract_tblProjectContract" Member="tblProjectContract" ThisKey="PKClusterContract" OtherKey="FKClusterContract" Type="tblProjectContract" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblProjectContract" Member="tblProjectContract">
+    <Type Name="tblProjectContract">
+      <Column Name="PKProjectContract" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKClusterContract" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKProjectContractType" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKProjectContractStatus" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ContractNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ContractName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ContractFile" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjectNumber" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tblClusterContract_tblProjectContract" Member="tblClusterContract" ThisKey="FKClusterContract" OtherKey="PKClusterContract" Type="tblClusterContract" IsForeignKey="true" />
+      <Association Name="tlkpProjectContractStatus_tblProjectContract" Member="tlkpProjectContractStatus" ThisKey="FKProjectContractStatus" OtherKey="PKProjectContractStatus" Type="tlkpProjectContractStatus" IsForeignKey="true" />
+      <Association Name="tlkpProjectContractType_tblProjectContract" Member="tlkpProjectContractType" ThisKey="FKProjectContractType" OtherKey="PKProjectContractType" Type="tlkpProjectContractType" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

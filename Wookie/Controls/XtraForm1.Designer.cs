@@ -81,10 +81,10 @@
             this.fluentDesignFormContainer1.Controls.Add(this.barDockControlBottom);
             this.fluentDesignFormContainer1.Controls.Add(this.barDockControlTop);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(248, 30);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(289, 37);
             this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(769, 683);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1238, 841);
             this.fluentDesignFormContainer1.TabIndex = 10;
             // 
             // navigationFrame1
@@ -97,25 +97,28 @@
             this.navigationFrame1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.navPageWelcome});
             this.navigationFrame1.SelectedPage = this.navPageWelcome;
-            this.navigationFrame1.Size = new System.Drawing.Size(769, 657);
+            this.navigationFrame1.Size = new System.Drawing.Size(1238, 809);
             this.navigationFrame1.TabIndex = 6;
             this.navigationFrame1.Text = "navigationFrame1";
             // 
             // navPageWelcome
             // 
             this.navPageWelcome.Controls.Add(this.flyoutPanel1);
+            this.navPageWelcome.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.navPageWelcome.Name = "navPageWelcome";
-            this.navPageWelcome.Size = new System.Drawing.Size(769, 657);
+            this.navPageWelcome.Size = new System.Drawing.Size(1238, 809);
             // 
             // flyoutPanel1
             // 
             this.flyoutPanel1.Controls.Add(this.flyoutPanelControl1);
-            this.flyoutPanel1.Location = new System.Drawing.Point(462, 90);
+            this.flyoutPanel1.Location = new System.Drawing.Point(539, 111);
+            this.flyoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flyoutPanel1.Name = "flyoutPanel1";
             this.flyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Right;
             this.flyoutPanel1.Options.CloseOnOuterClick = true;
+            this.flyoutPanel1.OptionsButtonPanel.ButtonPanelHeight = 37;
             this.flyoutPanel1.OwnerControl = this.fluentDesignFormContainer1;
-            this.flyoutPanel1.Size = new System.Drawing.Size(214, 436);
+            this.flyoutPanel1.Size = new System.Drawing.Size(250, 537);
             this.flyoutPanel1.TabIndex = 0;
             // 
             // flyoutPanelControl1
@@ -124,8 +127,9 @@
             this.flyoutPanelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flyoutPanelControl1.FlyoutPanel = this.flyoutPanel1;
             this.flyoutPanelControl1.Location = new System.Drawing.Point(0, 0);
+            this.flyoutPanelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flyoutPanelControl1.Name = "flyoutPanelControl1";
-            this.flyoutPanelControl1.Size = new System.Drawing.Size(214, 436);
+            this.flyoutPanelControl1.Size = new System.Drawing.Size(250, 537);
             this.flyoutPanelControl1.TabIndex = 0;
             // 
             // accordionControl2
@@ -136,11 +140,12 @@
             this.aceMandant,
             this.aceSettings});
             this.accordionControl2.Location = new System.Drawing.Point(2, 2);
+            this.accordionControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.accordionControl2.Name = "accordionControl2";
             this.accordionControl2.OptionsHamburgerMenu.DisplayMode = DevExpress.XtraBars.Navigation.AccordionControlDisplayMode.Overlay;
             this.accordionControl2.RootDisplayMode = DevExpress.XtraBars.Navigation.AccordionControlRootDisplayMode.Footer;
             this.accordionControl2.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
-            this.accordionControl2.Size = new System.Drawing.Size(210, 432);
+            this.accordionControl2.Size = new System.Drawing.Size(246, 533);
             this.accordionControl2.TabIndex = 0;
             this.accordionControl2.Text = "accordionControl2";
             // 
@@ -190,7 +195,8 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 657);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 809);
             // 
             // barManager1
             // 
@@ -259,23 +265,26 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(769, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(1238, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 657);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 809);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(769, 26);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1238, 32);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(769, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1238, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 657);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 809);
             // 
             // itemSkin
             // 
@@ -305,14 +314,15 @@
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
             this.accordionControl1.ExpandGroupOnHeaderClick = false;
-            this.accordionControl1.Location = new System.Drawing.Point(0, 30);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 37);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.NavigationFrame = null;
             this.accordionControl1.OptionsMinimizing.NormalWidth = 150;
             this.accordionControl1.RootDisplayMode = DevExpress.XtraBars.Navigation.AccordionControlRootDisplayMode.Footer;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
             this.accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Auto;
-            this.accordionControl1.Size = new System.Drawing.Size(248, 683);
+            this.accordionControl1.Size = new System.Drawing.Size(289, 841);
             this.accordionControl1.TabIndex = 11;
             this.accordionControl1.Text = "T-Systems";
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
@@ -329,9 +339,10 @@
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Manager = this.barManager1;
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
             this.fluentDesignFormControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1017, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1527, 37);
             this.fluentDesignFormControl1.TabIndex = 12;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.barStaticItem1);
@@ -340,14 +351,15 @@
             // 
             this.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1017, 713);
+            this.ClientSize = new System.Drawing.Size(1527, 878);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "XtraForm1";
             this.NavigationControl = this.accordionControl1;
             this.ShowIcon = false;

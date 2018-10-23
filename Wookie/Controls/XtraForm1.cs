@@ -26,19 +26,22 @@ namespace Wookie.Controls
             this.accordionControl1.NavigationFrame = this.navigationFrame1;
 
             SplashScreenManager.ShowImage(Image.FromFile(".\\Images\\Splash.png"), true, true, SplashImagePainter.Painter);
-                        
+            System.Threading.Thread.Sleep(250);
             this.SetSplashScreenInfo("Checking connection to master database", 25);
-            
+            System.Threading.Thread.Sleep(250);
             if (MasterDatabase.KeyFileExists && MasterDatabase.Connected)
             {
-                this.SetSplashScreenInfo("Building menu",50);               
+                this.SetSplashScreenInfo("Building menu",50);
+                System.Threading.Thread.Sleep(250);
                 this.menuManager = new MenuManager(MasterDatabase.SqlConnection, this.navigationFrame1, this.accordionControl1, this.barStatus);
                 this.menuManager.ClientChanged += new MenuManager.ClientChangeEventHandler(MenuManager_ClientChanged);
                 this.menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
                 this.menuManager.CategoryChanged += MenuManager_CategoryChanged;
                 this.SetSplashScreenInfo("Adding registered clients", 75);
+                System.Threading.Thread.Sleep(250);
                 this.menuManager.AddClients(this.aceClient);
-                this.SetSplashScreenInfo("Done", 100);                
+                this.SetSplashScreenInfo("Done", 100);
+                System.Threading.Thread.Sleep(250);
             }            
         }
 

@@ -51,6 +51,7 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Assemblyname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Namespace" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
