@@ -19,6 +19,7 @@ namespace Wookie.Project.Management.Control
         private Wookie.Tools.Controls.ModulData modulData = null;
 
         public event StatusBarEventHandler StatusBarChanged;
+        public event SelectionEventHandler SelectionChanged;
         #endregion
 
         #region Constructor
@@ -52,6 +53,12 @@ namespace Wookie.Project.Management.Control
         {
             get { return this.ucDefault1.Caption; }
             set { this.ucDefault1.Caption = value; }
+        }
+
+        public String CaptionDetail
+        {
+            get { return this.ucDefault1.CaptionDetail; }
+            set { this.ucDefault1.CaptionDetail = value; }
         }
         #endregion
         private Database.tblProject SelectedProject

@@ -29,6 +29,8 @@ namespace Wookie.Tools.Controls
         public System.Data.Linq.DataContext DataContext { get; set; } = null;
         private Dictionary<BindingSource, bool> ignore = new Dictionary<BindingSource, bool>();
         private ModulData modulData = null;
+        private string captionDetail = null;
+        private string caption = null;
         private IOverlaySplashScreenHandle handle = null;
 
         [Category("Data")]
@@ -58,6 +60,16 @@ namespace Wookie.Tools.Controls
                 this.modulData = modulData;
                 this.SetMode(Mode.Default);                
                 this.LoadData();
+            }
+        }
+
+        public void Initialize(ModulData modulData, bool loadData)
+        {
+            if (modulData != null)
+            {
+                this.modulData = modulData;
+                this.SetMode(Mode.Default);
+                if (loadData) this.LoadData();
             }
         }
 
@@ -183,8 +195,22 @@ namespace Wookie.Tools.Controls
         [Category("Appearance")]
         public String Caption
         {
-            get { return this.gcMain.Text; }
-            set { this.gcMain.Text = value; }
+            get { return this.caption; }
+            set { this.caption = value; this.SetCaption(); }
+        }
+
+        [Category("Appearance")]
+        public String CaptionDetail
+        {
+            get { return this.captionDetail; }
+            set { this.captionDetail = value; this.SetCaption(); }
+        }
+
+        private void SetCaption()
+        {
+            this.gcMain.Text = this.caption;
+            if (this.captionDetail != null)
+                this.gcMain.Text += " (" + this.captionDetail + ")";
         }
 
         [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
@@ -204,8 +230,6 @@ namespace Wookie.Tools.Controls
             get { return this.dxValidationProvider; }
             set { this.dxValidationProvider = value; }
         }
-
-        
         #endregion
 
         #region Private Functions
@@ -413,6 +437,7 @@ namespace Wookie.Tools.Controls
                 case ListChangedType.ItemChanged:
                 case ListChangedType.ItemDeleted:
                     this.SetMode(Mode.Edit);
+                    DataRefresh?.Invoke(this, new EventArgs());
                     break;
             }
         }

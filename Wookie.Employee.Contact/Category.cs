@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wookie.Menu;
+using Wookie.Tools.Controls;
 
 namespace Wookie.Employee.Contact
 {
@@ -15,21 +16,21 @@ namespace Wookie.Employee.Contact
     {
 
         private XtraUserControl control = null;
-        private ModulData modulData = null;
+        private Wookie.Tools.Controls.ModulData modulData = null;
         
         public Category()
-        {   
+        {
+            this.modulData = new ModulData();
         }
 
         public void Initialize(SqlConnection sqlconnection, long? foreignKeyExternal)
-        {
-            this.modulData = new ModulData();
-            this.modulData.SqlConnectionClientDB = sqlconnection;
-            this.modulData.FKContactData = foreignKeyExternal;
+        {            
+            this.modulData.SqlConnection = sqlconnection;
+            this.modulData.FKExternal = foreignKeyExternal;
         }
 
         
-        public ModulData ModulData
+        public Wookie.Tools.Controls.ModulData ModulData
         {
             get
             {
@@ -42,7 +43,7 @@ namespace Wookie.Employee.Contact
             get
             {
                 if (this.modulData != null)
-                    return this.modulData.SqlConnectionClientDB;
+                    return this.modulData.SqlConnection;
 
                 return null;
             }
@@ -62,10 +63,11 @@ namespace Wookie.Employee.Contact
         {
             get
             {
-                if (this.modulData != null)
-                    return this.modulData.FKContactData;
-
-                return null;
+                return this.modulData.FKExternal;
+            }
+            set
+            {
+                this.modulData.FKExternal = value;
             }
         }
 
@@ -81,10 +83,22 @@ namespace Wookie.Employee.Contact
             set { ((Control.ucContact2)this.UserControl).Caption = value; }
         }
 
+        public String CaptionDetail
+        {
+            get { return ((Control.ucContact2)this.UserControl).CaptionDetail; }
+            set { ((Control.ucContact2)this.UserControl).CaptionDetail = value; }
+        }
+
         public event StatusBarEventHandler StatusBarChanged
         {
             add { ((Control.ucContact2)this.UserControl).StatusBarChanged += value; }
             remove { ((Control.ucContact2)this.UserControl).StatusBarChanged -= value; }
+        }
+
+        public event SelectionEventHandler SelectionChanged
+        {
+            add { ((Control.ucContact2)this.UserControl).SelectionChanged += value; }
+            remove { ((Control.ucContact2)this.UserControl).SelectionChanged -= value; }
         }
 
         #region IDisposable Support
@@ -125,9 +139,5 @@ namespace Wookie.Employee.Contact
         #endregion
     }
 
-    public class ModulData
-    {
-        public SqlConnection SqlConnectionClientDB;
-        public long? FKContactData;
-    }
+    
 }

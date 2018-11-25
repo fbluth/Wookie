@@ -16,13 +16,13 @@ namespace Wookie.Master.Menu
         #region Constructor
         public Category()
         {
+            this.modulData = new Wookie.Tools.Controls.ModulData();
         }
         #endregion
 
         #region Public Functions
         public void Initialize(SqlConnection sqlConnection, long? foreignKeyExternal)
-        {
-            this.modulData = new Wookie.Tools.Controls.ModulData();
+        {            
             this.modulData.SqlConnection = sqlConnection;
             this.modulData.FKExternal = foreignKeyExternal;
         }
@@ -31,6 +31,12 @@ namespace Wookie.Master.Menu
         {
             add { ((Control.ucMenu)this.UserControl).StatusBarChanged += value; }
             remove { ((Control.ucMenu)this.UserControl).StatusBarChanged -= value; }
+        }
+
+        public event SelectionEventHandler SelectionChanged
+        {
+            add { ((Control.ucMenu)this.UserControl).SelectionChanged += value; }
+            remove { ((Control.ucMenu)this.UserControl).SelectionChanged -= value; }
         }
         #endregion
 
@@ -61,10 +67,11 @@ namespace Wookie.Master.Menu
         {
             get
             {
-                if (this.modulData != null)
-                    return this.modulData.FKExternal;
-
-                return null;
+                return this.modulData.FKExternal;
+            }
+            set
+            {
+                this.modulData.FKExternal = value;
             }
         }
 
@@ -78,6 +85,12 @@ namespace Wookie.Master.Menu
         {
             get { return ((Control.ucMenu)this.UserControl).Caption; }
             set { ((Control.ucMenu)this.UserControl).Caption = value; }
+        }
+
+        public String CaptionDetail
+        {
+            get { return ((Control.ucMenu)this.UserControl).CaptionDetail; }
+            set { ((Control.ucMenu)this.UserControl).CaptionDetail = value; }
         }
         #endregion
 

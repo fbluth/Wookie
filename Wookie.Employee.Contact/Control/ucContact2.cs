@@ -12,10 +12,11 @@ namespace Wookie.Employee.Contact.Control
     {
         private Database.ContactDataContext dataContext = null;
         private ucContactEdit ucContactEdit = null;
-        private ModulData modulData = null;
+        private Wookie.Tools.Controls.ModulData modulData = null;
         public event StatusBarEventHandler StatusBarChanged;
+        public event SelectionEventHandler SelectionChanged;
 
-        public ucContact2(ModulData modulData)
+        public ucContact2(Wookie.Tools.Controls.ModulData modulData)
         {
             InitializeComponent();
             this.modulData = modulData;
@@ -31,7 +32,7 @@ namespace Wookie.Employee.Contact.Control
 
         private void LoadData()
         {
-            dataContext = new Database.ContactDataContext(modulData.SqlConnectionClientDB);
+            dataContext = new Database.ContactDataContext(modulData.SqlConnection);
             
             tlkpCityBindingSource.DataSource = dataContext.tlkpCity;
             tlkpContactPrefixBindingSource.DataSource = dataContext.tlkpContactPrefix;
@@ -43,11 +44,11 @@ namespace Wookie.Employee.Contact.Control
             //tblContactCommunicationBindingSource.DataSource = dataContext.tblContact;
 
             tblContactBindingSource.DataSource = from row in dataContext.tblContact
-                                                 where row.FKContactData == modulData.FKContactData
+                                                 where row.FKContactData == modulData.FKExternal
                                                  select row;
 
-            gridView1.BestFitColumns(true);
-            gridView2.BestFitColumns(true);
+           // gridView1.BestFitColumns(true);
+            //gridView2.BestFitColumns(true);
             tblContactBindingSource.MoveFirst();            
         }
 
@@ -62,6 +63,12 @@ namespace Wookie.Employee.Contact.Control
         {
             get { return this.splitContainerControl1.Text; }
             set { this.splitContainerControl1.Text = value; }
+        }
+
+        public String CaptionDetail
+        {
+            get { return null; }
+            set {  }
         }
         #endregion
 

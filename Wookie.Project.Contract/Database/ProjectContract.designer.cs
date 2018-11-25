@@ -1073,11 +1073,21 @@ namespace Wookie.Project.Contract.Database
 		
 		private System.Nullable<double> _Price;
 		
+		private System.Nullable<System.DateTime> _HandoverDate;
+		
+		private System.Nullable<System.DateTime> _OrderDate;
+		
 		private System.Nullable<System.DateTime> _StartDate;
 		
 		private System.Nullable<System.DateTime> _EndDate;
 		
 		private string _ProjectNumber;
+		
+		private System.Nullable<System.DateTime> _PlannedAcceptanceDate;
+		
+		private System.Nullable<System.DateTime> _AcceptanceDate;
+		
+		private System.Nullable<bool> _Acceptance;
 		
 		private System.Nullable<long> _FKUserCreated;
 		
@@ -1117,12 +1127,22 @@ namespace Wookie.Project.Contract.Database
     partial void OnContractCalculationChanged();
     partial void OnPriceChanging(System.Nullable<double> value);
     partial void OnPriceChanged();
+    partial void OnHandoverDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnHandoverDateChanged();
+    partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOrderDateChanged();
     partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
     partial void OnStartDateChanged();
     partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
     partial void OnEndDateChanged();
     partial void OnProjectNumberChanging(string value);
     partial void OnProjectNumberChanged();
+    partial void OnPlannedAcceptanceDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnPlannedAcceptanceDateChanged();
+    partial void OnAcceptanceDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnAcceptanceDateChanged();
+    partial void OnAcceptanceChanging(System.Nullable<bool> value);
+    partial void OnAcceptanceChanged();
     partial void OnFKUserCreatedChanging(System.Nullable<long> value);
     partial void OnFKUserCreatedChanged();
     partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
@@ -1335,6 +1355,46 @@ namespace Wookie.Project.Contract.Database
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HandoverDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> HandoverDate
+		{
+			get
+			{
+				return this._HandoverDate;
+			}
+			set
+			{
+				if ((this._HandoverDate != value))
+				{
+					this.OnHandoverDateChanging(value);
+					this.SendPropertyChanging();
+					this._HandoverDate = value;
+					this.SendPropertyChanged("HandoverDate");
+					this.OnHandoverDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> OrderDate
+		{
+			get
+			{
+				return this._OrderDate;
+			}
+			set
+			{
+				if ((this._OrderDate != value))
+				{
+					this.OnOrderDateChanging(value);
+					this.SendPropertyChanging();
+					this._OrderDate = value;
+					this.SendPropertyChanged("OrderDate");
+					this.OnOrderDateChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> StartDate
 		{
@@ -1391,6 +1451,66 @@ namespace Wookie.Project.Contract.Database
 					this._ProjectNumber = value;
 					this.SendPropertyChanged("ProjectNumber");
 					this.OnProjectNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlannedAcceptanceDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PlannedAcceptanceDate
+		{
+			get
+			{
+				return this._PlannedAcceptanceDate;
+			}
+			set
+			{
+				if ((this._PlannedAcceptanceDate != value))
+				{
+					this.OnPlannedAcceptanceDateChanging(value);
+					this.SendPropertyChanging();
+					this._PlannedAcceptanceDate = value;
+					this.SendPropertyChanged("PlannedAcceptanceDate");
+					this.OnPlannedAcceptanceDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AcceptanceDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> AcceptanceDate
+		{
+			get
+			{
+				return this._AcceptanceDate;
+			}
+			set
+			{
+				if ((this._AcceptanceDate != value))
+				{
+					this.OnAcceptanceDateChanging(value);
+					this.SendPropertyChanging();
+					this._AcceptanceDate = value;
+					this.SendPropertyChanged("AcceptanceDate");
+					this.OnAcceptanceDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Acceptance", DbType="Bit")]
+		public System.Nullable<bool> Acceptance
+		{
+			get
+			{
+				return this._Acceptance;
+			}
+			set
+			{
+				if ((this._Acceptance != value))
+				{
+					this.OnAcceptanceChanging(value);
+					this.SendPropertyChanging();
+					this._Acceptance = value;
+					this.SendPropertyChanged("Acceptance");
+					this.OnAcceptanceChanged();
 				}
 			}
 		}

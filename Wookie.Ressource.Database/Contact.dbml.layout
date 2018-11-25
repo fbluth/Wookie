@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15.75, 11.125" name="Data">
+  <DataContextMoniker Name="/ContactDataContext" />
+  <nestedChildShapes>
+    <classShape Id="d4472ca0-c05e-485a-8677-e46d86b3db39" absoluteBounds="10.625, 3.875, 2.5, 3.6939111328124996">
+      <DataClassMoniker Name="/ContactDataContext/tblContactAppointment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2130752b-2283-44f1-909b-cbbf44678b0e" absoluteBounds="10.64, 4.335, 2.4699999999999998, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9a6b8093-08ab-416d-b6da-32525d8cc4ac" absoluteBounds="10.625, 0.875, 2.5, 2.5401025390624996">
+      <DataClassMoniker Name="/ContactDataContext/tblContactAppointmentAttachement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca3d1e14-0695-424d-98ed-a13c814f024b" absoluteBounds="10.64, 1.335, 2.4699999999999998, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.875 : 3.875); (11.875 : 3.4151025390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tblContactAppointment/tblContactAppointment_tblContactAppointmentAttachement" />
+      <nodes>
+        <classShapeMoniker Id="d4472ca0-c05e-485a-8677-e46d86b3db39" />
+        <classShapeMoniker Id="9a6b8093-08ab-416d-b6da-32525d8cc4ac" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2a52fcb3-f040-4a6d-ac42-fbf3acb28d62" absoluteBounds="10.625, 8.125, 2.5, 2.7324039713541666">
+      <DataClassMoniker Name="/ContactDataContext/tblContactAppointmentParticipant" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8a9ef5bd-f1d3-43a7-a393-36f0b484857f" absoluteBounds="10.64, 8.585, 2.4699999999999998, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.875 : 7.5689111328125); (11.875 : 8.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tblContactAppointment/tblContactAppointment_tblContactAppointmentParticipant" />
+      <nodes>
+        <classShapeMoniker Id="d4472ca0-c05e-485a-8677-e46d86b3db39" />
+        <classShapeMoniker Id="2a52fcb3-f040-4a6d-ac42-fbf3acb28d62" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="48040bab-7379-480c-a090-1ca2eaaab99d" absoluteBounds="4, 7, 2.875, 2.7324039713541666">
+      <DataClassMoniker Name="/ContactDataContext/tblContactCommunication" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c4a6a99a-912f-4168-979a-342cab8eed32" absoluteBounds="4.0150000000000006, 7.46, 2.8449999999999998, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a3abdf10-f49c-441e-a94c-754baef14add" isExpanded="false" absoluteBounds="7.375, 9.375, 2.25, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tblContactData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a4e074b-107f-4841-b5e8-47d177f84eed" absoluteBounds="7.3900000000000006, 9.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6acbe418-0df1-432a-8363-2b3d4a6d6d0c" isExpanded="false" absoluteBounds="4, 6.25, 2.875, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpContactPrefix" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4ec38646-c210-42bf-9ef7-2dd72d08e4f2" absoluteBounds="4.0150000000000006, 6.7100000000000009, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fb0a86d8-10bd-41dc-a980-dde72b6990fd" isExpanded="false" absoluteBounds="13.5, 4.5, 2, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpContactAppointmentImportance" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1d89c729-1c4d-4075-8d13-25e174724951" absoluteBounds="13.515, 4.9600000000000009, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.5 : 4.725); (13.125 : 4.725)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpContactAppointmentImportance/tlkpContactAppointmentImportance_tblContactAppointment" />
+      <nodes>
+        <classShapeMoniker Id="fb0a86d8-10bd-41dc-a980-dde72b6990fd" />
+        <classShapeMoniker Id="d4472ca0-c05e-485a-8677-e46d86b3db39" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="381e692d-4685-4603-ab50-45572362902e" isExpanded="false" absoluteBounds="13.5, 8.25, 2, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpContactAppointmentParticipantStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="481c0c91-e5ce-4154-8e84-19b31499ed44" absoluteBounds="13.515, 8.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.5045810264468 : 8.7); (14.5045810264468 : 9.71620248567708); (13.125 : 9.71620248567708)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpContactAppointmentParticipantStatus/tlkpContactAppointmentParticipantStatus_tblContactAppointmentParticipant" />
+      <nodes>
+        <classShapeMoniker Id="381e692d-4685-4603-ab50-45572362902e" />
+        <classShapeMoniker Id="2a52fcb3-f040-4a6d-ac42-fbf3acb28d62" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a185b66e-d5a6-4dd1-b71c-238ac02e9763" isExpanded="false" absoluteBounds="13.5, 5.25, 2, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpContactAppointmentType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="daf1f338-717c-444f-9e44-56dd0082e4ab" absoluteBounds="13.515, 5.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.5 : 5.475); (13.125 : 5.475)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpContactAppointmentType/tlkpContactAppointmentType_tblContactAppointment" />
+      <nodes>
+        <classShapeMoniker Id="a185b66e-d5a6-4dd1-b71c-238ac02e9763" />
+        <classShapeMoniker Id="d4472ca0-c05e-485a-8677-e46d86b3db39" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f4b638c2-ae0a-4b86-a946-864c2222bdac" isExpanded="false" absoluteBounds="0.875, 7.125, 2.5, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpContactCommunicationCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9e2eaad6-b173-4738-896e-29570b0d55b2" absoluteBounds="0.89000000000000012, 7.5850000000000009, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 7.35); (4 : 7.35)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpContactCommunicationCategory/tlkpContactCommunicationCategory_tblContactCommunication" />
+      <nodes>
+        <classShapeMoniker Id="f4b638c2-ae0a-4b86-a946-864c2222bdac" />
+        <classShapeMoniker Id="48040bab-7379-480c-a090-1ca2eaaab99d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e6f1c54c-ddf0-400d-96d9-1aa4504b43e0" isExpanded="false" absoluteBounds="0.875, 7.875, 2.5, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpContactCommunicationType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e0a1d167-06e3-4470-9ecb-8e11a2495c3e" absoluteBounds="0.89000000000000012, 8.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 8.1); (4 : 8.1)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpContactCommunicationType/tlkpContactCommunicationType_tblContactCommunication" />
+      <nodes>
+        <classShapeMoniker Id="e6f1c54c-ddf0-400d-96d9-1aa4504b43e0" />
+        <classShapeMoniker Id="48040bab-7379-480c-a090-1ca2eaaab99d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2baaaa78-f42a-4f6f-a23b-c0c2071fd87a" isExpanded="false" absoluteBounds="0.875, 2.875, 2.5, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpContactDocumentType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2f993b7e-6eec-484f-b307-7d7d8ec3474d" absoluteBounds="0.89000000000000012, 3.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="44ed0c44-f10a-4470-84c6-ebeea9ce4752" isExpanded="false" absoluteBounds="4, 0.5, 2.875, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpContactAddressType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="765bf2e5-e827-4e34-a900-46b9f114b11a" absoluteBounds="4.0150000000000006, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d645fa9a-193c-499c-a7b9-65757b73c70a" absoluteBounds="7.625, 0.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ContactDataContext/tblContactAddress" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c0ea0d50-ec7d-4918-88e7-f4bc4052d9d0" absoluteBounds="7.64, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.875 : 0.725); (7.625 : 0.725)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpContactAddressType/tlkpContactAddressType_tblContactAddress" />
+      <nodes>
+        <classShapeMoniker Id="44ed0c44-f10a-4470-84c6-ebeea9ce4752" />
+        <classShapeMoniker Id="d645fa9a-193c-499c-a7b9-65757b73c70a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7c75ba3a-f0d1-4754-9b6b-4f2d85f6c370" isExpanded="false" absoluteBounds="4, 1.125, 2.875, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpCity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a24c3327-d935-4a7d-af20-0bea32a73f8b" absoluteBounds="4.015, 1.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.875 : 1.35); (7.625 : 1.35)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpCity/tlkpCity_tblContactAddress" />
+      <nodes>
+        <classShapeMoniker Id="7c75ba3a-f0d1-4754-9b6b-4f2d85f6c370" />
+        <classShapeMoniker Id="d645fa9a-193c-499c-a7b9-65757b73c70a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="adb18827-6377-417c-9673-a24ac0c537dd" isExpanded="false" absoluteBounds="0.875, 1.875, 2.5, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpCountry" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fa3c7418-bd2a-477d-ad23-2f04119529ca" absoluteBounds="0.88999999999999968, 2.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c809459c-ad2b-4f95-920c-9034c3783754" isExpanded="false" absoluteBounds="4, 1.875, 2.875, 0.45">
+      <DataClassMoniker Name="/ContactDataContext/tlkpFederalState" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2193fb2a-c75e-4d2c-92a2-ded835ce2f59" absoluteBounds="4.0150000000000006, 2.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.4375 : 1.875); (5.4375 : 1.575)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpFederalState/tlkpFederalState_tlkpCity" />
+      <nodes>
+        <classShapeMoniker Id="c809459c-ad2b-4f95-920c-9034c3783754" />
+        <classShapeMoniker Id="7c75ba3a-f0d1-4754-9b6b-4f2d85f6c370" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.375 : 2.1); (4 : 2.1)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpCountry/tlkpCountry_tlkpFederalState" />
+      <nodes>
+        <classShapeMoniker Id="adb18827-6377-417c-9673-a24ac0c537dd" />
+        <classShapeMoniker Id="c809459c-ad2b-4f95-920c-9034c3783754" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="fd85353b-4185-4594-941f-53cee89b4b3e" absoluteBounds="4, 2.875, 2.875, 3.1170068359375">
+      <DataClassMoniker Name="/ContactDataContext/tblContactDocument" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b44de464-295d-450b-a9f9-a3a6d16c3263" absoluteBounds="4.015, 3.335, 2.8449999999999998, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 3.1); (4 : 3.1)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContactDataContext/tlkpContactDocumentType/tlkpContactDocumentType_tblContactDocument" />
+      <nodes>
+        <classShapeMoniker Id="2baaaa78-f42a-4f6f-a23b-c0c2071fd87a" />
+        <classShapeMoniker Id="fd85353b-4185-4594-941f-53cee89b4b3e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="de8e2978-a135-4531-b27d-694c828cdcdb" absoluteBounds="8, 4.5, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/ContactDataContext/tblContact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e0ed5823-11a2-40dc-9fc9-994397afd9a5" absoluteBounds="8.015, 4.96, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10 : 6.03445556640625); (10.625 : 6.03445556640625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ContactDataContext/tblContact/tblContact_tblContactAppointment" />
+      <nodes>
+        <classShapeMoniker Id="de8e2978-a135-4531-b27d-694c828cdcdb" />
+        <classShapeMoniker Id="d4472ca0-c05e-485a-8677-e46d86b3db39" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10 : 8.35175699869792); (10.625 : 8.35175699869792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ContactDataContext/tblContact/tblContact_tblContactAppointmentParticipant" />
+      <nodes>
+        <classShapeMoniker Id="de8e2978-a135-4531-b27d-694c828cdcdb" />
+        <classShapeMoniker Id="2a52fcb3-f040-4a6d-ac42-fbf3acb28d62" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8 : 7.78925699869792); (6.875 : 7.78925699869792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ContactDataContext/tblContact/tblContact_tblContactCommunication" />
+      <nodes>
+        <classShapeMoniker Id="de8e2978-a135-4531-b27d-694c828cdcdb" />
+        <classShapeMoniker Id="48040bab-7379-480c-a090-1ca2eaaab99d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.8125 : 4.5); (8.8125 : 3.23240397135417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ContactDataContext/tblContact/tblContact_tblContactAddress" />
+      <nodes>
+        <classShapeMoniker Id="de8e2978-a135-4531-b27d-694c828cdcdb" />
+        <classShapeMoniker Id="d645fa9a-193c-499c-a7b9-65757b73c70a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8 : 5.24600341796875); (7.33333333333333 : 5.24600341796875 : JumpStart); (7.16666666666667 : 5.24600341796875 : JumpEnd); (6.875 : 5.24600341796875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ContactDataContext/tblContact/tblContact_tblContactDocument" />
+      <nodes>
+        <classShapeMoniker Id="de8e2978-a135-4531-b27d-694c828cdcdb" />
+        <classShapeMoniker Id="fd85353b-4185-4594-941f-53cee89b4b3e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.8125 : 9.375); (8.8125 : 8.57851399739583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ContactDataContext/tblContactData/tblContactData_tblContact" />
+      <nodes>
+        <classShapeMoniker Id="a3abdf10-f49c-441e-a94c-754baef14add" />
+        <classShapeMoniker Id="de8e2978-a135-4531-b27d-694c828cdcdb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.875 : 1.575); (7.25 : 1.95); (7.25 : 6.51763020833333); (8 : 6.51763020833333)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ContactDataContext/tlkpCity/tlkpCity_tblContact" />
+      <nodes>
+        <classShapeMoniker Id="7c75ba3a-f0d1-4754-9b6b-4f2d85f6c370" />
+        <classShapeMoniker Id="de8e2978-a135-4531-b27d-694c828cdcdb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.875 : 6.32131510416667); (7.16666666666667 : 6.32131510416667 : JumpStart); (7.33333333333333 : 6.32131510416667 : JumpEnd); (8 : 6.32131510416667)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ContactDataContext/tlkpContactPrefix/tlkpContactPrefix_tblContact" />
+      <nodes>
+        <classShapeMoniker Id="6acbe418-0df1-432a-8363-2b3d4a6d6d0c" />
+        <classShapeMoniker Id="de8e2978-a135-4531-b27d-694c828cdcdb" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

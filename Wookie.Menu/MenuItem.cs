@@ -27,17 +27,46 @@ namespace Wookie.Menu
         private string nameSpace = null;
         private SqlConnection sqlConnection = null;
         public Image Image { get; set; }
-        public string Caption {get; set; }
+        public string Caption
+        {
+            get
+            {
+                if (this.assemblyInstance != null)
+                    return this.assemblyInstance.Caption;
+                else return null;
+            }
+            set
+            {
+                if (this.assemblyInstance != null)
+                    this.assemblyInstance.Caption = value;
+            }
+        }
+        public string CaptionDetail
+        {
+            get
+            {
+                if (this.assemblyInstance != null)
+                    return this.assemblyInstance.CaptionDetail;
+                else return null;
+            }
+            set
+            {
+                if (this.assemblyInstance != null)
+                    this.assemblyInstance.CaptionDetail = value;
+            }
+        }
+        public long? foreignKeyExternal;
+        public string Identifier { get; set; } = null;
         public delegate void MenuItemEventHandler(MenuItem sender);
         public event MenuItemEventHandler MenuItemClick;
         #endregion
 
         #region Constructor
-        public MenuItem(string text, string assemblyFile, string nameSpace, SqlConnection sqlConnection, long? foreignKeyExternal)
+        public MenuItem(string caption, string captionDetail, string assemblyFile, string nameSpace, SqlConnection sqlConnection, long? foreignKeyExternal)
         {   
             this.assemblyFile = assemblyFile;
             this.sqlConnection = sqlConnection;
-            this.ForeignKeyExternal = foreignKeyExternal;
+            this.foreignKeyExternal = foreignKeyExternal;
             this.nameSpace = nameSpace;
 
             AssemblyLoadResult loadResult = AssemblyLoadResult.Undefined;
@@ -46,21 +75,19 @@ namespace Wookie.Menu
             loadResult = this.InitializeAssembly();
             this.InitializeNavigationPage(loadResult);
 
-            if (this.assemblyInstance != null)
-                this.assemblyInstance.Caption = text;
-            
-            this.AccordionControlElement.Text = text;
-            this.Caption = text;
+            this.AccordionControlElement.Text = caption;
+            this.Caption = caption;
+            this.CaptionDetail = captionDetail;
         }
 
-        public MenuItem(string text, Image image, string assemblyFile, string nameSpace, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, nameSpace, sqlConnection, foreignKeyExternal)
+        public MenuItem(string caption, string captionDetail, Image image, string assemblyFile, string nameSpace, SqlConnection sqlConnection, long? foreignKeyExternal) : this(caption, captionDetail, assemblyFile, nameSpace, sqlConnection, foreignKeyExternal)
         {
             this.AccordionControlElement.ImageOptions.Image = image;
             this.Image = image;
             if (this.assemblyInstance != null) this.assemblyInstance.Image = image;            
         }
 
-        public MenuItem(string text, Binary image, string assemblyFile, string nameSpace, SqlConnection sqlConnection, long? foreignKeyExternal) : this(text, assemblyFile, nameSpace, sqlConnection, foreignKeyExternal)
+        public MenuItem(string caption, string captionDetail, Binary image, string assemblyFile, string nameSpace, SqlConnection sqlConnection, long? foreignKeyExternal) : this(caption, captionDetail, assemblyFile, nameSpace, sqlConnection, foreignKeyExternal)
         {
             this.AccordionControlElement.ImageOptions.Image = Converter.GetImageFromBinary(image);
             this.Image = Converter.GetImageFromBinary(image); 
@@ -118,12 +145,12 @@ namespace Wookie.Menu
                 if (instance != null)
                 {
                     this.assemblyInstance = ((IAssemblyInstance)instance);
-                    this.assemblyInstance.Initialize(this.sqlConnection, this.ForeignKeyExternal);
+                    this.assemblyInstance.Initialize(this.sqlConnection, this.foreignKeyExternal);
 
                     return AssemblyLoadResult.AssemblyLoaded;
                 }
             }
-            catch
+            catch (Exception err)
             {
                 return AssemblyLoadResult.AssemblyFailed;
             }
@@ -146,12 +173,26 @@ namespace Wookie.Menu
 
         public AccordionControlElement AccordionControlElement { get; private set; } = null;
 
-        public long? ForeignKeyExternal { get; private set; } = null;
+        public long? ForeignKeyExternal {
+            get { if (this.assemblyInstance != null)
+                    return this.assemblyInstance.ForeignKeyExternal;
+                else return null;
+            }
+            set { if (this.assemblyInstance != null)
+                    this.assemblyInstance.ForeignKeyExternal = value;
+            }
+        } 
 
         public event StatusBarEventHandler StatusBarChanged
         {
             add { if (this.assemblyInstance != null) this.assemblyInstance.StatusBarChanged += value; }
             remove { if (this.assemblyInstance != null) this.assemblyInstance.StatusBarChanged -= value; }
+        }
+
+        public event SelectionEventHandler SelectionChanged
+        {
+            add { if (this.assemblyInstance != null) this.assemblyInstance.SelectionChanged += value; }
+            remove { if (this.assemblyInstance != null) this.assemblyInstance.SelectionChanged -= value; }
         }
         #endregion
 

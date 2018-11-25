@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BS_PM_Mandant1" Class="ContactDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=BS_PM_Mandant1;Persist Security Info=True;User ID=sa" SettingsObjectName="Wookie.Ressource.Database.Properties.Settings" SettingsPropertyName="BS_PM_Mandant1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblContactAppointment" Member="tblContactAppointment">
+    <Type Name="tblContactAppointment">
+      <Column Name="PKContactAppointment" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContact" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactAppointmentType" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactAppointmentImportance" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="StartDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Private" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tblContactAppointment_tblContactAppointmentAttachement" Member="tblContactAppointmentAttachement" ThisKey="PKContactAppointment" OtherKey="FKContactAppointment" Type="tblContactAppointmentAttachement" />
+      <Association Name="tblContactAppointment_tblContactAppointmentParticipant" Member="tblContactAppointmentParticipant" ThisKey="PKContactAppointment" OtherKey="FKContactAppointment" Type="tblContactAppointmentParticipant" />
+      <Association Name="tlkpContactAppointmentImportance_tblContactAppointment" Member="tlkpContactAppointmentImportance" ThisKey="FKContactAppointmentImportance" OtherKey="PKContactAppointmentImportance" Type="tlkpContactAppointmentImportance" IsForeignKey="true" />
+      <Association Name="tlkpContactAppointmentType_tblContactAppointment" Member="tlkpContactAppointmentType" ThisKey="FKContactAppointmentType" OtherKey="PKContactAppointmentType" Type="tlkpContactAppointmentType" IsForeignKey="true" />
+      <Association Name="tblContact_tblContactAppointment" Member="tblContact" ThisKey="FKContact" OtherKey="PKContact" Type="tblContact" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblContactAppointmentAttachement" Member="tblContactAppointmentAttachement">
+    <Type Name="tblContactAppointmentAttachement">
+      <Column Name="PKContactAppointmentAttachement" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContactAppointment" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Attachement" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tblContactAppointment_tblContactAppointmentAttachement" Member="tblContactAppointment" ThisKey="FKContactAppointment" OtherKey="PKContactAppointment" Type="tblContactAppointment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblContactAppointmentParticipant" Member="tblContactAppointmentParticipant">
+    <Type Name="tblContactAppointmentParticipant">
+      <Column Name="PKContactAppointmentParticipant" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContact" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactAppointment" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactAppointmentParticipantStatus" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tblContactAppointment_tblContactAppointmentParticipant" Member="tblContactAppointment" ThisKey="FKContactAppointment" OtherKey="PKContactAppointment" Type="tblContactAppointment" IsForeignKey="true" />
+      <Association Name="tlkpContactAppointmentParticipantStatus_tblContactAppointmentParticipant" Member="tlkpContactAppointmentParticipantStatus" ThisKey="FKContactAppointmentParticipantStatus" OtherKey="PKContactAppointmentParticipantStatus" Type="tlkpContactAppointmentParticipantStatus" IsForeignKey="true" />
+      <Association Name="tblContact_tblContactAppointmentParticipant" Member="tblContact" ThisKey="FKContact" OtherKey="PKContact" Type="tblContact" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblContactCommunication" Member="tblContactCommunication">
+    <Type Name="tblContactCommunication">
+      <Column Name="PKContactCommunication" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContact" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactCommunicationType" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactCommunicationCategory" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Communication" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactCommunicationCategory_tblContactCommunication" Member="tlkpContactCommunicationCategory" ThisKey="FKContactCommunicationCategory" OtherKey="PKContactCommunicationCategory" Type="tlkpContactCommunicationCategory" IsForeignKey="true" />
+      <Association Name="tlkpContactCommunicationType_tblContactCommunication" Member="tlkpContactCommunicationType" ThisKey="FKContactCommunicationType" OtherKey="PKContactCommunicationType" Type="tlkpContactCommunicationType" IsForeignKey="true" />
+      <Association Name="tblContact_tblContactCommunication" Member="tblContact" ThisKey="FKContact" OtherKey="PKContact" Type="tblContact" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblContactData" Member="tblContactData">
+    <Type Name="tblContactData">
+      <Column Name="PKContactData" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tblContactData_tblContact" Member="tblContact" ThisKey="PKContactData" OtherKey="FKContactData" Type="tblContact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactPrefix" Member="tlkpContactPrefix">
+    <Type Name="tlkpContactPrefix">
+      <Column Name="PKContactPrefix" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactPrefix_tblContact" Member="tblContact" ThisKey="PKContactPrefix" OtherKey="FKContactPrefix" Type="tblContact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactAppointmentImportance" Member="tlkpContactAppointmentImportance">
+    <Type Name="tlkpContactAppointmentImportance">
+      <Column Name="PKContactAppointmentImportance" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactAppointmentImportance_tblContactAppointment" Member="tblContactAppointment" ThisKey="PKContactAppointmentImportance" OtherKey="FKContactAppointmentImportance" Type="tblContactAppointment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactAppointmentParticipantStatus" Member="tlkpContactAppointmentParticipantStatus">
+    <Type Name="tlkpContactAppointmentParticipantStatus">
+      <Column Name="PKContactAppointmentParticipantStatus" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactAppointmentParticipantStatus_tblContactAppointmentParticipant" Member="tblContactAppointmentParticipant" ThisKey="PKContactAppointmentParticipantStatus" OtherKey="FKContactAppointmentParticipantStatus" Type="tblContactAppointmentParticipant" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactAppointmentType" Member="tlkpContactAppointmentType">
+    <Type Name="tlkpContactAppointmentType">
+      <Column Name="PKContactAppointmentType" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactAppointmentType_tblContactAppointment" Member="tblContactAppointment" ThisKey="PKContactAppointmentType" OtherKey="FKContactAppointmentType" Type="tblContactAppointment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactCommunicationCategory" Member="tlkpContactCommunicationCategory">
+    <Type Name="tlkpContactCommunicationCategory">
+      <Column Name="PKContactCommunicationCategory" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactCommunicationCategory_tblContactCommunication" Member="tblContactCommunication" ThisKey="PKContactCommunicationCategory" OtherKey="FKContactCommunicationCategory" Type="tblContactCommunication" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactCommunicationType" Member="tlkpContactCommunicationType">
+    <Type Name="tlkpContactCommunicationType">
+      <Column Name="PKContactCommunicationType" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactCommunicationType_tblContactCommunication" Member="tblContactCommunication" ThisKey="PKContactCommunicationType" OtherKey="FKContactCommunicationType" Type="tblContactCommunication" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactDocumentType" Member="tlkpContactDocumentType">
+    <Type Name="tlkpContactDocumentType">
+      <Column Name="PKContactDocumentType" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactDocumentType_tblContactDocument" Member="tblContactDocument" ThisKey="PKContactDocumentType" OtherKey="FKContactDocumentType" Type="tblContactDocument" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpContactAddressType" Member="tlkpContactAddressType">
+    <Type Name="tlkpContactAddressType">
+      <Column Name="PKContactAddressType" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactAddressType_tblContactAddress" Member="tblContactAddress" ThisKey="PKContactAddressType" OtherKey="FKContactAddressType" Type="tblContactAddress" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblContactAddress" Member="tblContactAddress">
+    <Type Name="tblContactAddress">
+      <Column Name="PKContactAddress" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContact" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKCity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactAddressType" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactAddressType_tblContactAddress" Member="tlkpContactAddressType" ThisKey="FKContactAddressType" OtherKey="PKContactAddressType" Type="tlkpContactAddressType" IsForeignKey="true" />
+      <Association Name="tlkpCity_tblContactAddress" Member="tlkpCity" ThisKey="FKCity" OtherKey="PKCity" Type="tlkpCity" IsForeignKey="true" />
+      <Association Name="tblContact_tblContactAddress" Member="tblContact" ThisKey="FKContact" OtherKey="PKContact" Type="tblContact" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpCity" Member="tlkpCity">
+    <Type Name="tlkpCity">
+      <Column Name="PKCity" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKFederalState" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Zipcode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpCity_tblContactAddress" Member="tblContactAddress" ThisKey="PKCity" OtherKey="FKCity" Type="tblContactAddress" />
+      <Association Name="tlkpCity_tblContact" Member="tblContact" ThisKey="PKCity" OtherKey="FKCity" Type="tblContact" />
+      <Association Name="tlkpFederalState_tlkpCity" Member="tlkpFederalState" ThisKey="FKFederalState" OtherKey="PKFederalState" Type="tlkpFederalState" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpCountry" Member="tlkpCountry">
+    <Type Name="tlkpCountry">
+      <Column Name="PKCountry" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Shortname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpCountry_tlkpFederalState" Member="tlkpFederalState" ThisKey="PKCountry" OtherKey="FKCountry" Type="tlkpFederalState" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tlkpFederalState" Member="tlkpFederalState">
+    <Type Name="tlkpFederalState">
+      <Column Name="PKFederalState" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKCountry" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Shortname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpFederalState_tlkpCity" Member="tlkpCity" ThisKey="PKFederalState" OtherKey="FKFederalState" Type="tlkpCity" />
+      <Association Name="tlkpCountry_tlkpFederalState" Member="tlkpCountry" ThisKey="FKCountry" OtherKey="PKCountry" Type="tlkpCountry" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblContactDocument" Member="tblContactDocument">
+    <Type Name="tblContactDocument">
+      <Column Name="PKContactDocument" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContactDocumentType" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContact" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Document" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tlkpContactDocumentType_tblContactDocument" Member="tlkpContactDocumentType" ThisKey="FKContactDocumentType" OtherKey="PKContactDocumentType" Type="tlkpContactDocumentType" IsForeignKey="true" />
+      <Association Name="tblContact_tblContactDocument" Member="tblContact" ThisKey="FKContact" OtherKey="PKContact" Type="tblContact" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblContact" Member="tblContact">
+    <Type Name="tblContact">
+      <Column Name="PKContact" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FKContactData" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKContactPrefix" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FKCity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Middlename" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Birthdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FKUserCreated" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FKUserChanged" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChangedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UniqueIdentifier" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="tblContact_tblContactAppointment" Member="tblContactAppointment" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactAppointment" />
+      <Association Name="tblContact_tblContactAppointmentParticipant" Member="tblContactAppointmentParticipant" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactAppointmentParticipant" />
+      <Association Name="tblContact_tblContactCommunication" Member="tblContactCommunication" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactCommunication" />
+      <Association Name="tblContact_tblContactAddress" Member="tblContactAddress" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactAddress" />
+      <Association Name="tblContact_tblContactDocument" Member="tblContactDocument" ThisKey="PKContact" OtherKey="FKContact" Type="tblContactDocument" />
+      <Association Name="tblContactData_tblContact" Member="tblContactData" ThisKey="FKContactData" OtherKey="PKContactData" Type="tblContactData" IsForeignKey="true" />
+      <Association Name="tlkpCity_tblContact" Member="tlkpCity" ThisKey="FKCity" OtherKey="PKCity" Type="tlkpCity" IsForeignKey="true" />
+      <Association Name="tlkpContactPrefix_tblContact" Member="tlkpContactPrefix" ThisKey="FKContactPrefix" OtherKey="PKContactPrefix" Type="tlkpContactPrefix" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -16,13 +16,13 @@ namespace Wookie.Project.Contract
         #region Constructor
         public Category()
         {
+            this.modulData = new Wookie.Tools.Controls.ModulData();
         }
         #endregion
 
         #region Public Functions
         public void Initialize(SqlConnection sqlConnection, long? foreignKeyExternal)
-        {
-            this.modulData = new Wookie.Tools.Controls.ModulData();
+        {            
             this.modulData.SqlConnection = sqlConnection;
             this.modulData.FKExternal = foreignKeyExternal;
         }
@@ -31,6 +31,12 @@ namespace Wookie.Project.Contract
         {
             add { ((Control.ucProjectContract)this.UserControl).StatusBarChanged += value; }
             remove { ((Control.ucProjectContract)this.UserControl).StatusBarChanged -= value; }
+        }
+
+        public event SelectionEventHandler SelectionChanged
+        {
+            add { ((Control.ucProjectContract)this.UserControl).SelectionChanged += value; }
+            remove { ((Control.ucProjectContract)this.UserControl).SelectionChanged -= value; }
         }
         #endregion
 
@@ -61,10 +67,11 @@ namespace Wookie.Project.Contract
         {
             get
             {
-                if (this.modulData != null)
-                    return this.modulData.FKExternal;
-
-                return null;
+                return this.modulData.FKExternal;
+            }
+            set
+            {
+                this.modulData.FKExternal = value;
             }
         }
 
@@ -78,6 +85,12 @@ namespace Wookie.Project.Contract
         {
             get { return ((Control.ucProjectContract)this.UserControl).Caption; }
             set { ((Control.ucProjectContract)this.UserControl).Caption = value; }
+        }
+
+        public String CaptionDetail
+        {
+            get { return ((Control.ucProjectContract)this.UserControl).CaptionDetail; }
+            set { ((Control.ucProjectContract)this.UserControl).CaptionDetail = value; }
         }
         #endregion
 

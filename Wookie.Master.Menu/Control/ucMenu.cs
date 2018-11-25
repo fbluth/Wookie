@@ -30,6 +30,7 @@ namespace Wookie.Master.Menu.Control
         private DevExpress.Utils.Menu.DXMenuItem item2 = new DevExpress.Utils.Menu.DXMenuItem("Icons");
 
         public event StatusBarEventHandler StatusBarChanged;
+        public event SelectionEventHandler SelectionChanged;
         #endregion
 
         #region Constructor
@@ -74,6 +75,12 @@ namespace Wookie.Master.Menu.Control
         {
             get { return this.ucDefault1.Caption; }
             set { this.ucDefault1.Caption = value; }
+        }
+
+        public String CaptionDetail
+        {
+            get { return this.ucDefault1.CaptionDetail; }
+            set { this.ucDefault1.CaptionDetail = value; }
         }
         #endregion
 

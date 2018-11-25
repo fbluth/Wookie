@@ -16,13 +16,13 @@ namespace Wookie.Employee.MasterData.ContactPrefix
         #region Constructor
         public Category()
         {
+            this.modulData = new Wookie.Tools.Controls.ModulData();
         }
         #endregion
 
         #region Public Functions
         public void Initialize(SqlConnection sqlConnection, long? foreignKeyExternal)
         {
-            this.modulData = new Wookie.Tools.Controls.ModulData();
             this.modulData.SqlConnection = sqlConnection;
             this.modulData.FKExternal = foreignKeyExternal;
         }
@@ -31,6 +31,12 @@ namespace Wookie.Employee.MasterData.ContactPrefix
         {
             add { ((ContactPrefix.ucMasterData)this.UserControl).StatusBarChanged += value; }
             remove { ((ContactPrefix.ucMasterData)this.UserControl).StatusBarChanged -= value; }
+        }
+
+        public event SelectionEventHandler SelectionChanged
+        {
+            add { ((ContactPrefix.ucMasterData)this.UserControl).SelectionChanged += value; }
+            remove { ((ContactPrefix.ucMasterData)this.UserControl).SelectionChanged -= value; }
         }
         #endregion
 
@@ -61,10 +67,11 @@ namespace Wookie.Employee.MasterData.ContactPrefix
         {
             get
             {
-                if (this.modulData != null)
-                    return this.modulData.FKExternal;
-
-                return null;
+                return this.modulData.FKExternal;
+            }
+            set
+            {
+                this.modulData.FKExternal = value;
             }
         }
 
@@ -78,6 +85,12 @@ namespace Wookie.Employee.MasterData.ContactPrefix
         {
             get { return ((ContactPrefix.ucMasterData)this.UserControl).Caption; }
             set { ((ContactPrefix.ucMasterData)this.UserControl).Caption = value; }
+        }
+
+        public String CaptionDetail
+        {
+            get { return ((ContactPrefix.ucMasterData)this.UserControl).CaptionDetail; }
+            set { ((ContactPrefix.ucMasterData)this.UserControl).CaptionDetail = value; }
         }
         #endregion
 

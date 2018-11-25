@@ -17,9 +17,9 @@ namespace Wookie.Employee.Contact.Control
         public event EventHandler StatusChanged;
         private Database.ContactDataContext dataContext = null;
         public long? pkContact;
-        private ModulData modulData = null;
+        private Wookie.Tools.Controls.ModulData modulData = null;
 
-        public ucContactEdit(ModulData modulData)
+        public ucContactEdit(Wookie.Tools.Controls.ModulData modulData)
         {
             this.modulData = modulData;
             InitializeComponent();            
@@ -29,7 +29,7 @@ namespace Wookie.Employee.Contact.Control
         {
             if (contact == null) return;
 
-            dataContext = new Database.ContactDataContext(modulData.SqlConnectionClientDB);
+            dataContext = new Database.ContactDataContext(modulData.SqlConnection);
 
             tlkpContactPrefixBindingSource.DataSource = dataContext.tlkpContactPrefix;
             tlkpContactCommunicationTypeBindingSource.DataSource = dataContext.tlkpContactCommunicationType;
@@ -52,7 +52,7 @@ namespace Wookie.Employee.Contact.Control
 
         public void New()
         {
-            dataContext = new Database.ContactDataContext(modulData.SqlConnectionClientDB);
+            dataContext = new Database.ContactDataContext(modulData.SqlConnection);
 
             tlkpContactPrefixBindingSource.DataSource = dataContext.tlkpContactPrefix;
             tlkpContactCommunicationTypeBindingSource.DataSource = dataContext.tlkpContactCommunicationType;
@@ -64,7 +64,7 @@ namespace Wookie.Employee.Contact.Control
             LoadImageComboBoxItems();
 
             Database.tblContact c = new Database.tblContact();
-            c.FKContactData = modulData.FKContactData;
+            c.FKContactData = modulData.FKExternal;
 
             tblContactBindingSource.DataSource = c;
             dataContext.tblContact.InsertOnSubmit(c);

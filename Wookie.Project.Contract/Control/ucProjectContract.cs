@@ -22,6 +22,7 @@ namespace Wookie.Project.Contract.Control
         private Wookie.Tools.Controls.ModulData modulData = null;
         
         public event StatusBarEventHandler StatusBarChanged;
+        public event SelectionEventHandler SelectionChanged;
         #endregion
 
         #region Constructor
@@ -55,6 +56,12 @@ namespace Wookie.Project.Contract.Control
         {
             get { return this.ucDefault1.Caption; }
             set { this.ucDefault1.Caption = value; }
+        }
+
+        public String CaptionDetail
+        {
+            get { return this.ucDefault1.CaptionDetail; }
+            set { this.ucDefault1.CaptionDetail = value; }
         }
         #endregion
 
@@ -136,7 +143,7 @@ namespace Wookie.Project.Contract.Control
             {
                 using (MemoryStream ms = new MemoryStream(this.SelectedProjectContract.ContractCalculation.ToArray()))
                 {
-                    spreadsheetControl1.LoadDocument(ms);
+                    //spreadsheetControl1.LoadDocument(ms);
                 }
             }
 
