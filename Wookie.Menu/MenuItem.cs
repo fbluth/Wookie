@@ -11,9 +11,6 @@ using Wookie.Tools.Image;
 
 namespace Wookie.Menu
 {
-    /// <summary>
-    /// INfo
-    /// </summary>
     public class MenuItem
     {
         #region Variables
