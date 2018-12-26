@@ -26,7 +26,10 @@ namespace Wookie.Menu
         private string assemblyFile = null;
         private string nameSpace = null;
         private SqlConnection sqlConnection = null;
-        public Image Image { get; set; }
+        #endregion
+
+        #region Public properties
+        public Image Image { get; set; } = null;
         public string Caption
         {
             get
@@ -135,6 +138,7 @@ namespace Wookie.Menu
             string assemblyFileWithoutDll = this.assemblyFile.ToLower().EndsWith(".dll") ? this.assemblyFile.Remove(this.assemblyFile.Length - 4, 4) : this.assemblyFile;
             string path = Application.StartupPath + "\\" + assemblyFileDll;
             string nameSpace = this.nameSpace == null ? assemblyFileWithoutDll : this.nameSpace;
+
             if (!System.IO.File.Exists(path)) return AssemblyLoadResult.AssemblyNotFound;
 
             try
@@ -150,7 +154,7 @@ namespace Wookie.Menu
                     return AssemblyLoadResult.AssemblyLoaded;
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 return AssemblyLoadResult.AssemblyFailed;
             }
@@ -168,6 +172,13 @@ namespace Wookie.Menu
         }
         #endregion
 
+        #region Public functions
+        public void OnMenuItemClick()
+        {
+            MenuItemClick?.Invoke(this);
+        }
+        #endregion
+
         #region Properties
         public NavigationPage NavigationPage { get; private set; } = null;
 
@@ -181,8 +192,10 @@ namespace Wookie.Menu
             set { if (this.assemblyInstance != null)
                     this.assemblyInstance.ForeignKeyExternal = value;
             }
-        } 
+        }
+        #endregion
 
+        #region Events
         public event StatusBarEventHandler StatusBarChanged
         {
             add { if (this.assemblyInstance != null) this.assemblyInstance.StatusBarChanged += value; }
@@ -196,10 +209,10 @@ namespace Wookie.Menu
         }
         #endregion
 
-        #region Events
+        #region Handled Events
         private void accordionControlElement_Click(object sender, EventArgs e)
         {
-            MenuItemClick?.Invoke(this);
+            this.OnMenuItemClick();
         }
         #endregion
     }

@@ -41,7 +41,6 @@ namespace Wookie.Ressource.Contact
         #endregion
 
         #region Public Properties
-
         public SqlConnection SqlConnection
         {
             get

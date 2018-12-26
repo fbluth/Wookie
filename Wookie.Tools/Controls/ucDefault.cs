@@ -291,7 +291,7 @@ namespace Wookie.Tools.Controls
                 DataSaved?.Invoke(this, new EventArgs());
                 return true;
             }
-            catch (ChangeConflictException e)
+            catch (ChangeConflictException)
             {
 
                 this.CloseProgressPanel();
@@ -332,15 +332,15 @@ namespace Wookie.Tools.Controls
                 if (exception.Number == 547) // Constraint error
                     XtraMessageBox.Show("Datensatz wird noch von anderer Stelle referenziert und kann daher nicht gelöscht werden.", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 else
-                    XtraMessageBox.Show(exception.ToString(), "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    XtraMessageBox.Show(exception.ToString(), "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 return false;
             }
-            catch (Exception err)
+            catch (Exception exception)
             {
                 this.CloseProgressPanel();
 
-                XtraMessageBox.Show(err.ToString(), "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show(exception.ToString(), "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
             finally

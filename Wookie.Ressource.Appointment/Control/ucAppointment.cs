@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wookie.Menu;
 using DevExpress.XtraEditors;
-using DevExpress.XtraBars;
-using DevExpress.XtraScheduler;
 
 namespace Wookie.Ressource.Appointment.Control
 {
@@ -34,12 +28,14 @@ namespace Wookie.Ressource.Appointment.Control
         }
         #endregion
 
+        #region Public functions
         public void Initialize(Wookie.Tools.Controls.ModulData modulData)
         {
             this.modulData = modulData;
             this.ucDefault1.Initialize(modulData, true);
             this.SetValidationRules();            
         }
+        #endregion
 
         #region Public properties
         public System.Drawing.Image Image
@@ -61,11 +57,14 @@ namespace Wookie.Ressource.Appointment.Control
         }
         #endregion
 
+        #region Private properties
         private Database.tblContactAppointment SelectedAppointment
         {
             get { return this.tblContactAppointmentBindingSource.Current as Database.tblContactAppointment; }
         }
+        #endregion
 
+        #region Private Functions
         private void SetValidationRules()
         {
 
@@ -97,22 +96,21 @@ namespace Wookie.Ressource.Appointment.Control
             contactAppointment.StartDateTime = System.DateTime.Now.AddHours(1);
             int datasourceindex = this.tblContactAppointmentBindingSource.Add(contactAppointment);            
         }
+        #endregion
 
+        #region Handled Events
         private void ucDefault1_BeforeDataLoad(object sender, EventArgs e)
         {
             this.dataContext = new Database.ContactDataContext(modulData.SqlConnection);
             this.ucDefault1.DataContext = this.dataContext;
             
-
             this.tblContactAppointmentBindingSource.DataSource = from row in dataContext.tblContactAppointment
                                                       where row.FKContact == modulData.FKExternal
                                                       select row;
 
-
             this.LoadImageComboBoxItems();
 
             StatusBarChanged?.Invoke(new StatusBarEventArgs(System.String.Format("{0} Datensätze geladen", this.tblContactAppointmentBindingSource.Count)));
-
         }
 
         private void btnDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -142,5 +140,6 @@ namespace Wookie.Ressource.Appointment.Control
         {
            
         }
+        #endregion
     }
 }
