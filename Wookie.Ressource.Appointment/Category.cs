@@ -9,7 +9,7 @@ namespace Wookie.Ressource.Appointment
     class Category : Wookie.Menu.IAssemblyInstance, IDisposable
     {
         #region Variables
-        private XtraUserControl userControl = null;
+        private XtraUserControl control = null;
         private Wookie.Tools.Controls.ModulData modulData = null;
         #endregion
 
@@ -22,12 +22,10 @@ namespace Wookie.Ressource.Appointment
 
         #region Public Functions
         public void Initialize(SqlConnection sqlConnection, long? foreignKeyExternal)
-        {           
+        {
+           
             this.modulData.SqlConnection = sqlConnection;
             this.modulData.FKExternal = foreignKeyExternal;
-
-            this.userControl = new Control.ucAppointment(this.modulData);
-            ((Control.ucAppointment)this.userControl).Initialize(this.modulData);
         }
 
         public event StatusBarEventHandler StatusBarChanged
@@ -44,11 +42,15 @@ namespace Wookie.Ressource.Appointment
         #endregion
 
         #region Public Properties
+
         public SqlConnection SqlConnection
         {
             get
             {
-                return this.modulData.SqlConnection;
+                if (this.modulData != null)
+                    return this.modulData.SqlConnection;
+
+                return null;
             }
         }
 
@@ -56,7 +58,9 @@ namespace Wookie.Ressource.Appointment
         {
             get
             {
-                return this.userControl;
+                if (this.control == null)
+                    control = new Control.ucAppointment(modulData);
+                return control;
             }
         }
 
@@ -102,12 +106,12 @@ namespace Wookie.Ressource.Appointment
                 if (disposing)
                 {
                     // TODO: verwalteten Zustand (verwaltete Objekte) entsorgen.
-                    this.userControl.Dispose();
+                    this.control.Dispose();
                 }
 
                 // TODO: nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.
                 // TODO: große Felder auf Null setzen.
-                this.userControl = null;
+                this.control = null;
                 this.modulData = null;
                 disposedValue = true;
             }

@@ -1,29 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraMap;
 using Wookie.Menu;
+using Wookie.Ressource;
 
 namespace Wookie.Ressource.Contact.Control
 {
-    public partial class ucContact : XtraUserControl
+    public partial class ucContact : DevExpress.XtraEditors.XtraUserControl
     {
         #region Variables
         private Database.ContactDataContext dataContext = null;
         private Wookie.Tools.Controls.ModulData modulData = null;
 
+        private const string BingKey = "AqimjY1KQFxu9mGbYVY4bI7_l8-zyog7hKyTLbrQgxVcBxgS_6Dby16EgWwJQTVC";
         public event StatusBarEventHandler StatusBarChanged;
         public event SelectionEventHandler SelectionChanged;
 
-        private static class IdPicture
-        {
-            public const string BusinessWoman = "0dde9ad1-52f7-47df-8a21-ad793be1f9d9";
-            public const string BusinessMan = "2b00c30e-4d97-4a74-bdfb-894f77b3b56c";
-            public const string InterSex = "d9593747-5848-440b-9d8c-f3dfaee43651";
-        }
-        private const string BingKey = "AqimjY1KQFxu9mGbYVY4bI7_l8-zyog7hKyTLbrQgxVcBxgS_6Dby16EgWwJQTVC";
         #endregion
 
         #region Constructor
@@ -45,8 +39,10 @@ namespace Wookie.Ressource.Contact.Control
                 this.popupMenu2,
                 this.tblContactCommunicationBindingSource);
 
+            //this.ucDefault1.RegisterBindingSource(this.tblContactCommunicationBindingSource);
+
             this.ucDefault1.PreparePictureEdit(this.picID);         
-            this.ucDefault1.Initialize(this.modulData, true);
+            this.ucDefault1.Initialize(modulData,true);
 
             this.SetValidationRules();
         }
@@ -72,115 +68,22 @@ namespace Wookie.Ressource.Contact.Control
         }
         #endregion
 
-        #region Private properties
-        /// <summary>
-        /// Returns the database object from the binding source for the current selected contact. 
-        /// </summary>
         private Database.tblContact SelectedContact
         {
             get { return this.tblContactBindingSource.Current as Database.tblContact; }
         }
 
-        /// <summary>
-        /// Returns the database object from the binding source for the current selected communication.
-        /// </summary>
         private Database.tblContactCommunication SelectedContactCommunication
         {
             get { return this.tblContactCommunicationBindingSource.Current as Database.tblContactCommunication; }
         }
 
-        /// <summary>
-        /// Returns the concated name (Surname + Middlename + Name) from the current selected contact.        
-        /// </summary>
-        private string FullName
-        {
-            get
-            {
-                if (this.SelectedContact == null) return null;
-
-                string fullname = null;
-
-                fullname = this.SelectedContact.Surname != null ? this.SelectedContact.Surname.Trim() : "";
-                fullname += this.SelectedContact.Middlename != null ? (" " + this.SelectedContact.Middlename.Trim()) : "";
-                fullname += this.SelectedContact.Name != null ? (" " + this.SelectedContact.Name.Trim()) : "";
-
-                return fullname;
-            }
-        }
-
-        /// <summary>
-        /// Returns the concated address (Zipcode + City + Street) from the current selected contact.        
-        /// </summary>
-        private string Address
-        {
-            get
-            {
-                if (this.SelectedContact == null) return "";
-
-                string address = null;
-
-                address = this.SelectedContact.tlkpCity.Zipcode.ToString() + ", ";
-                address += this.SelectedContact.tlkpCity.Name + ", ";
-                address += this.SelectedContact.Street;
-
-                return address;
-            }
-        }
-
-        /// <summary>
-        /// Returns a default picture for a contact. The default picture will be from the assigned prefix. 
-        /// If no prefix is selected the default picture will be from type business man.
-        /// </summary>
-        private System.Drawing.Bitmap DefaultIdPicture
-        {
-            get
-            {
-                if (this.SelectedContact == null) return ImageResource.businessman;
-
-                System.Drawing.Bitmap picture = null;
-
-                if (this.SelectedContact.tlkpContactPrefix != null &&
-                        this.SelectedContact.tlkpContactPrefix.UniqueIdentifier.HasValue)
-                {
-                    switch (this.SelectedContact.tlkpContactPrefix.UniqueIdentifier.ToString().ToLower())
-                    {
-                        case IdPicture.BusinessWoman:
-                            picture = ImageResource.businesswoman;
-                            break;
-                        case IdPicture.BusinessMan:
-                            picture = ImageResource.businessman;
-                            break;
-                        case IdPicture.InterSex:
-                            picture = ImageResource.intersex;
-                            break;
-                        default:
-                            picture = ImageResource.businessman;
-                            break;
-                    }
-                }
-                else
-                {
-                    picture = ImageResource.businessman;
-                }
-
-                return picture;
-            }
-        }
-        #endregion
-
-        #region Private functions
-        /// <summary>
-        /// Sets validation rules for input fields.
-        /// </summary>
         private void SetValidationRules()
         {
 
         }
 
-        /// <summary>
-        /// Load combobox items from database.
-        /// </summary>
-        private void SetImageComboBoxItems()
+        private void LoadImageComboBoxItems()
         {
             // Prefix
             this.imgCollectionPrefix.Images.Clear();
@@ -214,35 +117,11 @@ namespace Wookie.Ressource.Contact.Control
             }
         }
 
-        /// <summary>
-        /// Load data from database using a new data context.
-        /// </summary>
-        private void LoadDataFromDatabase()
-        {
-            this.dataContext = new Database.ContactDataContext(this.modulData.SqlConnection);
-            this.ucDefault1.DataContext = this.dataContext;
-
-            this.tlkpCityBindingSource.DataSource = this.dataContext.tlkpCity;
-            this.tlkpContactAddressTypeBindingSource.DataSource = this.dataContext.tlkpContactAddressType;
-            this.tlkpContactPrefixBindingSource.DataSource = this.dataContext.tlkpContactPrefix;
-            this.tlkpFederalStateBindingSource.DataSource = this.dataContext.tlkpFederalState;
-            this.tlkpCountryBindingSource.DataSource = this.dataContext.tlkpCountry;
-            this.tlkpContactCommunicationCategoryBindingSource.DataSource = this.dataContext.tlkpContactCommunicationCategory;
-            this.tlkpContactCommunicationTypeBindingSource.DataSource = this.dataContext.tlkpContactCommunicationType;
-
-            this.tblContactBindingSource.DataSource = from row in this.dataContext.tblContact
-                                                      where row.FKContactData == this.modulData.FKExternal
-                                                      select row;
-        }
-
-        /// <summary>
-        /// Removes the currently selected contact from the datasource.
-        /// </summary>
-        private void RemoveContact()
+        private void Remove()
         { 
             this.ucDefault1.PostEditor();
 
-            string msg = string.Format("Soll der Eintrag <b>\"{0}\"</b> gelöscht werden?", this.FullName);
+            string msg = string.Format("Soll der Eintrag <b>\"{0}\"</b> gelöscht werden?", this.GetFullName());
 
             if (XtraMessageBox.Show(msg, "Frage", MessageBoxButtons.YesNo, MessageBoxIcon.Question, DevExpress.Utils.DefaultBoolean.True) == DialogResult.Yes)
             {
@@ -250,10 +129,7 @@ namespace Wookie.Ressource.Contact.Control
             }
         }
 
-        /// <summary>
-        /// Adds a new contact to the datasource.
-        /// </summary>
-        private void AddContact()
+        private void Add()
         {
             this.ucDefault1.PostEditor();
             Database.tblContact contact = new Database.tblContact();
@@ -263,9 +139,6 @@ namespace Wookie.Ressource.Contact.Control
             gridView2.FocusedRowHandle = gridView2.GetRowHandle(datasourceindex);
         }
 
-        /// <summary>
-        /// Adds a new communication object to the datasource.
-        /// </summary>
         private void AddCommunication()
         {
             this.ucDefault1.PostEditor();
@@ -276,9 +149,6 @@ namespace Wookie.Ressource.Contact.Control
             gridView4.FocusedRowHandle = gridView4.GetRowHandle(datasourceindex);
         }
 
-        /// <summary>
-        /// Removes the currently selected communication object from the datasource.
-        /// </summary>
         private void RemoveCommunication()
         {
             this.ucDefault1.PostEditor();
@@ -292,50 +162,42 @@ namespace Wookie.Ressource.Contact.Control
                 this.tblContactCommunicationBindingSource.Remove(this.SelectedContactCommunication);
             }
         }
-        #endregion
 
-        #region Events
-        private void OnStatusBarChanged()
-        {
-            if (this.tblContactBindingSource == null) return;
-
-            this.StatusBarChanged?.Invoke(new StatusBarEventArgs(
-                System.String.Format("{0} Datensätze geladen", 
-                this.tblContactBindingSource.Count)));
-        }
-
-        private void OnSelectionChanged()
-        {
-            List<long?> list = new List<long?>();
-            list.Add(this.SelectedContact.PKContact);
-
-            SelectionChanged?.Invoke(
-                            new SelectionEventArgs(
-                                "6a8de51f-1903-40cf-82c7-fdff9c3d704a",
-                                this.FullName,
-                                this.modulData.FKExternal,
-                                list,
-                                new Control.ucSelectedContact(this.SelectedContact)
-                             ));
-        }
-        #endregion
-
-        #region Handled events
         private void ucDefault1_BeforeDataLoad(object sender, EventArgs e)
         {
-            this.LoadDataFromDatabase();
-            this.SetImageComboBoxItems();
-            this.gridControl2.DataSource = this.tblContactBindingSource;
-            this.gridView2.BestFitColumns();
-            this.OnStatusBarChanged();
-        }        
+            this.dataContext = new Database.ContactDataContext(modulData.SqlConnection);
+            this.ucDefault1.DataContext = this.dataContext;
+            this.tlkpCityBindingSource.DataSource = this.dataContext.tlkpCity;
+            this.tlkpContactAddressTypeBindingSource.DataSource = this.dataContext.tlkpContactAddressType;
+            this.tlkpContactPrefixBindingSource.DataSource = this.dataContext.tlkpContactPrefix;
+            this.tlkpFederalStateBindingSource.DataSource = this.dataContext.tlkpFederalState;
+            this.tlkpCountryBindingSource.DataSource = this.dataContext.tlkpCountry;
+            this.tlkpContactCommunicationCategoryBindingSource.DataSource = this.dataContext.tlkpContactCommunicationCategory;
+            this.tlkpContactCommunicationTypeBindingSource.DataSource = this.dataContext.tlkpContactCommunicationType;
 
-        private void ucDefault1_BeforeDataSave(object sender, EventArgs e)
+            this.tblContactBindingSource.DataSource = from row in dataContext.tblContact
+                                                 where row.FKContactData == modulData.FKExternal
+                                                 select row;
+
+            
+            this.LoadImageComboBoxItems();
+
+            this.gridControl2.DataSource = this.tblContactBindingSource;
+
+            this.gridView2.BestFitColumns();
+
+            StatusBarChanged?.Invoke(new StatusBarEventArgs(System.String.Format("{0} Datensätze geladen", this.tblContactBindingSource.Count)));
+            
+        }
+
+        private void btnDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.SelectedContact != null && this.SelectedContact.Picture == null)
-            {
-                this.SelectedContact.Picture = Wookie.Tools.Image.Converter.GetBinaryFromImage(DefaultIdPicture);
-            }
+            this.Remove();
+        }
+
+        private void btnNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Add();
         }
 
         private void ucDefault1_DataRefresh(object sender, EventArgs e)
@@ -343,29 +205,25 @@ namespace Wookie.Ressource.Contact.Control
             if (this.SelectedContact == null) return;
 
             if (this.SelectedContact.tlkpCity != null)
-                bingSearchDataProvider1.Search(this.Address);
+                bingSearchDataProvider1.Search(this.SelectedContact.tlkpCity.Zipcode.ToString() + " " + this.SelectedContact.tlkpCity.Name + " " + this.SelectedContact.Street);
 
             if (this.SelectedContact.tlkpContactPrefix != null)
                 this.lblPrefix.Text = this.SelectedContact.tlkpContactPrefix.Name;
 
-            this.lblFullname.Text = this.FullName;
+            this.lblFullname.Text = this.GetFullName();
 
             this.tblContactCommunicationBindingSource.DataSource = this.SelectedContact;
+
         }
 
-        private void btnDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private string GetFullName()
         {
-            this.RemoveContact();
-        }
+            string fullname = null;
+            fullname = this.SelectedContact.Surname != null ? this.SelectedContact.Surname.Trim() : "";
+            fullname += this.SelectedContact.Middlename != null ? (" " + this.SelectedContact.Middlename.Trim()) : "";
+            fullname += this.SelectedContact.Name != null ? (" " + this.SelectedContact.Name.Trim()) : "";
 
-        private void btnNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            this.AddContact();
-        }
-
-        private void btnSelect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            this.OnSelectionChanged();
+            return fullname;
         }
 
         private void bingSearchDataProvider_SearchCompleted(object sender, BingSearchCompletedEventArgs e)
@@ -373,7 +231,29 @@ namespace Wookie.Ressource.Contact.Control
             GeoPoint topLeft = e.RequestResult.SearchResults[0].Location;
             mapControl1.ZoomToRegion(topLeft, topLeft, 0.4);
         }
-        
+
+        private void btnSelect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SelectionChanged?.Invoke(new SelectionEventArgs("6a8de51f-1903-40cf-82c7-fdff9c3d704a", this.SelectedContact.PKContact, this.GetFullName()));
+        }
+
+        private void ucDefault1_BeforeDataSave(object sender, EventArgs e)
+        {
+            Guid businessWoman = new Guid("0dde9ad1-52f7-47df-8a21-ad793be1f9d9");
+            Guid businessMan = new Guid("2b00c30e-4d97-4a74-bdfb-894f77b3b56c");
+            Guid intersex = new Guid("d9593747-5848-440b-9d8c-f3dfaee43651");
+
+            if (this.SelectedContact.Picture == null)
+            {
+                if (this.SelectedContact.tlkpContactPrefix.UniqueIdentifier.Value == businessWoman)
+                    this.SelectedContact.Picture = Wookie.Tools.Image.Converter.GetBinaryFromImage(ImageResource.businesswoman);
+                if (this.SelectedContact.tlkpContactPrefix.UniqueIdentifier.Value == businessMan)
+                    this.SelectedContact.Picture = Wookie.Tools.Image.Converter.GetBinaryFromImage(ImageResource.businessman);
+                if (this.SelectedContact.tlkpContactPrefix.UniqueIdentifier.Value == intersex)
+                    this.SelectedContact.Picture = Wookie.Tools.Image.Converter.GetBinaryFromImage(ImageResource.intersex);
+            }
+        }
+
         private void btnNewComm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.AddCommunication();
@@ -383,6 +263,5 @@ namespace Wookie.Ressource.Contact.Control
         {
             this.RemoveCommunication();
         }
-        #endregion
     }
 }

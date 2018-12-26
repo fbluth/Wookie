@@ -2,7 +2,6 @@
 using System.Data.SqlClient;
 using System.Drawing;
 using System;
-using System.Collections.Generic;
 
 namespace Wookie.Menu
 {
@@ -24,35 +23,25 @@ namespace Wookie.Menu
 
     public class StatusBarEventArgs : EventArgs
     {
-        public string Text { get; set; } = null;
-
         public StatusBarEventArgs(string text)
         {
             this.Text = text;
-        }        
+        }
+
+        public string Text { get; set; } 
     }
 
     public class SelectionEventArgs : EventArgs
     {
-        public string Sender { get; set; } = null;
+        public string Uniqueidentifer { get; set; } = null;
         public string Caption { get; set; } = null;
         public long? ForeignKeyExternal { get; set; } = null;
-        public List<long?> ForeignKeys { get; set; } = null;
-        public XtraUserControl XtraUserControl { get; set; } = null;
 
-        public SelectionEventArgs(string sender, string caption, long? foreignKeyExternal)
+        public SelectionEventArgs(string uniqueidentifier, long? foreignKeyExternal, string caption)
         {
-            this.Sender = sender;            
-            this.Caption = caption;
+            this.Uniqueidentifer = uniqueidentifier;
             this.ForeignKeyExternal = foreignKeyExternal;
-        }
-        public SelectionEventArgs(string sender, string caption, long? foreignKeyExternal, List<long?> foreignKeys):this(sender, caption, foreignKeyExternal)
-        {
-            this.ForeignKeys = foreignKeys;
-        }
-        public SelectionEventArgs(string sender, string caption, long? foreignKeyExternal, List<long?> foreignKeys, XtraUserControl userControl) : this(sender, caption, foreignKeyExternal, foreignKeys)
-        {
-            this.XtraUserControl = userControl;
-        }
+            this.Caption = caption;
+        }        
     }
 }

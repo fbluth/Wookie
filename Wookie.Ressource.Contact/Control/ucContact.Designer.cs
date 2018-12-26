@@ -1444,7 +1444,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox riLookupPrefix;
         private DevExpress.Utils.ImageCollection imgCollectionPrefix;
         private DevExpress.Utils.ImageCollection imgCollectionCountry;
-        private DevExpress.XtraMap.ImageLayer imageLayer1;        
+        private DevExpress.XtraMap.ImageLayer imageLayer1;
+        private DevExpress.XtraMap.BingMapDataProvider bingMapDataProvider1;
         private DevExpress.XtraMap.InformationLayer informationLayer1;
         
         private DevExpress.XtraEditors.GroupControl groupControl2;

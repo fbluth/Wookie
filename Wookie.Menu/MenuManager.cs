@@ -27,6 +27,7 @@ namespace Wookie.Menu.MenuManager
         private BarStaticItem barItemMessage = new BarStaticItem();
         private BarStaticItem barItemSelection= new BarStaticItem();
         private List<MenuItem> menuItems = null;
+
         #endregion
 
         #region Constructor
@@ -103,22 +104,12 @@ namespace Wookie.Menu.MenuManager
 
             foreach (Database.tsysClientElement row in query)
             {
-                MenuItem menuItem = new MenuItem(
-                    row.Name,                    
-                    null, 
-                    row.Image, 
-                    row.Assemblyname, 
-                    row.Namespace, 
-                    client.SqlConnection, 
-                    row.FKExternal);
-
+                MenuItem menuItem = new MenuItem(row.Name, null, row.Image, row.Assemblyname, row.Namespace, client.SqlConnection, row.FKExternal);
                 menuItem.MenuItemClick += new MenuItem.MenuItemEventHandler(this.MenuItem_Click);
                 menuItem.StatusBarChanged += MenuItem_StatusBarChanged;
                 menuItem.SelectionChanged += MenuItem_SelectionChanged;
                 menuItem.Identifier = row.UniqueIdentifier.HasValue ? row.UniqueIdentifier.ToString() : "";
-
                 this.menuItems.Add(menuItem);
-
                 if (element == null)
                 {
                     this.accordionControl.Elements.Add(menuItem.AccordionControlElement);
@@ -133,6 +124,27 @@ namespace Wookie.Menu.MenuManager
             }
 
             return query.Count();
+        }
+
+        private void MenuItem_SelectionChanged(SelectionEventArgs args)
+        {
+            if (this.menuItems == null) return;
+
+            barItemSelection.Caption = args.Caption;
+
+            foreach (MenuItem item in this.menuItems)
+            {
+                if (item.Identifier == args.Uniqueidentifer)
+                {
+                    item.ForeignKeyExternal = args.ForeignKeyExternal;
+                    item.CaptionDetail = args.Caption;
+                }
+            }            
+        }
+
+        private void MenuItem_StatusBarChanged(StatusBarEventArgs args)
+        {
+            barItemMessage.Caption = args.Text;           
         }
 
         private void AddSettings()
@@ -178,9 +190,6 @@ namespace Wookie.Menu.MenuManager
             this.CreateMenu(client, null, null);
             this.AddSettings();
             this.accordionControl.EndUpdate();
-
-            if (this.menuItems != null && this.menuItems.Count > 0)
-                this.menuItems[0].OnMenuItemClick();
         }
 
         private SqlConnectionStringBuilder GetSqlConnectionBuilder(Database.tsysClient client)
@@ -261,27 +270,6 @@ namespace Wookie.Menu.MenuManager
             this.AddMenu(client);            
 
             this.ClientChanged?.Invoke(client);
-        }
-
-        private void MenuItem_SelectionChanged(SelectionEventArgs args)
-        {
-            if (this.menuItems == null) return;
-
-            barItemSelection.Caption = args.Caption;
-
-            foreach (MenuItem item in this.menuItems)
-            {
-                if (item.Identifier == args.Sender)
-                {
-                    item.ForeignKeyExternal = args.ForeignKeys[0];
-                    item.CaptionDetail = args.Caption;
-                }
-            }
-        }
-
-        private void MenuItem_StatusBarChanged(StatusBarEventArgs args)
-        {
-            barItemMessage.Caption = args.Text;
         }
         #endregion
 
