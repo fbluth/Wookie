@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Drawing;
 using System;
+using System.Collections.Generic;
 
 namespace Wookie.Menu
 {
@@ -10,13 +11,16 @@ namespace Wookie.Menu
 
     public interface IAssemblyInstance
     {
-        void Initialize(SqlConnection SqlConnection, long? foreignKeyExternal);
-        SqlConnection SqlConnection { get; }
+        void Activate();
+        SqlConnection SqlConnection { get; set; }
         XtraUserControl UserControl { get; }
-        long? ForeignKeyExternal { get; set; }  
+        XtraUserControl DetailUserControl { get; set; }
+        long? FKExternal { get; set; }
+        List<long?> FKSelected { get; set; }
         Image Image { get; set; }
         String Caption { get; set; }
-        String CaptionDetail { get; set; }
+        String UniqueIdentifier { get; set; }
+
         event StatusBarEventHandler StatusBarChanged;
         event SelectionEventHandler SelectionChanged;
     }
@@ -33,15 +37,25 @@ namespace Wookie.Menu
 
     public class SelectionEventArgs : EventArgs
     {
-        public string Uniqueidentifer { get; set; } = null;
+        public string Sender { get; set; } = null;
         public string Caption { get; set; } = null;
-        public long? ForeignKeyExternal { get; set; } = null;
+        public long? FKExternal { get; set; } = null;
+        public List<long?> FKSelected { get; set; } = null;
+        public XtraUserControl DetailUserControl { get; set; } = null;
 
-        public SelectionEventArgs(string uniqueidentifier, long? foreignKeyExternal, string caption)
+        public SelectionEventArgs(string sender, string caption, long? fKExternal)
         {
-            this.Uniqueidentifer = uniqueidentifier;
-            this.ForeignKeyExternal = foreignKeyExternal;
+            this.Sender = sender;
             this.Caption = caption;
-        }        
+            this.FKExternal = fKExternal;
+        }
+        public SelectionEventArgs(string sender, string caption, long? fkExternal, List<long?> fkSelected) : this(sender, caption, fkExternal)
+        {
+            this.FKSelected = fkSelected;
+        }
+        public SelectionEventArgs(string sender, string caption, long? fkExternal, List<long?> fkSelected, XtraUserControl userControl) : this(sender, caption, fkExternal, fkSelected)
+        {
+            this.DetailUserControl = userControl;
+        }
     }
 }

@@ -23,11 +23,9 @@ namespace Wookie.Employee.MasterData.Country
         #endregion
 
         #region Constructor
-        public ucCountry(Wookie.Tools.Controls.ModulData modulData)
+        public ucCountry()
         {
             InitializeComponent();
-
-            this.modulData = modulData;
 
             this.ucDefault1.Connect(
                 this.groupControl1,
@@ -36,11 +34,16 @@ namespace Wookie.Employee.MasterData.Country
                 this.tlkpCountryBindingSource);
 
             this.ucDefault1.PreparePictureEdit(this.PicturePictureEdit);
-            this.ucDefault1.Initialize(modulData);
 
             this.SetValidationRules();
         }
         #endregion
+
+        public void Activate(Wookie.Tools.Controls.ModulData modulData)
+        {
+            this.modulData = modulData;
+            this.ucDefault1.Initialize(modulData);
+        }
 
         #region Public properties
         public System.Drawing.Image Image

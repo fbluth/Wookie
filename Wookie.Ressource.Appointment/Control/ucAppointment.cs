@@ -24,23 +24,32 @@ namespace Wookie.Ressource.Appointment.Control
         #endregion
 
         #region Constructor
-        public ucAppointment(Wookie.Tools.Controls.ModulData modulData)
+        public ucAppointment()
         {
             InitializeComponent();
-
             this.ucDefault1.RegisterBindingSource(this.tblContactAppointmentBindingSource);
-
-            this.Initialize(this.modulData);            
+            this.SetValidationRules();
         }
         #endregion
 
-        public void Initialize(Wookie.Tools.Controls.ModulData modulData)
+        public void Activate(Wookie.Tools.Controls.ModulData modulData)
         {
+            this.SuspendLayout();
+
             this.modulData = modulData;
             this.ucDefault1.Initialize(modulData, true);
-            this.SetValidationRules();            
-        }
+                        
+            this.panelControl1.Controls.Clear();
 
+            if (this.modulData.DetailUserControl != null)
+            {
+                this.panelControl1.Height = this.modulData.DetailUserControl.Height;
+                this.panelControl1.Controls.Add(this.modulData.DetailUserControl);
+            }
+
+            this.ResumeLayout();
+        }
+        
         #region Public properties
         public System.Drawing.Image Image
         {
@@ -100,19 +109,21 @@ namespace Wookie.Ressource.Appointment.Control
 
         private void ucDefault1_BeforeDataLoad(object sender, EventArgs e)
         {
+            if (modulData.FKSelected == null) return;
+
             this.dataContext = new Database.ContactDataContext(modulData.SqlConnection);
             this.ucDefault1.DataContext = this.dataContext;
+
+            var result = from row in dataContext.tblContactAppointment
+                         where modulData.FKSelected.Contains(row.FKContact)
+                         select row;
             
-
-            this.tblContactAppointmentBindingSource.DataSource = from row in dataContext.tblContactAppointment
-                                                      where row.FKContact == modulData.FKExternal
-                                                      select row;
-
+            
+            this.tblContactAppointmentBindingSource.DataSource = result;
 
             this.LoadImageComboBoxItems();
 
             StatusBarChanged?.Invoke(new StatusBarEventArgs(System.String.Format("{0} Datensätze geladen", this.tblContactAppointmentBindingSource.Count)));
-
         }
 
         private void btnDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -136,11 +147,6 @@ namespace Wookie.Ressource.Appointment.Control
             {
                 ((Database.tblContactAppointment)tblContactAppointmentBindingSource[e.NewIndex]).FKContact = this.modulData.FKExternal;
             }
-        }
-
-        private void tblContactAppointmentBindingSource_AddingNew(object sender, AddingNewEventArgs e)
-        {
-           
-        }
+        }       
     }
 }

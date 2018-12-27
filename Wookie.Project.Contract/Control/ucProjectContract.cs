@@ -26,11 +26,9 @@ namespace Wookie.Project.Contract.Control
         #endregion
 
         #region Constructor
-        public ucProjectContract(Wookie.Tools.Controls.ModulData modulData)
+        public ucProjectContract()
         {
             InitializeComponent();
-
-            this.modulData = modulData;
 
             this.ucDefault1.Connect(
                 this.groupControl1,
@@ -38,12 +36,15 @@ namespace Wookie.Project.Contract.Control
                 this.popupMenu1,
                 this.tblProjectContractBindingSource);
 
-            //this.ucDefault1.PreparePictureEdit(this.PicturePictureEdit);
-            this.ucDefault1.Initialize(modulData);
-
             this.SetValidationRules();
         }
         #endregion
+
+        public void Activate(Wookie.Tools.Controls.ModulData modulData)
+        {
+            this.modulData = modulData;
+            this.ucDefault1.Initialize(modulData, true);
+        }
 
         #region Public properties
         public System.Drawing.Image Image

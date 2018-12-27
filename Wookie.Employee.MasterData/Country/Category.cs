@@ -3,13 +3,14 @@ using System.Data.SqlClient;
 using System.Drawing;
 using Wookie.Menu;
 using DevExpress.XtraEditors;
+using System.Collections.Generic;
 
 namespace Wookie.Employee.MasterData.Country
 {
     public class Category : Wookie.Menu.IAssemblyInstance, IDisposable
     {
         #region Variables
-        private XtraUserControl control = null;
+        private Country.ucCountry userControl = null;
         private Wookie.Tools.Controls.ModulData modulData = null;
         #endregion
 
@@ -17,81 +18,85 @@ namespace Wookie.Employee.MasterData.Country
         public Category()
         {
             this.modulData = new Wookie.Tools.Controls.ModulData();
+            this.userControl = new Country.ucCountry();
         }
         #endregion
 
         #region Public Functions
-        public void Initialize(SqlConnection sqlConnection, long? foreignKeyExternal)
-        {            
-            this.modulData.SqlConnection = sqlConnection;
-            this.modulData.FKExternal = foreignKeyExternal;
+        public void Activate()
+        {
+            this.userControl.Activate(this.modulData);
         }
+        #endregion
 
+        #region Events
         public event StatusBarEventHandler StatusBarChanged
         {
-            add { ((Country.ucCountry)this.UserControl).StatusBarChanged += value; }
-            remove { ((Country.ucCountry)this.UserControl).StatusBarChanged -= value; }
+            add { this.userControl.StatusBarChanged += value; }
+            remove { this.userControl.StatusBarChanged -= value; }
         }
 
         public event SelectionEventHandler SelectionChanged
         {
-            add { ((Country.ucCountry)this.UserControl).SelectionChanged += value; }
-            remove { ((Country.ucCountry)this.UserControl).SelectionChanged -= value; }
+            add { this.userControl.SelectionChanged += value; }
+            remove { this.userControl.SelectionChanged -= value; }
         }
         #endregion
 
         #region Public Properties
+        public String UniqueIdentifier
+        {
+            get { return this.modulData.UniqueIdentifier; }
+            set { this.modulData.UniqueIdentifier = value; }
+        }
 
         public SqlConnection SqlConnection
         {
-            get
-            {
-                if (this.modulData != null)
-                    return this.modulData.SqlConnection;
-
-                return null;
-            }
+            get { return this.modulData.SqlConnection; }
+            set { this.modulData.SqlConnection = value; }
         }
 
         public XtraUserControl UserControl
         {
-            get
-            {
-                if (this.control == null)
-                    control = new Country.ucCountry(modulData);
-                return control;
-            }
+            get { return this.userControl; }
         }
 
-        public long? ForeignKeyExternal
+        public long? FKExternal
         {
-            get
-            {
-                return this.modulData.FKExternal;
-            }
-            set
-            {
-                this.modulData.FKExternal = value;
-            }
+            get { return this.modulData.FKExternal; }
+            set { this.modulData.FKExternal = value; }
+        }
+
+        public List<long?> FKSelected
+        {
+            get { return this.modulData.FKSelected; }
+            set { this.modulData.FKSelected = value; }
         }
 
         public Image Image
         {
-            get { return ((Country.ucCountry)this.UserControl).Image; }
-            set { ((Country.ucCountry)this.UserControl).Image = value; }
+            get { return userControl.Image; }
+            set { this.userControl.Image = value; }
         }
 
         public String Caption
         {
-            get { return ((Country.ucCountry)this.UserControl).Caption; }
-            set { ((Country.ucCountry)this.UserControl).Caption = value; }
+            get { return userControl.Caption; }
+            set { this.userControl.Caption = value; }
         }
 
         public String CaptionDetail
         {
-            get { return ((Country.ucCountry)this.UserControl).CaptionDetail; }
-            set { ((Country.ucCountry)this.UserControl).CaptionDetail = value; }
+            get { return userControl.CaptionDetail; }
+            set { this.userControl.CaptionDetail = value; }
         }
+
+        public XtraUserControl DetailUserControl
+        {
+            get { return this.modulData.DetailUserControl; }
+            set { this.modulData.DetailUserControl = value; }
+        }
+
         #endregion
 
         #region IDisposable Support
@@ -104,12 +109,12 @@ namespace Wookie.Employee.MasterData.Country
                 if (disposing)
                 {
                     // TODO: verwalteten Zustand (verwaltete Objekte) entsorgen.
-                    this.control.Dispose();
+                    this.userControl.Dispose();
                 }
 
                 // TODO: nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.
                 // TODO: große Felder auf Null setzen.
-                this.control = null;
+                this.userControl = null;
                 this.modulData = null;
                 disposedValue = true;
             }

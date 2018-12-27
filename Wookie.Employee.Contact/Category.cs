@@ -14,92 +14,95 @@ namespace Wookie.Employee.Contact
 {
     public class Category : Wookie.Menu.IAssemblyInstance, IDisposable
     {
-
-        private XtraUserControl control = null;
+        #region Variables
+        private Control.ucContact2 userControl = null;
         private Wookie.Tools.Controls.ModulData modulData = null;
-        
+        #endregion
+
+        #region Constructor
         public Category()
         {
-            this.modulData = new ModulData();
+            this.modulData = new Wookie.Tools.Controls.ModulData();
+            this.userControl = new Control.ucContact2();
         }
+        #endregion
 
-        public void Initialize(SqlConnection sqlconnection, long? foreignKeyExternal)
-        {            
-            this.modulData.SqlConnection = sqlconnection;
-            this.modulData.FKExternal = foreignKeyExternal;
-        }
-
-        
-        public Wookie.Tools.Controls.ModulData ModulData
+        #region Public Functions
+        public void Activate()
         {
-            get
-            {
-                return this.modulData;
-            }
+            this.userControl.Activate(this.modulData);
         }
+        #endregion
 
-        public SqlConnection SqlConnection
-        {
-            get
-            {
-                if (this.modulData != null)
-                    return this.modulData.SqlConnection;
-
-                return null;
-            }
-        }
-
-        public XtraUserControl UserControl
-        {
-            get
-            {
-                if (this.control == null)
-                    control = new Control.ucContact2(modulData);
-                return control;
-            }
-        }
-
-        public long? ForeignKeyExternal
-        {
-            get
-            {
-                return this.modulData.FKExternal;
-            }
-            set
-            {
-                this.modulData.FKExternal = value;
-            }
-        }
-
-        public Image Image
-        {
-            get { return ((Control.ucContact2)this.UserControl).Image; }
-            set { ((Control.ucContact2)this.UserControl).Image = value; }
-        }
-
-        public String Caption
-        {
-            get { return ((Control.ucContact2)this.UserControl).Caption; }
-            set { ((Control.ucContact2)this.UserControl).Caption = value; }
-        }
-
-        public String CaptionDetail
-        {
-            get { return ((Control.ucContact2)this.UserControl).CaptionDetail; }
-            set { ((Control.ucContact2)this.UserControl).CaptionDetail = value; }
-        }
-
+        #region Events
         public event StatusBarEventHandler StatusBarChanged
         {
-            add { ((Control.ucContact2)this.UserControl).StatusBarChanged += value; }
-            remove { ((Control.ucContact2)this.UserControl).StatusBarChanged -= value; }
+            add { this.userControl.StatusBarChanged += value; }
+            remove { this.userControl.StatusBarChanged -= value; }
         }
 
         public event SelectionEventHandler SelectionChanged
         {
-            add { ((Control.ucContact2)this.UserControl).SelectionChanged += value; }
-            remove { ((Control.ucContact2)this.UserControl).SelectionChanged -= value; }
+            add { this.userControl.SelectionChanged += value; }
+            remove { this.userControl.SelectionChanged -= value; }
         }
+        #endregion
+
+        #region Public Properties
+        public String UniqueIdentifier
+        {
+            get { return this.modulData.UniqueIdentifier; }
+            set { this.modulData.UniqueIdentifier = value; }
+        }
+
+        public SqlConnection SqlConnection
+        {
+            get { return this.modulData.SqlConnection; }
+            set { this.modulData.SqlConnection = value; }
+        }
+
+        public XtraUserControl UserControl
+        {
+            get { return this.userControl; }
+        }
+
+        public long? FKExternal
+        {
+            get { return this.modulData.FKExternal; }
+            set { this.modulData.FKExternal = value; }
+        }
+
+        public List<long?> FKSelected
+        {
+            get { return this.modulData.FKSelected; }
+            set { this.modulData.FKSelected = value; }
+        }
+
+        public Image Image
+        {
+            get { return userControl.Image; }
+            set { this.userControl.Image = value; }
+        }
+
+        public String Caption
+        {
+            get { return userControl.Caption; }
+            set { this.userControl.Caption = value; }
+        }
+
+        public String CaptionDetail
+        {
+            get { return userControl.CaptionDetail; }
+            set { this.userControl.CaptionDetail = value; }
+        }
+
+        public XtraUserControl DetailUserControl
+        {
+            get { return this.modulData.DetailUserControl; }
+            set { this.modulData.DetailUserControl = value; }
+        }
+
+        #endregion
 
         #region IDisposable Support
         private bool disposedValue = false; // Dient zur Erkennung redundanter Aufrufe.
@@ -111,12 +114,12 @@ namespace Wookie.Employee.Contact
                 if (disposing)
                 {
                     // TODO: verwalteten Zustand (verwaltete Objekte) entsorgen.
-                    this.control.Dispose();
+                    this.userControl.Dispose();
                 }
 
                 // TODO: nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.
                 // TODO: große Felder auf Null setzen.
-                this.control = null;
+                this.userControl = null;
                 this.modulData = null;
                 disposedValue = true;
             }
@@ -138,6 +141,4 @@ namespace Wookie.Employee.Contact
         }
         #endregion
     }
-
-    
 }

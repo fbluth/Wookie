@@ -34,7 +34,7 @@ namespace Wookie.Master.Menu.Control
         #endregion
 
         #region Constructor
-        public ucMenu(Wookie.Tools.Controls.ModulData modulData)
+        public ucMenu()
         {
             InitializeComponent();
 
@@ -63,6 +63,12 @@ namespace Wookie.Master.Menu.Control
 
         }
         #endregion
+
+        public void Activate(Wookie.Tools.Controls.ModulData modulData)
+        {
+            this.modulData = modulData;
+            this.ucDefault1.Initialize(modulData);
+        }
 
         #region Public properties
         public System.Drawing.Image Image

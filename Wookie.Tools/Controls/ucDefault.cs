@@ -264,7 +264,7 @@ namespace Wookie.Tools.Controls
             }
             catch 
             {
-                
+                this.CloseProgressPanel();
                 XtraMessageBox.Show("Fehler beim laden der Daten", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -464,6 +464,9 @@ namespace Wookie.Tools.Controls
     {
         public SqlConnection SqlConnection;
         public long? FKExternal;
+        public List<long?> FKSelected { get; set; }
+        public XtraUserControl DetailUserControl;
+        public string UniqueIdentifier;
     }
 
     public class TestControlDesigner : ParentControlDesigner

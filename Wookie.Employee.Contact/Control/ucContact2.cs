@@ -16,18 +16,21 @@ namespace Wookie.Employee.Contact.Control
         public event StatusBarEventHandler StatusBarChanged;
         public event SelectionEventHandler SelectionChanged;
 
-        public ucContact2(Wookie.Tools.Controls.ModulData modulData)
+        public ucContact2()
         {
             InitializeComponent();
+            this.navigationFrame1.SelectedPage = this.navSelect;
+        }
+
+        public void Activate(Wookie.Tools.Controls.ModulData modulData)
+        {
             this.modulData = modulData;
-            this.ucContactEdit = new ucContactEdit(modulData) {Dock = DockStyle.Fill};
+            this.ucContactEdit = new ucContactEdit(modulData) { Dock = DockStyle.Fill };
             this.ucContactEdit.StatusChanged += new EventHandler(this.ucContactEdit_StatusChanged);
             this.navEdit.Controls.Add(this.ucContactEdit);
 
             this.LoadData();
             this.LoadImageComboBoxItems();
-
-            this.navigationFrame1.SelectedPage = this.navSelect;
         }
 
         private void LoadData()

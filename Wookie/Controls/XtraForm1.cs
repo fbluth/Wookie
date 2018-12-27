@@ -40,7 +40,6 @@ namespace Wookie.Controls
 
                 this.menuManager.ClientChanged += new MenuManager.ClientChangeEventHandler(MenuManager_ClientChanged);
                 this.menuManager.SettingsClicked += new EventHandler(this.SettingsClicked);
-                this.menuManager.CategoryChanged += MenuManager_CategoryChanged;
                 this.SetSplashScreenInfo("Adding registered clients", 75);
                 this.menuManager.AddClients(this.aceClient);
                 this.SetSplashScreenInfo("Done", 100);
@@ -85,14 +84,8 @@ namespace Wookie.Controls
         {
             if (sender == null) return;
 
-            this.navigationFrame1.SelectedPage = navPageWelcome;
             this.HtmlText = "<b>" + Application.ProductName + "</b>" + " - " + sender.Name;
             this.SetTitle(null, null);
-        }
-
-        private void MenuManager_CategoryChanged(string caption, Image image)
-        {
-
         }
 
         private void SettingsClicked(object sender, EventArgs e)

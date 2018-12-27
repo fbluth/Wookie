@@ -48,6 +48,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.WorkingArea)).BeginInit();
             this.ucDefault1.WorkingArea.SuspendLayout();
@@ -61,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // ucDefault1
@@ -83,6 +85,7 @@
             // 
             this.ucDefault1.WorkingArea.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.ucDefault1.WorkingArea.Controls.Add(this.splitContainerControl1);
+            this.ucDefault1.WorkingArea.Controls.Add(this.panelControl1);
             this.ucDefault1.WorkingArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDefault1.WorkingArea.Location = new System.Drawing.Point(2, 37);
             this.ucDefault1.WorkingArea.Name = "WorkingArea";
@@ -95,13 +98,13 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(5, 5);
+            this.splitContainerControl1.Location = new System.Drawing.Point(5, 105);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(989, 606);
+            this.splitContainerControl1.Size = new System.Drawing.Size(989, 506);
             this.splitContainerControl1.SplitterPosition = 734;
             this.splitContainerControl1.TabIndex = 0;
             // 
@@ -111,7 +114,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(734, 606);
+            this.groupControl1.Size = new System.Drawing.Size(734, 506);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Termine";
             // 
@@ -122,7 +125,7 @@
             this.schedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schedulerControl1.Location = new System.Drawing.Point(2, 27);
             this.schedulerControl1.Name = "schedulerControl1";
-            this.schedulerControl1.Size = new System.Drawing.Size(730, 577);
+            this.schedulerControl1.Size = new System.Drawing.Size(730, 477);
             this.schedulerControl1.Start = new System.DateTime(2018, 11, 19, 0, 0, 0, 0);
             this.schedulerControl1.TabIndex = 0;
             this.schedulerControl1.Text = "schedulerControl1";
@@ -151,7 +154,6 @@
             // tblContactAppointmentBindingSource
             // 
             this.tblContactAppointmentBindingSource.DataSource = typeof(Wookie.Ressource.Database.tblContactAppointment);
-            this.tblContactAppointmentBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.tblContactAppointmentBindingSource_AddingNew);
             this.tblContactAppointmentBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.tblContactAppointmentBindingSource_ListChanged);
             // 
             // groupControl2
@@ -159,7 +161,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(245, 606);
+            this.groupControl2.Size = new System.Drawing.Size(245, 506);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Details";
             // 
@@ -233,6 +235,15 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 655);
             // 
+            // panelControl1
+            // 
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(5, 5);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(989, 100);
+            this.panelControl1.TabIndex = 1;
+            // 
             // ucAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,6 +268,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,5 +291,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
     }
 }

@@ -3,13 +3,14 @@ using System.Data.SqlClient;
 using System.Drawing;
 using Wookie.Menu;
 using DevExpress.XtraEditors;
+using System.Collections.Generic;
 
 namespace Wookie.Ressource.Appointment
 {
     class Category : Wookie.Menu.IAssemblyInstance, IDisposable
     {
         #region Variables
-        private XtraUserControl control = null;
+        private Control.ucAppointment userControl = null;
         private Wookie.Tools.Controls.ModulData modulData = null;
         #endregion
 
@@ -17,83 +18,85 @@ namespace Wookie.Ressource.Appointment
         public Category()
         {
             this.modulData = new Wookie.Tools.Controls.ModulData();
+            this.userControl = new Control.ucAppointment();
         }
         #endregion
 
         #region Public Functions
-        public void Initialize(SqlConnection sqlConnection, long? foreignKeyExternal)
+        public void Activate()
         {
-           
-            this.modulData.SqlConnection = sqlConnection;
-            this.modulData.FKExternal = foreignKeyExternal;
+            this.userControl.Activate(this.modulData);
         }
+        #endregion
 
+        #region Events
         public event StatusBarEventHandler StatusBarChanged
         {
-            add { ((Control.ucAppointment)this.UserControl).StatusBarChanged += value; }
-            remove { ((Control.ucAppointment)this.UserControl).StatusBarChanged -= value; }
+            add { this.userControl.StatusBarChanged += value; }
+            remove { this.userControl.StatusBarChanged -= value; }
         }
 
         public event SelectionEventHandler SelectionChanged
         {
-            add { ((Control.ucAppointment)this.UserControl).SelectionChanged += value; }
-            remove { ((Control.ucAppointment)this.UserControl).SelectionChanged -= value; }
+            add { this.userControl.SelectionChanged += value; }
+            remove { this.userControl.SelectionChanged -= value; }
         }
         #endregion
 
         #region Public Properties
+        public String UniqueIdentifier
+        {
+            get { return this.modulData.UniqueIdentifier; }
+            set { this.modulData.UniqueIdentifier = value; }
+        }
 
         public SqlConnection SqlConnection
         {
-            get
-            {
-                if (this.modulData != null)
-                    return this.modulData.SqlConnection;
-
-                return null;
-            }
+            get { return this.modulData.SqlConnection; }
+            set { this.modulData.SqlConnection = value; }
         }
 
         public XtraUserControl UserControl
         {
-            get
-            {
-                if (this.control == null)
-                    control = new Control.ucAppointment(modulData);
-                return control;
-            }
+            get { return this.userControl; }
         }
 
-        public long? ForeignKeyExternal
+        public long? FKExternal
         {
-            get
-            {  
-               return this.modulData.FKExternal;
-            }
-            set
-            {
-               this.modulData.FKExternal = value;
-                ((Control.ucAppointment)this.UserControl).Initialize(this.modulData);
-            }
+            get { return this.modulData.FKExternal; }
+            set { this.modulData.FKExternal = value; }
+        }
+
+        public List<long?> FKSelected
+        {
+            get { return this.modulData.FKSelected; }
+            set { this.modulData.FKSelected = value; }
         }
 
         public Image Image
         {
-            get { return ((Control.ucAppointment)this.UserControl).Image; }
-            set { ((Control.ucAppointment)this.UserControl).Image = value; }
+            get { return userControl.Image; }
+            set { this.userControl.Image = value; }
         }
 
         public String Caption
         {
-            get { return ((Control.ucAppointment)this.UserControl).Caption; }
-            set { ((Control.ucAppointment)this.UserControl).Caption = value; }
+            get { return userControl.Caption; }
+            set { this.userControl.Caption = value; }
         }
 
         public String CaptionDetail
         {
-            get { return ((Control.ucAppointment)this.UserControl).CaptionDetail; }
-            set { ((Control.ucAppointment)this.UserControl).CaptionDetail = value; }
+            get { return userControl.CaptionDetail; }
+            set { this.userControl.CaptionDetail = value; }
         }
+
+        public XtraUserControl DetailUserControl
+        {
+            get { return this.modulData.DetailUserControl; }
+            set { this.modulData.DetailUserControl = value; }
+        }
+        
         #endregion
 
         #region IDisposable Support
@@ -106,12 +109,12 @@ namespace Wookie.Ressource.Appointment
                 if (disposing)
                 {
                     // TODO: verwalteten Zustand (verwaltete Objekte) entsorgen.
-                    this.control.Dispose();
+                    this.userControl.Dispose();
                 }
 
                 // TODO: nicht verwaltete Ressourcen (nicht verwaltete Objekte) freigeben und Finalizer weiter unten überschreiben.
                 // TODO: große Felder auf Null setzen.
-                this.control = null;
+                this.userControl = null;
                 this.modulData = null;
                 disposedValue = true;
             }
