@@ -63,21 +63,35 @@ namespace Wookie.Tools.Image
             return returnImage;
         }
 
+        /// <summary>
+        /// Returns a binary stream from the given SVG Image
+        /// </summary>
+        /// <param name="image">SVG image that has to be converted into a binary object.</param>
+        /// <returns></returns>
         public static System.Data.Linq.Binary GetBinaryFromSvgImage(SvgImage image)
         {
+            // If the input image is null, nothing has to be done
             if (image == null) return null;
-            System.Data.Linq.Binary binary;
 
-            using (MemoryStream ms = new MemoryStream())
+            System.Data.Linq.Binary binary = null;
+
+            try
             {
-                SvgSerializer.SaveSvgImageToXML(ms, image);                
-                binary = new System.Data.Linq.Binary(ms.GetBuffer());
+                // Convert the image into a binary object using a MemoryStream and the SvgSerializer from DevExpress
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    SvgSerializer.SaveSvgImageToXML(ms, image);
+                    binary = new System.Data.Linq.Binary(ms.GetBuffer());
+                }
+            }
+            catch
+            {
+                binary = null;
             }
 
             return binary;
         }
-
-
+        
         /// <summary>
         /// Resize the image to the specified width and height.
         /// </summary>
@@ -87,6 +101,9 @@ namespace Wookie.Tools.Image
         /// <returns>The resized image.</returns>
         public static System.Drawing.Image ResizeImage(System.Drawing.Image image, int width, int height)
         {
+            if (image == null) return null;
+            if (width < 0 || height < 0) return null;
+
             var destRect = new Rectangle(0, 0, width, height);
             var destImage = new Bitmap(width, height);
 

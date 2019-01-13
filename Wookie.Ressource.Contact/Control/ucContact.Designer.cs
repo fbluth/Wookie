@@ -30,11 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucContact));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.ucDefault1 = new Wookie.Tools.Controls.ucDefault();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
+            this.sidePanel4 = new DevExpress.XtraEditors.SidePanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.tblContactBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -61,6 +62,7 @@
             this.colFKUserChanged1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colChangedOn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUniqueIdentifier1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabContact = new DevExpress.XtraBars.Navigation.TabNavigationPage();
@@ -76,6 +78,10 @@
             this.btnSelect = new DevExpress.XtraBars.BarButtonItem();
             this.btnNewComm = new DevExpress.XtraBars.BarButtonItem();
             this.btnDeleteComm = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
+            this.btnExport = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDetails = new DevExpress.XtraBars.BarButtonItem();
+            this.barToggleSwitchItem1 = new DevExpress.XtraBars.BarToggleSwitchItem();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.SurnameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.MiddlenameTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -104,16 +110,16 @@
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForTitle = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForMiddlename = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForBirthdate = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForStreet = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemFortlkpCityName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemFortlkpCityZipcode = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemFortlkpCitytlkpFederalStateName = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemFortlkpContactPrefixName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForSurname = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForMiddlename = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName = new DevExpress.XtraLayout.LayoutControlItem();
             this.tabMap = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.mapControl1 = new DevExpress.XtraMap.MapControl();
             this.imageLayer2 = new DevExpress.XtraMap.ImageLayer();
@@ -150,8 +156,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.WorkingArea)).BeginInit();
             this.ucDefault1.WorkingArea.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            this.splitContainerControl1.SuspendLayout();
+            this.sidePanel1.SuspendLayout();
+            this.sidePanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
@@ -161,6 +167,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgCollectionPrefix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.riLookupCountry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCollectionCountry)).BeginInit();
+            this.sidePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
@@ -189,16 +196,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTitle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddlename)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBirthdate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForStreet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCityName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCityZipcode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStateName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStatetlkpCountryName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpContactPrefixName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSurname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddlename)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStatetlkpCountryName)).BeginInit();
             this.tabMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mapControl1)).BeginInit();
             this.tabCommunication.SuspendLayout();
@@ -224,6 +231,7 @@
             // ucDefault1
             // 
             this.ucDefault1.Caption = "";
+            this.ucDefault1.CaptionDetail = null;
             this.ucDefault1.DataContext = null;
             this.ucDefault1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDefault1.Image = null;
@@ -240,7 +248,7 @@
             // ucDefault1.WorkingArea
             // 
             this.ucDefault1.WorkingArea.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.ucDefault1.WorkingArea.Controls.Add(this.splitContainerControl1);
+            this.ucDefault1.WorkingArea.Controls.Add(this.sidePanel1);
             this.ucDefault1.WorkingArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDefault1.WorkingArea.Location = new System.Drawing.Point(2, 37);
             this.ucDefault1.WorkingArea.Name = "WorkingArea";
@@ -251,32 +259,40 @@
             this.ucDefault1.BeforeDataLoad += new System.EventHandler(this.ucDefault1_BeforeDataLoad);
             this.ucDefault1.DataRefresh += new System.EventHandler(this.ucDefault1_DataRefresh);
             // 
-            // splitContainerControl1
+            // sidePanel1
             // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(5, 5);
-            this.splitContainerControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1008, 629);
-            this.splitContainerControl1.SplitterPosition = 555;
-            this.splitContainerControl1.TabIndex = 0;
-            this.splitContainerControl1.Text = "splitContainerControl1";
+            this.sidePanel1.BorderThickness = 0;
+            this.sidePanel1.Controls.Add(this.sidePanel4);
+            this.sidePanel1.Controls.Add(this.sidePanel2);
+            this.sidePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sidePanel1.Location = new System.Drawing.Point(5, 5);
+            this.sidePanel1.Name = "sidePanel1";
+            this.sidePanel1.Size = new System.Drawing.Size(1008, 629);
+            this.sidePanel1.TabIndex = 1;
+            this.sidePanel1.Text = "sidePanel1";
+            // 
+            // sidePanel4
+            // 
+            this.sidePanel4.BorderThickness = 0;
+            this.sidePanel4.Controls.Add(this.groupControl1);
+            this.sidePanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sidePanel4.Location = new System.Drawing.Point(0, 0);
+            this.sidePanel4.Name = "sidePanel4";
+            this.sidePanel4.Padding = new System.Windows.Forms.Padding(3);
+            this.sidePanel4.Size = new System.Drawing.Size(614, 629);
+            this.sidePanel4.TabIndex = 3;
+            this.sidePanel4.Text = "sidePanel4";
             // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.gridControl2);
             this.groupControl1.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Location = new System.Drawing.Point(3, 3);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(555, 629);
+            this.groupControl1.Size = new System.Drawing.Size(608, 623);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Liste";
             // 
             // gridControl2
             // 
@@ -288,7 +304,7 @@
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.riLookupPrefix,
             this.riLookupCountry});
-            this.gridControl2.Size = new System.Drawing.Size(551, 600);
+            this.gridControl2.Size = new System.Drawing.Size(604, 594);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -506,6 +522,18 @@
             this.colUniqueIdentifier1.FieldName = "UniqueIdentifier";
             this.colUniqueIdentifier1.Name = "colUniqueIdentifier1";
             // 
+            // sidePanel2
+            // 
+            this.sidePanel2.BorderThickness = 0;
+            this.sidePanel2.Controls.Add(this.groupControl2);
+            this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sidePanel2.Location = new System.Drawing.Point(614, 0);
+            this.sidePanel2.Name = "sidePanel2";
+            this.sidePanel2.Padding = new System.Windows.Forms.Padding(3);
+            this.sidePanel2.Size = new System.Drawing.Size(394, 629);
+            this.sidePanel2.TabIndex = 1;
+            this.sidePanel2.Text = "sidePanel2";
+            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.tabPane1);
@@ -515,12 +543,11 @@
             this.groupControl2.Controls.Add(this.lblPrefix);
             this.groupControl2.Controls.Add(this.picID);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(0, 0);
+            this.groupControl2.Location = new System.Drawing.Point(3, 3);
             this.groupControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(443, 629);
+            this.groupControl2.Size = new System.Drawing.Size(388, 623);
             this.groupControl2.TabIndex = 0;
-            this.groupControl2.Text = "Details";
             // 
             // tabPane1
             // 
@@ -538,9 +565,9 @@
             this.tabCommunication,
             this.tabMap,
             this.tabNotes});
-            this.tabPane1.RegularSize = new System.Drawing.Size(431, 432);
+            this.tabPane1.RegularSize = new System.Drawing.Size(375, 426);
             this.tabPane1.SelectedPage = this.tabContact;
-            this.tabPane1.Size = new System.Drawing.Size(431, 432);
+            this.tabPane1.Size = new System.Drawing.Size(376, 426);
             this.tabPane1.TabIndex = 4;
             this.tabPane1.Text = "Kontakt";
             // 
@@ -549,7 +576,7 @@
             this.tabContact.Caption = "Kontakt";
             this.tabContact.Controls.Add(this.dataLayoutControl1);
             this.tabContact.Name = "tabContact";
-            this.tabContact.Size = new System.Drawing.Size(431, 403);
+            this.tabContact.Size = new System.Drawing.Size(376, 397);
             // 
             // dataLayoutControl1
             // 
@@ -570,17 +597,17 @@
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(431, 403);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(376, 397);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // TitleTextEdit
             // 
             this.TitleTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tblContactBindingSource, "Title", true));
-            this.TitleTextEdit.Location = new System.Drawing.Point(288, 12);
+            this.TitleTextEdit.Location = new System.Drawing.Point(260, 12);
             this.TitleTextEdit.MenuManager = this.barManager1;
             this.TitleTextEdit.Name = "TitleTextEdit";
-            this.TitleTextEdit.Size = new System.Drawing.Size(131, 20);
+            this.TitleTextEdit.Size = new System.Drawing.Size(104, 20);
             this.TitleTextEdit.StyleController = this.dataLayoutControl1;
             this.TitleTextEdit.TabIndex = 4;
             // 
@@ -596,8 +623,12 @@
             this.btnDelete,
             this.btnSelect,
             this.btnNewComm,
-            this.btnDeleteComm});
-            this.barManager1.MaxItemId = 5;
+            this.btnDeleteComm,
+            this.btnPrint,
+            this.btnExport,
+            this.btnDetails,
+            this.barToggleSwitchItem1});
+            this.barManager1.MaxItemId = 9;
             // 
             // barDockControlTop
             // 
@@ -637,7 +668,7 @@
             this.btnAdd.Id = 0;
             this.btnAdd.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAdd.ImageOptions.SvgImage")));
             this.btnAdd.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnAdd.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Add));
+            this.btnAdd.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N));
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNew_ItemClick);
             // 
@@ -647,7 +678,7 @@
             this.btnDelete.Id = 1;
             this.btnDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDelete.ImageOptions.SvgImage")));
             this.btnDelete.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
+            this.btnDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
             // 
@@ -656,8 +687,7 @@
             this.btnSelect.Caption = "Auswählen";
             this.btnSelect.Id = 2;
             this.btnSelect.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSelect.ImageOptions.SvgImage")));
-            this.btnSelect.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnSelect.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Enter));
+            this.btnSelect.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S));
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSelect_ItemClick);
             // 
@@ -667,6 +697,7 @@
             this.btnNewComm.Id = 3;
             this.btnNewComm.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnNewComm.ImageOptions.SvgImage")));
             this.btnNewComm.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.btnNewComm.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N));
             this.btnNewComm.Name = "btnNewComm";
             this.btnNewComm.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNewComm_ItemClick);
             // 
@@ -676,8 +707,39 @@
             this.btnDeleteComm.Id = 4;
             this.btnDeleteComm.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDeleteComm.ImageOptions.SvgImage")));
             this.btnDeleteComm.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.btnDeleteComm.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
             this.btnDeleteComm.Name = "btnDeleteComm";
             this.btnDeleteComm.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeleteComm_ItemClick);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Caption = "Drucken";
+            this.btnPrint.Id = 5;
+            this.btnPrint.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPrint.ImageOptions.SvgImage")));
+            this.btnPrint.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
+            this.btnPrint.Name = "btnPrint";
+            // 
+            // btnExport
+            // 
+            this.btnExport.Caption = "Export";
+            this.btnExport.Id = 6;
+            this.btnExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExport.ImageOptions.SvgImage")));
+            this.btnExport.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E));
+            this.btnExport.Name = "btnExport";
+            // 
+            // btnDetails
+            // 
+            this.btnDetails.Caption = "Details";
+            this.btnDetails.Id = 7;
+            this.btnDetails.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDetails.ImageOptions.SvgImage")));
+            this.btnDetails.Name = "btnDetails";
+            this.btnDetails.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDetails_ItemClick);
+            // 
+            // barToggleSwitchItem1
+            // 
+            this.barToggleSwitchItem1.Caption = "barToggleSwitchItem1";
+            this.barToggleSwitchItem1.Id = 8;
+            this.barToggleSwitchItem1.Name = "barToggleSwitchItem1";
             // 
             // NameTextEdit
             // 
@@ -685,7 +747,7 @@
             this.NameTextEdit.Location = new System.Drawing.Point(83, 84);
             this.NameTextEdit.MenuManager = this.barManager1;
             this.NameTextEdit.Name = "NameTextEdit";
-            this.NameTextEdit.Size = new System.Drawing.Size(336, 20);
+            this.NameTextEdit.Size = new System.Drawing.Size(281, 20);
             this.NameTextEdit.StyleController = this.dataLayoutControl1;
             this.NameTextEdit.TabIndex = 5;
             // 
@@ -695,7 +757,7 @@
             this.SurnameTextEdit.Location = new System.Drawing.Point(83, 36);
             this.SurnameTextEdit.MenuManager = this.barManager1;
             this.SurnameTextEdit.Name = "SurnameTextEdit";
-            this.SurnameTextEdit.Size = new System.Drawing.Size(336, 20);
+            this.SurnameTextEdit.Size = new System.Drawing.Size(281, 20);
             this.SurnameTextEdit.StyleController = this.dataLayoutControl1;
             this.SurnameTextEdit.TabIndex = 6;
             // 
@@ -705,7 +767,7 @@
             this.MiddlenameTextEdit.Location = new System.Drawing.Point(83, 60);
             this.MiddlenameTextEdit.MenuManager = this.barManager1;
             this.MiddlenameTextEdit.Name = "MiddlenameTextEdit";
-            this.MiddlenameTextEdit.Size = new System.Drawing.Size(336, 20);
+            this.MiddlenameTextEdit.Size = new System.Drawing.Size(281, 20);
             this.MiddlenameTextEdit.StyleController = this.dataLayoutControl1;
             this.MiddlenameTextEdit.TabIndex = 7;
             // 
@@ -721,7 +783,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.BirthdateDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.BirthdateDateEdit.Size = new System.Drawing.Size(336, 20);
+            this.BirthdateDateEdit.Size = new System.Drawing.Size(281, 20);
             this.BirthdateDateEdit.StyleController = this.dataLayoutControl1;
             this.BirthdateDateEdit.TabIndex = 8;
             // 
@@ -731,7 +793,7 @@
             this.StreetTextEdit.Location = new System.Drawing.Point(83, 132);
             this.StreetTextEdit.MenuManager = this.barManager1;
             this.StreetTextEdit.Name = "StreetTextEdit";
-            this.StreetTextEdit.Size = new System.Drawing.Size(336, 20);
+            this.StreetTextEdit.Size = new System.Drawing.Size(281, 20);
             this.StreetTextEdit.StyleController = this.dataLayoutControl1;
             this.StreetTextEdit.TabIndex = 9;
             // 
@@ -748,7 +810,7 @@
             this.tlkpCityNameGridLookUpEdit.Properties.DisplayMember = "Name";
             this.tlkpCityNameGridLookUpEdit.Properties.NullText = "";
             this.tlkpCityNameGridLookUpEdit.Properties.PopupView = this.gridLookUpEdit1View;
-            this.tlkpCityNameGridLookUpEdit.Size = new System.Drawing.Size(240, 20);
+            this.tlkpCityNameGridLookUpEdit.Size = new System.Drawing.Size(185, 20);
             this.tlkpCityNameGridLookUpEdit.StyleController = this.dataLayoutControl1;
             this.tlkpCityNameGridLookUpEdit.TabIndex = 10;
             // 
@@ -880,7 +942,7 @@
             this.tlkpCitytlkpFederalStateNameTextEdit.Name = "tlkpCitytlkpFederalStateNameTextEdit";
             this.tlkpCitytlkpFederalStateNameTextEdit.Properties.ReadOnly = true;
             this.tlkpCitytlkpFederalStateNameTextEdit.Properties.UseReadOnlyAppearance = false;
-            this.tlkpCitytlkpFederalStateNameTextEdit.Size = new System.Drawing.Size(336, 20);
+            this.tlkpCitytlkpFederalStateNameTextEdit.Size = new System.Drawing.Size(281, 20);
             this.tlkpCitytlkpFederalStateNameTextEdit.StyleController = this.dataLayoutControl1;
             this.tlkpCitytlkpFederalStateNameTextEdit.TabIndex = 12;
             // 
@@ -892,7 +954,7 @@
             this.tlkpCitytlkpFederalStatetlkpCountryNameTextEdit.Name = "tlkpCitytlkpFederalStatetlkpCountryNameTextEdit";
             this.tlkpCitytlkpFederalStatetlkpCountryNameTextEdit.Properties.ReadOnly = true;
             this.tlkpCitytlkpFederalStatetlkpCountryNameTextEdit.Properties.UseReadOnlyAppearance = false;
-            this.tlkpCitytlkpFederalStatetlkpCountryNameTextEdit.Size = new System.Drawing.Size(336, 20);
+            this.tlkpCitytlkpFederalStatetlkpCountryNameTextEdit.Size = new System.Drawing.Size(281, 20);
             this.tlkpCitytlkpFederalStatetlkpCountryNameTextEdit.StyleController = this.dataLayoutControl1;
             this.tlkpCitytlkpFederalStatetlkpCountryNameTextEdit.TabIndex = 13;
             // 
@@ -909,7 +971,7 @@
             this.tlkpContactPrefixNameLookUpEdit.Properties.NullText = "";
             this.tlkpContactPrefixNameLookUpEdit.Properties.PopupView = this.gridView3;
             this.tlkpContactPrefixNameLookUpEdit.Properties.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.UseEditorWidth;
-            this.tlkpContactPrefixNameLookUpEdit.Size = new System.Drawing.Size(130, 20);
+            this.tlkpContactPrefixNameLookUpEdit.Size = new System.Drawing.Size(102, 20);
             this.tlkpContactPrefixNameLookUpEdit.StyleController = this.dataLayoutControl1;
             this.tlkpContactPrefixNameLookUpEdit.TabIndex = 14;
             // 
@@ -953,7 +1015,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(431, 403);
+            this.Root.Size = new System.Drawing.Size(376, 397);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -962,44 +1024,35 @@
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.ItemForTitle,
-            this.ItemForMiddlename,
             this.ItemForBirthdate,
             this.ItemForStreet,
             this.ItemFortlkpCityName,
             this.ItemFortlkpCityZipcode,
             this.ItemFortlkpCitytlkpFederalStateName,
-            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName,
             this.ItemFortlkpContactPrefixName,
             this.ItemForSurname,
-            this.ItemForName});
+            this.ItemForName,
+            this.ItemForMiddlename,
+            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(411, 383);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(356, 377);
             // 
             // ItemForTitle
             // 
             this.ItemForTitle.Control = this.TitleTextEdit;
-            this.ItemForTitle.Location = new System.Drawing.Point(205, 0);
+            this.ItemForTitle.Location = new System.Drawing.Point(177, 0);
             this.ItemForTitle.Name = "ItemForTitle";
-            this.ItemForTitle.Size = new System.Drawing.Size(206, 24);
+            this.ItemForTitle.Size = new System.Drawing.Size(179, 24);
             this.ItemForTitle.Text = "Titel";
             this.ItemForTitle.TextSize = new System.Drawing.Size(68, 13);
-            // 
-            // ItemForMiddlename
-            // 
-            this.ItemForMiddlename.Control = this.MiddlenameTextEdit;
-            this.ItemForMiddlename.Location = new System.Drawing.Point(0, 48);
-            this.ItemForMiddlename.Name = "ItemForMiddlename";
-            this.ItemForMiddlename.Size = new System.Drawing.Size(411, 24);
-            this.ItemForMiddlename.Text = "Zweitname";
-            this.ItemForMiddlename.TextSize = new System.Drawing.Size(68, 13);
             // 
             // ItemForBirthdate
             // 
             this.ItemForBirthdate.Control = this.BirthdateDateEdit;
             this.ItemForBirthdate.Location = new System.Drawing.Point(0, 96);
             this.ItemForBirthdate.Name = "ItemForBirthdate";
-            this.ItemForBirthdate.Size = new System.Drawing.Size(411, 24);
+            this.ItemForBirthdate.Size = new System.Drawing.Size(356, 24);
             this.ItemForBirthdate.Text = "Geburtsdatum";
             this.ItemForBirthdate.TextSize = new System.Drawing.Size(68, 13);
             // 
@@ -1008,7 +1061,7 @@
             this.ItemForStreet.Control = this.StreetTextEdit;
             this.ItemForStreet.Location = new System.Drawing.Point(0, 120);
             this.ItemForStreet.Name = "ItemForStreet";
-            this.ItemForStreet.Size = new System.Drawing.Size(411, 24);
+            this.ItemForStreet.Size = new System.Drawing.Size(356, 24);
             this.ItemForStreet.Text = "Strasse";
             this.ItemForStreet.TextSize = new System.Drawing.Size(68, 13);
             // 
@@ -1017,7 +1070,7 @@
             this.ItemFortlkpCityName.Control = this.tlkpCityNameGridLookUpEdit;
             this.ItemFortlkpCityName.Location = new System.Drawing.Point(167, 144);
             this.ItemFortlkpCityName.Name = "ItemFortlkpCityName";
-            this.ItemFortlkpCityName.Size = new System.Drawing.Size(244, 24);
+            this.ItemFortlkpCityName.Size = new System.Drawing.Size(189, 24);
             this.ItemFortlkpCityName.Text = "Name";
             this.ItemFortlkpCityName.TextSize = new System.Drawing.Size(0, 0);
             this.ItemFortlkpCityName.TextVisible = false;
@@ -1039,25 +1092,16 @@
             this.ItemFortlkpCitytlkpFederalStateName.Control = this.tlkpCitytlkpFederalStateNameTextEdit;
             this.ItemFortlkpCitytlkpFederalStateName.Location = new System.Drawing.Point(0, 168);
             this.ItemFortlkpCitytlkpFederalStateName.Name = "ItemFortlkpCitytlkpFederalStateName";
-            this.ItemFortlkpCitytlkpFederalStateName.Size = new System.Drawing.Size(411, 24);
+            this.ItemFortlkpCitytlkpFederalStateName.Size = new System.Drawing.Size(356, 24);
             this.ItemFortlkpCitytlkpFederalStateName.Text = "Bundesland";
             this.ItemFortlkpCitytlkpFederalStateName.TextSize = new System.Drawing.Size(68, 13);
-            // 
-            // ItemFortlkpCitytlkpFederalStatetlkpCountryName
-            // 
-            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Control = this.tlkpCitytlkpFederalStatetlkpCountryNameTextEdit;
-            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Location = new System.Drawing.Point(0, 192);
-            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Name = "ItemFortlkpCitytlkpFederalStatetlkpCountryName";
-            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Size = new System.Drawing.Size(411, 191);
-            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Text = "Land";
-            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.TextSize = new System.Drawing.Size(68, 13);
             // 
             // ItemFortlkpContactPrefixName
             // 
             this.ItemFortlkpContactPrefixName.Control = this.tlkpContactPrefixNameLookUpEdit;
             this.ItemFortlkpContactPrefixName.Location = new System.Drawing.Point(0, 0);
             this.ItemFortlkpContactPrefixName.Name = "ItemFortlkpContactPrefixName";
-            this.ItemFortlkpContactPrefixName.Size = new System.Drawing.Size(205, 24);
+            this.ItemFortlkpContactPrefixName.Size = new System.Drawing.Size(177, 24);
             this.ItemFortlkpContactPrefixName.Text = "Anrede";
             this.ItemFortlkpContactPrefixName.TextSize = new System.Drawing.Size(68, 13);
             // 
@@ -1066,7 +1110,7 @@
             this.ItemForSurname.Control = this.SurnameTextEdit;
             this.ItemForSurname.Location = new System.Drawing.Point(0, 24);
             this.ItemForSurname.Name = "ItemForSurname";
-            this.ItemForSurname.Size = new System.Drawing.Size(411, 24);
+            this.ItemForSurname.Size = new System.Drawing.Size(356, 24);
             this.ItemForSurname.Text = "Vorname";
             this.ItemForSurname.TextSize = new System.Drawing.Size(68, 13);
             // 
@@ -1075,16 +1119,34 @@
             this.ItemForName.Control = this.NameTextEdit;
             this.ItemForName.Location = new System.Drawing.Point(0, 72);
             this.ItemForName.Name = "ItemForName";
-            this.ItemForName.Size = new System.Drawing.Size(411, 24);
+            this.ItemForName.Size = new System.Drawing.Size(356, 24);
             this.ItemForName.Text = "Name";
             this.ItemForName.TextSize = new System.Drawing.Size(68, 13);
+            // 
+            // ItemForMiddlename
+            // 
+            this.ItemForMiddlename.Control = this.MiddlenameTextEdit;
+            this.ItemForMiddlename.Location = new System.Drawing.Point(0, 48);
+            this.ItemForMiddlename.Name = "ItemForMiddlename";
+            this.ItemForMiddlename.Size = new System.Drawing.Size(356, 24);
+            this.ItemForMiddlename.Text = "Zweitname";
+            this.ItemForMiddlename.TextSize = new System.Drawing.Size(68, 13);
+            // 
+            // ItemFortlkpCitytlkpFederalStatetlkpCountryName
+            // 
+            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Control = this.tlkpCitytlkpFederalStatetlkpCountryNameTextEdit;
+            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Location = new System.Drawing.Point(0, 192);
+            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Name = "ItemFortlkpCitytlkpFederalStatetlkpCountryName";
+            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Size = new System.Drawing.Size(356, 185);
+            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.Text = "Land";
+            this.ItemFortlkpCitytlkpFederalStatetlkpCountryName.TextSize = new System.Drawing.Size(68, 13);
             // 
             // tabMap
             // 
             this.tabMap.Caption = "Karte";
             this.tabMap.Controls.Add(this.mapControl1);
             this.tabMap.Name = "tabMap";
-            this.tabMap.Size = new System.Drawing.Size(431, 403);
+            this.tabMap.Size = new System.Drawing.Size(376, 397);
             // 
             // mapControl1
             // 
@@ -1098,7 +1160,7 @@
             this.mapControl1.NavigationPanelOptions.ShowScrollButtons = false;
             this.mapControl1.NavigationPanelOptions.ShowZoomTrackbar = false;
             this.mapControl1.ShowSearchPanel = false;
-            this.mapControl1.Size = new System.Drawing.Size(431, 403);
+            this.mapControl1.Size = new System.Drawing.Size(376, 397);
             this.mapControl1.TabIndex = 0;
             this.imageLayer2.DataProvider = this.bingMapDataProvider3;
             this.bingMapDataProvider3.BingKey = "AqimjY1KQFxu9mGbYVY4bI7_l8-zyog7hKyTLbrQgxVcBxgS_6Dby16EgWwJQTVC";
@@ -1112,7 +1174,7 @@
             this.tabCommunication.Caption = "Kommunikation";
             this.tabCommunication.Controls.Add(this.goupControlCommunication);
             this.tabCommunication.Name = "tabCommunication";
-            this.tabCommunication.Size = new System.Drawing.Size(431, 403);
+            this.tabCommunication.Size = new System.Drawing.Size(376, 397);
             // 
             // goupControlCommunication
             // 
@@ -1121,7 +1183,7 @@
             this.goupControlCommunication.Location = new System.Drawing.Point(0, 0);
             this.goupControlCommunication.Name = "goupControlCommunication";
             this.goupControlCommunication.ShowCaption = false;
-            this.goupControlCommunication.Size = new System.Drawing.Size(431, 403);
+            this.goupControlCommunication.Size = new System.Drawing.Size(376, 397);
             this.goupControlCommunication.TabIndex = 1;
             // 
             // gridControl1
@@ -1135,7 +1197,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.riContactCommunicationType,
             this.riContactCommunicationCategory});
-            this.gridControl1.Size = new System.Drawing.Size(427, 399);
+            this.gridControl1.Size = new System.Drawing.Size(372, 393);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -1220,7 +1282,7 @@
             // 
             this.tabNotes.Caption = "Notizen";
             this.tabNotes.Name = "tabNotes";
-            this.tabNotes.Size = new System.Drawing.Size(431, 403);
+            this.tabNotes.Size = new System.Drawing.Size(376, 397);
             // 
             // separatorControl1
             // 
@@ -1228,24 +1290,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.separatorControl1.Location = new System.Drawing.Point(6, 162);
             this.separatorControl1.Name = "separatorControl1";
-            this.separatorControl1.Size = new System.Drawing.Size(432, 23);
+            this.separatorControl1.Padding = new System.Windows.Forms.Padding(0, 9, 0, 9);
+            this.separatorControl1.Size = new System.Drawing.Size(377, 23);
             this.separatorControl1.TabIndex = 3;
             // 
             // windowsUIButtonPanel1
             // 
             this.windowsUIButtonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            windowsUIButtonImageOptions4.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions4.SvgImage")));
-            windowsUIButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions5.SvgImage")));
-            windowsUIButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions6.SvgImage")));
+            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
+            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
+            windowsUIButtonImageOptions3.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions3.SvgImage")));
             this.windowsUIButtonPanel1.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Mail", false, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Mobil", false, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Privat", false, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Mail", false, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Mobil", false, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Privat", false, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanel1.ContentAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.windowsUIButtonPanel1.Location = new System.Drawing.Point(138, 114);
             this.windowsUIButtonPanel1.Name = "windowsUIButtonPanel1";
-            this.windowsUIButtonPanel1.Size = new System.Drawing.Size(300, 41);
+            this.windowsUIButtonPanel1.Size = new System.Drawing.Size(245, 41);
             this.windowsUIButtonPanel1.TabIndex = 2;
             this.windowsUIButtonPanel1.Text = "windowsUIButtonPanel1";
             // 
@@ -1259,7 +1322,7 @@
             this.lblFullname.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblFullname.Location = new System.Drawing.Point(137, 72);
             this.lblFullname.Name = "lblFullname";
-            this.lblFullname.Size = new System.Drawing.Size(300, 36);
+            this.lblFullname.Size = new System.Drawing.Size(245, 36);
             this.lblFullname.TabIndex = 1;
             this.lblFullname.Text = "Name";
             // 
@@ -1273,7 +1336,7 @@
             this.lblPrefix.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lblPrefix.Location = new System.Drawing.Point(138, 47);
             this.lblPrefix.Name = "lblPrefix";
-            this.lblPrefix.Size = new System.Drawing.Size(300, 19);
+            this.lblPrefix.Size = new System.Drawing.Size(245, 19);
             this.lblPrefix.TabIndex = 1;
             this.lblPrefix.Text = "Prefix";
             // 
@@ -1304,7 +1367,10 @@
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnAdd),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDelete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnSelect, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnExport),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnPrint),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSelect, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDetails)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
@@ -1338,8 +1404,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.WorkingArea)).EndInit();
             this.ucDefault1.WorkingArea.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
+            this.sidePanel1.ResumeLayout(false);
+            this.sidePanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
@@ -1349,6 +1415,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgCollectionPrefix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.riLookupCountry)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCollectionCountry)).EndInit();
+            this.sidePanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
@@ -1377,16 +1444,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTitle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddlename)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBirthdate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForStreet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCityName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCityZipcode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStateName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStatetlkpCountryName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpContactPrefixName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSurname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddlename)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemFortlkpCitytlkpFederalStatetlkpCountryName)).EndInit();
             this.tabMap.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mapControl1)).EndInit();
             this.tabCommunication.ResumeLayout(false);
@@ -1416,7 +1483,6 @@
 
         private Tools.Controls.ucDefault ucDefault1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private System.Windows.Forms.BindingSource tlkpContactAddressTypeBindingSource;
         private System.Windows.Forms.BindingSource tlkpCityBindingSource;
@@ -1530,5 +1596,12 @@
         private DevExpress.XtraBars.BarButtonItem btnDeleteComm;
         private DevExpress.XtraEditors.GroupControl goupControlCommunication;
         private DevExpress.XtraBars.PopupMenu popupMenu2;
+        private DevExpress.XtraEditors.SidePanel sidePanel1;
+        private DevExpress.XtraEditors.SidePanel sidePanel4;
+        private DevExpress.XtraEditors.SidePanel sidePanel2;
+        private DevExpress.XtraBars.BarButtonItem btnPrint;
+        private DevExpress.XtraBars.BarButtonItem btnExport;
+        private DevExpress.XtraBars.BarButtonItem btnDetails;
+        private DevExpress.XtraBars.BarToggleSwitchItem barToggleSwitchItem1;
     }
 }

@@ -22,11 +22,16 @@ namespace Wookie.Tools.Controls
     {
         #region Variables
         public enum Mode { Default = 0, Edit = 1 };
+
+        public System.Data.Linq.DataContext DataContext { get; set; } = null;
+
         private List<GridView> GridViews { get; set; } = new List<GridView>();
         private List<TreeList> TreeLists { get; set; } = new List<TreeList>();
+        private List<PopupMenu> PopupMenus = new List<PopupMenu>();
+
         private Dictionary<GridView, PopupMenu> gridConnector = new Dictionary<GridView, PopupMenu>();
         private Dictionary<TreeList, PopupMenu> treeConnector = new Dictionary<TreeList, PopupMenu>();
-        public System.Data.Linq.DataContext DataContext { get; set; } = null;
+        
         private Dictionary<BindingSource, bool> ignore = new Dictionary<BindingSource, bool>();
         private ModulData modulData = null;
         private string captionDetail = null;
@@ -53,17 +58,7 @@ namespace Wookie.Tools.Controls
         #endregion
 
         #region Public Functions
-        public void Initialize(ModulData modulData)
-        {
-            if (modulData != null)
-            {
-                this.modulData = modulData;
-                this.SetMode(Mode.Default);                
-                this.LoadData();
-            }
-        }
-
-        public void Initialize(ModulData modulData, bool loadData)
+        public void Initialize(ModulData modulData, bool loadData=true)
         {
             if (modulData != null)
             {
@@ -71,12 +66,6 @@ namespace Wookie.Tools.Controls
                 this.SetMode(Mode.Default);
                 if (loadData) this.LoadData();
             }
-        }
-
-        public void PreparePictureEdit(PictureEdit pictureEdit)
-        {
-            pictureEdit.FormatEditValue += PictureEdit_FormatEditValue;
-            pictureEdit.ParseEditValue += PictureEdit_ParseEditValue;
         }
 
         public void ShowProgressPanel()
@@ -103,12 +92,21 @@ namespace Wookie.Tools.Controls
             }
             catch
             {
-
             }
+        }
+
+        public void RegisterPictureEdit(PictureEdit pictureEdit)
+        {
+            if (pictureEdit == null) return;
+
+            pictureEdit.FormatEditValue += PictureEdit_FormatEditValue;
+            pictureEdit.ParseEditValue += PictureEdit_ParseEditValue;
         }
 
         public void RegisterGridView(GridView gridView)
         {
+            if (gridView == null) return;
+
             if (!this.GridViews.Contains(gridView))
             {
                 this.GridViews.Add(gridView);
@@ -119,6 +117,8 @@ namespace Wookie.Tools.Controls
 
         public void RegisterTreeList(TreeList treeList)
         {
+            if (treeList == null) return;
+
             if (!this.TreeLists.Contains(treeList))
             {
                 this.TreeLists.Add(treeList);
@@ -128,50 +128,41 @@ namespace Wookie.Tools.Controls
 
         public void RegisterBindingSource(BindingSource bindingSource)
         {
+            if (bindingSource == null) return;
+
             bindingSource.CurrentChanged += BindingSource_CurrentChanged;
             bindingSource.CurrentItemChanged += BindingSource_CurrentItemChanged;
             bindingSource.ListChanged += BindingSource_ListChanged;
             ignore.Add(bindingSource, true);
         }
 
-        public void RegisterPopup(PopupMenu popupMenu, GroupControl groupControl)
+        public void RegisterPopup(PopupMenu popupMenu)
         {
-            foreach (LinkPersistInfo a in popupMenu.LinksPersistInfo)
+            if (popupMenu == null) return;
+
+            if (!this.PopupMenus.Contains(popupMenu))
             {
-                ButtonImageOptions buttonImageOptions = new ButtonImageOptions();
-                GroupBoxButton button = new GroupBoxButton();
-                button.Tag = a.Item;
-                button.Caption = a.Item.Caption;
-                button.UseCaption = false;
-                button.ToolTip = a.Item.Caption;
-                button.ImageOptions.SvgImage = a.Item.ImageOptions.SvgImage;
-                button.ImageOptions.SvgImageSize = new Size(16, 16);
-                groupControl.CustomHeaderButtons.Add(button);
-            }
-            groupControl.CustomButtonClick += GroupControl_CustomButtonClick;
-        }
+                this.PopupMenus.Add(popupMenu);                
+            }            
+        }        
 
         public void Connect(GroupControl groupControl, GridView gridView, PopupMenu popupMenu, BindingSource bindingSource)
         {
-            if (!this.gridConnector.ContainsKey(gridView))
-            {
-                this.gridConnector.Add(gridView, popupMenu);
-                this.RegisterBindingSource(bindingSource);
-                this.RegisterGridView(gridView);
-                this.RegisterPopup(popupMenu, groupControl);
-            }
+            this.RegisterBindingSource(bindingSource);
+            this.RegisterGridView(gridView);
+            this.RegisterPopup(popupMenu);
+
+            this.ConnectPopup(popupMenu, groupControl, gridView);
         }
 
         public void Connect(GroupControl groupControl, TreeList treeList, PopupMenu popupMenu, BindingSource bindingSource)
         {
-            if (!this.treeConnector.ContainsKey(treeList))
-            {
-                this.treeConnector.Add(treeList, popupMenu);
-                this.RegisterBindingSource(bindingSource);
-                this.RegisterTreeList(treeList);
-                this.RegisterPopup(popupMenu, groupControl);
-            }
-        }        
+            this.RegisterBindingSource(bindingSource);
+            this.RegisterTreeList(treeList);
+            this.RegisterPopup(popupMenu);
+
+            this.ConnectPopup(popupMenu, groupControl, treeList);
+        }     
 
         public void PostEditor()
         {
@@ -204,13 +195,6 @@ namespace Wookie.Tools.Controls
         {
             get { return this.captionDetail; }
             set { this.captionDetail = value; this.SetCaption(); }
-        }
-
-        private void SetCaption()
-        {
-            this.gcMain.Text = this.caption;
-            if (this.captionDetail != null)
-                this.gcMain.Text += " (" + this.captionDetail + ")";
         }
 
         [Category("Appearance"), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
@@ -255,12 +239,13 @@ namespace Wookie.Tools.Controls
             try
             {
                 this.ShowProgressPanel();
-                BeforeDataLoad?.Invoke(this, new EventArgs());
-                
+
+                this.BeforeDataLoad?.Invoke(this, new EventArgs());
                 this.SetMode(Mode.Default);
+
                 this.CloseProgressPanel();
-                DataLoaded?.Invoke(this, new EventArgs());
-                
+
+                this.DataLoaded?.Invoke(this, new EventArgs());                
             }
             catch 
             {
@@ -284,7 +269,7 @@ namespace Wookie.Tools.Controls
                 {
                     this.ShowProgressPanel();
 
-                    this.DataContext.SubmitChanges(ConflictMode.FailOnFirstConflict);
+                    this.DataContext.SubmitChanges(ConflictMode.ContinueOnConflict);
                     this.SetMode(Mode.Default);
                 }
 
@@ -296,32 +281,53 @@ namespace Wookie.Tools.Controls
 
                 this.CloseProgressPanel();
 
-                //if (dataContext.ChangeConflicts.Count > 0 &&
-                //    dataContext.ChangeConflicts[0].IsDeleted &&
-                //    dataContext.ChangeConflicts[0].Object is Database.tsysClient)
-                //{
-                //    Database.tsysClient client = dataContext.ChangeConflicts[0].Object as Database.tsysClient;
-                //    XtraMessageBox.Show(System.String.Format("Der Datensatz <b>\"{0}\"</b> existiert in der Datenbank nicht mehr.", client.Name), "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, DevExpress.Utils.DefaultBoolean.True);
-                //}
-                //else if (dataContext.ChangeConflicts.Count > 0 &&
-                //    dataContext.ChangeConflicts[0].MemberConflicts.Count > 0 &&
-                //    dataContext.ChangeConflicts[0].MemberConflicts[0].IsModified &&
-                //    dataContext.ChangeConflicts[0].Object is Database.tsysClient)
-                //{
-                //    Database.tsysClient client = dataContext.ChangeConflicts[0].Object as Database.tsysClient;
-                //    XtraMessageBox.Show(
-                //        System.String.Format(
-                //            "Der Datensatz <b>\"{0}\"</b> wurde in der Datenbank geändert. Datenbankwert: {2}, Neuer Wert: {1}",
-                //            dataContext.ChangeConflicts[0].MemberConflicts[0].Member.Name,
-                //            dataContext.ChangeConflicts[0].MemberConflicts[0].CurrentValue,
-                //            dataContext.ChangeConflicts[0].MemberConflicts[0].DatabaseValue),
-                //        "Fehler",
-                //        MessageBoxButtons.OK,
-                //        MessageBoxIcon.Exclamation,
-                //        DevExpress.Utils.DefaultBoolean.True);
-                //}
+                ucConflicts ucConflicts = new ucConflicts();
 
-                //dataContext.ChangeConflicts.ResolveAll(RefreshMode.KeepChanges);
+                if (this.DataContext.ChangeConflicts.Count > 0)
+                {
+                    foreach (System.Data.Linq.ObjectChangeConflict objectChangeConflict in this.DataContext.ChangeConflicts)
+                    {
+                        if (objectChangeConflict.IsDeleted)
+                        {
+
+                            Conflict conflict = new Conflict();
+                            conflict.Message = "Der Datensatz existiert nicht mehr";
+                            conflict.RefreshMode = RefreshMode.KeepChanges;
+                            ucConflicts.Conflicts.Add(conflict);
+
+                            //Database.tsysClient client = this.DataContext.ChangeConflicts[0].Object as Database.tsysClient;
+                            //XtraMessageBox.Show(System.String.Format("Der Datensatz <b>\"{0}\"</b> existiert in der Datenbank nicht mehr.", client.Name), "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, DevExpress.Utils.DefaultBoolean.True);
+                        }
+                        else if (objectChangeConflict.MemberConflicts.Count > 0 &&
+                                 objectChangeConflict.MemberConflicts[0].IsModified)
+                        {
+
+                            Conflict conflict = new Conflict();
+                            conflict.Message = "Der Datensatz wurde in der Datenbank geändert";
+                            conflict.RefreshMode = RefreshMode.KeepChanges;
+                            ucConflicts.Conflicts.Add(conflict);
+
+
+                            //Database.tsysClient client = this.DataContext.ChangeConflicts[0].Object as Database.tsysClient;
+                            //XtraMessageBox.Show(
+                            //    System.String.Format(
+                            //        "Der Datensatz <b>\"{0}\"</b> wurde in der Datenbank geändert. Datenbankwert: {2}, Neuer Wert: {1}",
+                            //        this.DataContext.ChangeConflicts[0].MemberConflicts[0].Member.Name,
+                            //        this.DataContext.ChangeConflicts[0].MemberConflicts[0].CurrentValue,
+                            //        this.DataContext.ChangeConflicts[0].MemberConflicts[0].DatabaseValue),
+                            //        "Fehler",
+                            //        MessageBoxButtons.OK,
+                            //        MessageBoxIcon.Exclamation,
+                            //        DevExpress.Utils.DefaultBoolean.True);
+                        }
+                    }
+                    //this.DataContext.ChangeConflicts.ResolveAll(RefreshMode.KeepChanges);
+
+                    frmConflict frm = new frmConflict(ucConflicts);
+                    frm.ShowDialog();
+                }
+
+                
 
                 return false;
             }
@@ -347,7 +353,55 @@ namespace Wookie.Tools.Controls
             {
                 this.CloseProgressPanel();
             }
+        }
 
+        private void SetCaption()
+        {
+            this.gcMain.Text = this.caption;
+            if (this.captionDetail != null)
+                this.gcMain.Text += " (" + this.captionDetail + ")";
+        }
+
+        private void ConnectPopup(PopupMenu popupMenu, GroupControl groupControl, GridView gridView)
+        {
+            if (!this.gridConnector.ContainsKey(gridView))
+            {
+                this.gridConnector.Add(gridView, popupMenu);
+            }
+
+            this.ConnectPopup(popupMenu, groupControl);
+        }
+
+        private void ConnectPopup(PopupMenu popupMenu, GroupControl groupControl, TreeList treeList)
+        {
+            if (!this.treeConnector.ContainsKey(treeList))
+            {
+                this.treeConnector.Add(treeList, popupMenu);
+            }
+
+            this.ConnectPopup(popupMenu, groupControl);
+        }
+
+        private void ConnectPopup(PopupMenu popupMenu, GroupControl groupControl)
+        {
+            if (popupMenu == null || groupControl == null) return;
+
+            foreach (LinkPersistInfo a in popupMenu.LinksPersistInfo)
+            {
+                ButtonImageOptions buttonImageOptions = new ButtonImageOptions();
+                GroupBoxButton button = new GroupBoxButton();
+
+                button.Tag = a.Item;
+                button.Caption = a.Item.Caption;
+                button.UseCaption = false;
+                button.ToolTip = a.Item.Caption;
+                button.ImageOptions.SvgImage = a.Item.ImageOptions.SvgImage;
+                button.ImageOptions.SvgImageSize = new Size(16, 16);
+
+                groupControl.CustomHeaderButtons.Add(button);
+            }
+
+            groupControl.CustomButtonClick += GroupControl_CustomButtonClick;
         }
         #endregion
 
@@ -437,7 +491,7 @@ namespace Wookie.Tools.Controls
                 case ListChangedType.ItemChanged:
                 case ListChangedType.ItemDeleted:
                     this.SetMode(Mode.Edit);
-                    DataRefresh?.Invoke(this, new EventArgs());
+                    this.DataRefresh?.Invoke(this, new EventArgs());
                     break;
             }
         }
@@ -456,6 +510,17 @@ namespace Wookie.Tools.Controls
 
             this.ignore[(BindingSource)sender] = true;
             DataRefresh?.Invoke(this, new EventArgs());
+        }
+
+        private void ucDefault_VisibleChanged(object sender, EventArgs e)
+        {
+            foreach (PopupMenu popupMenu in this.PopupMenus)
+            {
+                foreach (LinkPersistInfo a in popupMenu.LinksPersistInfo)
+                {
+                    a.Item.Enabled = this.Visible;
+                }
+            }
         }
         #endregion
     }

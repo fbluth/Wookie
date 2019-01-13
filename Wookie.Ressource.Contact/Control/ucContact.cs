@@ -45,7 +45,7 @@ namespace Wookie.Ressource.Contact.Control
                 this.popupMenu2,
                 this.tblContactCommunicationBindingSource);
 
-            this.ucDefault1.PreparePictureEdit(this.picID);
+            this.ucDefault1.RegisterPictureEdit(this.picID);
 
             this.SetValidationRules();
         }
@@ -389,6 +389,11 @@ namespace Wookie.Ressource.Contact.Control
         private void btnDeleteComm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.RemoveCommunication();
+        }
+
+        private void btnDetails_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.sidePanel2.Visible = !this.sidePanel2.Visible;
         }
         #endregion
     }

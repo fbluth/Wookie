@@ -28,41 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucAppointment));
             this.ucDefault1 = new Wookie.Tools.Controls.ucDefault();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.pnlMain = new DevExpress.XtraEditors.SidePanel();
+            this.pnlAppointments = new DevExpress.XtraEditors.SidePanel();
+            this.groupAppointments = new DevExpress.XtraEditors.GroupControl();
             this.schedulerControl1 = new DevExpress.XtraScheduler.SchedulerControl();
-            this.schedulerDataStorage1 = new DevExpress.XtraScheduler.SchedulerDataStorage(this.components);
-            this.tblContactAppointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.schedulerDataStorage1 = new DevExpress.XtraScheduler.SchedulerDataStorage();
+            this.tblContactAppointmentBindingSource = new System.Windows.Forms.BindingSource();
+            this.pnlDetails = new DevExpress.XtraEditors.SidePanel();
+            this.groupDetails = new DevExpress.XtraEditors.GroupControl();
+            this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.weekDaysEdit1 = new DevExpress.XtraScheduler.UI.WeekDaysEdit();
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.StartDateTimeDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.EndDateTimeDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.SubjectTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.LocationTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.DescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.ItemForStartDateTime = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForEndDateTime = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForSubject = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForLocation = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForDescription = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.pnlLeft = new DevExpress.XtraEditors.SidePanel();
+            this.pnlCalendar = new DevExpress.XtraEditors.SidePanel();
+            this.dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
+            this.pnlSelectedAddress = new DevExpress.XtraEditors.SidePanel();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.WorkingArea)).BeginInit();
             this.ucDefault1.WorkingArea.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
+            this.pnlMain.SuspendLayout();
+            this.pnlAppointments.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupAppointments)).BeginInit();
+            this.groupAppointments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerDataStorage1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblContactAppointmentBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            this.pnlDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupDetails)).BeginInit();
+            this.groupDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
+            this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.weekDaysEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartDateTimeDateEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartDateTimeDateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EndDateTimeDateEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EndDateTimeDateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SubjectTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LocationTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForStartDateTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEndDateTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForSubject)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLocation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            this.pnlLeft.SuspendLayout();
+            this.pnlCalendar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // ucDefault1
@@ -84,8 +126,7 @@
             // ucDefault1.WorkingArea
             // 
             this.ucDefault1.WorkingArea.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.ucDefault1.WorkingArea.Controls.Add(this.splitContainerControl1);
-            this.ucDefault1.WorkingArea.Controls.Add(this.panelControl1);
+            this.ucDefault1.WorkingArea.Controls.Add(this.pnlMain);
             this.ucDefault1.WorkingArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDefault1.WorkingArea.Location = new System.Drawing.Point(2, 37);
             this.ucDefault1.WorkingArea.Name = "WorkingArea";
@@ -95,37 +136,48 @@
             this.ucDefault1.BeforeDataLoad += new System.EventHandler(this.ucDefault1_BeforeDataLoad);
             this.ucDefault1.DataRefresh += new System.EventHandler(this.ucDefault1_DataRefresh);
             // 
-            // splitContainerControl1
+            // pnlMain
             // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(5, 105);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(989, 506);
-            this.splitContainerControl1.SplitterPosition = 734;
-            this.splitContainerControl1.TabIndex = 0;
+            this.pnlMain.BorderThickness = 0;
+            this.pnlMain.Controls.Add(this.pnlAppointments);
+            this.pnlMain.Controls.Add(this.pnlDetails);
+            this.pnlMain.Controls.Add(this.pnlLeft);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(5, 5);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(989, 606);
+            this.pnlMain.TabIndex = 1;
             // 
-            // groupControl1
+            // pnlAppointments
             // 
-            this.groupControl1.Controls.Add(this.schedulerControl1);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 0);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(734, 506);
-            this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Termine";
+            this.pnlAppointments.Controls.Add(this.groupAppointments);
+            this.pnlAppointments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlAppointments.Location = new System.Drawing.Point(246, 0);
+            this.pnlAppointments.Name = "pnlAppointments";
+            this.pnlAppointments.Padding = new System.Windows.Forms.Padding(3);
+            this.pnlAppointments.Size = new System.Drawing.Size(436, 606);
+            this.pnlAppointments.TabIndex = 2;
+            this.pnlAppointments.Text = "sidePanel2";
+            // 
+            // groupAppointments
+            // 
+            this.groupAppointments.Controls.Add(this.schedulerControl1);
+            this.groupAppointments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupAppointments.Location = new System.Drawing.Point(3, 3);
+            this.groupAppointments.Name = "groupAppointments";
+            this.groupAppointments.Size = new System.Drawing.Size(430, 600);
+            this.groupAppointments.TabIndex = 0;
             // 
             // schedulerControl1
             // 
             this.schedulerControl1.ActiveViewType = DevExpress.XtraScheduler.SchedulerViewType.Month;
+            this.schedulerControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.schedulerControl1.DataStorage = this.schedulerDataStorage1;
             this.schedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schedulerControl1.Location = new System.Drawing.Point(2, 27);
             this.schedulerControl1.Name = "schedulerControl1";
-            this.schedulerControl1.Size = new System.Drawing.Size(730, 477);
+            this.schedulerControl1.OptionsView.NavigationButtons.Visibility = DevExpress.XtraScheduler.NavigationButtonVisibility.Never;
+            this.schedulerControl1.Size = new System.Drawing.Size(426, 571);
             this.schedulerControl1.Start = new System.DateTime(2018, 11, 19, 0, 0, 0, 0);
             this.schedulerControl1.TabIndex = 0;
             this.schedulerControl1.Text = "schedulerControl1";
@@ -134,6 +186,7 @@
             this.schedulerControl1.Views.FullWeekView.TimeRulers.Add(timeRuler2);
             this.schedulerControl1.Views.GanttView.Enabled = false;
             this.schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
+            this.schedulerControl1.SelectionChanged += new System.EventHandler(this.schedulerControl1_SelectionChanged);
             // 
             // schedulerDataStorage1
             // 
@@ -144,6 +197,9 @@
             // 
             // 
             // 
+            this.schedulerDataStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("ChangedOn", "ChangedOn"));
+            this.schedulerDataStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("CreatedOn", "CreatedOn"));
+            this.schedulerDataStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("UniqueIdentifier", "UniqueIdentifier"));
             this.schedulerDataStorage1.Appointments.DataSource = this.tblContactAppointmentBindingSource;
             this.schedulerDataStorage1.Appointments.Mappings.Description = "Description";
             this.schedulerDataStorage1.Appointments.Mappings.End = "EndDateTime";
@@ -156,40 +212,53 @@
             this.tblContactAppointmentBindingSource.DataSource = typeof(Wookie.Ressource.Database.tblContactAppointment);
             this.tblContactAppointmentBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.tblContactAppointmentBindingSource_ListChanged);
             // 
-            // groupControl2
+            // pnlDetails
             // 
-            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(0, 0);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(245, 506);
-            this.groupControl2.TabIndex = 0;
-            this.groupControl2.Text = "Details";
+            this.pnlDetails.BorderThickness = 0;
+            this.pnlDetails.Controls.Add(this.groupDetails);
+            this.pnlDetails.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlDetails.Location = new System.Drawing.Point(682, 0);
+            this.pnlDetails.Name = "pnlDetails";
+            this.pnlDetails.Padding = new System.Windows.Forms.Padding(3);
+            this.pnlDetails.Size = new System.Drawing.Size(307, 606);
+            this.pnlDetails.TabIndex = 1;
             // 
-            // popupMenu1
+            // groupDetails
             // 
-            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnAdd),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnDelete)});
-            this.popupMenu1.Manager = this.barManager1;
-            this.popupMenu1.Name = "popupMenu1";
+            this.groupDetails.Controls.Add(this.dataLayoutControl1);
+            this.groupDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupDetails.Location = new System.Drawing.Point(3, 3);
+            this.groupDetails.Name = "groupDetails";
+            this.groupDetails.Size = new System.Drawing.Size(301, 600);
+            this.groupDetails.TabIndex = 0;
             // 
-            // btnAdd
+            // dataLayoutControl1
             // 
-            this.btnAdd.Caption = "Neu";
-            this.btnAdd.Id = 0;
-            this.btnAdd.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAdd.ImageOptions.SvgImage")));
-            this.btnAdd.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNew_ItemClick);
+            this.dataLayoutControl1.Controls.Add(this.weekDaysEdit1);
+            this.dataLayoutControl1.Controls.Add(this.StartDateTimeDateEdit);
+            this.dataLayoutControl1.Controls.Add(this.EndDateTimeDateEdit);
+            this.dataLayoutControl1.Controls.Add(this.SubjectTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.LocationTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.DescriptionTextEdit);
+            this.dataLayoutControl1.DataSource = this.tblContactAppointmentBindingSource;
+            this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataLayoutControl1.Location = new System.Drawing.Point(2, 27);
+            this.dataLayoutControl1.Name = "dataLayoutControl1";
+            this.dataLayoutControl1.Root = this.Root;
+            this.dataLayoutControl1.Size = new System.Drawing.Size(297, 571);
+            this.dataLayoutControl1.TabIndex = 0;
+            this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
-            // btnDelete
+            // weekDaysEdit1
             // 
-            this.btnDelete.Caption = "Löschen";
-            this.btnDelete.Id = 1;
-            this.btnDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDelete.ImageOptions.SvgImage")));
-            this.btnDelete.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
+            this.weekDaysEdit1.Location = new System.Drawing.Point(108, 132);
+            this.weekDaysEdit1.MenuManager = this.barManager1;
+            this.weekDaysEdit1.Name = "weekDaysEdit1";
+            this.weekDaysEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.weekDaysEdit1.Size = new System.Drawing.Size(177, 20);
+            this.weekDaysEdit1.StyleController = this.dataLayoutControl1;
+            this.weekDaysEdit1.TabIndex = 9;
             // 
             // barManager1
             // 
@@ -235,14 +304,227 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 655);
             // 
-            // panelControl1
+            // btnAdd
             // 
-            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(5, 5);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(989, 100);
-            this.panelControl1.TabIndex = 1;
+            this.btnAdd.Caption = "Neu";
+            this.btnAdd.Id = 0;
+            this.btnAdd.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAdd.ImageOptions.SvgImage")));
+            this.btnAdd.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNew_ItemClick);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Caption = "Löschen";
+            this.btnDelete.Id = 1;
+            this.btnDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDelete.ImageOptions.SvgImage")));
+            this.btnDelete.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
+            // 
+            // StartDateTimeDateEdit
+            // 
+            this.StartDateTimeDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tblContactAppointmentBindingSource, "StartDateTime", true));
+            this.StartDateTimeDateEdit.EditValue = null;
+            this.StartDateTimeDateEdit.Location = new System.Drawing.Point(108, 12);
+            this.StartDateTimeDateEdit.MenuManager = this.barManager1;
+            this.StartDateTimeDateEdit.Name = "StartDateTimeDateEdit";
+            this.StartDateTimeDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.StartDateTimeDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.StartDateTimeDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.StartDateTimeDateEdit.Properties.DisplayFormat.FormatString = "D";
+            this.StartDateTimeDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.StartDateTimeDateEdit.Size = new System.Drawing.Size(177, 20);
+            this.StartDateTimeDateEdit.StyleController = this.dataLayoutControl1;
+            this.StartDateTimeDateEdit.TabIndex = 4;
+            // 
+            // EndDateTimeDateEdit
+            // 
+            this.EndDateTimeDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tblContactAppointmentBindingSource, "EndDateTime", true));
+            this.EndDateTimeDateEdit.EditValue = null;
+            this.EndDateTimeDateEdit.Location = new System.Drawing.Point(108, 36);
+            this.EndDateTimeDateEdit.MenuManager = this.barManager1;
+            this.EndDateTimeDateEdit.Name = "EndDateTimeDateEdit";
+            this.EndDateTimeDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.EndDateTimeDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.EndDateTimeDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.EndDateTimeDateEdit.Properties.DisplayFormat.FormatString = "D";
+            this.EndDateTimeDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.EndDateTimeDateEdit.Size = new System.Drawing.Size(177, 20);
+            this.EndDateTimeDateEdit.StyleController = this.dataLayoutControl1;
+            this.EndDateTimeDateEdit.TabIndex = 5;
+            // 
+            // SubjectTextEdit
+            // 
+            this.SubjectTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tblContactAppointmentBindingSource, "Subject", true));
+            this.SubjectTextEdit.Location = new System.Drawing.Point(108, 60);
+            this.SubjectTextEdit.MenuManager = this.barManager1;
+            this.SubjectTextEdit.Name = "SubjectTextEdit";
+            this.SubjectTextEdit.Size = new System.Drawing.Size(177, 20);
+            this.SubjectTextEdit.StyleController = this.dataLayoutControl1;
+            this.SubjectTextEdit.TabIndex = 6;
+            // 
+            // LocationTextEdit
+            // 
+            this.LocationTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tblContactAppointmentBindingSource, "Location", true));
+            this.LocationTextEdit.Location = new System.Drawing.Point(108, 84);
+            this.LocationTextEdit.MenuManager = this.barManager1;
+            this.LocationTextEdit.Name = "LocationTextEdit";
+            this.LocationTextEdit.Size = new System.Drawing.Size(177, 20);
+            this.LocationTextEdit.StyleController = this.dataLayoutControl1;
+            this.LocationTextEdit.TabIndex = 7;
+            // 
+            // DescriptionTextEdit
+            // 
+            this.DescriptionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.tblContactAppointmentBindingSource, "Description", true));
+            this.DescriptionTextEdit.Location = new System.Drawing.Point(108, 108);
+            this.DescriptionTextEdit.MenuManager = this.barManager1;
+            this.DescriptionTextEdit.Name = "DescriptionTextEdit";
+            this.DescriptionTextEdit.Size = new System.Drawing.Size(177, 20);
+            this.DescriptionTextEdit.StyleController = this.dataLayoutControl1;
+            this.DescriptionTextEdit.TabIndex = 8;
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlGroup1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(297, 571);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.AllowDrawBackground = false;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.ItemForStartDateTime,
+            this.ItemForEndDateTime,
+            this.ItemForSubject,
+            this.ItemForLocation,
+            this.ItemForDescription,
+            this.layoutControlItem1});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "autoGeneratedGroup0";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(277, 551);
+            this.layoutControlGroup1.Text = "Termin";
+            // 
+            // ItemForStartDateTime
+            // 
+            this.ItemForStartDateTime.Control = this.StartDateTimeDateEdit;
+            this.ItemForStartDateTime.Location = new System.Drawing.Point(0, 0);
+            this.ItemForStartDateTime.Name = "ItemForStartDateTime";
+            this.ItemForStartDateTime.Size = new System.Drawing.Size(277, 24);
+            this.ItemForStartDateTime.Text = "Start Date Time";
+            this.ItemForStartDateTime.TextSize = new System.Drawing.Size(93, 13);
+            // 
+            // ItemForEndDateTime
+            // 
+            this.ItemForEndDateTime.Control = this.EndDateTimeDateEdit;
+            this.ItemForEndDateTime.Location = new System.Drawing.Point(0, 24);
+            this.ItemForEndDateTime.Name = "ItemForEndDateTime";
+            this.ItemForEndDateTime.Size = new System.Drawing.Size(277, 24);
+            this.ItemForEndDateTime.Text = "End Date Time";
+            this.ItemForEndDateTime.TextSize = new System.Drawing.Size(93, 13);
+            // 
+            // ItemForSubject
+            // 
+            this.ItemForSubject.Control = this.SubjectTextEdit;
+            this.ItemForSubject.Location = new System.Drawing.Point(0, 48);
+            this.ItemForSubject.Name = "ItemForSubject";
+            this.ItemForSubject.Size = new System.Drawing.Size(277, 24);
+            this.ItemForSubject.Text = "Subject";
+            this.ItemForSubject.TextSize = new System.Drawing.Size(93, 13);
+            // 
+            // ItemForLocation
+            // 
+            this.ItemForLocation.Control = this.LocationTextEdit;
+            this.ItemForLocation.Location = new System.Drawing.Point(0, 72);
+            this.ItemForLocation.Name = "ItemForLocation";
+            this.ItemForLocation.Size = new System.Drawing.Size(277, 24);
+            this.ItemForLocation.Text = "Location";
+            this.ItemForLocation.TextSize = new System.Drawing.Size(93, 13);
+            // 
+            // ItemForDescription
+            // 
+            this.ItemForDescription.Control = this.DescriptionTextEdit;
+            this.ItemForDescription.Location = new System.Drawing.Point(0, 96);
+            this.ItemForDescription.Name = "ItemForDescription";
+            this.ItemForDescription.Size = new System.Drawing.Size(277, 24);
+            this.ItemForDescription.Text = "Description";
+            this.ItemForDescription.TextSize = new System.Drawing.Size(93, 13);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.weekDaysEdit1;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(277, 431);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 13);
+            // 
+            // pnlLeft
+            // 
+            this.pnlLeft.BorderThickness = 0;
+            this.pnlLeft.Controls.Add(this.pnlCalendar);
+            this.pnlLeft.Controls.Add(this.pnlSelectedAddress);
+            this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeft.Location = new System.Drawing.Point(0, 0);
+            this.pnlLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlLeft.Name = "pnlLeft";
+            this.pnlLeft.Padding = new System.Windows.Forms.Padding(3);
+            this.pnlLeft.Size = new System.Drawing.Size(246, 606);
+            this.pnlLeft.TabIndex = 0;
+            // 
+            // pnlCalendar
+            // 
+            this.pnlCalendar.AllowResize = false;
+            this.pnlCalendar.BorderThickness = 0;
+            this.pnlCalendar.Controls.Add(this.dateNavigator1);
+            this.pnlCalendar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCalendar.Location = new System.Drawing.Point(3, 177);
+            this.pnlCalendar.Name = "pnlCalendar";
+            this.pnlCalendar.Size = new System.Drawing.Size(240, 426);
+            this.pnlCalendar.TabIndex = 1;
+            this.pnlCalendar.Text = "sidePanel1";
+            // 
+            // dateNavigator1
+            // 
+            this.dateNavigator1.CalendarAppearance.DayCellSpecial.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.dateNavigator1.CalendarAppearance.DayCellSpecial.Options.UseFont = true;
+            this.dateNavigator1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateNavigator1.DateTime = new System.DateTime(2019, 1, 2, 0, 0, 0, 0);
+            this.dateNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dateNavigator1.EditValue = new System.DateTime(2019, 1, 2, 0, 0, 0, 0);
+            this.dateNavigator1.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.dateNavigator1.Location = new System.Drawing.Point(0, 187);
+            this.dateNavigator1.Name = "dateNavigator1";
+            this.dateNavigator1.SchedulerControl = this.schedulerControl1;
+            this.dateNavigator1.Size = new System.Drawing.Size(240, 239);
+            this.dateNavigator1.TabIndex = 0;
+            // 
+            // pnlSelectedAddress
+            // 
+            this.pnlSelectedAddress.AllowResize = false;
+            this.pnlSelectedAddress.BorderThickness = 0;
+            this.pnlSelectedAddress.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSelectedAddress.Location = new System.Drawing.Point(3, 3);
+            this.pnlSelectedAddress.Name = "pnlSelectedAddress";
+            this.pnlSelectedAddress.Size = new System.Drawing.Size(240, 174);
+            this.pnlSelectedAddress.TabIndex = 0;
+            // 
+            // popupMenu1
+            // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnAdd),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDelete)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
             // 
             // ucAppointment
             // 
@@ -258,17 +540,40 @@
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.ValidationProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ucDefault1.WorkingArea)).EndInit();
             this.ucDefault1.WorkingArea.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
+            this.pnlMain.ResumeLayout(false);
+            this.pnlAppointments.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupAppointments)).EndInit();
+            this.groupAppointments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerDataStorage1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblContactAppointmentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            this.pnlDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupDetails)).EndInit();
+            this.groupDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
+            this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.weekDaysEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartDateTimeDateEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartDateTimeDateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EndDateTimeDateEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EndDateTimeDateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SubjectTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LocationTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForStartDateTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEndDateTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForSubject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLocation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            this.pnlLeft.ResumeLayout(false);
+            this.pnlCalendar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,9 +582,8 @@
         #endregion
 
         private Tools.Controls.ucDefault ucDefault1;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.GroupControl groupAppointments;
+        private DevExpress.XtraEditors.GroupControl groupDetails;
         private DevExpress.XtraScheduler.SchedulerControl schedulerControl1;
         private DevExpress.XtraScheduler.SchedulerDataStorage schedulerDataStorage1;
         private System.Windows.Forms.BindingSource tblContactAppointmentBindingSource;
@@ -291,6 +595,27 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SidePanel pnlMain;
+        private DevExpress.XtraEditors.SidePanel pnlAppointments;
+        private DevExpress.XtraEditors.SidePanel pnlDetails;
+        private DevExpress.XtraEditors.SidePanel pnlLeft;
+        private DevExpress.XtraEditors.SidePanel pnlCalendar;
+        private DevExpress.XtraScheduler.DateNavigator dateNavigator1;
+        private DevExpress.XtraEditors.SidePanel pnlSelectedAddress;
+        private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
+        private DevExpress.XtraEditors.DateEdit StartDateTimeDateEdit;
+        private DevExpress.XtraEditors.DateEdit EndDateTimeDateEdit;
+        private DevExpress.XtraEditors.TextEdit SubjectTextEdit;
+        private DevExpress.XtraEditors.TextEdit LocationTextEdit;
+        private DevExpress.XtraEditors.TextEdit DescriptionTextEdit;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForStartDateTime;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForEndDateTime;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForSubject;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForLocation;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForDescription;
+        private DevExpress.XtraScheduler.UI.WeekDaysEdit weekDaysEdit1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
     }
 }

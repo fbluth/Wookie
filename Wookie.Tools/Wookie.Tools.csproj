@@ -59,6 +59,18 @@
     <Compile Include="Controls\AccordionControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\frmConflict.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmConflict.Designer.cs">
+      <DependentUpon>frmConflict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucConflicts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucConflicts.Designer.cs">
+      <DependentUpon>ucConflicts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ucDefault.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,6 +95,9 @@
     <Compile Include="Validation\RangeValidationRule.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\ucConflicts.resx">
+      <DependentUpon>ucConflicts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucDefault.resx">
       <DependentUpon>ucDefault.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +109,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\Wookie.Tools.Controls.ChangeConflict.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

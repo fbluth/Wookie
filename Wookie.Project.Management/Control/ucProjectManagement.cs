@@ -33,7 +33,7 @@ namespace Wookie.Project.Management.Control
                 this.popupMenu1,
                 this.tblProjectBindingSource);
 
-            this.ucDefault1.PreparePictureEdit(this.PicturePictureEdit);
+            this.ucDefault1.RegisterPictureEdit(this.PicturePictureEdit);
             
             this.SetValidationRules();
         }

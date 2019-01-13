@@ -26,7 +26,7 @@ namespace Wookie.Employee.MasterData.ContactPrefix
                 this.popupMenu,
                 this.tlkpContactPrefixBindingSource);
 
-            this.ucDefault1.PreparePictureEdit(this.PicturePictureEdit);
+            this.ucDefault1.RegisterPictureEdit(this.PicturePictureEdit);
 
             this.SetValidationRules();
         }

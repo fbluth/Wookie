@@ -6,8 +6,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using Wookie.Tools.Image;
 using DevExpress.Images;
-using System.Drawing;
-using DevExpress.XtraEditors;
 
 namespace Wookie.Menu.MenuManager
 {
@@ -36,14 +34,18 @@ namespace Wookie.Menu.MenuManager
             this.navigationFrame = navigationFrame;
             this.accordionControl = accordionControl;
             this.sqlConnection = sqlConnection;
+
             this.statusBar = statusBar;
-        
             this.statusBar.AddItem(barItemMessage);
             this.statusBar.AddItem(barItemSelection);
         }
         #endregion
 
         #region Public Functions
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aceClient"></param>
         public void AddClients(AccordionControlElement aceClient)
         {
             // Lese aus der Datenbank alle Mandanten aus

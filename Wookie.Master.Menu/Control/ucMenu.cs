@@ -52,8 +52,8 @@ namespace Wookie.Master.Menu.Control
                 this.popupMenuTree, 
                 this.tsysClientElementBindingSource);
 
-            this.ucDefault1.PreparePictureEdit(this.ImagePictureEdit);
-            this.ucDefault1.PreparePictureEdit(this.pictureEdit1);
+            this.ucDefault1.RegisterPictureEdit(this.ImagePictureEdit);
+            this.ucDefault1.RegisterPictureEdit(this.pictureEdit1);
             this.ucDefault1.Initialize(modulData);
 
             this.SetValidationRules();

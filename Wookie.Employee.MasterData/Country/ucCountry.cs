@@ -33,7 +33,7 @@ namespace Wookie.Employee.MasterData.Country
                 this.popupMenu1,
                 this.tlkpCountryBindingSource);
 
-            this.ucDefault1.PreparePictureEdit(this.PicturePictureEdit);
+            this.ucDefault1.RegisterPictureEdit(this.PicturePictureEdit);
 
             this.SetValidationRules();
         }

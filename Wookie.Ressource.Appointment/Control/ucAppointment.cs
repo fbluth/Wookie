@@ -39,12 +39,13 @@ namespace Wookie.Ressource.Appointment.Control
             this.modulData = modulData;
             this.ucDefault1.Initialize(modulData, true);
                         
-            this.panelControl1.Controls.Clear();
+            this.pnlSelectedAddress.Controls.Clear();
 
             if (this.modulData.DetailUserControl != null)
             {
-                this.panelControl1.Height = this.modulData.DetailUserControl.Height;
-                this.panelControl1.Controls.Add(this.modulData.DetailUserControl);
+                this.pnlSelectedAddress.Height = this.modulData.DetailUserControl.Height;
+                this.modulData.DetailUserControl.Dock = DockStyle.Top;
+                this.pnlSelectedAddress.Controls.Add(this.modulData.DetailUserControl);
             }
 
             this.ResumeLayout();
@@ -101,7 +102,7 @@ namespace Wookie.Ressource.Appointment.Control
         {
             this.ucDefault1.PostEditor();
             Database.tblContactAppointment contactAppointment = new Database.tblContactAppointment();
-            contactAppointment.FKContact = this.modulData.FKExternal;
+            contactAppointment.FKContact = this.modulData.FKSelected[0];
             contactAppointment.StartDateTime = System.DateTime.Now;
             contactAppointment.StartDateTime = System.DateTime.Now.AddHours(1);
             int datasourceindex = this.tblContactAppointmentBindingSource.Add(contactAppointment);            
@@ -145,8 +146,19 @@ namespace Wookie.Ressource.Appointment.Control
         {
             if (e.ListChangedType == ListChangedType.ItemAdded)
             {
-                ((Database.tblContactAppointment)tblContactAppointmentBindingSource[e.NewIndex]).FKContact = this.modulData.FKExternal;
+                ((Database.tblContactAppointment)tblContactAppointmentBindingSource[e.NewIndex]).FKContact = this.modulData.FKSelected[0]; ;
             }
-        }       
+        }
+
+        private void schedulerControl1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (schedulerControl1 != null && schedulerControl1.SelectedAppointments.Count > 0)
+            {
+                Database.tblContactAppointment a = schedulerControl1.SelectedAppointments[0].RowHandle as Database.tblContactAppointment;
+                if (a != null) this.tblContactAppointmentBindingSource.Position = this.tblContactAppointmentBindingSource.IndexOf(a);
+                
+            }
+            
+        }
     }
 }

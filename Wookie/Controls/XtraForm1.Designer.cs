@@ -47,6 +47,7 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.itmSkin = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.itmColorSwatch = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
@@ -56,7 +57,6 @@
             this.accordionControl1 = new Wookie.Tools.Controls.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).BeginInit();
             this.navigationFrame1.SuspendLayout();
@@ -256,6 +256,12 @@
             this.itmColorSwatch.Name = "itmColorSwatch";
             this.itmColorSwatch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.itmColorSwatch_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Kontakt";
+            this.barButtonItem1.Id = 22;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -302,16 +308,13 @@
             // 
             // accordionControl1
             // 
-            this.accordionControl1.AllowHorizontalResizing = DevExpress.Utils.DefaultBoolean.True;
             this.accordionControl1.AllowItemSelection = true;
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl1.ExpandGroupOnHeaderClick = false;
             this.accordionControl1.Location = new System.Drawing.Point(0, 30);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.NavigationFrame = null;
-            this.accordionControl1.OptionsMinimizing.NormalWidth = 150;
             this.accordionControl1.RootDisplayMode = DevExpress.XtraBars.Navigation.AccordionControlRootDisplayMode.Footer;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
             this.accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Auto;
@@ -338,12 +341,6 @@
             this.fluentDesignFormControl1.TabIndex = 12;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.barStaticItem1);
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Kontakt";
-            this.barButtonItem1.Id = 22;
-            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // XtraForm1
             // 

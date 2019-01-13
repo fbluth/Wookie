@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true, typeof(System.Windows.Forms.UserControl));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDefault));
@@ -45,7 +44,7 @@
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             this.gcMain = new DevExpress.XtraEditors.GroupControl();
             this.pnlWorkingArea = new DevExpress.XtraEditors.PanelControl();
-            this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
             ((System.ComponentModel.ISupportInitialize)(this.gcMain)).BeginInit();
             this.gcMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlWorkingArea)).BeginInit();
@@ -117,6 +116,7 @@
             this.Controls.Add(this.gcMain);
             this.Name = "ucDefault";
             this.Size = new System.Drawing.Size(764, 550);
+            this.VisibleChanged += new System.EventHandler(this.ucDefault_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.gcMain)).EndInit();
             this.gcMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlWorkingArea)).EndInit();
